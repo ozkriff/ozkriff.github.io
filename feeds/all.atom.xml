@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>marauder</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2014-04-02T10:20:00+04:00</updated><entry><title>Разработка Мародера [2014.02.24 .. 2014.03.02]</title><link href="/week-recap-1.html" rel="alternate"></link><updated>2014-04-02T10:20:00+04:00</updated><author><name>ozkriff</name></author><id>tag:,2014-04-02:week-recap-1.html</id><summary type="html">&lt;div class="section" id="id2"&gt;
+&lt;h2&gt;Сделал&lt;/h2&gt;
+&lt;p&gt;Так, что я сделал за эту неделю? Вообще, намного меньше, чем собирался :( .&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Ну, во первых, решил делать вот эти самые еженедельные записи.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Портировал из старых прототипов базовое путенахождение, причем оно происходит
+не на сервере, а на клиенте, основываясь на знаниях клиента о мире. Т.е., если
+на пол пути окажется скрытый юнит, то путь через его клетку все равно будет
+проложен, а уже при симуляции команды на сервере случится сюрприз в виде
+засады.&lt;/p&gt;
+&lt;p&gt;Раньше:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="pathfinding-pic-1" src="http://i.imgur.com/vCdvn0i.gif" /&gt;&lt;/p&gt;
+&lt;p&gt;Теперь:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="pathfinding-pic-2" src="http://i.imgur.com/Wda41RD.gif" /&gt;&lt;/p&gt;
+&lt;p&gt;Да, пока отряд никак не поворачивается при движении :( .&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Немного привел в порядок gl_helpers, вынес из него типы Texture, Vao, Vbo и
+Shader. Ну и спрятал вызовы привязок gl внутри этих классов.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Разделил все исходники на директории core и visualizer. Позже, наверное,
+сделаю их отдельными единицами компиляции.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Постарался сделать так, что бы после вызова конструктора объекта он уже сразу
+был готов к использованию, а не ждал вызова init-подобного метода в
+неопределенном состоянии.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Добавил в интерфейс визуализаторов событий метод 'start' для, очевидно,
+начала визуализации события.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
+&lt;/div&gt;
+</summary><category term="marauder"></category><category term="gamedev"></category></entry><entry><title>Разработка Мародера [2014.01.03 .. 2014.02.23]</title><link href="/pre.html" rel="alternate"></link><updated>2014-02-28T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:,2014-02-28:pre.html</id><summary type="html">&lt;p&gt;Тому, что есть на данный момент до игры еще очень далеко. Пока что, по шкале
+от &amp;quot;демо OpenGL приложение с вращающимся полигоном&amp;quot; до &amp;quot;X-COM, HoMM,
+Кодекс Войны и др. большие пошаговые игры, которые пришли сходу мне в голову&amp;quot;
+Мародер находится на минимальном отдалении от левого края.&lt;/p&gt;
+&lt;p&gt;На проект я потратил полтора месяца по часу-другому в день.
+Большую часть времени я изучал и игрался с Ржавчиной (которая язык
+программирования) и изучивал-вспоминал основы OpenGL.&lt;/p&gt;
+&lt;p&gt;Есть стремная тестовая модель (вроде как танка), слепленная в блендере за пару
+минут и покрашенная там же, что бы проверить, как натягиваются текстуры:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ugly-tank-pic" src="http://i.imgur.com/Qw9WsSm.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Других видов отрядов нет.&lt;/p&gt;
+&lt;p&gt;Текстурки - png. Модельки - .obj (самый простой формат, что я знаю).&lt;/p&gt;
+&lt;p&gt;Есть карта из одинаковых шестиугольников серого цвета. В каждой клетке
+может находиться один отряд.&lt;/p&gt;
+&lt;p&gt;Работает простенькое выделение мышкой (color picking).&lt;/p&gt;
+&lt;p&gt;По кнопке 'U' (_u_nit) в клетке, на которую указывает мышка, появляется новый
+отряд. Появляется при помощи простенькой анимации - поднимается из-под земли.
+Такие вот зомби-танки.&lt;/p&gt;
+&lt;p&gt;Отряды можно выделять кликом по клетке, но визуально это никак не отображается.&lt;/p&gt;
+&lt;p&gt;Выделенному отряду можно отдать приказ двигаться, кликнув по пустой клетке, но
+путенахождение не реализовано, так что он просто полетит по прямой к
+нужной клетке.&lt;/p&gt;
+&lt;p&gt;Выделенному отряду можно дать команду атаковать, наведя мышку на другой отряд
+и нажав клавишу 'A' (_a_ttack). Очков здоровия, брони, точности и т.д.
+нет, атакованный отряд просто сразу умирает.
+Анимация смерти является противоположностью анимации появления - отряд
+уходит под землю. Очков действий у отрядов нет, атаковать они могут любое
+количество раз.&lt;/p&gt;
+&lt;p&gt;По нажатию кнопки 'T' (end _t_urn) ход переходит к следующему игроку (хот сит)
+и ему показываются результаты действий противников. Отряды не
+принадлежат к какому-либо игроку и каждый игрок может отдавать приказы любому
+отряду.&lt;/p&gt;
+&lt;p&gt;Строчек кода на все это:
+[TODO вставить сюда &amp;quot;wc -l *.rs&amp;quot; по всем файлам в нужной версии]&lt;/p&gt;
+&lt;p&gt;Собирается под линуксом на ночной сборке компилятора Ржавчины.
+Настроена автосборка на travis-ci.org и я стараюсь не давать коду отстать от
+ночной сборки компилятора больше, чем на день.&lt;/p&gt;
+&lt;p&gt;Исходники хранятся на гитхабе &lt;a class="reference external" href="https://github.com/ozkriff/marauder"&gt;https://github.com/ozkriff/marauder&lt;/a&gt;, для текстур
+и моделей отдельный репозиторий - &lt;a class="reference external" href="https://github.com/ozkriff/marauder-data"&gt;https://github.com/ozkriff/marauder-data&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Вооооот, так что делать мне еще очень и очень и очень много. :)&lt;/p&gt;
+&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
+</summary><category term="marauder"></category><category term="gamedev"></category></entry></feed>
