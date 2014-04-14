@@ -9,36 +9,6 @@
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
 </summary><category term="marauder"></category><category term="gamedev"></category></entry><entry><title>Разработка Мародера [2014.03.31 .. 2014.04.07]</title><link href="http://ozkriff.github.io/week-recap-6.html" rel="alternate"></link><updated>2014-04-08T11:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-08:week-recap-6.html</id><summary type="html">&lt;p&gt;Аналогично с прошлой - ничего, только смотрю, что б Мародер собирался.&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="marauder"></category><category term="gamedev"></category></entry><entry><title>Разработка Мародера [2014.02.24 .. 2014.03.02]</title><link href="http://ozkriff.github.io/week-recap-1.html" rel="alternate"></link><updated>2014-04-02T10:20:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-02:week-recap-1.html</id><summary type="html">&lt;p&gt;Так, что я сделал за эту неделю? Вообще, намного меньше, чем собирался :( .&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p class="first"&gt;Ну, во первых, решил делать вот эти самые еженедельные записи.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;Портировал из старых прототипов базовое путенахождение, причем оно происходит
-не на сервере, а на клиенте, основываясь на знаниях клиента о мире. Т.е., если
-на пол пути окажется скрытый юнит, то путь через его клетку все равно будет
-проложен, а уже при симуляции команды на сервере случится сюрприз в виде
-засады.&lt;/p&gt;
-&lt;p&gt;Раньше:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="pathfinding-pic-1" src="http://i.imgur.com/vCdvn0i.gif" /&gt;&lt;/p&gt;
-&lt;p&gt;Теперь:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="pathfinding-pic-2" src="http://i.imgur.com/Wda41RD.gif" /&gt;&lt;/p&gt;
-&lt;p&gt;Да, пока отряд никак не поворачивается при движении :( .&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;Немного привел в порядок gl_helpers, вынес из него типы Texture, Vao, Vbo и
-Shader. Ну и спрятал вызовы привязок gl внутри этих классов.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;Разделил все исходники на директории core и visualizer. Позже, наверное,
-сделаю их отдельными единицами компиляции.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;Постарался сделать так, что бы после вызова конструктора объекта он уже сразу
-был готов к использованию, а не ждал вызова init-подобного метода в
-неопределенном состоянии.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;Добавил в интерфейс визуализаторов событий метод 'start' для, очевидно,
-начала визуализации события.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
 </summary><category term="marauder"></category><category term="gamedev"></category></entry><entry><title>Разработка Мародера [2014.03.24 .. 2014.03.30]</title><link href="http://ozkriff.github.io/week-recap-5.html" rel="alternate"></link><updated>2014-03-31T12:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-03-31:week-recap-5.html</id><summary type="html">&lt;p&gt;За эту неделю ничего не сделал, только слежу, что бы мародер
 собирался ночными сборками компилятора Ржавчины.&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
@@ -128,6 +98,36 @@ gl-вызова.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="wc-l-example-pic" src="TODO" /&gt;&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
 &lt;/div&gt;
+</summary><category term="marauder"></category><category term="gamedev"></category></entry><entry><title>Разработка Мародера [2014.02.24 .. 2014.03.02]</title><link href="http://ozkriff.github.io/week-recap-1.html" rel="alternate"></link><updated>2014-03-03T10:20:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-03-03:week-recap-1.html</id><summary type="html">&lt;p&gt;Так, что я сделал за эту неделю? Вообще, намного меньше, чем собирался :( .&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Ну, во первых, решил делать вот эти самые еженедельные записи.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Портировал из старых прототипов базовое путенахождение, причем оно происходит
+не на сервере, а на клиенте, основываясь на знаниях клиента о мире. Т.е., если
+на пол пути окажется скрытый юнит, то путь через его клетку все равно будет
+проложен, а уже при симуляции команды на сервере случится сюрприз в виде
+засады.&lt;/p&gt;
+&lt;p&gt;Раньше:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="pathfinding-pic-1" src="http://i.imgur.com/vCdvn0i.gif" /&gt;&lt;/p&gt;
+&lt;p&gt;Теперь:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="pathfinding-pic-2" src="http://i.imgur.com/Wda41RD.gif" /&gt;&lt;/p&gt;
+&lt;p&gt;Да, пока отряд никак не поворачивается при движении :( .&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Немного привел в порядок gl_helpers, вынес из него типы Texture, Vao, Vbo и
+Shader. Ну и спрятал вызовы привязок gl внутри этих классов.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Разделил все исходники на директории core и visualizer. Позже, наверное,
+сделаю их отдельными единицами компиляции.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Постарался сделать так, что бы после вызова конструктора объекта он уже сразу
+был готов к использованию, а не ждал вызова init-подобного метода в
+неопределенном состоянии.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Добавил в интерфейс визуализаторов событий метод 'start' для, очевидно,
+начала визуализации события.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
 </summary><category term="marauder"></category><category term="gamedev"></category></entry><entry><title>Разработка Мародера [2014.01.03 .. 2014.02.23]</title><link href="http://ozkriff.github.io/pre.html" rel="alternate"></link><updated>2014-02-28T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-02-28:pre.html</id><summary type="html">&lt;p&gt;Тому, что есть на данный момент до игры еще очень далеко. Пока что, по шкале
 от &amp;quot;демо OpenGL приложение с вращающимся полигоном&amp;quot; до &amp;quot;X-COM, HoMM,
 Кодекс Войны и др. большие пошаговые игры, которые пришли сходу мне в голову&amp;quot;
