@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>marauder</title><link href="http://ozkriff.github.io/" rel="alternate"></link><link href="http://ozkriff.github.io/feeds/devblog.atom.xml" rel="self"></link><id>http://ozkriff.github.io/</id><updated>2014-04-02T10:20:00+04:00</updated><entry><title>Разработка Мародера [2014.02.24 .. 2014.03.02]</title><link href="http://ozkriff.github.io/week-recap-1.html" rel="alternate"></link><updated>2014-04-02T10:20:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-02:week-recap-1.html</id><summary type="html">&lt;p&gt;Так, что я сделал за эту неделю? Вообще, намного меньше, чем собирался :( .&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>marauder</title><link href="http://ozkriff.github.io/" rel="alternate"></link><link href="http://ozkriff.github.io/feeds/devblog.atom.xml" rel="self"></link><id>http://ozkriff.github.io/</id><updated>2014-04-14T12:00:00+04:00</updated><entry><title>Разработка Мародера [2014.04.07 .. 2014.04.13]</title><link href="http://ozkriff.github.io/week-recap-7.html" rel="alternate"></link><updated>2014-04-14T12:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-14:week-recap-7.html</id><summary type="html">&lt;p&gt;На этой неделе у меня был отпуск, о даа.&lt;/p&gt;
+&lt;p&gt;Наконец-то немного разобрался с pelican и начал приводить в порядок и
+выкладывать эти недельные отчеты на ozkriff.github.io, а то до этого они
+у меня только в gist`е лежали.&lt;/p&gt;
+&lt;p&gt;По самому мародеру почти ничего не сделал, только выложил на гитхаб
+очень-очень базовую версию stb-tt-rs и кое-какой код интеграции в мародер.
+Но по факту текста в игре пока так и нет.&lt;/p&gt;
+&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
+</summary><category term="marauder"></category><category term="gamedev"></category></entry><entry><title>Разработка Мародера [2014.03.31 .. 2014.04.07]</title><link href="http://ozkriff.github.io/week-recap-6.html" rel="alternate"></link><updated>2014-04-08T11:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-08:week-recap-6.html</id><summary type="html">&lt;p&gt;Аналогично с прошлой - ничего, только смотрю, что б Мародер собирался.&lt;/p&gt;
+&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
+</summary><category term="marauder"></category><category term="gamedev"></category></entry><entry><title>Разработка Мародера [2014.02.24 .. 2014.03.02]</title><link href="http://ozkriff.github.io/week-recap-1.html" rel="alternate"></link><updated>2014-04-02T10:20:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-02:week-recap-1.html</id><summary type="html">&lt;p&gt;Так, что я сделал за эту неделю? Вообще, намного меньше, чем собирался :( .&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p class="first"&gt;Ну, во первых, решил делать вот эти самые еженедельные записи.&lt;/p&gt;
 &lt;/li&gt;
@@ -28,6 +38,9 @@ Shader. Ну и спрятал вызовы привязок gl внутри э�
 начала визуализации события.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
+</summary><category term="marauder"></category><category term="gamedev"></category></entry><entry><title>Разработка Мародера [2014.03.24 .. 2014.03.30]</title><link href="http://ozkriff.github.io/week-recap-5.html" rel="alternate"></link><updated>2014-03-31T12:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-03-31:week-recap-5.html</id><summary type="html">&lt;p&gt;За эту неделю ничего не сделал, только слежу, что бы мародер
+собирался ночными сборками компилятора Ржавчины.&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
 </summary><category term="marauder"></category><category term="gamedev"></category></entry><entry><title>Разработка Мародера [2014.01.03 .. 2014.02.23]</title><link href="http://ozkriff.github.io/pre.html" rel="alternate"></link><updated>2014-02-28T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-02-28:pre.html</id><summary type="html">&lt;p&gt;Тому, что есть на данный момент до игры еще очень далеко. Пока что, по шкале
 от &amp;quot;демо OpenGL приложение с вращающимся полигоном&amp;quot; до &amp;quot;X-COM, HoMM,

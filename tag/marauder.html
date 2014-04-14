@@ -23,8 +23,67 @@
 
                             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://ozkriff.github.io/week-recap-1.html">Разработка Мародера [2014.02.24 .. 2014.03.02]</a></h1> 
+                    <h1 class="entry-title"><a href="http://ozkriff.github.io/week-recap-7.html">Разработка Мародера [2014.04.07 .. 2014.04.13]</a></h1> 
                     <footer class="post-info">
+        <abbr class="published" title="2014-04-14T12:00:00">
+                Пн. 14 Апрель 2014
+        </abbr>
+
+                <address class="vcard author">
+                By <a class="url fn" href="http://ozkriff.github.io/author/ozkriff.html">ozkriff</a>
+        </address>
+        <p>In <a href="http://ozkriff.github.io/category/devblog.html">devblog</a>. </p>
+<p>tags: <a href="http://ozkriff.github.io/tag/marauder.html">marauder</a><a href="http://ozkriff.github.io/tag/gamedev.html">gamedev</a></p>
+</footer><!-- /.post-info --><p>На этой неделе у меня был отпуск, о даа.</p>
+<p>Наконец-то немного разобрался с pelican и начал приводить в порядок и
+выкладывать эти недельные отчеты на ozkriff.github.io, а то до этого они
+у меня только в gist`е лежали.</p>
+<p>По самому мародеру почти ничего не сделал, только выложил на гитхаб
+очень-очень базовую версию stb-tt-rs и кое-какой код интеграции в мародер.
+Но по факту текста в игре пока так и нет.</p>
+<!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: -->
+<p>There are <a href="http://ozkriff.github.io/week-recap-7.html#disqus_thread">comments</a>.</p>                </article>
+                            </aside><!-- /#featured -->
+                            <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+                                                
+
+                 
+                        <li><article class="hentry">    
+                <header>
+                    <h1><a href="http://ozkriff.github.io/week-recap-6.html" rel="bookmark"
+                           title="Permalink to Разработка Мародера [2014.03.31 .. 2014.04.07]">Разработка Мародера [2014.03.31 .. 2014.04.07]</a></h1>
+                </header>
+                
+                <div class="entry-content">
+                <footer class="post-info">
+        <abbr class="published" title="2014-04-08T11:00:00">
+                Вт. 08 Апрель 2014
+        </abbr>
+
+                <address class="vcard author">
+                By <a class="url fn" href="http://ozkriff.github.io/author/ozkriff.html">ozkriff</a>
+        </address>
+        <p>In <a href="http://ozkriff.github.io/category/devblog.html">devblog</a>. </p>
+<p>tags: <a href="http://ozkriff.github.io/tag/marauder.html">marauder</a><a href="http://ozkriff.github.io/tag/gamedev.html">gamedev</a></p>
+</footer><!-- /.post-info -->                <p class="first last">Шестой недельный отчет</p>
+
+                <a class="readmore" href="http://ozkriff.github.io/week-recap-6.html">read more</a>
+                <p>There are <a href="http://ozkriff.github.io/week-recap-6.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+                            
+
+                 
+                        <li><article class="hentry">    
+                <header>
+                    <h1><a href="http://ozkriff.github.io/week-recap-1.html" rel="bookmark"
+                           title="Permalink to Разработка Мародера [2014.02.24 .. 2014.03.02]">Разработка Мародера [2014.02.24 .. 2014.03.02]</a></h1>
+                </header>
+                
+                <div class="entry-content">
+                <footer class="post-info">
         <abbr class="published" title="2014-04-02T10:20:00">
                 Ср. 02 Апрель 2014
         </abbr>
@@ -34,43 +93,37 @@
         </address>
         <p>In <a href="http://ozkriff.github.io/category/devblog.html">devblog</a>. </p>
 <p>tags: <a href="http://ozkriff.github.io/tag/marauder.html">marauder</a><a href="http://ozkriff.github.io/tag/gamedev.html">gamedev</a></p>
-</footer><!-- /.post-info --><p>Так, что я сделал за эту неделю? Вообще, намного меньше, чем собирался :( .</p>
-<ul>
-<li><p class="first">Ну, во первых, решил делать вот эти самые еженедельные записи.</p>
-</li>
-<li><p class="first">Портировал из старых прототипов базовое путенахождение, причем оно происходит
-не на сервере, а на клиенте, основываясь на знаниях клиента о мире. Т.е., если
-на пол пути окажется скрытый юнит, то путь через его клетку все равно будет
-проложен, а уже при симуляции команды на сервере случится сюрприз в виде
-засады.</p>
-<p>Раньше:</p>
-<p><img alt="pathfinding-pic-1" src="http://i.imgur.com/vCdvn0i.gif" /></p>
-<p>Теперь:</p>
-<p><img alt="pathfinding-pic-2" src="http://i.imgur.com/Wda41RD.gif" /></p>
-<p>Да, пока отряд никак не поворачивается при движении :( .</p>
-</li>
-<li><p class="first">Немного привел в порядок gl_helpers, вынес из него типы Texture, Vao, Vbo и
-Shader. Ну и спрятал вызовы привязок gl внутри этих классов.</p>
-</li>
-<li><p class="first">Разделил все исходники на директории core и visualizer. Позже, наверное,
-сделаю их отдельными единицами компиляции.</p>
-</li>
-<li><p class="first">Постарался сделать так, что бы после вызова конструктора объекта он уже сразу
-был готов к использованию, а не ждал вызова init-подобного метода в
-неопределенном состоянии.</p>
-</li>
-<li><p class="first">Добавил в интерфейс визуализаторов событий метод 'start' для, очевидно,
-начала визуализации события.</p>
-</li>
-</ul>
-<!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: -->
-<p>There are <a href="http://ozkriff.github.io/week-recap-1.html#disqus_thread">comments</a>.</p>                </article>
-                            </aside><!-- /#featured -->
-                            <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-                                                
+</footer><!-- /.post-info -->                <p class="first last">Первый недельный отчет</p>
+
+                <a class="readmore" href="http://ozkriff.github.io/week-recap-1.html">read more</a>
+                <p>There are <a href="http://ozkriff.github.io/week-recap-1.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+                            
+
+                 
+                        <li><article class="hentry">    
+                <header>
+                    <h1><a href="http://ozkriff.github.io/week-recap-5.html" rel="bookmark"
+                           title="Permalink to Разработка Мародера [2014.03.24 .. 2014.03.30]">Разработка Мародера [2014.03.24 .. 2014.03.30]</a></h1>
+                </header>
+                
+                <div class="entry-content">
+                <footer class="post-info">
+        <abbr class="published" title="2014-03-31T12:00:00">
+                Пн. 31 Март 2014
+        </abbr>
+
+                <address class="vcard author">
+                By <a class="url fn" href="http://ozkriff.github.io/author/ozkriff.html">ozkriff</a>
+        </address>
+        <p>In <a href="http://ozkriff.github.io/category/devblog.html">devblog</a>. </p>
+<p>tags: <a href="http://ozkriff.github.io/tag/marauder.html">marauder</a><a href="http://ozkriff.github.io/tag/gamedev.html">gamedev</a></p>
+</footer><!-- /.post-info -->                <p class="first last">Пятый недельный отчет</p>
+
+                <a class="readmore" href="http://ozkriff.github.io/week-recap-5.html">read more</a>
+                <p>There are <a href="http://ozkriff.github.io/week-recap-5.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+                            
 
                  
                         <li><article class="hentry">    
