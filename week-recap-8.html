@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href='http://fonts.googleapis.com/css?family=Noticia+Text:400,700' rel='stylesheet' type='text/css' />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="">
+    <meta name="author" content="ozkriff">
+
+    <title> Разработка Мародера - 2014.04.20 | Зона Контроля </title>
+
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/font-awesome.css" type="text/css"/>
+    <link rel="shortcut icon" href="/theme/images/favicon.ico">
+  </head>
+  <body>
+    <div class=container>
+<div class="header">
+    <a href="index.html">Зона Контроля</a> <span class="muted"></span>
+</div>
+
+<div class=navigation>
+    <ul>
+            <li><a href="/archives.html">Архив</a> </li>
+            <li><a href="/tags.html">Тэги</a> </li>
+            <li><a href="/pages/about.html">О блоге</a> </li>
+    </ul>
+</div>
+<div class=separator></div>        
+        <div class=body>
+    <h1 class="title"> Разработка Мародера - 2014.04.20</h1>
+    <p class=date> Пн. 21 Апрель 2014 </p>
+    <p>Отпуск кончился. Хочется умереть :) .</p>
+<p>Забыл написать. На прошлой неделе появился первый отчет об ошибке, ура ура!
+Правда я хз что с ним делать :( .</p>
+<p>Наткнулся на серию классных постов об обработке ошибок в блоге битсквида.</p>
+<p>Сделал кое какое отображение 2д и 3д текста.</p>
+<p>Решил возвращать текст в экранных координатах, а для отображения
+в 3д сцене его плющить матрицами как надо.</p>
+<p>Для поиска всех gl вызовов и вывода только их названий:</p>
+<dl class="docutils">
+<dt>::</dt>
+<dd>grep -oh 'gl::w*(' visualizer/* | sort | uniq</dd>
+</dl>
+<p>Добавил макрос (фу) verify!, позаимствованный из kiss3d, для проверки
+gl::GetError после каждого OpenGL вызова. Нашлась парочка ошибок.
+Надеюсь, это поможет запустить мародера на os x, а то неудобно. что
+отчет об ошибке столько времени уже висит.</p>
+<p>Сделал отображаемый пробел и поддержку нескольких строчек в текстовом
+кэше для font_stash.</p>
+<p>Камера в начале боя теперь не где-то с краю, а в центре карты.</p>
+<!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: -->
+
+    
+    <p class=tags>This entry was tagged as
+      <a href="/tag/devlog.html">devlog</a>
+      <a href="/tag/marauder.html">marauder</a>
+    </p>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'ozkriffgithubio'; // required: replace example with your forum shortname
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+        
+<div class=footer>
+  <p>&copy; Copyright <script language="JavaScript">var date = new Date(); document.write(date.getFullYear());</script> by ozkriff</p>
+  <p> Powered by <a href="http://pypi.python.org/pypi/pelican/" target="_blank">Pelican</a>.  
+    <a href="https://github.com/fjavieralba/flasky">Theme</a>  by <a href="http://fjavieralba.com">fjavieralba</a>
+  </p> 
+  <p>
+    <div class=social style="font-size: 27px;">
+      <ul>
+<a href="https://www.linkedin.com/profile/view?id=AAMAABfeM3EBZh_SzJlI-iSEgVAs12f9d0S6ues" target="_blank"><li><i class="icon-linkedin-sign icon-large" ></i></li></a><a href="http://github.com/ozkriff" target="_blank"> <li> <i class="icon-github-sign icon-large"></i> </li> </a>
+
+        <a href="http://ozkriff.github.io/feeds/all.rss.xml" rel="alternate" title="Recent Blog Posts"><li> <i class="icon-rss icon-large"></i> </li></a>
+      </ul>
+    </div>
+  </p>
+</div>    </div>
+  </body>
+</html>

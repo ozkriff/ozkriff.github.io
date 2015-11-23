@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Зона Контроля</title><link href="http://ozkriff.github.io/" rel="alternate"></link><link href="http://ozkriff.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ozkriff.github.io/</id><updated>2014-04-14T12:00:00+04:00</updated><entry><title>Разработка Мародера - 2014.04.13</title><link href="http://ozkriff.github.io/week-recap-7.html" rel="alternate"></link><updated>2014-04-14T12:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-14:week-recap-7.html</id><summary type="html">&lt;p&gt;На этой неделе у меня был отпуск, о даа.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Зона Контроля</title><link href="http://ozkriff.github.io/" rel="alternate"></link><link href="http://ozkriff.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ozkriff.github.io/</id><updated>2014-04-28T11:00:00+04:00</updated><entry><title>Разработка Мародера - 2014.04.27</title><link href="http://ozkriff.github.io/week-recap-9.html" rel="alternate"></link><updated>2014-04-28T11:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-28:week-recap-9.html</id><summary type="html">&lt;p&gt;Меня поплющило пару дней на тему перехода с 3д моделей на 2д маркеры.&lt;/p&gt;
+&lt;p&gt;Заменил везде &lt;cite&gt;&amp;amp;str&lt;/cite&gt; на &lt;cite&gt;Path&lt;/cite&gt;, так правильней (ссылка на битсквидблог).&lt;/p&gt;
+&lt;p&gt;Заменил структурки &lt;cite&gt;struct(MInt)&lt;/cite&gt; на &lt;cite&gt;struct(id: MInt}&lt;/cite&gt;.&lt;/p&gt;
+&lt;p&gt;Шейдеры с 1.5 на 1.2, что бы можно было запускаться на OpenGL 2.1 без проблем.&lt;/p&gt;
+&lt;p&gt;Перенес исходники в &lt;cite&gt;src&lt;/cite&gt; директорию, а всякое для работы в &lt;cite&gt;bin&lt;/cite&gt; директорию.
+Добавил в Makefile команду &lt;cite&gt;run&lt;/cite&gt;, которая переходит в &lt;cite&gt;bin&lt;/cite&gt; и запускает игру.&lt;/p&gt;
+&lt;p&gt;Поправил систему слотов.&lt;/p&gt;
+&lt;p&gt;Убрал &lt;cite&gt;MBool&lt;/cite&gt; в пользу обычного &lt;cite&gt;bool&lt;/cite&gt;. В этом был смысл для Си, но тут-то
+уже все есть.&lt;/p&gt;
+&lt;p&gt;Почти доделал &lt;cite&gt;ErrorContext&lt;/cite&gt;, скоро попробую его внедрить.&lt;/p&gt;
+&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
+</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.04.20</title><link href="http://ozkriff.github.io/week-recap-8.html" rel="alternate"></link><updated>2014-04-21T11:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-21:week-recap-8.html</id><summary type="html">&lt;p&gt;Отпуск кончился. Хочется умереть :) .&lt;/p&gt;
+&lt;p&gt;Забыл написать. На прошлой неделе появился первый отчет об ошибке, ура ура!
+Правда я хз что с ним делать :( .&lt;/p&gt;
+&lt;p&gt;Наткнулся на серию классных постов об обработке ошибок в блоге битсквида.&lt;/p&gt;
+&lt;p&gt;Сделал кое какое отображение 2д и 3д текста.&lt;/p&gt;
+&lt;p&gt;Решил возвращать текст в экранных координатах, а для отображения
+в 3д сцене его плющить матрицами как надо.&lt;/p&gt;
+&lt;p&gt;Для поиска всех gl вызовов и вывода только их названий:&lt;/p&gt;
+&lt;dl class="docutils"&gt;
+&lt;dt&gt;::&lt;/dt&gt;
+&lt;dd&gt;grep -oh 'gl::w*(' visualizer/* | sort | uniq&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;Добавил макрос (фу) verify!, позаимствованный из kiss3d, для проверки
+gl::GetError после каждого OpenGL вызова. Нашлась парочка ошибок.
+Надеюсь, это поможет запустить мародера на os x, а то неудобно. что
+отчет об ошибке столько времени уже висит.&lt;/p&gt;
+&lt;p&gt;Сделал отображаемый пробел и поддержку нескольких строчек в текстовом
+кэше для font_stash.&lt;/p&gt;
+&lt;p&gt;Камера в начале боя теперь не где-то с краю, а в центре карты.&lt;/p&gt;
+&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
+</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.04.13</title><link href="http://ozkriff.github.io/week-recap-7.html" rel="alternate"></link><updated>2014-04-14T12:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-14:week-recap-7.html</id><summary type="html">&lt;p&gt;На этой неделе у меня был отпуск, о даа.&lt;/p&gt;
 &lt;p&gt;Наконец-то немного разобрался с pelican и начал приводить в порядок и
 выкладывать эти недельные отчеты на ozkriff.github.io, а то до этого они
 у меня только в gist`е лежали.&lt;/p&gt;

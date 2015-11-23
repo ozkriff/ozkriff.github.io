@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Зона Контроля</title><link href="http://ozkriff.github.io/" rel="alternate"></link><link href="http://ozkriff.github.io/feeds/ozkriff.atom.xml" rel="self"></link><id>http://ozkriff.github.io/</id><updated>2014-04-28T11:00:00+04:00</updated><entry><title>Разработка Мародера - 2014.04.27</title><link href="http://ozkriff.github.io/week-recap-9.html" rel="alternate"></link><updated>2014-04-28T11:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-28:week-recap-9.html</id><summary type="html">&lt;p&gt;Меня поплющило пару дней на тему перехода с 3д моделей на 2д маркеры.&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Зона Контроля</title><link>http://ozkriff.github.io/</link><description></description><atom:link href="http://ozkriff.github.io/feeds/devlog.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 28 Apr 2014 11:00:00 +0400</lastBuildDate><item><title>Разработка Мародера - 2014.04.27</title><link>http://ozkriff.github.io/week-recap-9.html</link><description>&lt;p&gt;Меня поплющило пару дней на тему перехода с 3д моделей на 2д маркеры.&lt;/p&gt;
 &lt;p&gt;Заменил везде &lt;cite&gt;&amp;amp;str&lt;/cite&gt; на &lt;cite&gt;Path&lt;/cite&gt;, так правильней (ссылка на битсквидблог).&lt;/p&gt;
 &lt;p&gt;Заменил структурки &lt;cite&gt;struct(MInt)&lt;/cite&gt; на &lt;cite&gt;struct(id: MInt}&lt;/cite&gt;.&lt;/p&gt;
 &lt;p&gt;Шейдеры с 1.5 на 1.2, что бы можно было запускаться на OpenGL 2.1 без проблем.&lt;/p&gt;
@@ -10,7 +10,7 @@
 уже все есть.&lt;/p&gt;
 &lt;p&gt;Почти доделал &lt;cite&gt;ErrorContext&lt;/cite&gt;, скоро попробую его внедрить.&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.04.20</title><link href="http://ozkriff.github.io/week-recap-8.html" rel="alternate"></link><updated>2014-04-21T11:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-21:week-recap-8.html</id><summary type="html">&lt;p&gt;Отпуск кончился. Хочется умереть :) .&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 28 Apr 2014 11:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-04-28:week-recap-9.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.04.20</title><link>http://ozkriff.github.io/week-recap-8.html</link><description>&lt;p&gt;Отпуск кончился. Хочется умереть :) .&lt;/p&gt;
 &lt;p&gt;Забыл написать. На прошлой неделе появился первый отчет об ошибке, ура ура!
 Правда я хз что с ним делать :( .&lt;/p&gt;
 &lt;p&gt;Наткнулся на серию классных постов об обработке ошибок в блоге битсквида.&lt;/p&gt;
@@ -30,7 +30,7 @@ gl::GetError после каждого OpenGL вызова. Нашлась па�
 кэше для font_stash.&lt;/p&gt;
 &lt;p&gt;Камера в начале боя теперь не где-то с краю, а в центре карты.&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.04.13</title><link href="http://ozkriff.github.io/week-recap-7.html" rel="alternate"></link><updated>2014-04-14T12:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-14:week-recap-7.html</id><summary type="html">&lt;p&gt;На этой неделе у меня был отпуск, о даа.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 21 Apr 2014 11:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-04-21:week-recap-8.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.04.13</title><link>http://ozkriff.github.io/week-recap-7.html</link><description>&lt;p&gt;На этой неделе у меня был отпуск, о даа.&lt;/p&gt;
 &lt;p&gt;Наконец-то немного разобрался с pelican и начал приводить в порядок и
 выкладывать эти недельные отчеты на ozkriff.github.io, а то до этого они
 у меня только в gist`е лежали.&lt;/p&gt;
@@ -38,14 +38,14 @@ gl::GetError после каждого OpenGL вызова. Нашлась па�
 очень-очень базовую версию stb-tt-rs и кое-какой код интеграции в мародер.
 Но по факту текста в игре пока так и нет.&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.04.07</title><link href="http://ozkriff.github.io/week-recap-6.html" rel="alternate"></link><updated>2014-04-08T11:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-08:week-recap-6.html</id><summary type="html">&lt;p&gt;Аналогично с прошлой - ничего, только смотрю, что б Мародер собирался.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 14 Apr 2014 12:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-04-14:week-recap-7.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.04.07</title><link>http://ozkriff.github.io/week-recap-6.html</link><description>&lt;p&gt;Аналогично с прошлой - ничего, только смотрю, что б Мародер собирался.&lt;/p&gt;
 &lt;p&gt;Ну и вышел Rust 0.10, ура-ура! Хотя для меня это мало что меняет,
 все равно использую ночные сборки :) .&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.03.30</title><link href="http://ozkriff.github.io/week-recap-5.html" rel="alternate"></link><updated>2014-03-31T12:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-03-31:week-recap-5.html</id><summary type="html">&lt;p&gt;За эту неделю ничего не сделал, только слежу, что бы мародер
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Tue, 08 Apr 2014 11:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-04-08:week-recap-6.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.03.30</title><link>http://ozkriff.github.io/week-recap-5.html</link><description>&lt;p&gt;За эту неделю ничего не сделал, только слежу, что бы мародер
 собирался ночными сборками компилятора Ржавчины.&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.03.23</title><link href="http://ozkriff.github.io/week-recap-4.html" rel="alternate"></link><updated>2014-03-24T11:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-03-24:week-recap-4.html</id><summary type="html">&lt;p&gt;Сходил на Manowar, о да, нужно больше пафоса. Только теперь
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 31 Mar 2014 12:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-03-31:week-recap-5.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.03.23</title><link>http://ozkriff.github.io/week-recap-4.html</link><description>&lt;p&gt;Сходил на Manowar, о да, нужно больше пафоса. Только теперь
 вообще ничего не слышу :) .&lt;/p&gt;
 &lt;p&gt;Мучал glfw-rs, cgmath-rs и самого мародера, что бы они собирались с
 последней версией компилятора. Сложно было :)&lt;/p&gt;
@@ -63,7 +63,7 @@ gl::GetError после каждого OpenGL вызова. Нашлась па�
 &lt;p&gt;&lt;img alt="color-picking-02" src="http://i.imgur.com/gZHqS4P.png" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="color-picking-03" src="http://i.imgur.com/U0iHH5R.gif" /&gt;&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.03.16</title><link href="http://ozkriff.github.io/week-recap-3.html" rel="alternate"></link><updated>2014-03-17T12:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-03-17:week-recap-3.html</id><summary type="html">&lt;p&gt;Ну что ж. За эту неделю я почти ничего не сделал, времени на
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 24 Mar 2014 11:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-03-24:week-recap-4.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.03.16</title><link>http://ozkriff.github.io/week-recap-3.html</link><description>&lt;p&gt;Ну что ж. За эту неделю я почти ничего не сделал, времени на
 Мародера было не так уж много.&lt;/p&gt;
 &lt;p&gt;Зато сходил на концерт Апокалиптики :) .&lt;/p&gt;
 &lt;p&gt;&lt;img alt="apocalyptica-pic" src="http://i.imgur.com/92UkLwm.jpg" /&gt;&lt;/p&gt;
@@ -79,7 +79,7 @@ cgmath-rs под ночную сборку Ржавчины: изменения 
 gl-вызова.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="qapitrace-pic" src="http://i.imgur.com/OA0Re36.png" /&gt;&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.03.10</title><link href="http://ozkriff.github.io/week-recap-2.html" rel="alternate"></link><updated>2014-03-11T12:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-03-11:week-recap-2.html</id><summary type="html">&lt;p&gt;Ну, этот понедельник я считаю последним днем недели. Не может у меня
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 17 Mar 2014 12:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-03-17:week-recap-3.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.03.10</title><link>http://ozkriff.github.io/week-recap-2.html</link><description>&lt;p&gt;Ну, этот понедельник я считаю последним днем недели. Не может у меня
 неделя с выходного начинаться, это неправильно как-то.&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Теперь передаю информацию о изменениях размера окна в камеру, теперь
@@ -148,7 +148,7 @@ $ find src/core -name &amp;quot;*.rs&amp;quot; | xargs wc -L | sort -h
 &lt;/pre&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
 &lt;/div&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.03.02</title><link href="http://ozkriff.github.io/week-recap-1.html" rel="alternate"></link><updated>2014-03-03T10:20:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-03-03:week-recap-1.html</id><summary type="html">&lt;p&gt;Так, что я сделал за эту неделю? Вообще, намного меньше, чем собирался :( .&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Tue, 11 Mar 2014 12:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-03-11:week-recap-2.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.03.02</title><link>http://ozkriff.github.io/week-recap-1.html</link><description>&lt;p&gt;Так, что я сделал за эту неделю? Вообще, намного меньше, чем собирался :( .&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p class="first"&gt;Ну, во первых, решил делать вот эти самые еженедельные записи.&lt;/p&gt;
 &lt;/li&gt;
@@ -178,7 +178,7 @@ Shader. Ну и спрятал вызовы привязок gl внутри э�
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.02.23</title><link href="http://ozkriff.github.io/pre.html" rel="alternate"></link><updated>2014-02-28T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-02-28:pre.html</id><summary type="html">&lt;p&gt;Тому, что есть на данный момент до игры еще очень далеко. Пока что, по шкале
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 03 Mar 2014 10:20:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-03-03:week-recap-1.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.02.23</title><link>http://ozkriff.github.io/pre.html</link><description>&lt;p&gt;Тому, что есть на данный момент до игры еще очень далеко. Пока что, по шкале
 от &amp;quot;демо OpenGL приложение с вращающимся полигоном&amp;quot; до &amp;quot;X-COM, HoMM,
 Кодекс Войны и др. большие пошаговые игры, которые пришли сходу мне в голову&amp;quot;
 Мародер находится на минимальном отдалении от левого края.&lt;/p&gt;
@@ -218,4 +218,4 @@ Shader. Ну и спрятал вызовы привязок gl внутри э�
 и моделей отдельный репозиторий - &lt;a class="reference external" href="https://github.com/ozkriff/marauder-data"&gt;https://github.com/ozkriff/marauder-data&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Вооооот, так что делать мне еще очень и очень и очень много. :)&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry></feed>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Fri, 28 Feb 2014 00:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-02-28:pre.html</guid><category>devlog</category><category>marauder</category></item></channel></rss>
