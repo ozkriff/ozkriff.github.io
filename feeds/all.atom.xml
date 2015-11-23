@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Зона Контроля</title><link href="http://ozkriff.github.io/" rel="alternate"></link><link href="http://ozkriff.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ozkriff.github.io/</id><updated>2014-04-28T11:00:00+04:00</updated><entry><title>Разработка Мародера - 2014.04.27</title><link href="http://ozkriff.github.io/week-recap-9.html" rel="alternate"></link><updated>2014-04-28T11:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-28:week-recap-9.html</id><summary type="html">&lt;p&gt;Меня поплющило пару дней на тему перехода с 3д моделей на 2д маркеры.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Зона Контроля</title><link href="http://ozkriff.github.io/" rel="alternate"></link><link href="http://ozkriff.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ozkriff.github.io/</id><updated>2014-05-18T11:00:00+04:00</updated><entry><title>Разработка Мародера - 2014.05.18</title><link href="http://ozkriff.github.io/week-recap-12.html" rel="alternate"></link><updated>2014-05-18T11:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-05-18:week-recap-12.html</id><summary type="html">&lt;p&gt;Почти дорисовал базового человечка, так лениво :) .&lt;/p&gt;
+&lt;p&gt;Разработчики Ржавчины мутят чего-то страшное. Хотят убрать mut,
+иммутабельность. Бррр!&lt;/p&gt;
+&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
+</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.05.11</title><link href="http://ozkriff.github.io/week-recap-11.html" rel="alternate"></link><updated>2014-05-12T11:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-05-12:week-recap-11.html</id><summary type="html">&lt;p&gt;Тревис все так и сломан.&lt;/p&gt;
+&lt;p&gt;Потратил кучу времени, пока искал &lt;cite&gt;![macro_export]&lt;/cite&gt; и тупил вокруг))&lt;/p&gt;
+&lt;p&gt;Запил &lt;cite&gt;MeshId&lt;/cite&gt; структурку, наконец-то.&lt;/p&gt;
+&lt;p&gt;С горем пополам допилил error_context, выложил как отдельную библиотеку
+на гитхабе и использовал в мародере. И после отзывов переписал ее к чертям))&lt;/p&gt;
+&lt;p&gt;Сделал кое-какие кнопки. Криво, но работает. Тестовая кнопка - &amp;quot;конец хода&amp;quot;.&lt;/p&gt;
+&lt;p&gt;Перевел свои библиотечки и библиотеки bjz на rustc от rust-lang.org&lt;/p&gt;
+&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
+</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.05.04</title><link href="http://ozkriff.github.io/week-recap-10.html" rel="alternate"></link><updated>2014-05-05T11:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-05-05:week-recap-10.html</id><summary type="html">&lt;p&gt;Трэвис сломался и все никак не чинится. Все протухло :( .&lt;/p&gt;
+&lt;p&gt;Почти добил &lt;cite&gt;ErrorContext&lt;/cite&gt;. Перенес на &lt;cite&gt;local_data&lt;/cite&gt;.&lt;/p&gt;
+&lt;p&gt;Заменил все &lt;cite&gt;type = ...&lt;/cite&gt;, которые можно, на структуры.&lt;/p&gt;
+&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
+</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.04.27</title><link href="http://ozkriff.github.io/week-recap-9.html" rel="alternate"></link><updated>2014-04-28T11:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-28:week-recap-9.html</id><summary type="html">&lt;p&gt;Меня поплющило пару дней на тему перехода с 3д моделей на 2д маркеры.&lt;/p&gt;
 &lt;p&gt;Заменил везде &lt;cite&gt;&amp;amp;str&lt;/cite&gt; на &lt;cite&gt;Path&lt;/cite&gt;, так правильней (ссылка на битсквидблог).&lt;/p&gt;
 &lt;p&gt;Заменил структурки &lt;cite&gt;struct(MInt)&lt;/cite&gt; на &lt;cite&gt;struct(id: MInt}&lt;/cite&gt;.&lt;/p&gt;
 &lt;p&gt;Шейдеры с 1.5 на 1.2, что бы можно было запускаться на OpenGL 2.1 без проблем.&lt;/p&gt;
