@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="ozkriff">
 
-    <title> Разработка Мародера - 2014.04.13 | Зона Контроля </title>
+    <title> Разработка Мародера - 2014.04.27 | Зона Контроля </title>
 
     <link rel="stylesheet" href="/theme/css/style.css" type="text/css" />
     <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
@@ -23,20 +23,23 @@
     <ul>
             <li><a href="/archives.html">Архив</a> </li>
             <li><a href="/tags.html">Тэги</a> </li>
-            <li><a href="/pages/about.html">О блоге</a> </li>
+            <li><a href="/pages/about.html">О журнале</a> </li>
     </ul>
 </div>
 <div class=separator></div>        
         <div class=body>
-    <h1 class="title"> Разработка Мародера - 2014.04.13</h1>
-    <p class=date> Пн. 14 Апрель 2014 </p>
-    <p>На этой неделе у меня был отпуск, о даа.</p>
-<p>Наконец-то немного разобрался с pelican и начал приводить в порядок и
-выкладывать эти недельные отчеты на ozkriff.github.io, а то до этого они
-у меня только в gist`е лежали.</p>
-<p>По самому мародеру почти ничего не сделал, только выложил на гитхаб
-очень-очень базовую версию stb-tt-rs и кое-какой код интеграции в мародер.
-Но по факту текста в игре пока так и нет.</p>
+    <h1 class="title"> Разработка Мародера - 2014.04.27</h1>
+    <p class=date> Пн 28 Апрель 2014 </p>
+    <p>Меня поплющило пару дней на тему перехода с 3д моделей на 2д маркеры.</p>
+<p>Заменил везде <tt class="docutils literal">&amp;str</tt> на <tt class="docutils literal">Path</tt>, так правильней (ссылка на битсквидблог).</p>
+<p>Заменил структурки <tt class="docutils literal">struct(MInt)</tt> на <tt class="docutils literal">struct(id: MInt}</tt>.</p>
+<p>Шейдеры с 1.5 на 1.2, что бы можно было запускаться на OpenGL 2.1 без проблем.</p>
+<p>Перенес исходники в <tt class="docutils literal">src</tt> директорию, а всякое для работы в <tt class="docutils literal">bin</tt> директорию.
+Добавил в Makefile команду <tt class="docutils literal">run</tt>, которая переходит в <tt class="docutils literal">bin</tt> и запускает игру.</p>
+<p>Поправил систему слотов.</p>
+<p>Убрал <tt class="docutils literal">MBool</tt> в пользу обычного <tt class="docutils literal">bool</tt>. В этом был смысл для Си, но тут-то
+уже все есть.</p>
+<p>Почти доделал <tt class="docutils literal">ErrorContext</tt>, скоро попробую его внедрить.</p>
 <!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: -->
 
     

@@ -23,13 +23,13 @@
     <ul>
             <li><a href="/archives.html">Архив</a> </li>
             <li><a href="/tags.html">Тэги</a> </li>
-            <li><a href="/pages/about.html">О блоге</a> </li>
+            <li><a href="/pages/about.html">О журнале</a> </li>
     </ul>
 </div>
 <div class=separator></div>        
         <div class=body>
     <h1 class="title"> Разработка Мародера - 2014.03.02</h1>
-    <p class=date> Пн. 03 Март 2014 </p>
+    <p class=date> Пн 03 Март 2014 </p>
     <p>Так, что я сделал за эту неделю? Вообще, намного меньше, чем собирался :( .</p>
 <ul>
 <li><p class="first">Ну, во первых, решил делать вот эти самые еженедельные записи.</p>
@@ -45,17 +45,19 @@
 <p><img alt="pathfinding-pic-2" src="http://i.imgur.com/Wda41RD.gif" /></p>
 <p>Да, пока отряд никак не поворачивается при движении :( .</p>
 </li>
-<li><p class="first">Немного привел в порядок gl_helpers, вынес из него типы Texture, Vao, Vbo и
-Shader. Ну и спрятал вызовы привязок gl внутри этих классов.</p>
+<li><p class="first">Немного привел в порядок <tt class="docutils literal">gl_helpers</tt>, вынес из него типы <tt class="docutils literal">Texture</tt>, <tt class="docutils literal">Vao</tt>,
+<tt class="docutils literal">Vbo</tt> и <tt class="docutils literal">Shader</tt>. Ну и спрятал вызовы привязок gl внутри этих классов.</p>
 </li>
-<li><p class="first">Разделил все исходники на директории core и visualizer. Позже, наверное,
-сделаю их отдельными единицами компиляции.</p>
+<li><p class="first">Разделил все исходники на директории <tt class="docutils literal">core</tt> и <tt class="docutils literal">visualizer</tt>. Позже, наверное,
+сделаю их отдельными единицами компиляции. К первому отходит весь код,
+который не требует визуализации, т.е. сама суть игры, а визуализатор
+занимается полученеи ввода от пользователя и показом картинки.</p>
 </li>
 <li><p class="first">Постарался сделать так, что бы после вызова конструктора объекта он уже сразу
-был готов к использованию, а не ждал вызова init-подобного метода в
+был готов к использованию, а не ждал вызова <tt class="docutils literal">init</tt>-подобного метода в
 неопределенном состоянии.</p>
 </li>
-<li><p class="first">Добавил в интерфейс визуализаторов событий метод 'start' для, очевидно,
+<li><p class="first">Добавил в интерфейс визуализаторов событий метод <tt class="docutils literal">start</tt> для, очевидно,
 начала визуализации события.</p>
 </li>
 </ul>

@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="ozkriff">
 
-    <title> Разработка Мародера - 2014.04.27 | Зона Контроля </title>
+    <title> Разработка Мародера - 2014.05.04 | Зона Контроля </title>
 
     <link rel="stylesheet" href="/theme/css/style.css" type="text/css" />
     <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
@@ -23,23 +23,16 @@
     <ul>
             <li><a href="/archives.html">Архив</a> </li>
             <li><a href="/tags.html">Тэги</a> </li>
-            <li><a href="/pages/about.html">О блоге</a> </li>
+            <li><a href="/pages/about.html">О журнале</a> </li>
     </ul>
 </div>
 <div class=separator></div>        
         <div class=body>
-    <h1 class="title"> Разработка Мародера - 2014.04.27</h1>
-    <p class=date> Пн. 28 Апрель 2014 </p>
-    <p>Меня поплющило пару дней на тему перехода с 3д моделей на 2д маркеры.</p>
-<p>Заменил везде <cite>&amp;str</cite> на <cite>Path</cite>, так правильней (ссылка на битсквидблог).</p>
-<p>Заменил структурки <cite>struct(MInt)</cite> на <cite>struct(id: MInt}</cite>.</p>
-<p>Шейдеры с 1.5 на 1.2, что бы можно было запускаться на OpenGL 2.1 без проблем.</p>
-<p>Перенес исходники в <cite>src</cite> директорию, а всякое для работы в <cite>bin</cite> директорию.
-Добавил в Makefile команду <cite>run</cite>, которая переходит в <cite>bin</cite> и запускает игру.</p>
-<p>Поправил систему слотов.</p>
-<p>Убрал <cite>MBool</cite> в пользу обычного <cite>bool</cite>. В этом был смысл для Си, но тут-то
-уже все есть.</p>
-<p>Почти доделал <cite>ErrorContext</cite>, скоро попробую его внедрить.</p>
+    <h1 class="title"> Разработка Мародера - 2014.05.04</h1>
+    <p class=date> Пн 05 Май 2014 </p>
+    <p>Трэвис сломался и все никак не чинится. Все протухло :( .</p>
+<p>Почти добил <tt class="docutils literal">ErrorContext</tt>. Перенес на <tt class="docutils literal">local_data</tt>.</p>
+<p>Заменил все <tt class="docutils literal">type = ...</tt>, которые можно, на структуры.</p>
 <!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: -->
 
     
