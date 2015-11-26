@@ -69,20 +69,20 @@
 Там могут быть косяки с NaN и +/-Inf.
 Но я туплю как сделать правильно. :(&lt;/p&gt;
 &lt;p&gt;Мой грандиозный страйк помер :(, черт:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="github-streak-fail" src="http://i.imgur.com/Iky0iZx.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="github-streak-fail" src="images/2014-03-20--github-streak-fail.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Капельку поковырял текст. Решил, что не буду использовать cmr/hgl-rs,
 страшно мне. Лучше все-таки чего-то свое сделаю.&lt;/p&gt;
 &lt;p&gt;Шрифты, шрифты:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="font-cli" src="http://i.imgur.com/m0ywZJt.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="font-cli" src="images/2014-03-20--font-cli.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Сделал выделение отдельных отрядов в клетке:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="color-picking-01" src="http://i.imgur.com/QYOgFjh.gif" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="color-picking-02" src="http://i.imgur.com/gZHqS4P.png" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="color-picking-03" src="http://i.imgur.com/U0iHH5R.gif" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="color-picking-01" src="images/2014-03-20--color-picking-1.gif" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="color-picking-02" src="images/2014-03-20--color-picking-2.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="color-picking-03" src="images/2014-03-20--color-picking-1.gif" /&gt;&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
 </summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.03.16</title><link href="http://ozkriff.github.io/2014-03-17--devlog-marauder-003.html" rel="alternate"></link><updated>2014-03-17T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-03-17:2014-03-17--devlog-marauder-003.html</id><summary type="html">&lt;p&gt;Ну что ж. За эту неделю я почти ничего не сделал, времени на
 Мародера было не так уж много.&lt;/p&gt;
 &lt;p&gt;Зато сходил на концерт Апокалиптики :) .&lt;/p&gt;
-&lt;p&gt;&lt;img alt="apocalyptica-pic" src="http://i.imgur.com/92UkLwm.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="apocalyptica-pic" src="images/2015-11-23--apocalyptica.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;Сделал простенькое и кривенькое перетаскивание карты средней кнопкой мыши.
 Надо будет еще допиливать.&lt;/p&gt;
 &lt;p&gt;Вернулся к ковырянию шрифтов из kiss3d. Решил переписать font-stash на Rust.
@@ -93,7 +93,7 @@ cgmath-rs под ночную сборку Ржавчины: изменения 
 &lt;p&gt;Пробовал городить страшные вещи с макросами, но пока так и не разобрался.&lt;/p&gt;
 &lt;p&gt;Еще потыкал qapitrace и узнал, что &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;gl::GetError&lt;/span&gt;&lt;/tt&gt; надо вызывать после каждого
 gl-вызова.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="qapitrace-pic" src="http://i.imgur.com/OA0Re36.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="qapitrace-pic" src="images/2015-11-23--qapitrace.jpg" /&gt;&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
 </summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.03.10</title><link href="http://ozkriff.github.io/2014-03-11--devlog-marauder-002.html" rel="alternate"></link><updated>2014-03-11T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-03-11:2014-03-11--devlog-marauder-002.html</id><summary type="html">&lt;p&gt;Ну, этот понедельник я считаю последним днем недели. Не может у меня
 неделя с выходного начинаться, это неправильно как-то.&lt;/p&gt;
@@ -137,7 +137,7 @@ gl-вызова.&lt;/p&gt;
 &lt;div class="section" id="github-streak"&gt;
 &lt;h2&gt;Github streak&lt;/h2&gt;
 &lt;p&gt;И да, github streak в 61 день, еее!&lt;/p&gt;
-&lt;p&gt;&lt;img alt="github-streak-pic" src="http://i.imgur.com/jfKsmWv.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="github-streak-pic" src="images/2014-03-09--github-streak.png" /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="id2"&gt;
 &lt;h2&gt;80 символов хватит каждому!&lt;/h2&gt;
@@ -174,9 +174,9 @@ $ find src/core -name &amp;quot;*.rs&amp;quot; | xargs wc -L | sort -h
 проложен, а уже при симуляции команды на сервере случится сюрприз в виде
 засады.&lt;/p&gt;
 &lt;p&gt;Раньше:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="pathfinding-pic-1" src="http://i.imgur.com/vCdvn0i.gif" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="pathfinding-pic-1" src="images/2014-03-10--no-pathfinding.gif" /&gt;&lt;/p&gt;
 &lt;p&gt;Теперь:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="pathfinding-pic-2" src="http://i.imgur.com/Wda41RD.gif" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="pathfinding-pic-2" src="images/2014-03-10--basic-pathfinding.gif" /&gt;&lt;/p&gt;
 &lt;p&gt;Да, пока отряд никак не поворачивается при движении :( .&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;Немного привел в порядок &lt;tt class="docutils literal"&gt;gl_helpers&lt;/tt&gt;, вынес из него типы &lt;tt class="docutils literal"&gt;Texture&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;Vao&lt;/tt&gt;,
@@ -205,7 +205,7 @@ $ find src/core -name &amp;quot;*.rs&amp;quot; | xargs wc -L | sort -h
 программирования) и изучивал-вспоминал основы OpenGL.&lt;/p&gt;
 &lt;p&gt;Есть стремная тестовая модель (вроде как танка), слепленная в блендере за пару
 минут и покрашенная там же, что бы проверить, как натягиваются текстуры:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="ugly-tank-pic" src="http://i.imgur.com/Qw9WsSm.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ugly-tank-pic" src="images/2014-02-23--ugly-tank.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Других видов отрядов нет.&lt;/p&gt;
 &lt;p&gt;Текстурки - png. Модельки - .obj (самый простой формат, что я знаю).&lt;/p&gt;
 &lt;p&gt;Есть карта из одинаковых шестиугольников серого цвета. В каждой клетке
