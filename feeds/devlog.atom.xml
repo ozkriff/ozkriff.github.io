@@ -34,10 +34,9 @@
 &lt;p&gt;Решил возвращать текст в экранных координатах, а для отображения
 в 3д сцене его плющить матрицами как надо.&lt;/p&gt;
 &lt;p&gt;Для поиска всех gl вызовов и вывода только их названий:&lt;/p&gt;
-&lt;dl class="docutils"&gt;
-&lt;dt&gt;::&lt;/dt&gt;
-&lt;dd&gt;grep -oh 'gl::w*(' visualizer/* | sort | uniq&lt;/dd&gt;
-&lt;/dl&gt;
+&lt;pre class="literal-block"&gt;
+grep -oh 'gl::\w*(' visualizer/* | sort | uniq
+&lt;/pre&gt;
 &lt;p&gt;Добавил макрос (фу) &lt;tt class="docutils literal"&gt;verify!&lt;/tt&gt;, позаимствованный из kiss3d, для проверки
 &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;gl::GetError&lt;/span&gt;&lt;/tt&gt; после каждого OpenGL вызова. Нашлась парочка ошибок.
 Надеюсь, это поможет запустить мародера на os x, а то неудобно. что

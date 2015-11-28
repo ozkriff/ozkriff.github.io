@@ -29,7 +29,7 @@
 <div class=separator></div>        
         <div class=body>
     <h1 class="title"> Разработка Мародера - 2014.04.20</h1>
-    <p class=date> Пн 21 Апрель 2014 </p>
+    <p class=date> Пн. 21 Апрель 2014 </p>
     <p>Отпуск кончился. Хочется умереть :) .</p>
 <p>Забыл написать. На прошлой неделе появился первый отчет об ошибке, ура ура!
 Правда я хз что с ним делать :( .</p>
@@ -38,10 +38,9 @@
 <p>Решил возвращать текст в экранных координатах, а для отображения
 в 3д сцене его плющить матрицами как надо.</p>
 <p>Для поиска всех gl вызовов и вывода только их названий:</p>
-<dl class="docutils">
-<dt>::</dt>
-<dd>grep -oh 'gl::w*(' visualizer/* | sort | uniq</dd>
-</dl>
+<pre class="literal-block">
+grep -oh 'gl::\w*(' visualizer/* | sort | uniq
+</pre>
 <p>Добавил макрос (фу) <tt class="docutils literal">verify!</tt>, позаимствованный из kiss3d, для проверки
 <tt class="docutils literal"><span class="pre">gl::GetError</span></tt> после каждого OpenGL вызова. Нашлась парочка ошибок.
 Надеюсь, это поможет запустить мародера на os x, а то неудобно. что
