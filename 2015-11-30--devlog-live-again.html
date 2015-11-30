@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href='http://fonts.googleapis.com/css?family=Noticia+Text:400,700' rel='stylesheet' type='text/css' />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="">
+    <meta name="author" content="ozkriff">
+
+    <title> Перезапуск журнала | Зона Контроля </title>
+
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/font-awesome.css" type="text/css"/>
+    <link rel="shortcut icon" href="/favicon.png">
+  </head>
+  <body>
+    <div class=container>
+<div class="header">
+    <a href="index.html">Зона Контроля</a> <span class="muted"></span>
+</div>
+
+<div class=navigation>
+    <ul>
+            <li><a href="/archives.html">Архив</a> </li>
+            <li><a href="/tags.html">Метки</a> </li>
+            <li><a href="/about.html">О журнале</a> </li>
+    </ul>
+</div>
+<div class=separator></div>        
+        <div class=body>
+    <h1 class="title"> Перезапуск журнала</h1>
+    <p class=date> Пн 30 Ноябрь 2015 </p>
+    <p>Насмотрелся я тут на журналы <a class="reference external" href="http://reangdblog.blogspot.com">reangd</a>, <a class="reference external" href="http://www.gridsagegames.com/blog">cogmind</a>, <a class="reference external" href="https://eao197.blogspot.ru">eao197</a> и всякие
+другие, решил что тоже чего-нибудь хочу писать.
+С последней моей попытки прошло около полутора лет)</p>
+<p>Итак, на момент написания прошлой заметки я работал над Миром Кораблей в
+<a class="reference external" href="https://wargaming.com/ru/about/our-locations/saint-petersburg">питерском wargaming.net</a>.
+Собственно, я успел уйти оттуда, поработать над казуалками в
+<a class="reference external" href="http://zillionwhales.ru">Zillion Whales</a>, оттуда тоже уйти и осесть в
+<a class="reference external" href="protei.ru">Протее</a>. Так что сейчас я ковыряю ip-телефонию и все игры теперь только
+в свободное время, зато не надо каждый день &quot;любоваться&quot; на ужасы фритуплея)</p>
+<p>Я больше не студент, совсем - наконец-то закончил заочку в политехе,
+ура-ура! :-D
+Темой диплома как раз и был этот проект, даже <a class="reference external" href="pdfs/lesnikov_a_a_slides_2015.pdf">презентация</a> вот завалялась.
+Хотя ничего особо крутого, как мне изначально хотелось, на деле не вышло.
+Ключевым моментом диплома являлся ИИ. Я там подробно расписал
+какие они бывают и какие виды подходят для каких игр.
+А вот реализовать полноценный не успел - сдавался вариант, который только
+формально можно было назвать &quot;практичным ИИ&quot;
+(извиняюсь, но лучшего перевода для &quot;utility-based AI&quot; не нашел.
+&quot;ИИ, основанный на теории полезности&quot; как-то длинновато).
+Он примерял к текущему состоянию игры захардкоженные шаблоны
+на основе позиций и типов отрядов, оценивал
+коэффециент их полезности, и втупую применял их.
+На специально подготовленных ситуациях выглядело не так и плохо,
+но это отмазочный вариант, конечно. И с очень стремным кодом,
+так что в git'е сейчас так и лежит
+базовый &quot;ИИ&quot; - подъехать в на расстояние выстрела и стрелять :-| .
+Но общий обыт был интересным)</p>
+<p>Сама ржавчина, конечно, за это время сильно выросла, с 0.10 аж до 1.4.
+Вместо извращений по установке зависимостей или возни с git submodules,
+появился cargo.
+По достижении 1.0 появилась обратная совместимость. Хотя конкретно от
+этого я и не в полном восторге, руки у авторов языка теперь &quot;полусвязаны&quot;,
+но переписываний и правда стало меньше,
+только когда библиотеки чего-то ломают. Да и с этим Cargo.lock очень
+помогает. Хотя, я уже месяца полтора его не обновлял - ух и сложный
+же следующий <tt class="docutils literal">cargo update</tt> у меня будет.</p>
+<hr class="docutils" />
+<p>За полтора года я успел переиграть много во что повлияевшего
+на мое видение пошаговых стратегий, например:</p>
+<ul class="simple">
+<li>малоизвестная <a class="reference external" href="https://store.steampowered.com/app/306640">Battle Academy 2</a> из которой я решил фактически
+передрать ядро механики для тактического режима :) - взаимодействие
+видов войск, быстрое/осторожное передвижение, хитрая видимость,
+реакционный огонь, боевой дух/подавление и т.п.;</li>
+<li>чуть более известная <a class="reference external" href="https://store.steampowered.com/app/218090">Unity of Command</a> повлияла на мое видение
+стратегического режима - хитрая система линий снабжения, механика
+окружений и т.п.;</li>
+<li>мобильная <a class="reference external" href="https://play.google.com/store/apps/details?id=android.uniwar">Uniwar</a> - классная система параллельных сетевых игр,
+а сама по себе игровая механика напоминает, что шестигранникам
+минимализм никогда не помешает;</li>
+<li>серия Wargame, а именно <a class="reference external" href="https://store.steampowered.com/app/222750">W:AB</a> и <a class="reference external" href="https://store.steampowered.com/app/251060">W:RD</a> - одна из немногих стратегий в
+реальном времени, в которую я с удовольствием поиграл за долгое время.
+Интересна своим балансом между реализмом/&quot;веселостью&quot; и взаимодействием
+между разными видами войск.</li>
+</ul>
+<p>Много думал про пошаговые игры без клеток, все-таки у клеток много
+недостатков/особенностей. Даже немного экспериментировал - сделал
+простенькое путенахождение по вручную размеченной навигационной сетке:</p>
+<img alt="Пример простого путенахождения на вручную размеченной сетке" src="images/2015-07-30--manual-navmesh-simple-pathfinding.png" />
+<p>Путь проложен по центрам треугольников, для оптимизации потом хотел
+прикрутить <a class="reference external" href="http://digestingduck.blogspot.ru/2010/03/simple-stupid-funnel-algorithm.html">funnel algorithm</a>, но до этого этапа не дошло.
+Если что, шестигранники тут уже ничего не значат, просто
+на основе работающего прилжожения экспериментировал.
+Затем, написал простенький &quot;наращиватель&quot; препятствий, который
+в зависимости от величины угла добавлял разное количество
+вспомогательных отрезков:</p>
+<img alt="Пример нарощенного препятствия" src="images/2015-08-02--obstacle-grow.png" />
+<p>Предполагалось, что все юниты будут поделены на несколько групп
+по размерам и для каждой группы будет поддерживаться своя сетка.
+Непосредственно преобразованием массива таких &quot;жирных&quot; препятствий в сетку
+должен был заниматься триангулятор. Мне большего всего приглянулся плюсовый
+<a class="reference external" href="https://code.google.com/p/poly2tri">poly2tri</a>:</p>
+<img alt="Всякие стандартные примеры из poly2tri" src="images/2015-08-11--triangulation-cpp-demo.png" />
+<p>Даже пытался портировать его на ржавчину, но там очень стремная работа с
+памятью, очень хреново укладывается в модель ржавчины.
+Пробовал переделать плюсовую версию на работу с массивами и индексами,
+но потом решил что очень уж много на эксперимент уходит времени, энтузиазм
+про бесклеточные игры прошел, так что я совсем забросил попытку.</p>
+<p>Ну да ладно, темы вдохновляющих игр, разных видов клеток и непрерывного
+пространства достойны отдельных заметок, а эта запись и так большой
+получается.</p>
+<hr class="docutils" />
+<p>Теперь, наконец-то, что касается самого проекта.</p>
+<p>Прежде всего, он переименован из Марoдера в Зону Контроля (Zone of Control).
+Сокращенно - ЗК/ZoC. Гитхабовское хранилище переехало в
+<a class="reference external" href="https://github.com/ozkriff/zoc">https://github.com/ozkriff/zoc</a>.</p>
+<p>Внешний вид с момента сдачи диплома изменился слабо и выглядит все это
+безобразие сейчас как-то так:</p>
+<div class="youtube"><iframe
+    frameborder="0"
+    allowfullscreen
+    src="https://www.youtube.com/embed/srJAfngSwxk?color=white&rel=0&showinfo=0"
+></iframe></div><p>Собственно, да, я портировал это на android, хотя под линуксом и виндой тоже
+должно работать.
+Спасибо Skligus'y за его <a class="reference external" href="https://github.com/skligys/rusty-cardboard">rusty-cardboard</a>, очень помогло поначалу,
+и Tomaka за его <a class="reference external" href="https://github.com/tomaka/glutin">glutin</a> и <a class="reference external" href="https://github.com/tomaka/android-rs-glue">android-rs-glue</a>.
+К сожалению, для сборки под андроид требуется ночная сборка rustc, потому
+что в android-rs-glue используются какие-то нестабильные штуки.
+Хотя надо перепроверить, может уже и стабильного компилятора хватит
+- ржавчина так быстро развивается :).</p>
+<p>Кстати, да, переписал с glfw-rs на <a class="reference external" href="https://github.com/tomaka/glutin">glutin</a> - чем больше кода на ржавчине,
+тем прощe, особенно при сборке на разных платформах.
+Еще хотел со своих <a class="reference external" href="https://github.com/ozkriff/zoc/tree/47e8f0/src/zgl/src">костылей вокруг OpenGL</a> перейти на <a class="reference external" href="https://github.com/tomaka/glium">glium</a>,
+но пока не осилил.</p>
+<p>Переделал с выделения через цветовой буфер на чистую математику
+- пересечение луча из курсора с плоскостью карты, бла бла блап.
+Уж очень много от времени отрисоки кадра оно сжирало, да и с шейдерами
+так меньше хлопот.</p>
+<p>Но это все про техническую часть. Что касается самой игры, то:</p>
+<ul class="simple">
+<li>два захардкоженых режима на одной карте с одним набором войск
+- против тупого ИИ или хотсит на двух игроков;</li>
+<li>от одного до пяти членов отряда в клетке -
+отказался от идеи иметь несколько отрядов в слотах одной клетки,
+потому что так и не придумал, как это все нормально отображать
+и как этим управлять. Хотя, при введении зданий и летающих отрядов,
+наверное, придется тут усложнить ситуацию;</li>
+<li>до двух активных очков атаки для стрельбы по прямому приказу игрока;</li>
+<li>одно пассивное очко атаки для реакционного огня в чужой ход (как в x-com)
++ неиспользованные в свой ход активные очки атаки становятся пассивными;</li>
+<li>вероятность поражения с (пока что) захардкожеными вероятностями попадания
+в зависимости от типа атакующего, защищающегося и местности;</li>
+<li>кривоватый туман войны, который впоследствии, видимо, будут переведен
+на менее дискретный алгоритм;</li>
+<li>заготовка системы боевого духа и подавления - каждый ход
+восстанавливается 10 очков морали, за каждую атаку снимается
+по 10, если мораль падает ниже половины - отряд не может стрелять;</li>
+<li>разная стоимость движения по местности для разных отрядов;</li>
+<li>два режима передвижения - быстрый и осторожный, который стоит в два
+раза дороже, зато не накладывает штрафы на точность при стрельбе
+и при попадании под огонь отряд не лишается оставшихся очков движения;</li>
+<li>тестовый грузовик для транспортировки пехоты;</li>
+<li>механика видимости из BA2 с двумя радиусами - &quot;нормальная&quot; и &quot;отличная&quot;
+видимость. Последняя позволяет увидеть скрытые юниты (например, пехоту в лесу);</li>
+<li>атаки из засад, если атакующий изначально невидим, с бонусом к атаке и
+шансом не раскрыть свою позицию;</li>
+<li>приказ &quot;не стрелять&quot; для отключения реакционного огня при организации
+хитрых засад или для разведчиков;</li>
+<li>пока что только четыре вида отрядов:<ul>
+<li>пехота - четыре человека, одна клетка отличной видимости,
+умеют тихориться в лесу;</li>
+<li>разведчики - как пехота, только всего 2 человека, зато видят
+и бегают немного быстрее;</li>
+<li>танк - громко стреляет и толсто бронирован, зато у него вообще
+нет отличной видимости (попробуй что через щели в броне рассмотреть)
+- без пехотного прикрытия рядом с лесом ему ездить не стоит;</li>
+<li>грузовик - не умеет стрелять, очень хрупкий и подслеповатый, зато
+быстрее всех остальных отрядов и может перевозить пехоту;</li>
+</ul>
+</li>
+</ul>
+<p>Ну, вот как-то так. Разработка, как видно, сильно <a class="reference external" href="http://mysweetwhomp.fr/private/119228173847/tumblr_noimn4cVks1u4yjir">затянулась</a> - я-то хотел
+такое уже через пару месяцев иметь, ха!
+То ли мне просто лень, то ли времени и правда мало получается выделять,
+черт его знает.
+Уже мнооого раз полностью терял весь энтузиазм и забрасывал игру на
+пару месяев, даже пытался чего-то другое делать.
+Но потом возвращался, что бы все-таки надо довести до ума эту чертову ЗК :) .
+Да и вышеупомянутые игры сильно помогали с вдохновением)</p>
+<p>Вот, собственно, вся первая запись. Вряд ли я буду теперь пытаться делать
+недельные отчеты, скорее буду писать более мелкие заметки по настроению
+- регулярность вытягивает из любого дела весь интерес.
+Ну и писать тут буду, наверное, не только по делу - смотрите теги :) .</p>
+<!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: -->
+
+    
+    <p class=tags>This entry was tagged as
+      <a href="/tag/devlog.html">devlog</a>
+      <a href="/tag/zoc.html">zoc</a>
+    </p>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'ozkriffgithubio'; // required: replace example with your forum shortname
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+        
+<div class=footer>
+  <p>&copy; Copyright <script language="JavaScript">var date = new Date(); document.write(date.getFullYear());</script> by ozkriff</p>
+  <p> Powered by <a href="http://pypi.python.org/pypi/pelican/" target="_blank">Pelican</a>.  
+    <a href="https://github.com/fjavieralba/flasky">Theme</a>  by <a href="http://fjavieralba.com">fjavieralba</a>
+  </p> 
+  <p>
+    <div class=social style="font-size: 27px;">
+      <ul>
+<a href="https://www.linkedin.com/profile/view?id=AAMAABfeM3EBZh_SzJlI-iSEgVAs12f9d0S6ues" target="_blank"><li><i class="icon-linkedin-sign icon-large" ></i></li></a><a href="http://github.com/ozkriff" target="_blank"> <li> <i class="icon-github-sign icon-large"></i> </li> </a>
+
+        <a href="http://ozkriff.github.io/feeds/all.rss.xml" rel="alternate" title="Recent Blog Posts"><li> <i class="icon-rss icon-large"></i> </li></a>
+      </ul>
+    </div>
+  </p>
+</div>    </div>
+  </body>
+</html>
