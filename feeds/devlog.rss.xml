@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Зона Контроля</title><link>http://ozkriff.github.io/</link><description></description><atom:link href="http://ozkriff.github.io/feeds/devlog.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 10 Feb 2016 00:00:00 +0300</lastBuildDate><item><title>Пришельцы воруют мое время</title><link>http://ozkriff.github.io/2016-02-10--devlog.html</link><description>&lt;p&gt;Мой план &amp;quot;усилием воли закончить макет за выходные&amp;quot; с грохотом провалился.&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Зона Контроля</title><link>http://ozkriff.github.io/</link><description></description><atom:link href="http://ozkriff.github.io/feeds/devlog.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 14 Feb 2016 00:00:00 +0300</lastBuildDate><item><title>Чертов макет!</title><link>http://ozkriff.github.io/2016-02-14--devlog.html</link><description>&lt;p&gt;Ладно, X-Com меня начал потихоньку отпускать и
+большую часть хотелок по макету получилось набросать.&lt;/p&gt;
+&lt;p&gt;Автоматчик:&lt;/p&gt;
+&lt;img alt="автоматчик" src="http://i.imgur.com/fyIMLGr.png" /&gt;
+&lt;p&gt;Довольно легко визуально отличить от обычных стрелков должно быть,
+но на всякий еще сгорбленными их поставил.&lt;/p&gt;
+&lt;p&gt;Закинул в джип еще одного пассажира и подкрутил позы старых:&lt;/p&gt;
+&lt;img alt="пассажиры в джипе" src="http://i.imgur.com/b8YXgSW.png" /&gt;
+&lt;p&gt;На средний танк прилепил еще одного танкодесантника сбоку:&lt;/p&gt;
+&lt;img alt="вальяжно-боковой танкодесантник" src="http://i.imgur.com/FtkfmWO.png" /&gt;
+&lt;p&gt;С виду, трех еще можно на танк посадить - как раз отряд и будет.&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;Так, что тут еще на общем снимке виднеется?
+Огнеметчик, снайпер, пулеметный рассчет,
+простенькая средняя закрытая САУ на основе среднего танка.
+Обновил полевую пушку и ее прицепление к грузовику.&lt;/p&gt;
+&lt;img alt="более свежий общий снимок" src="http://i.imgur.com/nSR1HSk.png" /&gt;
+&lt;p&gt;На планшете смотрится прилично, солдат всех различить можно.&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;Все, считаю &amp;quot;неделю блендера&amp;quot; законченной - толку от дальнейшей
+проработки макета уже не много, а рисовать я уже устал.
+Может еще какие-то вещи буду подпиливать в нем, но уже не так целенаправленно.&lt;/p&gt;
+&lt;p&gt;Настало время писать код! Прриступаю к реализации трехслотовой системы! :-D&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Sun, 14 Feb 2016 00:00:00 +0300</pubDate><guid>tag:ozkriff.github.io,2016-02-14:2016-02-14--devlog.html</guid><category>devlog</category><category>zoc</category></item><item><title>Пришельцы воруют мое время</title><link>http://ozkriff.github.io/2016-02-10--devlog.html</link><description>&lt;p&gt;Мой план &amp;quot;усилием воли закончить макет за выходные&amp;quot; с грохотом провалился.&lt;/p&gt;
 &lt;img alt="Сектоид контроллирует землянина" src="http://i.imgur.com/uNVSb9c.jpg" /&gt;
 &lt;p&gt;(Да, картинка из xcom1, но мне лень искать с новым сектоидом)&lt;/p&gt;
 &lt;p&gt;Внезапно для меня объявился X-COM 2.
