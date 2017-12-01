@@ -1,5 +1,293 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>ozkriff's devlog</title><link href="http://ozkriff.github.io/" rel="alternate"></link><link href="http://ozkriff.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ozkriff.github.io/</id><updated>2017-08-17T00:00:00+03:00</updated><entry><title>ZoC is dead. Long life Zemeroth.</title><link href="http://ozkriff.github.io/2017-08-17--devlog.html" rel="alternate"></link><updated>2017-08-17T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2017-08-17:2017-08-17--devlog.html</id><summary type="html">&lt;p&gt;Soo, yeah, &lt;a class="reference external" href="https://github.com/ozkriff/zoc"&gt;Zone of Control&lt;/a&gt; project
+<feed xmlns="http://www.w3.org/2005/Atom"><title>ozkriff's devlog</title><link href="http://ozkriff.github.io/" rel="alternate"></link><link href="http://ozkriff.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ozkriff.github.io/</id><updated>2017-12-01T00:00:00+03:00</updated><entry><title>Jokers, Rancor, Blood and more</title><link href="http://ozkriff.github.io/2017-12-01--devlog.html" rel="alternate"></link><published>2017-12-01T00:00:00+03:00</published><updated>2017-12-01T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2017-12-01:/2017-12-01--devlog.html</id><summary type="html">&lt;p&gt;Hi, comrades! Welcome to the second issue of Zemeroth's devlog.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/ozkriff/zemeroth"&gt;Zemeroth&lt;/a&gt; is a turn-based hexagonal tactical game written in Rust.&lt;/p&gt;
+&lt;p&gt;It slowly grows into a middle-sized project:
+&lt;a href="https://github.com/ozkriff/zemeroth"&gt;Zemeroth&lt;/a&gt; has &lt;a href="https://github.com/Aaronepower/tokei"&gt;4.3k LoCs&lt;/a&gt; and 82🌟 now.
+Though I still can't find enough free time to work on it on daily basis …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Hi, comrades! Welcome to the second issue of Zemeroth's devlog.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/ozkriff/zemeroth"&gt;Zemeroth&lt;/a&gt; is a turn-based hexagonal tactical game written in Rust.&lt;/p&gt;
+&lt;p&gt;It slowly grows into a middle-sized project:
+&lt;a href="https://github.com/ozkriff/zemeroth"&gt;Zemeroth&lt;/a&gt; has &lt;a href="https://github.com/Aaronepower/tokei"&gt;4.3k LoCs&lt;/a&gt; and 82🌟 now.
+Though I still can't find enough free time to work on it on daily basis
+and I have to take weeks-long breaks sometimes.&lt;/p&gt;
+&lt;p&gt;So, the progress is quite slow 🐌 but still,
+I've managed to do some amount of useful stuff during last three months.
+Here's a show video of how the game looks right now:&lt;/p&gt;
+&lt;div class="youtube"&gt;&lt;iframe frameborder="0" allowfullscreen src="https://www.youtube.com/embed/XrC4eCqspUo?rel=0&amp;showinfo=0"&gt;&lt;/iframe&gt;&lt;/div&gt;
+
+&lt;p&gt;Ok, let's talk about what exactly have I done for the project during this autumn.&lt;/p&gt;
+&lt;h2&gt;&lt;a href="https://github.com/ozkriff/zemeroth/issues/56"&gt;Pre-built binaries&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The most important change for anyone who wants to try out Zemeroth
+and don't want to compile it from the source
+is auto-deployed pre-built binaries.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;You can download them here:&lt;/strong&gt;
+&lt;strong&gt;&lt;a href="https://github.com/ozkriff/zemeroth/releases"&gt;https://github.com/ozkriff/zemeroth/releases&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;They are compiled and deployed to Github's releases
+by CI servers (Travis, Appveyor and CircleCI) on every tag.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/ozkriff/zemeroth/releases/tag/v0.0.3"&gt;The latest release at the time of writing is &lt;code&gt;v0.0.3&lt;/code&gt;&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/ozkriff/zemeroth/releases/tag/v0.0.3"&gt;&lt;img alt="" src="https://i.imgur.com/pIXAfaS.png"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Linux/Windows and OSX versions are not that interesting - they are
+built exactly like &lt;a href="https://github.com/ozkriff/zoc/issues/242"&gt;it was done for ZoC&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Deploying Android &lt;code&gt;apk&lt;/code&gt;s is a more interesting story.&lt;/p&gt;
+&lt;p&gt;I've stolen basic apk-building script for CircleCI from &lt;a href="https://github.com/tomaka"&gt;@tomaka&lt;/a&gt;
+(thanks again!) - &lt;a href="https://github.com/tomaka/glutin/pull/919"&gt;https://github.com/tomaka/glutin/pull/919&lt;/a&gt; -
+and it worked straight out of the box.&lt;/p&gt;
+&lt;p&gt;Deploying &lt;code&gt;apk&lt;/code&gt;s is harder:
+circle-ci doesn't provide a built-in convenient way of deploying to Github,
+so you have to wield some curl/github_api magic.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/ozkriff/zemeroth/blob/efc36eb08/.circleci/upload_apk_to_github_releases.sh"&gt;All the magic is packed in &lt;code&gt;.circleci/upload_apk_to_github_releases.sh&lt;/code&gt; script&lt;/a&gt;
+(which is based on &lt;a href="https://gist.github.com/stefanbuck/ce788fee19ab6eb0b4447a85fc99f447"&gt;this gist&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Also, some &lt;a href="https://github.com/ozkriff/zemeroth/blob/efc36eb08/.circleci/config.yml#L20-L33"&gt;strange branch magic is required&lt;/a&gt;
+if you don't want to run both &lt;code&gt;build&lt;/code&gt; and &lt;code&gt;deploy&lt;/code&gt; targets
+on &lt;em&gt;every&lt;/em&gt; commit.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Btw, old badges were not that clear of what do they mean:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="build: passing, build: passing, passed - wtf?" src="https://i.imgur.com/tVWYsIt.png"&gt;&lt;/p&gt;
+&lt;p&gt;Most programmers know that travis's badge usually means
+LINUX|OSX builds and appveyor is for Windows builds.
+But what does the third one?&lt;/p&gt;
+&lt;p&gt;To fix this
+&lt;a href="https://github.com/ozkriff/zemeroth/pull/158/commits/1f0fc2b75"&gt;I've added custom labels to the badges through shields.io&lt;/a&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://img.shields.io/travis/ozkriff/zemeroth/master.svg?label=Linux|OSX"&gt;https://img.shields.io/travis/ozkriff/zemeroth/master.svg?label=Linux|OSX&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://img.shields.io/appveyor/ci/ozkriff/zemeroth.svg?label=Windows"&gt;https://img.shields.io/appveyor/ci/ozkriff/zemeroth.svg?label=Windows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://img.shields.io/circleci/project/github/ozkriff/zemeroth/master.svg?label=Android"&gt;https://img.shields.io/circleci/project/github/ozkriff/zemeroth/master.svg?label=Android&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Looks a little bit better now:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/e6ye1g3.png"&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;And there're two yet-to-be-solved issues:&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;&lt;a href="https://github.com/ozkriff/zemeroth/issues/136"&gt;&lt;code&gt;apk&lt;/code&gt;s are built in the debug mode&lt;/a&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;&lt;a href="https://github.com/ozkriff/zemeroth/issues/161"&gt;Deploy precompiled versions of the latest commit to a special release&lt;/a&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Decorations: Grass and Blood Pools&lt;/h2&gt;
+&lt;p&gt;The &lt;a href="https://github.com/ozkriff/zemeroth/issues/73"&gt;&lt;strong&gt;Grass&lt;/strong&gt;&lt;/a&gt; is just a randomly-placed decoration,
+but &lt;a href="https://github.com/ozkriff/zemeroth/issues/42"&gt;&lt;strong&gt;Blood Pools&lt;/strong&gt;&lt;/a&gt; are also an additional indicator
+of a successful attack:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/sqNe3qb.png"&gt;
+&lt;img alt="" src="https://i.imgur.com/agmDS8N.png"&gt;&lt;/p&gt;
+&lt;h2&gt;Jokers and Strength&lt;/h2&gt;
+&lt;p&gt;Now, some actual gameplay changes!&lt;/p&gt;
+&lt;p&gt;To make Zemeroth a little bit more tactical
+&lt;a href="https://github.com/ozkriff/zemeroth/issues/59"&gt;&lt;strong&gt;Jokers were added&lt;/strong&gt;&lt;/a&gt;. They can be used either as Attacks or Moves.&lt;/p&gt;
+&lt;p&gt;In the previous version, units were dying from a single hit.
+That doesn't work well with reaction attacks as they were dying too quickly:
+fighters should have some kind of basic hit points.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/ozkriff/zemeroth/issues/63"&gt;So &lt;strong&gt;Strength&lt;/strong&gt; was added.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This name is stolen from &lt;a href="http://store.steampowered.com/app/237990/The_Banner_Saga"&gt;Banner Saga&lt;/a&gt;:
+as I'm going to use this property also as a basic attack modifier.
+Right now every successful attack deals a damage of one strength
+but later a much more fine-grained battle math will be implemented.&lt;/p&gt;
+&lt;h2&gt;Dots&lt;/h2&gt;
+&lt;p&gt;To show the most important dynamic information about units on the map
+&lt;a href="https://github.com/ozkriff/zemeroth/issues/95"&gt;&lt;strong&gt;"Dots"&lt;/strong&gt; were added&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/uOwrmIV.png"&gt;&lt;/p&gt;
+&lt;p&gt;The current legend is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;"Strength" - green;&lt;/li&gt;
+&lt;li&gt;"Attacks" - red;&lt;/li&gt;
+&lt;li&gt;"Moves" - blue;&lt;/li&gt;
+&lt;li&gt;"Jokers" - purple.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;a href="https://twitter.com/LPGhatguy/status/902800456082001920"&gt;@LPGhatguy&lt;/a&gt; to a problem with colors:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;With the amount of red/green in the game so far,
+you should try it with a Deuteranopia filter!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I've googled a simulator:
+&lt;a href="https://www.etre.com/tools/colourblindsimulator"&gt;https://www.etre.com/tools/colourblindsimulator&lt;/a&gt;.
+Here's an example of its output:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/JQ98WRD.png"&gt;&lt;/p&gt;
+&lt;p&gt;And, yeah, that doesn't look readable at all.
+&lt;a href="https://github.com/ozkriff/zemeroth/issues/98"&gt;It's clear that I should change the colors and shapes&lt;/a&gt;
+in the near future.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Btw, &lt;a href="http://gameaccessibilityguidelines.com"&gt;http://gameaccessibilityguidelines.com&lt;/a&gt; is a very interesting resource.
+I've never thought about a lot of issues raised and explained there.&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href="https://github.com/ozkriff/zemeroth/pull/92"&gt;Info panel with selected unit's stats&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Dots can show only a small portion of the dynamic information about units.
+Other less important dynamic or static information goes into the side panel.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/qR7urvw.png"&gt;&lt;/p&gt;
+&lt;p&gt;Btw, &lt;a href="https://github.com/ozkriff/zemeroth/pull/100"&gt;now you can select enemy units&lt;/a&gt; to see their move range and stats
+in the info panel.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;NOTE: additionally, a deselection of any unit on the second click was added.&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href="https://github.com/ozkriff/zemeroth/issues/65"&gt;Spearman&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/J2hUPyH.png"&gt;&lt;/p&gt;
+&lt;p&gt;Another important gameplay change is
+an addition of third fighter type: "Spearman".&lt;/p&gt;
+&lt;p&gt;He has an attack radius of two tiles and
+can control with reaction attacks a big area of 18 tiles around him.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/vPKLb1G.png"&gt;&lt;/p&gt;
+&lt;p&gt;On the picture above the spearman has only one Joker point:
+this is not an attack unit, he's almost useless during his own turn.&lt;/p&gt;
+&lt;p&gt;But if spearman hasn't used its Joker during his own turn,
+he has &lt;em&gt;four&lt;/em&gt; reaction attacks during enemy's turn:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/KoTCuNs.png"&gt;&lt;/p&gt;
+&lt;p&gt;And that's a lot considering that reaction attacks can interrupt enemy's movement.&lt;/p&gt;
+&lt;p&gt;Also, this unit has only three Strength points to accent his defence role.&lt;/p&gt;
+&lt;h2&gt;&lt;a href="https://github.com/ozkriff/zemeroth/issues/141"&gt;Rancör&lt;/a&gt; - a Stupid Component System&lt;/h2&gt;
+&lt;p&gt;Previously, Zemeroth's units were represented by a single struct
+holding all the stuff as its fields.
+Not a very adaptable solutions and it was impossible
+to create a non-unit type of objects.&lt;/p&gt;
+&lt;p&gt;It's the end of 2017 so the solution to this problem is obviously &lt;em&gt;components&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;With a component system, I should be able to implement:
+&lt;a href="https://github.com/ozkriff/zemeroth/issues/142"&gt;Boulders&lt;/a&gt;,
+&lt;a href="https://github.com/ozkriff/zemeroth/issues/69"&gt;Bombs&lt;/a&gt;,
+Fire,
+&lt;a href="https://github.com/ozkriff/zemeroth/issues/154"&gt;Poison stuff&lt;/a&gt;,
+&lt;a href="https://github.com/ozkriff/zemeroth/issues/108"&gt;Corpses&lt;/a&gt;,
+etc.&lt;/p&gt;
+&lt;p&gt;I don't think Zemeroth needs a full-featured ECS solution
+(like &lt;a href="https://github.com/slide-rs/specs"&gt;specs&lt;/a&gt;) as the game is turn-based.
+A bunch of &lt;code&gt;HashMap&amp;lt;ObjId, ComponentType&amp;gt;&lt;/code&gt; will do the work fine.&lt;/p&gt;
+&lt;p&gt;So.. I've reinvented another ~~&lt;a href="https://www.reddit.com/r/rust/comments/6zdvza/my_experience_participating_in_highload_cup_re/dmulhzj"&gt;bicycle 🚲&lt;/a&gt;~~ square wheel! \o/&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/ozkriff/zemeroth/issues/141"&gt;Meet &lt;strong&gt;Rancör&lt;/strong&gt; - a simple macro-based component system&lt;/a&gt;.
+I'm not calling this an ECS because it has no systems, it's just a storage.&lt;/p&gt;
+&lt;p&gt;Nothing fancy, you just declare some usual structs for components
+and create a hidden &lt;code&gt;HashMap&lt;/code&gt;-based monster-struct using a friendly macro:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;rancor_storage&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Parts&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;ObjId&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;: &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;strength&lt;/span&gt;: &lt;span class="nc"&gt;component&lt;/span&gt;::&lt;span class="n"&gt;Strength&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;: &lt;span class="nc"&gt;component&lt;/span&gt;::&lt;span class="n"&gt;Pos&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;meta&lt;/span&gt;: &lt;span class="nc"&gt;component&lt;/span&gt;::&lt;span class="n"&gt;Meta&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;belongs_to&lt;/span&gt;: &lt;span class="nc"&gt;component&lt;/span&gt;::&lt;span class="n"&gt;BelongsTo&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;agent&lt;/span&gt;: &lt;span class="nc"&gt;component&lt;/span&gt;::&lt;span class="n"&gt;Agent&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And then use individual fields:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;parts&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;agent&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;insert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;agent&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;...&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="kd"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;agent&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parts&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="n"&gt;agent&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;agent&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;moves&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Moves&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;agent&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jokers&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Jokers&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;...&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;...&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;parts&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;agent&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;remove&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Or call &lt;code&gt;parts.remove(id);&lt;/code&gt; to completely wipe-out the entity.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Rancor seems to work fine, but I see two issues:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Too many braces in RON file with prototypes&lt;/li&gt;
+&lt;li&gt;&lt;a href="(https://github.com/ozkriff/zemeroth/issues/105#issuecomment-335439037)"&gt;Duplication of data between initial values and their base values&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As I do not expect anyone to use it, this carte lives in the Zemeroth's repo.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Btw, see &lt;a href="https://gridbugs.org/programming-languages-make-terrible-game-engines"&gt;https://gridbugs.org/programming-languages-make-terrible-game-engines&lt;/a&gt;
+and &lt;a href="https://gridbugs.org/modifying-entity-component-system-for-turn-based-games"&gt;https://gridbugs.org/modifying-entity-component-system-for-turn-based-games&lt;/a&gt;
+articles about component systems and turn-based games in Rust.&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href="https://github.com/ozkriff/zemeroth/pull/67"&gt;TOML -&amp;gt; RON&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Rust community kinda loves TOML, but I'm not a fan of this format.
+TOML is not &lt;em&gt;that&lt;/em&gt; bad, but I find its tables too strange for anything
+but simple configs.&lt;/p&gt;
+&lt;p&gt;And I've decided to try to use &lt;strong&gt;&lt;a href="https://github.com/ron-rs/ron"&gt;RON&lt;/a&gt;&lt;/strong&gt; format for Zemeroth.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(&lt;a href="https://github.com/ron-rs/ron"&gt;RON's readme&lt;/a&gt; has a pretty good list of reasons
+of why you may not want to use other formats)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Thanks to &lt;a href="https://github.com/kvark"&gt;@kvark&lt;/a&gt; for starting this project originally
+and thanks to &lt;a href="https://github.com/torkleyy"&gt;@torkleyy&lt;/a&gt; for resurrecting the project
+&lt;a href="https://github.com/amethyst/amethyst/pull/269"&gt;for Amethyst's needs&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Boulders and Rocks&lt;/h2&gt;
+&lt;p&gt;To make tactics a little bit more interesting
+and to prototype non-agent objects using Rancör
+I've &lt;a href="https://github.com/ozkriff/zemeroth/issues/142"&gt;added some tile-blocking &lt;strong&gt;Boulders&lt;/strong&gt;&lt;/a&gt;.
+This is a first non-agent object type in the game.&lt;/p&gt;
+&lt;p&gt;It's a little bit strange that I have different terrain types
+support for a long time, but not actually using them in the game at all.
+&lt;a href="https://github.com/ozkriff/zemeroth/pull/164"&gt;Meet randomly-placed tiles of &lt;strong&gt;TileType::Rocks&lt;/strong&gt; type&lt;/a&gt;.
+You can move through these tiles, but it requires 3 move points and not 1.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/IUF6wEK.png"&gt;&lt;/p&gt;
+&lt;p&gt;Rock tiles and boulders work together with blood and grass to make
+the battlefield look a little bit less boring.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(Yes, I know that it'll be better to use a different texture for Rocks tiles,
+not just a darker color)&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href="https://github.com/ozkriff/zemeroth/issues/83"&gt;Logging: &lt;code&gt;log&lt;/code&gt; &amp;amp; &lt;code&gt;env_logger&lt;/code&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I'm tired of adding a special-cased &lt;code&gt;println&lt;/code&gt;s to debug
+something small and removing them before the commit.&lt;/p&gt;
+&lt;p&gt;As I don't have much experience with slog, I decided
+to replace &lt;code&gt;println&lt;/code&gt;s with a classic &lt;a href="https://docs.rs/env_logger"&gt;env_logger&lt;/a&gt;.
+It seems to work, for now,
+the source code is filled with all kinds of &lt;code&gt;info!&lt;/code&gt; and &lt;code&gt;debug!&lt;/code&gt; calls. :)&lt;/p&gt;
+&lt;h2&gt;Häte: &lt;a href="https://github.com/ozkriff/zemeroth/pull/131"&gt;Examples&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Some news about &lt;a href="https://ozkriff.github.io/2017-08-17--devlog.html#hate2d"&gt;my silly game engine&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It's important to decouple Häte from Zemeroth.
+First, Häte was extracted to a separate crate inside the repo.
+The next step is to separate example/test screens.&lt;/p&gt;
+&lt;p&gt;These screens do nothing game-specific so they belong to the engine.&lt;/p&gt;
+&lt;p&gt;There was a bunch of tasks needed to be solved before extracting the examples:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/ozkriff/zemeroth/issues/129"&gt;Baked GLSL shaders into Häte's source&lt;/a&gt;.
+    They are supposed to be dead-simple &amp;amp; tightly coupled with
+    the engine - what's the point of having them in user's assets dir?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/ozkriff/zemeroth/issues/130"&gt;Baked a default font into Häte's source&lt;/a&gt;.
+    I've used the smallest font from this article:
+    &lt;a href="http://oxfordshireweb.com/smallest-file-size-google-web-fonts"&gt;http://oxfordshireweb.com/smallest-file-size-google-web-fonts&lt;/a&gt;.
+    &lt;code&gt;Karla-Regular.ttf&lt;/code&gt; is 17kib only.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/ozkriff/zemeroth/issues/138"&gt;&lt;code&gt;Settings::default&lt;/code&gt;&lt;/a&gt;. Simplified the examples.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/ozkriff/zemeroth/issues/32"&gt;Check assets dir from every &lt;code&gt;fs::load&lt;/code&gt; call&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Häte: &lt;a href="https://github.com/ozkriff/zemeroth/issues/96"&gt;Cache Text Textures&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.com/ozkriff/zoc"&gt;ZoC&lt;/a&gt; was almost unusable in debug builds:
+&lt;a href="https://github.com/ozkriff/zoc/issues/264"&gt;it may take more than 10 seconds to start a game on some machines&lt;/a&gt;
+and now I'm trying to keep Zemeroth's debug builds fast enough.&lt;/p&gt;
+&lt;p&gt;One of the common problems is that &lt;a href="https://github.com/redox-os/rusttype"&gt;Rusttype&lt;/a&gt; is very slow in debug builds,
+especially on Android.
+As a text in Häte is rendered by creating a separate texture for
+every string the simplest solution was to cache these textures.&lt;/p&gt;
+&lt;p&gt;Caching is a little bit sloppy solution, but we have no other choice
+until &lt;a href="https://github.com/rust-lang/cargo/issues/1359"&gt;https://github.com/rust-lang/cargo/issues/1359&lt;/a&gt; is implemented.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: Btw, there's a &lt;a href="https://github.com/rust-lang/cargo/issues/1359#issuecomment-329653216"&gt;cool hack&lt;/a&gt; from &lt;a href="https://github.com/matklad"&gt;@matklad&lt;/a&gt;,
+but you have to compile an outdated cargo from his dev-branch.&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;"Game Development in Rust"&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/ZWlviGWm.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;There was &lt;a href="https://meetup.com/Rust-в-Питере/events/242219775"&gt;a local meetup&lt;/a&gt; in Saint-Petersburg this September where&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/not-fl3"&gt;@not-fl3&lt;/a&gt; talked about his experience as a &lt;a href="https://twitter.com/BringerShar"&gt;SHAR&lt;/a&gt;'s developer&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/vitvakatu"&gt;@vitvakatu&lt;/a&gt; talked about &lt;a href="https://github.com/three-rs/three"&gt;three-rs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;and I talked about the history of &lt;a href="https://github.com/ozkriff/zoc"&gt;ZoC&lt;/a&gt; and &lt;a href="https://github.com/ozkriff/zemeroth"&gt;Zemeroth&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Everything is in Russian, but here are the links anyway, just in case:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=BCsPcsmRhOM"&gt;full video&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.google.com/presentation/d/19-Vc2VOpmB2r42u5arMVdKXfOPzozNjY5drjhbyIw3E"&gt;my slides&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/CZSs2mc.png"&gt;&lt;/p&gt;
+&lt;p&gt;Thanks to &lt;a href="https://intellij-rust.github.io"&gt;JetBrains&lt;/a&gt; for hosting the event!&lt;/p&gt;
+&lt;h2&gt;Short-Range Plans&lt;/h2&gt;
+&lt;h3&gt;RestructuredText -&amp;gt; Markdown&lt;/h3&gt;
+&lt;p&gt;For a long time, I was trying to avoid the use of MD.&lt;/p&gt;
+&lt;p&gt;Mostly &lt;a href="https://eli.thegreenplace.net/2017/restructuredtext-vs-markdown-for-technical-documentation"&gt;because MD has no built-in support for extensions and
+is MD is forever tied to HTML&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I was mostly hoping for RST to become popular enough.
+There was a chance, &lt;a href="https://internals.rust-lang.org/t/rustdoc-restructuredtext-vs-markdown/356"&gt;but doc team decided to stay with MD&lt;/a&gt;
+and now Rust community doesn't care about RST at all. :(&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://commonmark.org"&gt;CommonMark&lt;/a&gt; solves the standardization problem to some degree.
+Though, it's still glued to HTML and is not easily extensible.&lt;/p&gt;
+&lt;p&gt;Anyway, I'm not going to use these documents anywhere except in the web browser,
+so... &lt;a href="https://github.com/ozkriff/zemeroth/issues/157"&gt;I'm going to migrate this blog to some rust blog generator&lt;/a&gt;
+from Pelican. This post is written in MD already.&lt;/p&gt;
+&lt;h3&gt;Abilities and Lasting Effects&lt;/h3&gt;
+&lt;p&gt;A skirmish game is unimaginable without &lt;a href="https://github.com/ozkriff/zemeroth/issues/110"&gt;special abilities&lt;/a&gt;
+and some interesting &lt;a href="https://github.com/ozkriff/zemeroth/issues/102"&gt;instant&lt;/a&gt; and &lt;a href="https://github.com/ozkriff/zemeroth/issues/154"&gt;lasting effects&lt;/a&gt; of the actions.&lt;/p&gt;
+&lt;p&gt;So, here are some previews of what I'm working right now:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://youtu.be/Egfyd4VX2YU"&gt;https://youtu.be/Egfyd4VX2YU&lt;/a&gt; - jump &amp;amp; &lt;a href="https://github.com/ozkriff/zemeroth/issues/102"&gt;knockback&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://youtu.be/TilgaGspTJk"&gt;https://youtu.be/TilgaGspTJk&lt;/a&gt; - &lt;a href="https://github.com/ozkriff/zemeroth/issues/69"&gt;self-explode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://youtu.be/Yg38yeno3sE"&gt;https://youtu.be/Yg38yeno3sE&lt;/a&gt; - &lt;a href="https://github.com/ozkriff/zemeroth/issues/154"&gt;poison&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Whew! That was the longest piece of text in English that I've ever written O.o.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;That's all for today! :)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;News&lt;/strong&gt;: &lt;a href="https://twitter.com/ozkriff"&gt;@ozkriff on twitter&lt;/a&gt;,
+&lt;a href="imgur.com/a/SMVqO"&gt;imgur devlog&lt;/a&gt;&lt;/p&gt;</content><category term="devlog"></category><category term="zemeroth"></category></entry><entry><title>ZoC is dead. Long life Zemeroth.</title><link href="http://ozkriff.github.io/2017-08-17--devlog.html" rel="alternate"></link><published>2017-08-17T00:00:00+03:00</published><updated>2017-08-17T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2017-08-17:/2017-08-17--devlog.html</id><summary type="html">&lt;p&gt;Soo, yeah, &lt;a class="reference external" href="https://github.com/ozkriff/zoc"&gt;Zone of Control&lt;/a&gt; project
 is officially discontinued.
 Sorry, friends.&lt;/p&gt;
 &lt;img alt="scene from Pulp Fiction" src="http://i.imgur.com/cONHdvy.png" /&gt;
@@ -8,7 +296,16 @@ Sorry, friends.&lt;/p&gt;
 The primary reason is classic:
 I've overestimated my resources/skills and got totally overwhelmed by the scope:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p class="first"&gt;I can't see the finish line and had no idea what exactly I can feature-cut.
+&lt;li&gt;&lt;p class="first"&gt;I can't see the finish line and have no idea what exactly …&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;Soo, yeah, &lt;a class="reference external" href="https://github.com/ozkriff/zoc"&gt;Zone of Control&lt;/a&gt; project
+is officially discontinued.
+Sorry, friends.&lt;/p&gt;
+&lt;img alt="scene from Pulp Fiction" src="http://i.imgur.com/cONHdvy.png" /&gt;
+&lt;p&gt;^ &amp;quot;ZoC's dead, baby. ZoC's dead.&amp;quot;&lt;/p&gt;
+&lt;p&gt;Why have I killed it?
+The primary reason is classic:
+I've overestimated my resources/skills and got totally overwhelmed by the scope:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;I can't see the finish line and have no idea what exactly I can feature-cut.
 Strategic mode? Sane UI? Networking? Skeletal animations? Particles?
 Ships? Aircrafts? Tens of unit types?
 Oh-oh, I don't believe that ZoC could be really cool without
@@ -18,7 +315,7 @@ any of these (and some others) features.&lt;/p&gt;
 &lt;li&gt;&lt;p class="first"&gt;Slot system (multiple units per tile with fixed positions) is a strange beast.&lt;/p&gt;
 &lt;p&gt;1) No idea how to make some friendly user interface:
 two panels (for friends and enemies) solution is ugly,
-context menus are not cool too.&lt;/p&gt;
+context menus are not cool either.&lt;/p&gt;
 &lt;p&gt;2) Slots create problems with visual scale:
 infantry models are just too small, especially on phone’s screen.&lt;/p&gt;
 &lt;/li&gt;
@@ -26,7 +323,7 @@ infantry models are just too small, especially on phone’s screen.&lt;/p&gt;
 Ahem, just joking.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Another reason is that my views on what's is important for strategic games
+&lt;p&gt;Another reason is that my views on what's important for strategic games
 have changed in the last several years.
 Now I prefer &lt;a class="reference external" href="http://keithburgun.net/videogames-are-broken-toys"&gt;smaller&lt;/a&gt;
 &lt;a class="reference external" href="http://keithburgun.net/the-default-number-of-players-is-one"&gt;single-player&lt;/a&gt;
@@ -64,7 +361,7 @@ But I think this is why it’s important to treat finishing as a skill, too.&lt;
 So I need a new much less ambitious project
 which still shares some of the ZoC’s core values.&lt;/p&gt;
 &lt;p&gt;I’ve spent May and June - in the heavy existential crisis - ahem, resting
-and thinking about what can I made.&lt;/p&gt;
+and thinking about what can I make.&lt;/p&gt;
 &lt;p&gt;Here’s what I came up with:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Random-based skirmish-level digital tabletop game;&lt;/li&gt;
@@ -118,10 +415,10 @@ totally ignored the third rule from finishing-a-game article:&lt;/p&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Say hello to yet another Rust 2d engine: &lt;a class="reference external" href="https://docs.rs/hate"&gt;Häte2d&lt;/a&gt; :-D&lt;/p&gt;
-&lt;p&gt;Name is a silly reference to &lt;a class="reference external" href="https://love2d.org"&gt;LÖVE framework&lt;/a&gt; (just in case).&lt;/p&gt;
+&lt;p&gt;The name is a silly reference to &lt;a class="reference external" href="https://love2d.org"&gt;LÖVE2D framework&lt;/a&gt; (just in case).&lt;/p&gt;
 &lt;p&gt;NOTE: Häte isn’t a general-purpose game engine (at least right now) and it’s not my goal.
 Just a simple 2d engine for Zemeroth’s needs.&lt;/p&gt;
-&lt;p&gt;Why I haven’t used ggez.rs?&lt;/p&gt;
+&lt;p&gt;Why haven't I used ggez.rs?&lt;/p&gt;
 &lt;p&gt;Quote from reddit:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&amp;#64;pwgen-n1024:
@@ -151,7 +448,15 @@ But so far working on Häte was fun and we’ll see what happens later.&lt;/p&gt
 which I'm trying to keep updated: &lt;a class="reference external" href="http://imgur.com/a/SMVqO"&gt;http://imgur.com/a/SMVqO&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;And you can subscribe to instant updates on twitter: &lt;a class="reference external" href="https://twitter.com/ozkriff"&gt;https://twitter.com/ozkriff&lt;/a&gt; ;-)&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="devlog"></category><category term="zoc"></category><category term="zemeroth"></category></entry><entry><title>This Month in ZoC - 2017.01.24</title><link href="http://ozkriff.github.io/2017-01-24--devlog.html" rel="alternate"></link><updated>2017-01-24T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2017-01-24:2017-01-24--devlog.html</id><summary type="html">&lt;p&gt;(Repost from &lt;a class="reference external" href="https://users.rust-lang.org/t/this-month-in-zone-of-control/6993"&gt;https://users.rust-lang.org/t/this-month-in-zone-of-control/6993&lt;/a&gt;)&lt;/p&gt;
+</content><category term="devlog"></category><category term="zoc"></category><category term="zemeroth"></category></entry><entry><title>This Month in ZoC - 2017.01.24</title><link href="http://ozkriff.github.io/2017-01-24--devlog.html" rel="alternate"></link><published>2017-01-24T00:00:00+03:00</published><updated>2017-01-24T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2017-01-24:/2017-01-24--devlog.html</id><summary type="html">&lt;p&gt;(Repost from &lt;a class="reference external" href="https://users.rust-lang.org/t/this-month-in-zone-of-control/6993"&gt;https://users.rust-lang.org/t/this-month-in-zone-of-control/6993&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Hi, everyone! :)&lt;/p&gt;
+&lt;p&gt;It has been four months since the first post, sorry.
+I'm struggling to find enough time for the project plus I was busy with
+&lt;a class="reference external" href="https://github.com/tomaka/glutin/issues/813"&gt;porting glutin to winit&lt;/a&gt;
+for about a month around October.&lt;/p&gt;
+&lt;div class="section" id="helicopters"&gt;
+&lt;h2&gt;Helicopters&lt;/h2&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://github.com/ozkriff/zoc/issues/111"&gt;https://github.com/ozkriff …&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;(Repost from &lt;a class="reference external" href="https://users.rust-lang.org/t/this-month-in-zone-of-control/6993"&gt;https://users.rust-lang.org/t/this-month-in-zone-of-control/6993&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;Hi, everyone! :)&lt;/p&gt;
 &lt;p&gt;It has been four months since the first post, sorry.
 I'm struggling to find enough time for the project plus I was busy with
@@ -309,7 +614,16 @@ Now bridges are real strategic points which can be controlled or blocked easily.
 &lt;img alt="gameplay screenshot 2" src="http://i.imgur.com/V4ZPCrT.png" /&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://twitter.com/ozkriff"&gt;&amp;#64;ozkriff on Twitter&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="devlog"></category><category term="zoc"></category></entry><entry><title>This Month in ZoC - 2016.08.22</title><link href="http://ozkriff.github.io/2016-08-22--devlog.html" rel="alternate"></link><updated>2016-08-22T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-08-22:2016-08-22--devlog.html</id><summary type="html">&lt;p&gt;(Repost from &lt;a class="reference external" href="https://users.rust-lang.org/t/this-month-in-zone-of-control/6993"&gt;https://users.rust-lang.org/t/this-month-in-zone-of-control/6993&lt;/a&gt;)&lt;/p&gt;
+</content><category term="devlog"></category><category term="zoc"></category></entry><entry><title>This Month in ZoC - 2016.08.22</title><link href="http://ozkriff.github.io/2016-08-22--devlog.html" rel="alternate"></link><published>2016-08-22T00:00:00+03:00</published><updated>2016-08-22T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-08-22:/2016-08-22--devlog.html</id><summary type="html">&lt;p&gt;(Repost from &lt;a class="reference external" href="https://users.rust-lang.org/t/this-month-in-zone-of-control/6993"&gt;https://users.rust-lang.org/t/this-month-in-zone-of-control/6993&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Hi, comrades! Welcome to the first issue of ZoC's monthly report!&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://github.com/ozkriff/zoc"&gt;ZoC&lt;/a&gt; is a turn-based hexagonal strategy game written in Rust.&lt;/p&gt;
+&lt;p&gt;Core game features are:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;advanced fog of war&lt;/li&gt;
+&lt;li&gt;slot system (multiple units per tile)&lt;/li&gt;
+&lt;li&gt;reaction fire (xcom-like)&lt;/li&gt;
+&lt;li&gt;morale and suppression …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;(Repost from &lt;a class="reference external" href="https://users.rust-lang.org/t/this-month-in-zone-of-control/6993"&gt;https://users.rust-lang.org/t/this-month-in-zone-of-control/6993&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;Hi, comrades! Welcome to the first issue of ZoC's monthly report!&lt;/p&gt;
 &lt;hr class="docutils" /&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://github.com/ozkriff/zoc"&gt;ZoC&lt;/a&gt; is a turn-based hexagonal strategy game written in Rust.&lt;/p&gt;
@@ -399,7 +713,12 @@ YAY :-D !!1 - &lt;a class="reference external" href="https://github.com/ozkriff/
 &lt;a class="reference external" href="https://www.reddit.com/r/rust/comments/4yzx43/whats_everyone_working_on_this_week_342016/d6rp869"&gt;4&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://github.com/ozkriff/zoc"&gt;https://github.com/ozkriff/zoc&lt;/a&gt;, &lt;a class="reference external" href="https://twitter.com/ozkriff"&gt;&amp;#64;ozkriff on Twitter&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Градообразующие объекты</title><link href="http://ozkriff.github.io/2016-02-23--devlog.html" rel="alternate"></link><updated>2016-02-23T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-02-23:2016-02-23--devlog.html</id><summary type="html">&lt;p&gt;Показал нескольким знакомым макет, послушал комментарии.
+</content><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Градообразующие объекты</title><link href="http://ozkriff.github.io/2016-02-23--devlog.html" rel="alternate"></link><published>2016-02-23T00:00:00+03:00</published><updated>2016-02-23T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-02-23:/2016-02-23--devlog.html</id><summary type="html">&lt;p&gt;Показал нескольким знакомым макет, послушал комментарии.
+Один из повторяющихся - города не выглядят городами, слишком абстрактные,
+больше похожи на хаотично раскиданные детские кубики.&lt;/p&gt;
+&lt;p&gt;Я об этом не задумывался, моему замыленному взгляду город и так хорошо виден.
+Даже наоборот, пытался здания раскидать и повернуть как попало,
+что бы меньше чувствовалась жесткая гексагональная …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Показал нескольким знакомым макет, послушал комментарии.
 Один из повторяющихся - города не выглядят городами, слишком абстрактные,
 больше похожи на хаотично раскиданные детские кубики.&lt;/p&gt;
 &lt;p&gt;Я об этом не задумывался, моему замыленному взгляду город и так хорошо виден.
@@ -476,7 +795,17 @@ Battle of the Bulge в стиме.
 &lt;hr class="docutils" /&gt;
 &lt;p&gt;Итак, я опять фактически потратил пару дней на макет и размышления.
 Пора уже заняться реализацией слотов в коде.&lt;/p&gt;
-</summary><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Чертов макет!</title><link href="http://ozkriff.github.io/2016-02-14--devlog.html" rel="alternate"></link><updated>2016-02-14T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-02-14:2016-02-14--devlog.html</id><summary type="html">&lt;p&gt;Ладно, X-Com меня начал потихоньку отпускать и
+</content><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Чертов макет!</title><link href="http://ozkriff.github.io/2016-02-14--devlog.html" rel="alternate"></link><published>2016-02-14T00:00:00+03:00</published><updated>2016-02-14T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-02-14:/2016-02-14--devlog.html</id><summary type="html">&lt;p&gt;Ладно, X-Com меня начал потихоньку отпускать и
+большую часть хотелок по макету получилось набросать.&lt;/p&gt;
+&lt;p&gt;Автоматчик:&lt;/p&gt;
+&lt;img alt="автоматчик" src="http://i.imgur.com/fyIMLGr.png" /&gt;
+&lt;p&gt;Довольно легко визуально отличить от обычных стрелков должно быть,
+но на всякий еще сгорбленными их поставил.&lt;/p&gt;
+&lt;p&gt;Закинул в джип еще одного пассажира и подкрутил позы старых:&lt;/p&gt;
+&lt;img alt="пассажиры в джипе" src="http://i.imgur.com/b8YXgSW.png" /&gt;
+&lt;p&gt;На средний танк прилепил еще одного танкодесантника сбоку:&lt;/p&gt;
+&lt;img alt="вальяжно-боковой танкодесантник" src="http://i.imgur.com/FtkfmWO.png" /&gt;
+&lt;p&gt;С …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Ладно, X-Com меня начал потихоньку отпускать и
 большую часть хотелок по макету получилось набросать.&lt;/p&gt;
 &lt;p&gt;Автоматчик:&lt;/p&gt;
 &lt;img alt="автоматчик" src="http://i.imgur.com/fyIMLGr.png" /&gt;
@@ -499,7 +828,13 @@ Battle of the Bulge в стиме.
 проработки макета уже не много, а рисовать я уже устал.
 Может еще какие-то вещи буду подпиливать в нем, но уже не так целенаправленно.&lt;/p&gt;
 &lt;p&gt;Настало время писать код! Прриступаю к реализации трехслотовой системы! :-D&lt;/p&gt;
-</summary><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Пришельцы воруют мое время</title><link href="http://ozkriff.github.io/2016-02-10--devlog.html" rel="alternate"></link><updated>2016-02-10T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-02-10:2016-02-10--devlog.html</id><summary type="html">&lt;p&gt;Мой план &amp;quot;усилием воли закончить макет за выходные&amp;quot; с грохотом провалился.&lt;/p&gt;
+</content><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Пришельцы воруют мое время</title><link href="http://ozkriff.github.io/2016-02-10--devlog.html" rel="alternate"></link><published>2016-02-10T00:00:00+03:00</published><updated>2016-02-10T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-02-10:/2016-02-10--devlog.html</id><summary type="html">&lt;p&gt;Мой план &amp;quot;усилием воли закончить макет за выходные&amp;quot; с грохотом провалился.&lt;/p&gt;
+&lt;img alt="Сектоид контроллирует землянина" src="http://i.imgur.com/uNVSb9c.jpg" /&gt;
+&lt;p&gt;(Да, картинка из xcom1, но мне лень искать с новым сектоидом)&lt;/p&gt;
+&lt;p&gt;Внезапно для меня объявился X-COM 2.
+И внезапно же запустился на моей железяке, хотя все на оптимизации ругаются.
+Fps, правда, не на высоте совсем.&lt;/p&gt;
+&lt;p&gt;Что могу сказать об …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Мой план &amp;quot;усилием воли закончить макет за выходные&amp;quot; с грохотом провалился.&lt;/p&gt;
 &lt;img alt="Сектоид контроллирует землянина" src="http://i.imgur.com/uNVSb9c.jpg" /&gt;
 &lt;p&gt;(Да, картинка из xcom1, но мне лень искать с новым сектоидом)&lt;/p&gt;
 &lt;p&gt;Внезапно для меня объявился X-COM 2.
@@ -604,7 +939,16 @@ Fps, правда, не на высоте совсем.&lt;/p&gt;
 &lt;p&gt;Что же, в связи с xcom-катастрофой переношу цель &amp;quot;закончить с макетом&amp;quot;
 на конец уже этой недели. Попробую проявиться характер и хоть немного
 оторвать себя от истребления пришельцев.&lt;/p&gt;
-</summary><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Первая половина Недели Блендера</title><link href="http://ozkriff.github.io/2016-02-05--devlog.html" rel="alternate"></link><updated>2016-02-05T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-02-05:2016-02-05--devlog.html</id><summary type="html">&lt;p&gt;После пары просьб, решил таки
+</content><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Первая половина Недели Блендера</title><link href="http://ozkriff.github.io/2016-02-05--devlog.html" rel="alternate"></link><published>2016-02-05T00:00:00+03:00</published><updated>2016-02-05T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-02-05:/2016-02-05--devlog.html</id><summary type="html">&lt;p&gt;После пары просьб, решил таки
+&lt;a class="reference external" href="https://github.com/ozkriff/ozkriff.github.io-src/commit/aec640"&gt;добавить&lt;/a&gt;
+записям желтушные заголовки. Так их и правда немного проще отличать.&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;Набросал &lt;a class="reference external" href="https://github.com/ozkriff/zoc/issues/159"&gt;мегазадачу&lt;/a&gt;
+по расширенному прототипу тактического режима. Надеюсь, это немного
+поможет не разбрасываться на всякие левые дела и просто
+делать пункт за пунктом.&lt;/p&gt;
+&lt;p&gt;Хотелось бы все это сделать к апрелю, за два месяца.
+Хе-хе …&lt;/p&gt;</summary><content type="html">&lt;p&gt;После пары просьб, решил таки
 &lt;a class="reference external" href="https://github.com/ozkriff/ozkriff.github.io-src/commit/aec640"&gt;добавить&lt;/a&gt;
 записям желтушные заголовки. Так их и правда немного проще отличать.&lt;/p&gt;
 &lt;hr class="docutils" /&gt;
@@ -698,7 +1042,14 @@ github pages сами могут из .md исходников .html выпле�
 Надо бы за выходные несколько видов техники еще допилить, определиться
 с относительными размерами и, самое сложное, человечка со
 скелетом и позами с оружием запилить. Ух, ну постараюсь :) .&lt;/p&gt;
-</summary><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Выходные, размеры, Тарантино и ненависть к людишкам</title><link href="http://ozkriff.github.io/2016-01-31--devlog.html" rel="alternate"></link><updated>2016-01-31T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-01-31:2016-01-31--devlog.html</id><summary type="html">&lt;p&gt;Итак, выходные прошли. Толком ничего не сделал, но надо хоть чего-то
+</content><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Выходные, размеры, Тарантино и ненависть к людишкам</title><link href="http://ozkriff.github.io/2016-01-31--devlog.html" rel="alternate"></link><published>2016-01-31T00:00:00+03:00</published><updated>2016-01-31T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-01-31:/2016-01-31--devlog.html</id><summary type="html">&lt;p&gt;Итак, выходные прошли. Толком ничего не сделал, но надо хоть чего-то
+сюда написать, раз уж опять взялся журнал вести. Так что вот, на :) :&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;Переложил журнал из гиста в воскрешенный ozkriff.github.io и
+столкнулся со сложностями с disqus.&lt;/p&gt;
+&lt;p&gt;Сначала оно вообще не хотело загружаться,
+&lt;a class="reference external" href="https://github.com/ozkriff/ozkriff.github.io-src/commit/a410487"&gt;поправил&lt;/a&gt; :) .&lt;/p&gt;
+&lt;p&gt;Потом оно завело для http …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Итак, выходные прошли. Толком ничего не сделал, но надо хоть чего-то
 сюда написать, раз уж опять взялся журнал вести. Так что вот, на :) :&lt;/p&gt;
 &lt;hr class="docutils" /&gt;
 &lt;p&gt;Переложил журнал из гиста в воскрешенный ozkriff.github.io и
@@ -777,7 +1128,13 @@ js-хак с перенаправлением с http на https (хотя пр�
 &lt;p&gt;В общем, временами было сложно абстрагироваться, такое сильно
 мешает смотреть атмосферный фильм. Вот бы в кинотеатрах были охранники,
 которые за превышение громкости выводят из зала, эх.&lt;/p&gt;
-</summary><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Несколько моделек и вечная смерть</title><link href="http://ozkriff.github.io/2016-01-29--devlog.html" rel="alternate"></link><updated>2016-01-29T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-01-29:2016-01-29--devlog.html</id><summary type="html">&lt;p&gt;Defuz предложил, пока я веду журнал в гисте, пинговать о записях в &lt;a class="reference external" href="https://gitter.im/ozkriff/zoc"&gt;https://gitter.im/ozkriff/zoc&lt;/a&gt;,
+</content><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Несколько моделек и вечная смерть</title><link href="http://ozkriff.github.io/2016-01-29--devlog.html" rel="alternate"></link><published>2016-01-29T00:00:00+03:00</published><updated>2016-01-29T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-01-29:/2016-01-29--devlog.html</id><summary type="html">&lt;p&gt;Defuz предложил, пока я веду журнал в гисте, пинговать о записях в &lt;a class="reference external" href="https://gitter.im/ozkriff/zoc"&gt;https://gitter.im/ozkriff/zoc&lt;/a&gt;,
+что был способ оставлять коменты и узнавать об обновлениях.&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;Немного поправил геометрию &lt;a class="reference external" href="https://www.google.ru/search?q=mammoth+tank&amp;amp;tbm=isch"&gt;мамонт танка&lt;/a&gt;:&lt;/p&gt;
+&lt;img alt="Набросок мамонт-танка" src="http://i.imgur.com/WT8GoOa.png" /&gt;
+&lt;p&gt;Но сильно возиться с ним не хочется - мне просто нужен какой-то огромный юнит на всю
+клетку, чтобы не забыть …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Defuz предложил, пока я веду журнал в гисте, пинговать о записях в &lt;a class="reference external" href="https://gitter.im/ozkriff/zoc"&gt;https://gitter.im/ozkriff/zoc&lt;/a&gt;,
 что был способ оставлять коменты и узнавать об обновлениях.&lt;/p&gt;
 &lt;hr class="docutils" /&gt;
 &lt;p&gt;Немного поправил геометрию &lt;a class="reference external" href="https://www.google.ru/search?q=mammoth+tank&amp;amp;tbm=isch"&gt;мамонт танка&lt;/a&gt;:&lt;/p&gt;
@@ -835,7 +1192,10 @@ Unity of Command:&lt;/p&gt;
 сцерании будут оговаривать какой-то допустимый процент потерь,
 или в каждом новом сценарии будут выдавать
 большое количество &amp;quot;казеных&amp;quot; отрядов, или еще что такое :) .&lt;/p&gt;
-</summary><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Очередной перезапуск</title><link href="http://ozkriff.github.io/2016-01-28--devlog.html" rel="alternate"></link><updated>2016-01-28T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-01-28:2016-01-28--devlog.html</id><summary type="html">&lt;p&gt;Моя последняя попытка вести нормальный журнал &lt;a class="reference external" href="https://github.com/ozkriff/ozkriff.github.io-src/blob/master/content/2015-11-30--devlog-live-again.rst"&gt;провалилась&lt;/a&gt; :) .&lt;/p&gt;
+</content><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Очередной перезапуск</title><link href="http://ozkriff.github.io/2016-01-28--devlog.html" rel="alternate"></link><published>2016-01-28T00:00:00+03:00</published><updated>2016-01-28T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-01-28:/2016-01-28--devlog.html</id><summary type="html">&lt;p&gt;Моя последняя попытка вести нормальный журнал &lt;a class="reference external" href="https://github.com/ozkriff/ozkriff.github.io-src/blob/master/content/2015-11-30--devlog-live-again.rst"&gt;провалилась&lt;/a&gt; :) .&lt;/p&gt;
+&lt;p&gt;Времени жрет дикое количество. Не умею я, как некоторые люди могут, за пол часа накатать красивую страницу текста :( .
+После того поста вел каждодневные записи в файлике, что я по проекту делаю, что бы потом из них пост слепить.
+Через месяц, под новый год …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Моя последняя попытка вести нормальный журнал &lt;a class="reference external" href="https://github.com/ozkriff/ozkriff.github.io-src/blob/master/content/2015-11-30--devlog-live-again.rst"&gt;провалилась&lt;/a&gt; :) .&lt;/p&gt;
 &lt;p&gt;Времени жрет дикое количество. Не умею я, как некоторые люди могут, за пол часа накатать красивую страницу текста :( .
 После того поста вел каждодневные записи в файлике, что я по проекту делаю, что бы потом из них пост слепить.
 Через месяц, под новый год таки попробовал - просидел три вечера за этим занятием, задолбался и решил что обойдусь без блога)&lt;/p&gt;
@@ -853,7 +1213,10 @@ Unity of Command:&lt;/p&gt;
 &lt;p&gt;В фоне потихоньку вожусь с удалением констант с индексами из кода сцены (&lt;a class="reference external" href="https://github.com/ozkriff/zoc/issues/154"&gt;#154&lt;/a&gt;).
 Сами константы удалил, теперь все получается динамически, но при
 движении отрядов или переходе хода оно падает. Надо искать, что я там напутал)&lt;/p&gt;
-</summary><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Мастерплан и мотивация</title><link href="http://ozkriff.github.io/2016-01-27--devlog.html" rel="alternate"></link><updated>2016-01-27T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-01-27:2016-01-27--devlog.html</id><summary type="html">&lt;p&gt;Знакомый скинул ссылку на вполне себе интересную &lt;a class="reference external" href="https://www.reddit.com/r/gamedev/comments/426148"&gt;серию статей в реддите&lt;/a&gt;.&lt;/p&gt;
+</content><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Мастерплан и мотивация</title><link href="http://ozkriff.github.io/2016-01-27--devlog.html" rel="alternate"></link><published>2016-01-27T00:00:00+03:00</published><updated>2016-01-27T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-01-27:/2016-01-27--devlog.html</id><summary type="html">&lt;p&gt;Знакомый скинул ссылку на вполне себе интересную &lt;a class="reference external" href="https://www.reddit.com/r/gamedev/comments/426148"&gt;серию статей в реддите&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Хм, ну базовый цикл у меня близок к цивилизации - &amp;quot;Select unit, move unit, combat/gather, repeat.&amp;quot;
+у меня тоже ты &amp;quot;выбираешь отряд, двигаешь/атакуешь/используешь навык, заново&amp;quot;.&lt;/p&gt;
+&lt;p&gt;прототип - я большую часть механики беру из игры Battle Academy, так что …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Знакомый скинул ссылку на вполне себе интересную &lt;a class="reference external" href="https://www.reddit.com/r/gamedev/comments/426148"&gt;серию статей в реддите&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Хм, ну базовый цикл у меня близок к цивилизации - &amp;quot;Select unit, move unit, combat/gather, repeat.&amp;quot;
 у меня тоже ты &amp;quot;выбираешь отряд, двигаешь/атакуешь/используешь навык, заново&amp;quot;.&lt;/p&gt;
 &lt;p&gt;прототип - я большую часть механики беру из игры Battle Academy, так что она уже служит начальным прототипом)
@@ -916,7 +1279,12 @@ Unity of Command:&lt;/p&gt;
 Что бы вон та артиллерия могла дать залп дымовыми перед вражеским городом, эта пехота забраться
 в броневики и ломануться навстречу, а вон те танки в это время при поддержке вертолетов зашли
 в бок и подавили бы с расстояния часть сил врага и блаблабла))&lt;/p&gt;
-</summary><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Форы</title><link href="http://ozkriff.github.io/2016-01-26--devlog.html" rel="alternate"></link><updated>2016-01-26T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-01-26:2016-01-26--devlog.html</id><summary type="html">&lt;p&gt;Недавно тут наткнулся на &lt;a class="reference external" href="http://www.progamer.ru/dev/handicaps.htm"&gt;статью про гандикапы&lt;/a&gt;.&lt;/p&gt;
+</content><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Форы</title><link href="http://ozkriff.github.io/2016-01-26--devlog.html" rel="alternate"></link><published>2016-01-26T00:00:00+03:00</published><updated>2016-01-26T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-01-26:/2016-01-26--devlog.html</id><summary type="html">&lt;p&gt;Недавно тут наткнулся на &lt;a class="reference external" href="http://www.progamer.ru/dev/handicaps.htm"&gt;статью про гандикапы&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Может для сетевого режима ЗК замена обычных рейтингов на уменьшающиеся при
+победах гандикапы (форы) и не такая глупая идея. Все-таки вполне себе
+способ повысить интерес при игре с сильно отличающимся по уровню игры противником.&lt;/p&gt;
+&lt;p&gt;Например, банально давать меньше стартовых очков.
+Тогда и рейтинг …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Недавно тут наткнулся на &lt;a class="reference external" href="http://www.progamer.ru/dev/handicaps.htm"&gt;статью про гандикапы&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Может для сетевого режима ЗК замена обычных рейтингов на уменьшающиеся при
 победах гандикапы (форы) и не такая глупая идея. Все-таки вполне себе
 способ повысить интерес при игре с сильно отличающимся по уровню игры противником.&lt;/p&gt;
@@ -937,7 +1305,12 @@ Unity of Command:&lt;/p&gt;
 &lt;p&gt;Подумал-подумал и пока решил, что если и планировать такое, то только в виде параллельного обычному
 рейтинговому топа, в порядке эксперимента, а то слишком уж тут много тонкостей у этого подхода.&lt;/p&gt;
 &lt;p&gt;Но это так, мысли про далекое будущее все :) .&lt;/p&gt;
-</summary><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Сложности с crates.io и конфиги из открытого космоса</title><link href="http://ozkriff.github.io/2016-01-25--devlog.html" rel="alternate"></link><updated>2016-01-25T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-01-25:2016-01-25--devlog.html</id><summary type="html">&lt;p&gt;Сунулся наконец-то выложить zoc на crates.io.
+</content><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Сложности с crates.io и конфиги из открытого космоса</title><link href="http://ozkriff.github.io/2016-01-25--devlog.html" rel="alternate"></link><published>2016-01-25T00:00:00+03:00</published><updated>2016-01-25T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2016-01-25:/2016-01-25--devlog.html</id><summary type="html">&lt;p&gt;Сунулся наконец-то выложить zoc на crates.io.
+А, оказывается, даже если пакеты лежат в одном репозитории, их надо выкладывать на
+crates.io отдельно.&lt;/p&gt;
+&lt;p&gt;Посмотрел gfx - они тоже каждый пакет, оказывается, отдельно выкладывают :( .
+Эх, совсем не хочется загаживать crates.io своими бессмысленными пакетами, они явно никому не пригодятся.&lt;/p&gt;
+&lt;p&gt;Можно бы на …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Сунулся наконец-то выложить zoc на crates.io.
 А, оказывается, даже если пакеты лежат в одном репозитории, их надо выкладывать на
 crates.io отдельно.&lt;/p&gt;
 &lt;p&gt;Посмотрел gfx - они тоже каждый пакет, оказывается, отдельно выкладывают :( .
@@ -955,7 +1328,13 @@ crates.io отдельно.&lt;/p&gt;
 Как-то у него фокус на частности, а не на нормальное обобщенное решение.
 В целом ничего формат, особенно для простых конфигов, но вот синтаксис таблиц
 меня ужасает.&lt;/p&gt;
-</summary><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Перезапуск журнала</title><link href="http://ozkriff.github.io/2015-11-30--devlog-live-again.html" rel="alternate"></link><updated>2015-11-30T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2015-11-30:2015-11-30--devlog-live-again.html</id><summary type="html">&lt;p&gt;Насмотрелся я тут на журналы &lt;a class="reference external" href="http://reangdblog.blogspot.com"&gt;reangd&lt;/a&gt;, &lt;a class="reference external" href="http://www.gridsagegames.com/blog"&gt;cogmind&lt;/a&gt;, &lt;a class="reference external" href="https://eao197.blogspot.ru"&gt;eao197&lt;/a&gt; и всякие
+</content><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Перезапуск журнала</title><link href="http://ozkriff.github.io/2015-11-30--devlog-live-again.html" rel="alternate"></link><published>2015-11-30T00:00:00+03:00</published><updated>2015-11-30T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2015-11-30:/2015-11-30--devlog-live-again.html</id><summary type="html">&lt;p&gt;Насмотрелся я тут на журналы &lt;a class="reference external" href="http://reangdblog.blogspot.com"&gt;reangd&lt;/a&gt;, &lt;a class="reference external" href="http://www.gridsagegames.com/blog"&gt;cogmind&lt;/a&gt;, &lt;a class="reference external" href="https://eao197.blogspot.ru"&gt;eao197&lt;/a&gt; и всякие
+другие, решил что тоже чего-нибудь хочу писать.
+С последней моей попытки прошло около полутора лет)&lt;/p&gt;
+&lt;p&gt;Итак, на момент написания прошлой заметки я работал над Миром Кораблей в
+&lt;a class="reference external" href="https://wargaming.com/ru/about/our-locations/saint-petersburg"&gt;питерском wargaming.net&lt;/a&gt;.
+Собственно, я успел уйти оттуда, поработать над казуалками в
+&lt;a class="reference external" href="http://zillionwhales.ru"&gt;Zillion …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;Насмотрелся я тут на журналы &lt;a class="reference external" href="http://reangdblog.blogspot.com"&gt;reangd&lt;/a&gt;, &lt;a class="reference external" href="http://www.gridsagegames.com/blog"&gt;cogmind&lt;/a&gt;, &lt;a class="reference external" href="https://eao197.blogspot.ru"&gt;eao197&lt;/a&gt; и всякие
 другие, решил что тоже чего-нибудь хочу писать.
 С последней моей попытки прошло около полутора лет)&lt;/p&gt;
 &lt;p&gt;Итак, на момент написания прошлой заметки я работал над Миром Кораблей в
@@ -1119,11 +1498,20 @@ crates.io отдельно.&lt;/p&gt;
 - регулярность вытягивает из любого дела весь интерес.
 Ну и писать тут буду, наверное, не только по делу - смотрите теги :) .&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Разработка Мародера - 2014.05.18</title><link href="http://ozkriff.github.io/2014-05-18--devlog-marauder-012.html" rel="alternate"></link><updated>2014-05-18T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-05-18:2014-05-18--devlog-marauder-012.html</id><summary type="html">&lt;p&gt;Почти дорисовал базового человечка, так лениво :) .&lt;/p&gt;
+</content><category term="devlog"></category><category term="zoc"></category></entry><entry><title>Разработка Мародера - 2014.05.18</title><link href="http://ozkriff.github.io/2014-05-18--devlog-marauder-012.html" rel="alternate"></link><published>2014-05-18T00:00:00+04:00</published><updated>2014-05-18T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-05-18:/2014-05-18--devlog-marauder-012.html</id><summary type="html">&lt;p&gt;Почти дорисовал базового человечка, так лениво :) .&lt;/p&gt;
 &lt;p&gt;Разработчики Ржавчины мутят чего-то страшное. Хотят убрать &lt;tt class="docutils literal"&gt;mut&lt;/tt&gt;,
 иммутабельность. Бррр!&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.05.11</title><link href="http://ozkriff.github.io/2014-05-12--devlog-marauder-011.html" rel="alternate"></link><updated>2014-05-12T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-05-12:2014-05-12--devlog-marauder-011.html</id><summary type="html">&lt;p&gt;Тревис все так и сломан.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;Почти дорисовал базового человечка, так лениво :) .&lt;/p&gt;
+&lt;p&gt;Разработчики Ржавчины мутят чего-то страшное. Хотят убрать &lt;tt class="docutils literal"&gt;mut&lt;/tt&gt;,
+иммутабельность. Бррр!&lt;/p&gt;
+&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
+</content><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.05.11</title><link href="http://ozkriff.github.io/2014-05-12--devlog-marauder-011.html" rel="alternate"></link><published>2014-05-12T00:00:00+04:00</published><updated>2014-05-12T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-05-12:/2014-05-12--devlog-marauder-011.html</id><summary type="html">&lt;p&gt;Тревис все так и сломан.&lt;/p&gt;
+&lt;p&gt;Потратил кучу времени, пока искал &lt;tt class="docutils literal"&gt;![macro_export]&lt;/tt&gt; и тупил вокруг))&lt;/p&gt;
+&lt;p&gt;Запил &lt;tt class="docutils literal"&gt;MeshId&lt;/tt&gt; структурку, наконец-то.&lt;/p&gt;
+&lt;p&gt;С горем пополам допилил error_context, выложил как отдельную библиотеку
+на гитхабе и использовал в мародере. И после отзывов переписал ее к чертям))&lt;/p&gt;
+&lt;p&gt;Сделал кое-какие кнопки. Криво, но работает. Тестовая кнопка - &amp;quot;конец хода …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Тревис все так и сломан.&lt;/p&gt;
 &lt;p&gt;Потратил кучу времени, пока искал &lt;tt class="docutils literal"&gt;![macro_export]&lt;/tt&gt; и тупил вокруг))&lt;/p&gt;
 &lt;p&gt;Запил &lt;tt class="docutils literal"&gt;MeshId&lt;/tt&gt; структурку, наконец-то.&lt;/p&gt;
 &lt;p&gt;С горем пополам допилил error_context, выложил как отдельную библиотеку
@@ -1131,11 +1519,19 @@ crates.io отдельно.&lt;/p&gt;
 &lt;p&gt;Сделал кое-какие кнопки. Криво, но работает. Тестовая кнопка - &amp;quot;конец хода&amp;quot;.&lt;/p&gt;
 &lt;p&gt;Перевел свои библиотечки и библиотеки bjz на rustc от rust-lang.org&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.05.04</title><link href="http://ozkriff.github.io/2014-05-05--devlog-marauder-010.html" rel="alternate"></link><updated>2014-05-05T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-05-05:2014-05-05--devlog-marauder-010.html</id><summary type="html">&lt;p&gt;Трэвис сломался и все никак не чинится. Все протухло :( .&lt;/p&gt;
+</content><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.05.04</title><link href="http://ozkriff.github.io/2014-05-05--devlog-marauder-010.html" rel="alternate"></link><published>2014-05-05T00:00:00+04:00</published><updated>2014-05-05T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-05-05:/2014-05-05--devlog-marauder-010.html</id><summary type="html">&lt;p&gt;Трэвис сломался и все никак не чинится. Все протухло :( .&lt;/p&gt;
 &lt;p&gt;Почти добил &lt;tt class="docutils literal"&gt;ErrorContext&lt;/tt&gt;. Перенес на &lt;tt class="docutils literal"&gt;local_data&lt;/tt&gt;.&lt;/p&gt;
 &lt;p&gt;Заменил все &lt;tt class="docutils literal"&gt;type = ...&lt;/tt&gt;, которые можно, на структуры.&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.04.27</title><link href="http://ozkriff.github.io/2014-04-28--devlog-marauder-009.html" rel="alternate"></link><updated>2014-04-28T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-28:2014-04-28--devlog-marauder-009.html</id><summary type="html">&lt;p&gt;Меня поплющило пару дней на тему перехода с 3д моделей на 2д маркеры.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;Трэвис сломался и все никак не чинится. Все протухло :( .&lt;/p&gt;
+&lt;p&gt;Почти добил &lt;tt class="docutils literal"&gt;ErrorContext&lt;/tt&gt;. Перенес на &lt;tt class="docutils literal"&gt;local_data&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Заменил все &lt;tt class="docutils literal"&gt;type = ...&lt;/tt&gt;, которые можно, на структуры.&lt;/p&gt;
+&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
+</content><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.04.27</title><link href="http://ozkriff.github.io/2014-04-28--devlog-marauder-009.html" rel="alternate"></link><published>2014-04-28T00:00:00+04:00</published><updated>2014-04-28T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-28:/2014-04-28--devlog-marauder-009.html</id><summary type="html">&lt;p&gt;Меня поплющило пару дней на тему перехода с 3д моделей на 2д маркеры.&lt;/p&gt;
+&lt;p&gt;Заменил везде &lt;tt class="docutils literal"&gt;&amp;amp;str&lt;/tt&gt; на &lt;tt class="docutils literal"&gt;Path&lt;/tt&gt;, так правильней (ссылка на битсквидблог).&lt;/p&gt;
+&lt;p&gt;Заменил структурки &lt;tt class="docutils literal"&gt;struct(MInt)&lt;/tt&gt; на &lt;tt class="docutils literal"&gt;struct(id: MInt}&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Шейдеры с 1.5 на 1.2, что бы можно было запускаться на OpenGL 2.1 без проблем.&lt;/p&gt;
+&lt;p&gt;Перенес …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Меня поплющило пару дней на тему перехода с 3д моделей на 2д маркеры.&lt;/p&gt;
 &lt;p&gt;Заменил везде &lt;tt class="docutils literal"&gt;&amp;amp;str&lt;/tt&gt; на &lt;tt class="docutils literal"&gt;Path&lt;/tt&gt;, так правильней (ссылка на битсквидблог).&lt;/p&gt;
 &lt;p&gt;Заменил структурки &lt;tt class="docutils literal"&gt;struct(MInt)&lt;/tt&gt; на &lt;tt class="docutils literal"&gt;struct(id: MInt}&lt;/tt&gt;.&lt;/p&gt;
 &lt;p&gt;Шейдеры с 1.5 на 1.2, что бы можно было запускаться на OpenGL 2.1 без проблем.&lt;/p&gt;
@@ -1146,7 +1542,12 @@ crates.io отдельно.&lt;/p&gt;
 уже все есть.&lt;/p&gt;
 &lt;p&gt;Почти доделал &lt;tt class="docutils literal"&gt;ErrorContext&lt;/tt&gt;, скоро попробую его внедрить.&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.04.20</title><link href="http://ozkriff.github.io/2014-04-21--devlog-marauder-008.html" rel="alternate"></link><updated>2014-04-21T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-21:2014-04-21--devlog-marauder-008.html</id><summary type="html">&lt;p&gt;Отпуск кончился. Хочется умереть :) .&lt;/p&gt;
+</content><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.04.20</title><link href="http://ozkriff.github.io/2014-04-21--devlog-marauder-008.html" rel="alternate"></link><published>2014-04-21T00:00:00+04:00</published><updated>2014-04-21T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-21:/2014-04-21--devlog-marauder-008.html</id><summary type="html">&lt;p&gt;Отпуск кончился. Хочется умереть :) .&lt;/p&gt;
+&lt;p&gt;Забыл написать. На прошлой неделе появился первый отчет об ошибке, ура ура!
+Правда я хз что с ним делать :( .&lt;/p&gt;
+&lt;p&gt;Наткнулся на серию классных постов об обработке ошибок в блоге битсквида.&lt;/p&gt;
+&lt;p&gt;Сделал кое какое отображение 2д и 3д текста.&lt;/p&gt;
+&lt;p&gt;Решил возвращать текст в экранных координатах, а для …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Отпуск кончился. Хочется умереть :) .&lt;/p&gt;
 &lt;p&gt;Забыл написать. На прошлой неделе появился первый отчет об ошибке, ура ура!
 Правда я хз что с ним делать :( .&lt;/p&gt;
 &lt;p&gt;Наткнулся на серию классных постов об обработке ошибок в блоге битсквида.&lt;/p&gt;
@@ -1165,7 +1566,11 @@ grep -oh 'gl::\w*(' visualizer/* | sort | uniq
 кэше для font_stash.&lt;/p&gt;
 &lt;p&gt;Камера в начале боя теперь не где-то с краю, а в центре карты.&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.04.13</title><link href="http://ozkriff.github.io/2014-04-14--devlog-marauder-007.html" rel="alternate"></link><updated>2014-04-14T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-14:2014-04-14--devlog-marauder-007.html</id><summary type="html">&lt;p&gt;На этой неделе у меня был отпуск, о даа.&lt;/p&gt;
+</content><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.04.13</title><link href="http://ozkriff.github.io/2014-04-14--devlog-marauder-007.html" rel="alternate"></link><published>2014-04-14T00:00:00+04:00</published><updated>2014-04-14T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-14:/2014-04-14--devlog-marauder-007.html</id><summary type="html">&lt;p&gt;На этой неделе у меня был отпуск, о даа.&lt;/p&gt;
+&lt;p&gt;Наконец-то немного разобрался с pelican и начал приводить в порядок и
+выкладывать эти недельные отчеты на ozkriff.github.io, а то до этого они
+у меня только в gist`е лежали.&lt;/p&gt;
+&lt;p&gt;По самому мародеру почти ничего не сделал, только выложил на …&lt;/p&gt;</summary><content type="html">&lt;p&gt;На этой неделе у меня был отпуск, о даа.&lt;/p&gt;
 &lt;p&gt;Наконец-то немного разобрался с pelican и начал приводить в порядок и
 выкладывать эти недельные отчеты на ozkriff.github.io, а то до этого они
 у меня только в gist`е лежали.&lt;/p&gt;
@@ -1173,14 +1578,27 @@ grep -oh 'gl::\w*(' visualizer/* | sort | uniq
 очень-очень базовую версию stb-tt-rs и кое-какой код интеграции в мародер.
 Но по факту текста в игре пока так и нет.&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.04.07</title><link href="http://ozkriff.github.io/2014-04-08--devlog-marauder-006.html" rel="alternate"></link><updated>2014-04-08T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-08:2014-04-08--devlog-marauder-006.html</id><summary type="html">&lt;p&gt;Аналогично с прошлой - ничего, только смотрю, что б Мародер собирался.&lt;/p&gt;
+</content><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.04.07</title><link href="http://ozkriff.github.io/2014-04-08--devlog-marauder-006.html" rel="alternate"></link><published>2014-04-08T00:00:00+04:00</published><updated>2014-04-08T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-04-08:/2014-04-08--devlog-marauder-006.html</id><summary type="html">&lt;p&gt;Аналогично с прошлой - ничего, только смотрю, что б Мародер собирался.&lt;/p&gt;
 &lt;p&gt;Ну и вышел Rust 0.10, ура-ура! Хотя для меня это мало что меняет,
 все равно использую ночные сборки :) .&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.03.30</title><link href="http://ozkriff.github.io/2014-03-31--devlog-marauder-005.html" rel="alternate"></link><updated>2014-03-31T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-03-31:2014-03-31--devlog-marauder-005.html</id><summary type="html">&lt;p&gt;За эту неделю ничего не сделал, только слежу, что бы мародер
+</summary><content type="html">&lt;p&gt;Аналогично с прошлой - ничего, только смотрю, что б Мародер собирался.&lt;/p&gt;
+&lt;p&gt;Ну и вышел Rust 0.10, ура-ура! Хотя для меня это мало что меняет,
+все равно использую ночные сборки :) .&lt;/p&gt;
+&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
+</content><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.03.30</title><link href="http://ozkriff.github.io/2014-03-31--devlog-marauder-005.html" rel="alternate"></link><published>2014-03-31T00:00:00+04:00</published><updated>2014-03-31T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-03-31:/2014-03-31--devlog-marauder-005.html</id><summary type="html">&lt;p&gt;За эту неделю ничего не сделал, только слежу, что бы мародер
 собирался ночными сборками компилятора Ржавчины.&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.03.23</title><link href="http://ozkriff.github.io/2014-03-24--devlog-marauder-004.html" rel="alternate"></link><updated>2014-03-24T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-03-24:2014-03-24--devlog-marauder-004.html</id><summary type="html">&lt;p&gt;Сходил на Manowar, о да, нужно больше пафоса. Только теперь
+</summary><content type="html">&lt;p&gt;За эту неделю ничего не сделал, только слежу, что бы мародер
+собирался ночными сборками компилятора Ржавчины.&lt;/p&gt;
+&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
+</content><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.03.23</title><link href="http://ozkriff.github.io/2014-03-24--devlog-marauder-004.html" rel="alternate"></link><published>2014-03-24T00:00:00+04:00</published><updated>2014-03-24T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-03-24:/2014-03-24--devlog-marauder-004.html</id><summary type="html">&lt;p&gt;Сходил на Manowar, о да, нужно больше пафоса. Только теперь
+вообще ничего не слышу :) .&lt;/p&gt;
+&lt;p&gt;Мучал glfw-rs, cgmath-rs и самого мародера, что бы они собирались с
+последней версией компилятора. Сложно было :)&lt;/p&gt;
+&lt;p&gt;Брендан хочет, что бы cgmath-rs был исправлен не таким грубым хаком.
+Там могут быть косяки с NaN и +/-Inf.
+Но …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Сходил на Manowar, о да, нужно больше пафоса. Только теперь
 вообще ничего не слышу :) .&lt;/p&gt;
 &lt;p&gt;Мучал glfw-rs, cgmath-rs и самого мародера, что бы они собирались с
 последней версией компилятора. Сложно было :)&lt;/p&gt;
@@ -1198,7 +1616,14 @@ grep -oh 'gl::\w*(' visualizer/* | sort | uniq
 &lt;p&gt;&lt;img alt="color-picking-02" src="images/2014-03-20--color-picking-2.png" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="color-picking-03" src="images/2014-03-20--color-picking-3.gif" /&gt;&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.03.16</title><link href="http://ozkriff.github.io/2014-03-17--devlog-marauder-003.html" rel="alternate"></link><updated>2014-03-17T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-03-17:2014-03-17--devlog-marauder-003.html</id><summary type="html">&lt;p&gt;Ну что ж. За эту неделю я почти ничего не сделал, времени на
+</content><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.03.16</title><link href="http://ozkriff.github.io/2014-03-17--devlog-marauder-003.html" rel="alternate"></link><published>2014-03-17T00:00:00+04:00</published><updated>2014-03-17T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-03-17:/2014-03-17--devlog-marauder-003.html</id><summary type="html">&lt;p&gt;Ну что ж. За эту неделю я почти ничего не сделал, времени на
+Мародера было не так уж много.&lt;/p&gt;
+&lt;p&gt;Зато сходил на концерт Апокалиптики :) .&lt;/p&gt;
+&lt;p&gt;&lt;img alt="apocalyptica-pic" src="images/2015-11-23--apocalyptica.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;Сделал простенькое и кривенькое перетаскивание карты средней кнопкой мыши.
+Надо будет еще допиливать.&lt;/p&gt;
+&lt;p&gt;Вернулся к ковырянию шрифтов из kiss3d. Решил переписать font-stash на Rust.
+Пока сделал …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Ну что ж. За эту неделю я почти ничего не сделал, времени на
 Мародера было не так уж много.&lt;/p&gt;
 &lt;p&gt;Зато сходил на концерт Апокалиптики :) .&lt;/p&gt;
 &lt;p&gt;&lt;img alt="apocalyptica-pic" src="images/2015-11-23--apocalyptica.jpg" /&gt;&lt;/p&gt;
@@ -1214,7 +1639,12 @@ cgmath-rs под ночную сборку Ржавчины: изменения 
 gl-вызова.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="qapitrace-pic" src="images/2015-11-23--qapitrace.jpg" /&gt;&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.03.10</title><link href="http://ozkriff.github.io/2014-03-11--devlog-marauder-002.html" rel="alternate"></link><updated>2014-03-11T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-03-11:2014-03-11--devlog-marauder-002.html</id><summary type="html">&lt;p&gt;Ну, этот понедельник я считаю последним днем недели. Не может у меня
+</content><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.03.10</title><link href="http://ozkriff.github.io/2014-03-11--devlog-marauder-002.html" rel="alternate"></link><published>2014-03-11T00:00:00+04:00</published><updated>2014-03-11T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-03-11:/2014-03-11--devlog-marauder-002.html</id><summary type="html">&lt;p&gt;Ну, этот понедельник я считаю последним днем недели. Не может у меня
+неделя с выходного начинаться, это неправильно как-то.&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Теперь передаю информацию о изменениях размера окна в камеру, теперь
+изображение не сжимается по высоте или ширине при изменении размеров окна.&lt;/li&gt;
+&lt;li&gt;С горем пополам доделал и закомитил базовую версию поддержки нескольких …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;Ну, этот понедельник я считаю последним днем недели. Не может у меня
 неделя с выходного начинаться, это неправильно как-то.&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Теперь передаю информацию о изменениях размера окна в камеру, теперь
@@ -1283,7 +1713,13 @@ $ find src/core -name &amp;quot;*.rs&amp;quot; | xargs wc -L | sort -h
 &lt;/pre&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
 &lt;/div&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.03.02</title><link href="http://ozkriff.github.io/2014-03-03--devlog-marauder-001.html" rel="alternate"></link><updated>2014-03-03T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-03-03:2014-03-03--devlog-marauder-001.html</id><summary type="html">&lt;p&gt;Так, что я сделал за эту неделю? Вообще, намного меньше, чем собирался :( .&lt;/p&gt;
+</content><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.03.02</title><link href="http://ozkriff.github.io/2014-03-03--devlog-marauder-001.html" rel="alternate"></link><published>2014-03-03T00:00:00+04:00</published><updated>2014-03-03T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-03-03:/2014-03-03--devlog-marauder-001.html</id><summary type="html">&lt;p&gt;Так, что я сделал за эту неделю? Вообще, намного меньше, чем собирался :( .&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Ну, во первых, решил делать вот эти самые еженедельные записи.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Портировал из старых прототипов базовое путенахождение, причем оно происходит
+не на сервере, а на клиенте, основываясь на знаниях клиента о мире. Т.е., если
+на пол пути окажется …&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;Так, что я сделал за эту неделю? Вообще, намного меньше, чем собирался :( .&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p class="first"&gt;Ну, во первых, решил делать вот эти самые еженедельные записи.&lt;/p&gt;
 &lt;/li&gt;
@@ -1315,7 +1751,11 @@ $ find src/core -name &amp;quot;*.rs&amp;quot; | xargs wc -L | sort -h
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.02.23</title><link href="http://ozkriff.github.io/2014-02-28--devlog-marauder-000.html" rel="alternate"></link><updated>2014-02-28T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-02-28:2014-02-28--devlog-marauder-000.html</id><summary type="html">&lt;p&gt;Тому, что есть на данный момент до игры еще очень далеко. Пока что, по шкале
+</content><category term="devlog"></category><category term="marauder"></category></entry><entry><title>Разработка Мародера - 2014.02.23</title><link href="http://ozkriff.github.io/2014-02-28--devlog-marauder-000.html" rel="alternate"></link><published>2014-02-28T00:00:00+04:00</published><updated>2014-02-28T00:00:00+04:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2014-02-28:/2014-02-28--devlog-marauder-000.html</id><summary type="html">&lt;p&gt;Тому, что есть на данный момент до игры еще очень далеко. Пока что, по шкале
+от &amp;quot;демо OpenGL приложение с вращающимся полигоном&amp;quot; до &amp;quot;X-COM, HoMM,
+Кодекс Войны и др. большие пошаговые игры, которые пришли сходу мне в голову&amp;quot;
+Мародер находится на минимальном отдалении от левого края.&lt;/p&gt;
+&lt;p&gt;На проект я потратил …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Тому, что есть на данный момент до игры еще очень далеко. Пока что, по шкале
 от &amp;quot;демо OpenGL приложение с вращающимся полигоном&amp;quot; до &amp;quot;X-COM, HoMM,
 Кодекс Войны и др. большие пошаговые игры, которые пришли сходу мне в голову&amp;quot;
 Мародер находится на минимальном отдалении от левого края.&lt;/p&gt;
@@ -1355,4 +1795,4 @@ $ find src/core -name &amp;quot;*.rs&amp;quot; | xargs wc -L | sort -h
 и моделей отдельный репозиторий - &lt;a class="reference external" href="https://github.com/ozkriff/marauder-data"&gt;https://github.com/ozkriff/marauder-data&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Вооооот, так что делать мне еще очень и очень и очень много. :)&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</summary><category term="devlog"></category><category term="marauder"></category></entry></feed>
+</content><category term="devlog"></category><category term="marauder"></category></entry></feed>

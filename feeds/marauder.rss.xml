@@ -1,238 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ozkriff's devlog</title><link>http://ozkriff.github.io/</link><description></description><atom:link href="http://ozkriff.github.io/feeds/marauder.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 18 May 2014 00:00:00 +0400</lastBuildDate><item><title>Разработка Мародера - 2014.05.18</title><link>http://ozkriff.github.io/2014-05-18--devlog-marauder-012.html</link><description>&lt;p&gt;Почти дорисовал базового человечка, так лениво :) .&lt;/p&gt;
+<rss version="2.0"><channel><title>ozkriff's devlog - marauder</title><link>http://ozkriff.github.io/</link><description></description><lastBuildDate>Sun, 18 May 2014 00:00:00 +0400</lastBuildDate><item><title>Разработка Мародера - 2014.05.18</title><link>http://ozkriff.github.io/2014-05-18--devlog-marauder-012.html</link><description>&lt;p&gt;Почти дорисовал базового человечка, так лениво :) .&lt;/p&gt;
 &lt;p&gt;Разработчики Ржавчины мутят чего-то страшное. Хотят убрать &lt;tt class="docutils literal"&gt;mut&lt;/tt&gt;,
 иммутабельность. Бррр!&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Sun, 18 May 2014 00:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-05-18:2014-05-18--devlog-marauder-012.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.05.11</title><link>http://ozkriff.github.io/2014-05-12--devlog-marauder-011.html</link><description>&lt;p&gt;Тревис все так и сломан.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Sun, 18 May 2014 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:ozkriff.github.io,2014-05-18:/2014-05-18--devlog-marauder-012.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.05.11</title><link>http://ozkriff.github.io/2014-05-12--devlog-marauder-011.html</link><description>&lt;p&gt;Тревис все так и сломан.&lt;/p&gt;
 &lt;p&gt;Потратил кучу времени, пока искал &lt;tt class="docutils literal"&gt;![macro_export]&lt;/tt&gt; и тупил вокруг))&lt;/p&gt;
 &lt;p&gt;Запил &lt;tt class="docutils literal"&gt;MeshId&lt;/tt&gt; структурку, наконец-то.&lt;/p&gt;
 &lt;p&gt;С горем пополам допилил error_context, выложил как отдельную библиотеку
 на гитхабе и использовал в мародере. И после отзывов переписал ее к чертям))&lt;/p&gt;
-&lt;p&gt;Сделал кое-какие кнопки. Криво, но работает. Тестовая кнопка - &amp;quot;конец хода&amp;quot;.&lt;/p&gt;
-&lt;p&gt;Перевел свои библиотечки и библиотеки bjz на rustc от rust-lang.org&lt;/p&gt;
-&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 12 May 2014 00:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-05-12:2014-05-12--devlog-marauder-011.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.05.04</title><link>http://ozkriff.github.io/2014-05-05--devlog-marauder-010.html</link><description>&lt;p&gt;Трэвис сломался и все никак не чинится. Все протухло :( .&lt;/p&gt;
+&lt;p&gt;Сделал кое-какие кнопки. Криво, но работает. Тестовая кнопка - &amp;quot;конец хода …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 12 May 2014 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:ozkriff.github.io,2014-05-12:/2014-05-12--devlog-marauder-011.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.05.04</title><link>http://ozkriff.github.io/2014-05-05--devlog-marauder-010.html</link><description>&lt;p&gt;Трэвис сломался и все никак не чинится. Все протухло :( .&lt;/p&gt;
 &lt;p&gt;Почти добил &lt;tt class="docutils literal"&gt;ErrorContext&lt;/tt&gt;. Перенес на &lt;tt class="docutils literal"&gt;local_data&lt;/tt&gt;.&lt;/p&gt;
 &lt;p&gt;Заменил все &lt;tt class="docutils literal"&gt;type = ...&lt;/tt&gt;, которые можно, на структуры.&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 05 May 2014 00:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-05-05:2014-05-05--devlog-marauder-010.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.04.27</title><link>http://ozkriff.github.io/2014-04-28--devlog-marauder-009.html</link><description>&lt;p&gt;Меня поплющило пару дней на тему перехода с 3д моделей на 2д маркеры.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 05 May 2014 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:ozkriff.github.io,2014-05-05:/2014-05-05--devlog-marauder-010.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.04.27</title><link>http://ozkriff.github.io/2014-04-28--devlog-marauder-009.html</link><description>&lt;p&gt;Меня поплющило пару дней на тему перехода с 3д моделей на 2д маркеры.&lt;/p&gt;
 &lt;p&gt;Заменил везде &lt;tt class="docutils literal"&gt;&amp;amp;str&lt;/tt&gt; на &lt;tt class="docutils literal"&gt;Path&lt;/tt&gt;, так правильней (ссылка на битсквидблог).&lt;/p&gt;
 &lt;p&gt;Заменил структурки &lt;tt class="docutils literal"&gt;struct(MInt)&lt;/tt&gt; на &lt;tt class="docutils literal"&gt;struct(id: MInt}&lt;/tt&gt;.&lt;/p&gt;
 &lt;p&gt;Шейдеры с 1.5 на 1.2, что бы можно было запускаться на OpenGL 2.1 без проблем.&lt;/p&gt;
-&lt;p&gt;Перенес исходники в &lt;tt class="docutils literal"&gt;src&lt;/tt&gt; директорию, а всякое для работы в &lt;tt class="docutils literal"&gt;bin&lt;/tt&gt; директорию.
-Добавил в Makefile команду &lt;tt class="docutils literal"&gt;run&lt;/tt&gt;, которая переходит в &lt;tt class="docutils literal"&gt;bin&lt;/tt&gt; и запускает игру.&lt;/p&gt;
-&lt;p&gt;Поправил систему слотов.&lt;/p&gt;
-&lt;p&gt;Убрал &lt;tt class="docutils literal"&gt;MBool&lt;/tt&gt; в пользу обычного &lt;tt class="docutils literal"&gt;bool&lt;/tt&gt;. В этом был смысл для Си, но тут-то
-уже все есть.&lt;/p&gt;
-&lt;p&gt;Почти доделал &lt;tt class="docutils literal"&gt;ErrorContext&lt;/tt&gt;, скоро попробую его внедрить.&lt;/p&gt;
-&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 28 Apr 2014 00:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-04-28:2014-04-28--devlog-marauder-009.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.04.20</title><link>http://ozkriff.github.io/2014-04-21--devlog-marauder-008.html</link><description>&lt;p&gt;Отпуск кончился. Хочется умереть :) .&lt;/p&gt;
+&lt;p&gt;Перенес …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 28 Apr 2014 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:ozkriff.github.io,2014-04-28:/2014-04-28--devlog-marauder-009.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.04.20</title><link>http://ozkriff.github.io/2014-04-21--devlog-marauder-008.html</link><description>&lt;p&gt;Отпуск кончился. Хочется умереть :) .&lt;/p&gt;
 &lt;p&gt;Забыл написать. На прошлой неделе появился первый отчет об ошибке, ура ура!
 Правда я хз что с ним делать :( .&lt;/p&gt;
 &lt;p&gt;Наткнулся на серию классных постов об обработке ошибок в блоге битсквида.&lt;/p&gt;
 &lt;p&gt;Сделал кое какое отображение 2д и 3д текста.&lt;/p&gt;
-&lt;p&gt;Решил возвращать текст в экранных координатах, а для отображения
-в 3д сцене его плющить матрицами как надо.&lt;/p&gt;
-&lt;p&gt;Для поиска всех gl вызовов и вывода только их названий:&lt;/p&gt;
-&lt;pre class="literal-block"&gt;
-grep -oh 'gl::\w*(' visualizer/* | sort | uniq
-&lt;/pre&gt;
-&lt;p&gt;Добавил макрос (фу) &lt;tt class="docutils literal"&gt;verify!&lt;/tt&gt;, позаимствованный из kiss3d, для проверки
-&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;gl::GetError&lt;/span&gt;&lt;/tt&gt; после каждого OpenGL вызова. Нашлась парочка ошибок.
-Надеюсь, это поможет запустить мародера на os x, а то неудобно. что
-отчет об ошибке столько времени уже висит.&lt;/p&gt;
-&lt;p&gt;Сделал отображаемый пробел и поддержку нескольких строчек в текстовом
-кэше для font_stash.&lt;/p&gt;
-&lt;p&gt;Камера в начале боя теперь не где-то с краю, а в центре карты.&lt;/p&gt;
-&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 21 Apr 2014 00:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-04-21:2014-04-21--devlog-marauder-008.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.04.13</title><link>http://ozkriff.github.io/2014-04-14--devlog-marauder-007.html</link><description>&lt;p&gt;На этой неделе у меня был отпуск, о даа.&lt;/p&gt;
+&lt;p&gt;Решил возвращать текст в экранных координатах, а для …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 21 Apr 2014 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:ozkriff.github.io,2014-04-21:/2014-04-21--devlog-marauder-008.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.04.13</title><link>http://ozkriff.github.io/2014-04-14--devlog-marauder-007.html</link><description>&lt;p&gt;На этой неделе у меня был отпуск, о даа.&lt;/p&gt;
 &lt;p&gt;Наконец-то немного разобрался с pelican и начал приводить в порядок и
 выкладывать эти недельные отчеты на ozkriff.github.io, а то до этого они
 у меня только в gist`е лежали.&lt;/p&gt;
-&lt;p&gt;По самому мародеру почти ничего не сделал, только выложил на гитхаб
-очень-очень базовую версию stb-tt-rs и кое-какой код интеграции в мародер.
-Но по факту текста в игре пока так и нет.&lt;/p&gt;
-&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 14 Apr 2014 00:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-04-14:2014-04-14--devlog-marauder-007.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.04.07</title><link>http://ozkriff.github.io/2014-04-08--devlog-marauder-006.html</link><description>&lt;p&gt;Аналогично с прошлой - ничего, только смотрю, что б Мародер собирался.&lt;/p&gt;
+&lt;p&gt;По самому мародеру почти ничего не сделал, только выложил на …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 14 Apr 2014 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:ozkriff.github.io,2014-04-14:/2014-04-14--devlog-marauder-007.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.04.07</title><link>http://ozkriff.github.io/2014-04-08--devlog-marauder-006.html</link><description>&lt;p&gt;Аналогично с прошлой - ничего, только смотрю, что б Мародер собирался.&lt;/p&gt;
 &lt;p&gt;Ну и вышел Rust 0.10, ура-ура! Хотя для меня это мало что меняет,
 все равно использую ночные сборки :) .&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Tue, 08 Apr 2014 00:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-04-08:2014-04-08--devlog-marauder-006.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.03.30</title><link>http://ozkriff.github.io/2014-03-31--devlog-marauder-005.html</link><description>&lt;p&gt;За эту неделю ничего не сделал, только слежу, что бы мародер
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Tue, 08 Apr 2014 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:ozkriff.github.io,2014-04-08:/2014-04-08--devlog-marauder-006.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.03.30</title><link>http://ozkriff.github.io/2014-03-31--devlog-marauder-005.html</link><description>&lt;p&gt;За эту неделю ничего не сделал, только слежу, что бы мародер
 собирался ночными сборками компилятора Ржавчины.&lt;/p&gt;
 &lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 31 Mar 2014 00:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-03-31:2014-03-31--devlog-marauder-005.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.03.23</title><link>http://ozkriff.github.io/2014-03-24--devlog-marauder-004.html</link><description>&lt;p&gt;Сходил на Manowar, о да, нужно больше пафоса. Только теперь
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 31 Mar 2014 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:ozkriff.github.io,2014-03-31:/2014-03-31--devlog-marauder-005.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.03.23</title><link>http://ozkriff.github.io/2014-03-24--devlog-marauder-004.html</link><description>&lt;p&gt;Сходил на Manowar, о да, нужно больше пафоса. Только теперь
 вообще ничего не слышу :) .&lt;/p&gt;
 &lt;p&gt;Мучал glfw-rs, cgmath-rs и самого мародера, что бы они собирались с
 последней версией компилятора. Сложно было :)&lt;/p&gt;
 &lt;p&gt;Брендан хочет, что бы cgmath-rs был исправлен не таким грубым хаком.
 Там могут быть косяки с NaN и +/-Inf.
-Но я туплю как сделать правильно. :(&lt;/p&gt;
-&lt;p&gt;Мой грандиозный страйк помер :(, черт:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="github-streak-fail" src="images/2014-03-20--github-streak-fail.png" /&gt;&lt;/p&gt;
-&lt;p&gt;Капельку поковырял текст. Решил, что не буду использовать cmr/hgl-rs,
-страшно мне. Лучше все-таки чего-то свое сделаю.&lt;/p&gt;
-&lt;p&gt;Шрифты, шрифты:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="font-cli" src="images/2014-03-20--font-cli.png" /&gt;&lt;/p&gt;
-&lt;p&gt;Сделал выделение отдельных отрядов в клетке:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="color-picking-01" src="images/2014-03-20--color-picking-1.gif" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="color-picking-02" src="images/2014-03-20--color-picking-2.png" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="color-picking-03" src="images/2014-03-20--color-picking-3.gif" /&gt;&lt;/p&gt;
-&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 24 Mar 2014 00:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-03-24:2014-03-24--devlog-marauder-004.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.03.16</title><link>http://ozkriff.github.io/2014-03-17--devlog-marauder-003.html</link><description>&lt;p&gt;Ну что ж. За эту неделю я почти ничего не сделал, времени на
+Но …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 24 Mar 2014 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:ozkriff.github.io,2014-03-24:/2014-03-24--devlog-marauder-004.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.03.16</title><link>http://ozkriff.github.io/2014-03-17--devlog-marauder-003.html</link><description>&lt;p&gt;Ну что ж. За эту неделю я почти ничего не сделал, времени на
 Мародера было не так уж много.&lt;/p&gt;
 &lt;p&gt;Зато сходил на концерт Апокалиптики :) .&lt;/p&gt;
 &lt;p&gt;&lt;img alt="apocalyptica-pic" src="images/2015-11-23--apocalyptica.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;Сделал простенькое и кривенькое перетаскивание карты средней кнопкой мыши.
 Надо будет еще допиливать.&lt;/p&gt;
 &lt;p&gt;Вернулся к ковырянию шрифтов из kiss3d. Решил переписать font-stash на Rust.
-Пока сделал только базовые привязки к stb_truetype.&lt;/p&gt;
-&lt;p&gt;Все свободное время в субботу-воскресение протупил с попытками обновить
-cgmath-rs под ночную сборку Ржавчины: изменения с &lt;tt class="docutils literal"&gt;min\max&lt;/tt&gt; для чисел
-с плавающей точкой.&lt;/p&gt;
-&lt;p&gt;Пробовал городить страшные вещи с макросами, но пока так и не разобрался.&lt;/p&gt;
-&lt;p&gt;Еще потыкал qapitrace и узнал, что &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;gl::GetError&lt;/span&gt;&lt;/tt&gt; надо вызывать после каждого
-gl-вызова.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="qapitrace-pic" src="images/2015-11-23--qapitrace.jpg" /&gt;&lt;/p&gt;
-&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 17 Mar 2014 00:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-03-17:2014-03-17--devlog-marauder-003.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.03.10</title><link>http://ozkriff.github.io/2014-03-11--devlog-marauder-002.html</link><description>&lt;p&gt;Ну, этот понедельник я считаю последним днем недели. Не может у меня
+Пока сделал …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 17 Mar 2014 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:ozkriff.github.io,2014-03-17:/2014-03-17--devlog-marauder-003.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.03.10</title><link>http://ozkriff.github.io/2014-03-11--devlog-marauder-002.html</link><description>&lt;p&gt;Ну, этот понедельник я считаю последним днем недели. Не может у меня
 неделя с выходного начинаться, это неправильно как-то.&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Теперь передаю информацию о изменениях размера окна в камеру, теперь
 изображение не сжимается по высоте или ширине при изменении размеров окна.&lt;/li&gt;
-&lt;li&gt;С горем пополам доделал и закомитил базовую версию поддержки нескольких
-отрядов в одной клетке. Правда, пока что выделить или атаковать можно только
-первого из них (того, что с индексом 0) и выделение вынесено на кнопку &lt;tt class="docutils literal"&gt;S&lt;/tt&gt;.&lt;/li&gt;
-&lt;li&gt;Задумался о системе слотов в клетке визуализатора.&lt;/li&gt;
-&lt;li&gt;Еще наткнулся на блог разработки Cogmind - &lt;a class="reference external" href="http://www.gridsagegames.com/blog"&gt;http://www.gridsagegames.com/blog&lt;/a&gt;.
-Выглядит офигенно, но ссылки на альфа версию или чего-то подобное я нигде
-не нашел, жалко.&lt;/li&gt;
-&lt;li&gt;Реализовал простенькую обертку над конфигурационными файлами.&lt;/li&gt;
-&lt;li&gt;Изменилась система сборки glfw-rs - вбил костыли в make_deps.sh.&lt;/li&gt;
-&lt;li&gt;Cmr сказал, что &lt;tt class="docutils literal"&gt;c_str&lt;/tt&gt; - плохая штука. Заменил на &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;with_c_str(||{...})&lt;/span&gt;&lt;/tt&gt;&lt;/li&gt;
-&lt;li&gt;анимации движения теперь не зависят от времени отрисовки кадра.&lt;/li&gt;
-&lt;li&gt;И добавил поворот отряда в сторону движения.&lt;/li&gt;
-&lt;li&gt;Исправил поворот камеры - теперь скорость вращения камеры не зависиот от
-размера экрана: что бы повернуть камеру на 360 градусов по горизонтали
-нужно двигать мышкой от левой границы окна до правой, не завсимо от
-размера окна.&lt;/li&gt;
-&lt;li&gt;Добавил класс MoveHelper, отвечающий за передвижение от точки до точки
-со скоростью, не зависящей от количества кадров в секунду, и использовал
-его во всех визуализаторах событий.&lt;/li&gt;
-&lt;li&gt;Удалил из визуализаторов событий методы &lt;tt class="docutils literal"&gt;start&lt;/tt&gt; - пускай все в new
-делается.&lt;/li&gt;
-&lt;li&gt;Добавил к анимации события атаки летящий снаряд. Ну как снаряд, хрень
-какую-то :)&lt;/li&gt;
-&lt;li&gt;Теперь отряды принадлежат к какому-то из игроков, над отрядами теперь
-висят страшненькие флажки.&lt;/li&gt;
-&lt;li&gt;На последок запек ambient occlusion вместо, кхм, &amp;quot;текстуры&amp;quot; &amp;quot;танка&amp;quot;.
-Теперь намного лучше, как по мне.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="section" id="byzanz"&gt;
-&lt;h2&gt;Byzanz&lt;/h2&gt;
-&lt;p&gt;Гуглил про выкладывание видео в бложик, наткнулся на упоминания byzanz.
-Офигенно, теперь загажу все посты анимированными гифками! :)&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://github.com/GNOME/byzanz"&gt;https://github.com/GNOME/byzanz&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="github-streak"&gt;
-&lt;h2&gt;Github streak&lt;/h2&gt;
-&lt;p&gt;И да, github streak в 61 день, еее!&lt;/p&gt;
-&lt;p&gt;&lt;img alt="github-streak-pic" src="images/2014-03-09--github-streak.png" /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="id2"&gt;
-&lt;h2&gt;80 символов хватит каждому!&lt;/h2&gt;
-&lt;p&gt;Узнал про &lt;tt class="docutils literal"&gt;wc &lt;span class="pre"&gt;-L&lt;/span&gt; &lt;span class="pre"&gt;\*.rs&lt;/span&gt;&lt;/tt&gt; для поиска самой длинной строчки в куче
-файлов, прикольно.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;
-$ find src/core -name &amp;quot;*.rs&amp;quot; | xargs wc -L | sort -h
-59 src/core/src/game_state.rs
-59 src/core/src/player.rs
-59 src/core/src/unit.rs
-65 src/core/src/geom.rs
-71 src/core/src/map.rs
-72 src/core/src/partial_state.rs
-76 src/core/src/pathfinder.rs
-78 src/core/src/ai.rs
-80 src/core/src/db.rs
-80 src/core/src/fov.rs
-83 src/core/src/dir.rs
-84 src/core/src/fow.rs
-91 src/core/src/internal_state.rs
-93 src/core/src/filter.rs
-121 src/core/src/lib.rs
-121 итого
-&lt;/pre&gt;
-&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-&lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Tue, 11 Mar 2014 00:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-03-11:2014-03-11--devlog-marauder-002.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.03.02</title><link>http://ozkriff.github.io/2014-03-03--devlog-marauder-001.html</link><description>&lt;p&gt;Так, что я сделал за эту неделю? Вообще, намного меньше, чем собирался :( .&lt;/p&gt;
+&lt;li&gt;С горем пополам доделал и закомитил базовую версию поддержки нескольких …&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Tue, 11 Mar 2014 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:ozkriff.github.io,2014-03-11:/2014-03-11--devlog-marauder-002.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.03.02</title><link>http://ozkriff.github.io/2014-03-03--devlog-marauder-001.html</link><description>&lt;p&gt;Так, что я сделал за эту неделю? Вообще, намного меньше, чем собирался :( .&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p class="first"&gt;Ну, во первых, решил делать вот эти самые еженедельные записи.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;Портировал из старых прототипов базовое путенахождение, причем оно происходит
 не на сервере, а на клиенте, основываясь на знаниях клиента о мире. Т.е., если
-на пол пути окажется скрытый юнит, то путь через его клетку все равно будет
-проложен, а уже при симуляции команды на сервере случится сюрприз в виде
-засады.&lt;/p&gt;
-&lt;p&gt;Раньше:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="pathfinding-pic-1" src="images/2014-03-10--no-pathfinding.gif" /&gt;&lt;/p&gt;
-&lt;p&gt;Теперь:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="pathfinding-pic-2" src="images/2014-03-10--basic-pathfinding.gif" /&gt;&lt;/p&gt;
-&lt;p&gt;Да, пока отряд никак не поворачивается при движении :( .&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;Немного привел в порядок &lt;tt class="docutils literal"&gt;gl_helpers&lt;/tt&gt;, вынес из него типы &lt;tt class="docutils literal"&gt;Texture&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;Vao&lt;/tt&gt;,
-&lt;tt class="docutils literal"&gt;Vbo&lt;/tt&gt; и &lt;tt class="docutils literal"&gt;Shader&lt;/tt&gt;. Ну и спрятал вызовы привязок gl внутри этих классов.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;Разделил все исходники на директории &lt;tt class="docutils literal"&gt;core&lt;/tt&gt; и &lt;tt class="docutils literal"&gt;visualizer&lt;/tt&gt;. Позже, наверное,
-сделаю их отдельными единицами компиляции. К первому отходит весь код,
-который не требует визуализации, т.е. сама суть игры, а визуализатор
-занимается полученеи ввода от пользователя и показом картинки.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;Постарался сделать так, что бы после вызова конструктора объекта он уже сразу
-был готов к использованию, а не ждал вызова &lt;tt class="docutils literal"&gt;init&lt;/tt&gt;-подобного метода в
-неопределенном состоянии.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;Добавил в интерфейс визуализаторов событий метод &lt;tt class="docutils literal"&gt;start&lt;/tt&gt; для, очевидно,
-начала визуализации события.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 03 Mar 2014 00:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-03-03:2014-03-03--devlog-marauder-001.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.02.23</title><link>http://ozkriff.github.io/2014-02-28--devlog-marauder-000.html</link><description>&lt;p&gt;Тому, что есть на данный момент до игры еще очень далеко. Пока что, по шкале
+на пол пути окажется …&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Mon, 03 Mar 2014 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:ozkriff.github.io,2014-03-03:/2014-03-03--devlog-marauder-001.html</guid><category>devlog</category><category>marauder</category></item><item><title>Разработка Мародера - 2014.02.23</title><link>http://ozkriff.github.io/2014-02-28--devlog-marauder-000.html</link><description>&lt;p&gt;Тому, что есть на данный момент до игры еще очень далеко. Пока что, по шкале
 от &amp;quot;демо OpenGL приложение с вращающимся полигоном&amp;quot; до &amp;quot;X-COM, HoMM,
 Кодекс Войны и др. большие пошаговые игры, которые пришли сходу мне в голову&amp;quot;
 Мародер находится на минимальном отдалении от левого края.&lt;/p&gt;
-&lt;p&gt;На проект я потратил полтора месяца по часу-другому в день.
-Большую часть времени я изучал и игрался с Ржавчиной (которая язык
-программирования) и изучивал-вспоминал основы OpenGL.&lt;/p&gt;
-&lt;p&gt;Есть стремная тестовая модель (вроде как танка), слепленная в блендере за пару
-минут и покрашенная там же, что бы проверить, как натягиваются текстуры:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="ugly-tank-pic" src="images/2014-02-23--ugly-tank.png" /&gt;&lt;/p&gt;
-&lt;p&gt;Других видов отрядов нет.&lt;/p&gt;
-&lt;p&gt;Текстурки - png. Модельки - .obj (самый простой формат, что я знаю).&lt;/p&gt;
-&lt;p&gt;Есть карта из одинаковых шестиугольников серого цвета. В каждой клетке
-может находиться один отряд.&lt;/p&gt;
-&lt;p&gt;Работает простенькое выделение мышкой (color picking).&lt;/p&gt;
-&lt;p&gt;По кнопке &lt;tt class="docutils literal"&gt;U&lt;/tt&gt; (_u_nit) в клетке, на которую указывает мышка, появляется новый
-отряд. Появляется при помощи простенькой анимации - поднимается из-под земли.
-Такие вот зомби-танки.&lt;/p&gt;
-&lt;p&gt;Отряды можно выделять кликом по клетке, но визуально это никак не отображается.&lt;/p&gt;
-&lt;p&gt;Выделенному отряду можно отдать приказ двигаться, кликнув по пустой клетке, но
-путенахождение не реализовано, так что он просто полетит по прямой к
-нужной клетке.&lt;/p&gt;
-&lt;p&gt;Выделенному отряду можно дать команду атаковать, наведя мышку на другой отряд
-и нажав клавишу &lt;tt class="docutils literal"&gt;A&lt;/tt&gt; (_a_ttack). Очков здоровия, брони, точности и т.д.
-нет, атакованный отряд просто сразу умирает.
-Анимация смерти является противоположностью анимации появления - отряд
-уходит под землю. Очков действий у отрядов нет, атаковать они могут любое
-количество раз.&lt;/p&gt;
-&lt;p&gt;По нажатию кнопки &lt;tt class="docutils literal"&gt;T&lt;/tt&gt; (end _t_urn) ход переходит к следующему игроку (хот сит)
-и ему показываются результаты действий противников. Отряды не
-принадлежат к какому-либо игроку и каждый игрок может отдавать приказы любому
-отряду.&lt;/p&gt;
-&lt;p&gt;Строчек кода на все ушло ~3800.&lt;/p&gt;
-&lt;p&gt;Собирается под линуксом на ночной сборке компилятора Ржавчины.
-Настроена автосборка на travis-ci.org и я стараюсь не давать коду отстать от
-ночной сборки компилятора больше, чем на день.&lt;/p&gt;
-&lt;p&gt;Исходники хранятся на гитхабе &lt;a class="reference external" href="https://github.com/ozkriff/marauder"&gt;https://github.com/ozkriff/marauder&lt;/a&gt;, для текстур
-и моделей отдельный репозиторий - &lt;a class="reference external" href="https://github.com/ozkriff/marauder-data"&gt;https://github.com/ozkriff/marauder-data&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Вооооот, так что делать мне еще очень и очень и очень много. :)&lt;/p&gt;
-&lt;!-- vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab: --&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Fri, 28 Feb 2014 00:00:00 +0400</pubDate><guid>tag:ozkriff.github.io,2014-02-28:2014-02-28--devlog-marauder-000.html</guid><category>devlog</category><category>marauder</category></item></channel></rss>
+&lt;p&gt;На проект я потратил …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ozkriff</dc:creator><pubDate>Fri, 28 Feb 2014 00:00:00 +0400</pubDate><guid isPermaLink="false">tag:ozkriff.github.io,2014-02-28:/2014-02-28--devlog-marauder-000.html</guid><category>devlog</category><category>marauder</category></item></channel></rss>
