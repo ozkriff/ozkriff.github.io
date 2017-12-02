@@ -76,15 +76,16 @@ on <em>every</em> commit.</p>
 <p>Btw, old badges were not that clear of what do they mean:</p>
 <p><img alt="build: passing, build: passing, passed - wtf?" src="https://i.imgur.com/tVWYsIt.png"></p>
 <p>Most programmers know that travis's badge usually means
-LINUX|OSX builds and appveyor is for Windows builds.
+Linux/OSX builds and appveyor is for Windows builds.
 But what does the third one?</p>
 <p>To fix this
 <a href="https://github.com/ozkriff/zemeroth/pull/158/commits/1f0fc2b75">I've added custom labels to the badges through shields.io</a>:</p>
-<ul>
-<li><a href="https://img.shields.io/travis/ozkriff/zemeroth/master.svg?label=Linux|OSX">https://img.shields.io/travis/ozkriff/zemeroth/master.svg?label=Linux|OSX</a></li>
-<li><a href="https://img.shields.io/appveyor/ci/ozkriff/zemeroth.svg?label=Windows">https://img.shields.io/appveyor/ci/ozkriff/zemeroth.svg?label=Windows</a></li>
-<li><a href="https://img.shields.io/circleci/project/github/ozkriff/zemeroth/master.svg?label=Android">https://img.shields.io/circleci/project/github/ozkriff/zemeroth/master.svg?label=Android</a></li>
-</ul>
+<div class="highlight"><pre><span></span>https://img.shields.io/travis/ozkriff/zemeroth/master.svg?label=Linux|OSX
+https://img.shields.io/appveyor/ci/ozkriff/zemeroth.svg?label=Windows
+https://img.shields.io/circleci/project/github/ozkriff/zemeroth/master.svg?label=Android
+</pre></div>
+
+
 <p>Looks a little bit better now:</p>
 <p><img alt="" src="https://i.imgur.com/e6ye1g3.png"></p>
 <hr>
