@@ -1,5 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>ozkriff's devlog</title><link href="http://ozkriff.github.io/" rel="alternate"></link><link href="http://ozkriff.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ozkriff.github.io/</id><updated>2017-12-01T00:00:00+03:00</updated><entry><title>Jokers, Rancor, Blood and more</title><link href="http://ozkriff.github.io/2017-12-01--devlog.html" rel="alternate"></link><published>2017-12-01T00:00:00+03:00</published><updated>2017-12-01T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2017-12-01:/2017-12-01--devlog.html</id><summary type="html">&lt;p&gt;Hi, comrades! Welcome to the second issue of Zemeroth's devlog.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>ozkriff's devlog</title><link href="http://ozkriff.github.io/" rel="alternate"></link><link href="http://ozkriff.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ozkriff.github.io/</id><updated>2018-03-03T00:00:00+03:00</updated><entry><title>Zemeroth v0.4: Abilities, Lasting Effects and New Unit Types</title><link href="http://ozkriff.github.io/2018-03-03--devlog.html" rel="alternate"></link><published>2018-03-03T00:00:00+03:00</published><updated>2018-03-03T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2018-03-03:/2018-03-03--devlog.html</id><summary type="html">&lt;p&gt;Hi, comrades! I'm happy to announce Zemeroth v0.4.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/ozkriff/zemeroth"&gt;Zemeroth&lt;/a&gt; is a turn-based hexagonal tactical game written in Rust.&lt;/p&gt;
+&lt;p&gt;You can &lt;strong&gt;download precompiled binaries&lt;/strong&gt; for Windows, Linux, macOS and android here:
+&lt;a href="https://github.com/ozkriff/zemeroth/releases/tag/v0.4.0"&gt;https://github.com/ozkriff/zemeroth/releases/tag/v0.4.0&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This release adds &lt;a href="https://github.com/Aaronepower/tokei"&gt;~2k lines of code&lt;/a&gt; - a lot …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Hi, comrades! I'm happy to announce Zemeroth v0.4.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/ozkriff/zemeroth"&gt;Zemeroth&lt;/a&gt; is a turn-based hexagonal tactical game written in Rust.&lt;/p&gt;
+&lt;p&gt;You can &lt;strong&gt;download precompiled binaries&lt;/strong&gt; for Windows, Linux, macOS and android here:
+&lt;a href="https://github.com/ozkriff/zemeroth/releases/tag/v0.4.0"&gt;https://github.com/ozkriff/zemeroth/releases/tag/v0.4.0&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This release adds &lt;a href="https://github.com/Aaronepower/tokei"&gt;~2k lines of code&lt;/a&gt; - a lot of new features!
+And it's hard to describe all the stuff only with words and static images
+so this time I'll try to use more GIFs
+(btw, &lt;a href="https://github.com/phw/peek"&gt;Peek&lt;/a&gt; is a cool app for fast gif recording).
+I hope that they won't cause too much problems for the readers.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;NOTE:&lt;/em&gt; Most of the GIFs were recorded on a map of 7 tiles wide,
+but the actual map is 11.
+See youtube video in the middle of the article for some real gameplay.&lt;/p&gt;
+&lt;h2&gt;Simple walking animation&lt;/h2&gt;
+&lt;p&gt;The first and simplest change is simple walking animations.
+Compare:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="no animation" src="images/2018-03-03-move-pre.gif"&gt;
+&lt;img alt="new arc animation" src="images/2018-03-03-move-now.gif"&gt;&lt;/p&gt;
+&lt;p&gt;That's just a small visual improvement but it makes the game more lively.&lt;/p&gt;
+&lt;h2&gt;Gameplay Updates&lt;/h2&gt;
+&lt;h3&gt;Wounds reduce attacks by one&lt;/h3&gt;
+&lt;p&gt;New rule: every successful attack now reduces target's attack by 1.
+It's small but important change because it increases the value of initiative
+and is relied upon by many abilities.&lt;/p&gt;
+&lt;h3&gt;Strong Attacks&lt;/h3&gt;
+&lt;p&gt;In the previous version all attacks were dealing 1 damage.
+Now, &lt;strong&gt;Swordsman&lt;/strong&gt; and &lt;strong&gt;Hammerman&lt;/strong&gt; (see below) deal 2 damage points per hit.&lt;/p&gt;
+&lt;h3&gt;Abilities&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="buttons: abilities" src="images/2018-03-03--abilities-buttons-swordsman.png"&gt;&lt;/p&gt;
+&lt;p&gt;Abilities is the main feature of this release.
+They come in two flavours: &lt;strong&gt;active&lt;/strong&gt; and &lt;strong&gt;passive&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Each active ability activation requires either &lt;strong&gt;Attack&lt;/strong&gt; (red)
+    or &lt;strong&gt;Joker&lt;/strong&gt; (purple) point and can trigger enemy's reaction attack.&lt;/p&gt;
+&lt;p&gt;Most abilities have cooldowns of 2 or 3 turns long.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Passive abilities don't require any action points and are activated automatically:
+    during attacks or at the begining of the turn, for example.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Particular abilities are explained in unit sections below.&lt;/p&gt;
+&lt;h3&gt;New Unit: Toxic Imp&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="toxic imp demo" src="images/2018-03-03-imp-poison.gif"&gt;&lt;/p&gt;
+&lt;p&gt;Let's start with something simple.
+This enemy is similar to basic Imp, but does no direct damage
+and has &lt;strong&gt;Poison Attack&lt;/strong&gt; passive ability.&lt;/p&gt;
+&lt;p&gt;Poisoned unit receives one would at the begining of each turn.
+Note that poison also takes away one attack from the victim,
+weaking it even more.
+Poison reduces attacks of poisoned unit by one.&lt;/p&gt;
+&lt;p&gt;Toxic Imp also has no reaction attacks as he's dangerous enough without them.&lt;/p&gt;
+&lt;h3&gt;New Unit: Imp-Bomber&lt;/h3&gt;
+&lt;p&gt;Poison is cool, but it doesn't really changes the game much.
+One obvious problem of v0.3 was &lt;a href="http://keithburgun.net/turtling"&gt;turtling&lt;/a&gt; -
+no movement, boring.
+Reaction attacks encourage defensive playstyle.&lt;/p&gt;
+&lt;p&gt;So a new unit was added: &lt;strong&gt;Imp-Bomber&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="imp-bomber in action" src="images/2018-03-03--imp-bomb-attack.gif"&gt;&lt;/p&gt;
+&lt;p&gt;^ He has an active ability &lt;strong&gt;Bomb&lt;/strong&gt; and a very simple AI
+that tries to use it, if it's available, and then acts as a normal Imp.
+Bombs with delayed detonation is a classic way to help with this.&lt;/p&gt;
+&lt;p&gt;Bomb explodes on the next turn and damages everyone around,
+knocking them back for one tile.&lt;/p&gt;
+&lt;p&gt;NOTE: As Imps are stupid they can be easily damaged by their bombs. Use it.&lt;/p&gt;
+&lt;p&gt;This enemy doesn't allow you to stay in a good position without movement.
+But you still can sometimes move back and forth, so...&lt;/p&gt;
+&lt;h3&gt;New Unit: Imp-Summoner&lt;/h3&gt;
+&lt;p&gt;...Soo, meet &lt;strong&gt;Imp-Summoner&lt;/strong&gt;!
+This unit summons so many imps so the only way to stay alive
+is to rush and attack him while summoned imps are still weak.
+Summoners are your main targets.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="'summon' ability" src="images/2018-03-03--ability-summon.gif"&gt;&lt;/p&gt;
+&lt;p&gt;^ &lt;strong&gt;Summon&lt;/strong&gt; ability creates three imps of a random type.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;NOTE: Actually, the plan is to make each &lt;strong&gt;summon&lt;/strong&gt; activation even more powerful:
+call 3-4-5-6 imps, to increase the pressure over time.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Summoner is slow - сan either move one tile or attack/cast during his turn -
+but he has a lot of strength (health) points
+and has &lt;strong&gt;Heavy Impact&lt;/strong&gt; and &lt;strong&gt;Regeneration&lt;/strong&gt; passive abilities:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Regeneration + Heavy Impact" src="images/2018-03-03--summoner-regeneration-hit.gif"&gt;&lt;/p&gt;
+&lt;p&gt;^ &lt;strong&gt;Regeneration&lt;/strong&gt; restores one strength point in the begining of every turn.
+&lt;strong&gt;Heavy Impact&lt;/strong&gt; throws opponents one tile away on every hit (&lt;strong&gt;FlyOff&lt;/strong&gt; effect).&lt;/p&gt;
+&lt;h3&gt;New Unit: Alchemist&lt;/h3&gt;
+&lt;p&gt;Let's move to player's new units: meet the first one - &lt;strong&gt;Alchemist&lt;/strong&gt;.
+He's a support unit and has &lt;strong&gt;no direct attacks&lt;/strong&gt;,
+but has a bunch of useful abilities.&lt;/p&gt;
+&lt;p&gt;Basic &lt;strong&gt;Bomb&lt;/strong&gt; ability works the same way as it does for Imp-Bomber.
+&lt;strong&gt;Fire bomb&lt;/strong&gt; and &lt;strong&gt;poison bomb&lt;/strong&gt; are a little bit more interesting:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="fire bomb demo" src="images/2018-03-03-fire-bomb.gif"&gt;&lt;/p&gt;
+&lt;p&gt;^ &lt;strong&gt;Fire&lt;/strong&gt; object just deals one damage point each turn
+to anyone standing in the same tile
+or to anyone walking through it.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="poison bomb demo" src="images/2018-03-03-poison-bomb.gif"&gt;&lt;/p&gt;
+&lt;p&gt;^ &lt;strong&gt;Poison cloud&lt;/strong&gt; object acts similar to fire,
+but it casts &lt;strong&gt;Poisoned&lt;/strong&gt; effects on agents.
+This effects deals one point of damage each turn and lasts for two turns.&lt;/p&gt;
+&lt;p&gt;Both fire and poison cloud objects disappear after two rounds.
+Note that damage from fire and poison also removes attacks from target -
+this can protect your alchemist in tough situations.&lt;/p&gt;
+&lt;p&gt;Alchemist has one more useful ability:
+&lt;strong&gt;Heal&lt;/strong&gt; can restore two strength points and remove any lasting effects:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="&amp;quot;Heal&amp;quot; ability demo" src="images/2018-03-03-heal.gif"&gt;&lt;/p&gt;
+&lt;h3&gt;New Unit: Hammerman&lt;/h3&gt;
+&lt;p&gt;Slow but powerful unit. His attack deals 2 damage points
+and he has &lt;strong&gt;HeavyImpact&lt;/strong&gt; passive ability (same as Summoner, see above).&lt;/p&gt;
+&lt;p&gt;&lt;img alt="&amp;quot;Club&amp;quot; + move + attack combo" src="images/2018-03-03--hammerman-club-hit.gif"&gt;&lt;/p&gt;
+&lt;p&gt;^ &lt;strong&gt;Club&lt;/strong&gt; ability causes &lt;strong&gt;Stun&lt;/strong&gt; lasting effect and &lt;strong&gt;FlyOff&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Stun&lt;/strong&gt; lasting effect removes all attacks/moves/jokers
+from the target for one round.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="&amp;quot;Knockback&amp;quot; a boulder + &amp;quot;Club&amp;quot; a bomb demo" src="images/2018-03-03-club-knockback.gif"&gt;&lt;/p&gt;
+&lt;p&gt;^ These abilities can be used to move bombs and boulders too.
+You can push enemy into fire, poison or bomb.
+Or you can push some other your figher out of danger if needed.&lt;/p&gt;
+&lt;h3&gt;Updated Swordsman&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Swordsman&lt;/strong&gt; also got a few updates.
+His main attack now also deals two points of damage.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="&amp;quot;Rage&amp;quot; ability demo" src="images/2018-03-03--rage.gif"&gt;&lt;/p&gt;
+&lt;p&gt;^ &lt;strong&gt;Rage&lt;/strong&gt; ability gives a lot of attacks but has a long cooldown,
+so you need to choose carefully when to use it.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Jump ability" src="images/2018-03-03--swordsman-jump.gif"&gt;&lt;/p&gt;
+&lt;p&gt;^ &lt;strong&gt;Jump&lt;/strong&gt; ability - think about Diablo's Barbarian
+(future versions of the ability may get stunning effect ;) ).&lt;/p&gt;
+&lt;p&gt;&lt;img alt="&amp;quot;Dash&amp;quot; escape demo" src="images/2018-03-03-dash-away.gif"&gt;&lt;/p&gt;
+&lt;p&gt;^ &lt;strong&gt;Dash&lt;/strong&gt; ability allows you to
+move one tile without triggering reaction attacks.
+Allows you to start the attack or to escape from the enemies.&lt;/p&gt;
+&lt;p&gt;It may be hard to escape from a bad position witout &lt;strong&gt;Dash&lt;/strong&gt; or &lt;strong&gt;Jump&lt;/strong&gt; ability:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Can't escape with simple move demo" src="images/2018-03-03-no-dash-escape-attempt.gif"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Dash&lt;/strong&gt; can be combined with &lt;strong&gt;Rage&lt;/strong&gt; and &lt;strong&gt;Jump&lt;/strong&gt; abilities to perform
+a series of attacks and return back to safety:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Rage, Dash &amp;amp; Jump combo" src="images/2018-03-03--swordsman-combo.gif"&gt;&lt;/p&gt;
+&lt;h3&gt;Updated Spearman&lt;/h3&gt;
+&lt;p&gt;Also got a &lt;strong&gt;Jump&lt;/strong&gt; ability, but of a different flavour:
+three tiles distance and three turns cooldown.
+So it's mostly useful for escaping:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="jump away" src="images/2018-03-03--spearman-jump-away.gif"&gt;&lt;/p&gt;
+&lt;h2&gt;Gameplay Video&lt;/h2&gt;
+&lt;p&gt;So, putting this all together:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=DpDyVFpoDSQ"&gt;&lt;img alt="gameplay" src="https://i.imgur.com/LyO86w3.png"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It starts reminding something like a real game, isn't it? :)
+Though a lot of work is still need to be done.&lt;/p&gt;
+&lt;h2&gt;Implementation note: RON v0.2&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.com/ron-rs/ron/releases/tag/v0.2"&gt;RON v0.2&lt;/a&gt;
+added &lt;code&gt;unwrap_newtypes&lt;/code&gt; extension that seriously simplified my config files
+by getting rid of a lot of braces:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="RON diff" src="images/2018-03-03--ron-diff.gif"&gt;&lt;/p&gt;
+&lt;p&gt;Thanks, @Torkleyy!&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img alt="Zemeroth on android device" src="images/2018-03-03-phone.gif"&gt;&lt;/p&gt;
+&lt;p&gt;That's all for today, I have to go play &lt;a href="http://store.steampowered.com/app/590380/Into_the_Breach"&gt;Into the Breach&lt;/a&gt;! :)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;News&lt;/strong&gt;: &lt;a href="https://twitter.com/ozkriff"&gt;@ozkriff on twitter&lt;/a&gt;,
+&lt;a href="imgur.com/a/SMVqO"&gt;imgur devlog&lt;/a&gt;&lt;/p&gt;</content><category term="devlog"></category><category term="zemeroth"></category></entry><entry><title>Jokers, Rancor, Blood and more</title><link href="http://ozkriff.github.io/2017-12-01--devlog.html" rel="alternate"></link><published>2017-12-01T00:00:00+03:00</published><updated>2017-12-01T00:00:00+03:00</updated><author><name>ozkriff</name></author><id>tag:ozkriff.github.io,2017-12-01:/2017-12-01--devlog.html</id><summary type="html">&lt;p&gt;Hi, comrades! Welcome to the second issue of Zemeroth's devlog.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/ozkriff/zemeroth"&gt;Zemeroth&lt;/a&gt; is a turn-based hexagonal tactical game written in Rust.&lt;/p&gt;
 &lt;p&gt;It slowly grows into a middle-sized project:
 &lt;a href="https://github.com/ozkriff/zemeroth"&gt;Zemeroth&lt;/a&gt; has &lt;a href="https://github.com/Aaronepower/tokei"&gt;4.3k LoCs&lt;/a&gt; and 82🌟 now.
