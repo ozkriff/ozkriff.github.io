@@ -1,21 +1,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
         <url>
-            <loc>https://ozkriff.github.io/2014-04-14--devlog-marauder-007/</loc>
+            <loc>https://ozkriff.github.io/2014-03-31--devlog-marauder-005/</loc>
             
-                <lastmod>2014-04-14</lastmod>
-            
-        </url>
-    
-        <url>
-            <loc>https://ozkriff.github.io/2016-02-23--devlog/</loc>
-            
-                <lastmod>2016-02-23</lastmod>
+                <lastmod>2014-03-31</lastmod>
             
         </url>
     
         <url>
-            <loc>https://ozkriff.github.io/pages/</loc>
+            <loc>https://ozkriff.github.io/2016-01-28--devlog/</loc>
+            
+                <lastmod>2016-01-28</lastmod>
             
         </url>
     
@@ -27,6 +22,13 @@
         </url>
     
         <url>
+            <loc>https://ozkriff.github.io/2016-02-10--devlog/</loc>
+            
+                <lastmod>2016-02-10</lastmod>
+            
+        </url>
+    
+        <url>
             <loc>https://ozkriff.github.io/2018-03-03--devlog/</loc>
             
                 <lastmod>2018-03-03</lastmod>
@@ -34,9 +36,33 @@
         </url>
     
         <url>
-            <loc>https://ozkriff.github.io/2014-03-03--devlog-marauder-001/</loc>
+            <loc>https://ozkriff.github.io/pages/</loc>
             
-                <lastmod>2014-03-03</lastmod>
+        </url>
+    
+        <url>
+            <loc>https://ozkriff.github.io/pages/about/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://ozkriff.github.io/2016-02-05--devlog/</loc>
+            
+                <lastmod>2016-02-05</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://ozkriff.github.io/2014-05-18--devlog-marauder-012/</loc>
+            
+                <lastmod>2014-05-18</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://ozkriff.github.io/2017-01-24--devlog/</loc>
+            
+                <lastmod>2017-01-24</lastmod>
             
         </url>
     
@@ -48,9 +74,58 @@
         </url>
     
         <url>
-            <loc>https://ozkriff.github.io/2016-01-28--devlog/</loc>
+            <loc>https://ozkriff.github.io/2016-01-25--devlog/</loc>
             
-                <lastmod>2016-01-28</lastmod>
+                <lastmod>2016-01-25</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://ozkriff.github.io/2016-01-31--devlog/</loc>
+            
+                <lastmod>2016-01-31</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://ozkriff.github.io/2016-02-23--devlog/</loc>
+            
+                <lastmod>2016-02-23</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://ozkriff.github.io/2016-01-29--devlog/</loc>
+            
+                <lastmod>2016-01-29</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://ozkriff.github.io/2016-01-26--devlog/</loc>
+            
+                <lastmod>2016-01-26</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://ozkriff.github.io/2016-01-27--devlog/</loc>
+            
+                <lastmod>2016-01-27</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://ozkriff.github.io/2017-08-17--devlog/</loc>
+            
+                <lastmod>2017-08-17</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://ozkriff.github.io/2014-03-17--devlog-marauder-003/</loc>
+            
+                <lastmod>2014-03-17</lastmod>
             
         </url>
     
@@ -69,58 +144,9 @@
         </url>
     
         <url>
-            <loc>https://ozkriff.github.io/2014-03-31--devlog-marauder-005/</loc>
+            <loc>https://ozkriff.github.io/2016-02-14--devlog/</loc>
             
-                <lastmod>2014-03-31</lastmod>
-            
-        </url>
-    
-        <url>
-            <loc>https://ozkriff.github.io/2016-01-25--devlog/</loc>
-            
-                <lastmod>2016-01-25</lastmod>
-            
-        </url>
-    
-        <url>
-            <loc>https://ozkriff.github.io/2015-11-30--devlog-live-again/</loc>
-            
-                <lastmod>2015-11-30</lastmod>
-            
-        </url>
-    
-        <url>
-            <loc>https://ozkriff.github.io/2017-12-01--devlog/</loc>
-            
-                <lastmod>2017-12-01</lastmod>
-            
-        </url>
-    
-        <url>
-            <loc>https://ozkriff.github.io/2014-05-12--devlog-marauder-011/</loc>
-            
-                <lastmod>2014-05-12</lastmod>
-            
-        </url>
-    
-        <url>
-            <loc>https://ozkriff.github.io/2014-03-11--devlog-marauder-002/</loc>
-            
-                <lastmod>2014-03-11</lastmod>
-            
-        </url>
-    
-        <url>
-            <loc>https://ozkriff.github.io/2016-01-26--devlog/</loc>
-            
-                <lastmod>2016-01-26</lastmod>
-            
-        </url>
-    
-        <url>
-            <loc>https://ozkriff.github.io/2016-02-05--devlog/</loc>
-            
-                <lastmod>2016-02-05</lastmod>
+                <lastmod>2016-02-14</lastmod>
             
         </url>
     
@@ -132,44 +158,6 @@
         </url>
     
         <url>
-            <loc>https://ozkriff.github.io/2016-02-14--devlog/</loc>
-            
-                <lastmod>2016-02-14</lastmod>
-            
-        </url>
-    
-        <url>
-            <loc>https://ozkriff.github.io/2017-01-24--devlog/</loc>
-            
-                <lastmod>2017-01-24</lastmod>
-            
-        </url>
-    
-        <url>
-            <loc>https://ozkriff.github.io/pages/about/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://ozkriff.github.io/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://ozkriff.github.io/2014-05-18--devlog-marauder-012/</loc>
-            
-                <lastmod>2014-05-18</lastmod>
-            
-        </url>
-    
-        <url>
-            <loc>https://ozkriff.github.io/2017-08-17--devlog/</loc>
-            
-                <lastmod>2017-08-17</lastmod>
-            
-        </url>
-    
-        <url>
             <loc>https://ozkriff.github.io/2014-05-05--devlog-marauder-010/</loc>
             
                 <lastmod>2014-05-05</lastmod>
@@ -177,30 +165,37 @@
         </url>
     
         <url>
-            <loc>https://ozkriff.github.io/2016-02-10--devlog/</loc>
+            <loc>https://ozkriff.github.io/2015-11-30--devlog-live-again/</loc>
             
-                <lastmod>2016-02-10</lastmod>
-            
-        </url>
-    
-        <url>
-            <loc>https://ozkriff.github.io/2014-03-17--devlog-marauder-003/</loc>
-            
-                <lastmod>2014-03-17</lastmod>
+                <lastmod>2015-11-30</lastmod>
             
         </url>
     
         <url>
-            <loc>https://ozkriff.github.io/2016-01-27--devlog/</loc>
+            <loc>https://ozkriff.github.io/2014-03-03--devlog-marauder-001/</loc>
             
-                <lastmod>2016-01-27</lastmod>
+                <lastmod>2014-03-03</lastmod>
             
         </url>
     
         <url>
-            <loc>https://ozkriff.github.io/2016-01-31--devlog/</loc>
+            <loc>https://ozkriff.github.io/2014-05-12--devlog-marauder-011/</loc>
             
-                <lastmod>2016-01-31</lastmod>
+                <lastmod>2014-05-12</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://ozkriff.github.io/2017-12-01--devlog/</loc>
+            
+                <lastmod>2017-12-01</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://ozkriff.github.io/2014-04-14--devlog-marauder-007/</loc>
+            
+                <lastmod>2014-04-14</lastmod>
             
         </url>
     
@@ -212,9 +207,14 @@
         </url>
     
         <url>
-            <loc>https://ozkriff.github.io/2016-01-29--devlog/</loc>
+            <loc>https://ozkriff.github.io/</loc>
             
-                <lastmod>2016-01-29</lastmod>
+        </url>
+    
+        <url>
+            <loc>https://ozkriff.github.io/2014-03-11--devlog-marauder-002/</loc>
+            
+                <lastmod>2014-03-11</lastmod>
             
         </url>
     
