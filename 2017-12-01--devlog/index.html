@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>ozkriff&#x27;s devlog</title>
+
+      <!-- CSS -->
+      <link rel="stylesheet" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;print.css" media="print">
+      <link rel="stylesheet" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;poole.css">
+      <link rel="stylesheet" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;hyde.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+      
+        <link rel="shortcut icon" type="image/png" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;favicon.png">
+      
+
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;rss.xml">
+      
+
+      
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-70829739-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-70829739-1');
+        </script>
+      
+
+      
+      
+    </head>
+
+    <body class=" ">
+        
+            <div class="sidebar">
+                <div class="container ">
+                    <div class="sidebar-about">
+                        
+                            <a href="https:&#x2f;&#x2f;ozkriff.github.io"><h1>ozkriff&#x27;s devlog</h1></a>
+                            
+                        
+                    </div>
+
+                    <ul class="sidebar-nav">
+                        
+                        
+                        <li class="sidebar-nav-item"><a href="&#x2f;pages&#x2f;about">about</a></li>
+                        
+                        <li class="sidebar-nav-item"><a href="https:&#x2f;&#x2f;twitter.com&#x2f;ozkriff">twitter</a></li>
+                        
+                        <li class="sidebar-nav-item"><a href="https:&#x2f;&#x2f;github.com&#x2f;ozkriff">github</a></li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div class="content container">
+            
+<div class="post">
+  <h1 class="post-title">Zemeroth v0.0.3: Jokers, Rancor, Blood and more</h1>
+  
+  <span class="post-date">2017-12-01</span>
+  
+  <p>Hi, comrades! Welcome to the second issue of Zemeroth's devlog.</p>
+<p><a href="https://github.com/ozkriff/zemeroth">Zemeroth</a> is a turn-based hexagonal tactical game written in Rust.</p>
+<p>It slowly grows into a middle-sized project:
+<a href="https://github.com/ozkriff/zemeroth">Zemeroth</a> has <a href="https://github.com/Aaronepower/tokei">4.3k LoCs</a> and 82🌟 now.
+Though I still can't find enough free time to work on it on daily basis
+and I have to take weeks-long breaks sometimes.</p>
+<p>So, the progress is quite slow 🐌 but still,
+I've managed to do some amount of useful stuff during last three months.
+Here's a short video of how the game looks right now:</p>
+<div class="youtube"><iframe frameborder="0" allowfullscreen src="https://www.youtube.com/embed/XrC4eCqspUo?rel=0&showinfo=0"></iframe></div>
+<p>Ok, let's talk about what exactly have I done for the project during this autumn.</p>
+<h2 id="pre-built-binaries"><a href="https://github.com/ozkriff/zemeroth/issues/56">Pre-built binaries</a></h2>
+<p>The most important change for anyone who wants to try out Zemeroth
+and don't want to compile it from the source
+is auto-deployed pre-built binaries.</p>
+<p><strong>You can download them here:</strong>
+<strong><a href="https://github.com/ozkriff/zemeroth/releases">zemeroth/releases</a></strong></p>
+<p>They are compiled and deployed to Github's releases
+by CI servers (Travis, Appveyor and CircleCI) on every tag.</p>
+<p><a href="https://github.com/ozkriff/zemeroth/releases/tag/v0.0.3">The latest release at the time of writing is <code>v0.0.3</code></a>:</p>
+<p><a href="https://github.com/ozkriff/zemeroth/releases/tag/v0.0.3"><img src="https://ozkriff.github.io/2017-12-01--devlog/v-0-0-3-release-page.png" alt="v.0.0.3 release page" /></a></p>
+<p>Linux/Windows and OSX versions are not that interesting - they are
+built exactly like <a href="https://github.com/ozkriff/zoc/issues/242">it was done for ZoC</a>.</p>
+<p>Deploying Android <code>apk</code>s is a more interesting story.</p>
+<p>I've stolen basic apk-building script for CircleCI from <a href="https://github.com/tomaka">@tomaka</a>
+(thanks again!) - <a href="https://github.com/tomaka/glutin/pull/919">https://github.com/tomaka/glutin/pull/919</a> -
+and it worked straight out of the box.</p>
+<p>Deploying <code>apk</code>s is harder:
+circle-ci doesn't provide a built-in convenient way of deploying to Github,
+so you have to wield some curl/github_api magic.</p>
+<p><a href="https://github.com/ozkriff/zemeroth/blob/efc36eb08/.circleci/upload_apk_to_github_releases.sh">All the magic is packed in .circleci/upload_apk_to_github_releases.sh script</a>
+(which is based on <a href="https://gist.github.com/stefanbuck/ce788fee19ab6eb0b4447a85fc99f447">this gist</a>).</p>
+<p>Also, some <a href="https://github.com/ozkriff/zemeroth/blob/efc36eb08/.circleci/config.yml#L20-L33">strange branch magic is required</a>
+if you don't want to run both <code>build</code> and <code>deploy</code> targets
+on <em>every</em> commit.</p>
+<hr />
+<p>Btw, old badges were not that clear of what do they mean:</p>
+<p><img src="https://ozkriff.github.io/2017-12-01--devlog/old-badges.png" alt="build: passing, build: passing, passed - wtf?" /></p>
+<p>Most programmers know that travis's badge usually means
+Linux/OSX builds and appveyor is for Windows builds.
+But what does the third one?</p>
+<p>To fix this
+<a href="https://github.com/ozkriff/zemeroth/pull/158/commits/1f0fc2b75">I've added custom labels to the badges through shields.io</a>:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">https://img.shields.io/travis/ozkriff/zemeroth/master.svg?label=Linux|OSX
+https://img.shields.io/appveyor/ci/ozkriff/zemeroth.svg?label=Windows
+https://img.shields.io/circleci/project/github/ozkriff/zemeroth/master.svg?label=Android
+</span></pre>
+<p>Looks a little bit better now:</p>
+<p><img src="https://ozkriff.github.io/2017-12-01--devlog/new-badges.png" alt="uniform new badges" /></p>
+<hr />
+<p><em>And there're two yet-to-be-solved issues:</em></p>
+<ul>
+<li><em><a href="https://github.com/ozkriff/zemeroth/issues/136"><code>apk</code>s are built in the debug mode</a></em></li>
+<li><em><a href="https://github.com/ozkriff/zemeroth/issues/161">Deploy precompiled versions of the latest commit to a special release</a></em></li>
+</ul>
+<h2 id="decorations-grass-and-blood-pools">Decorations: Grass and Blood Pools</h2>
+<p>The <a href="https://github.com/ozkriff/zemeroth/issues/73"><strong>Grass</strong></a> is just a randomly-placed decoration,
+but <a href="https://github.com/ozkriff/zemeroth/issues/42"><strong>Blood Pools</strong></a> are also an additional indicator
+of a successful attack:</p>
+<p><img src="https://ozkriff.github.io/2017-12-01--devlog/grass.png" alt="two tiles of grass" />
+<img src="https://ozkriff.github.io/2017-12-01--devlog/bool-of-blood.png" alt="pool of blood" /></p>
+<h2 id="jokers-and-strength">Jokers and Strength</h2>
+<p>Now, some actual gameplay changes!</p>
+<p>To make Zemeroth a little bit more tactical
+<a href="https://github.com/ozkriff/zemeroth/issues/59"><strong>Jokers were added</strong></a>. They can be used either as Attacks or Moves.</p>
+<p>In the previous version, units were dying from a single hit.
+That doesn't work well with reaction attacks as they were dying too quickly:
+fighters should have some kind of basic hit points.</p>
+<p><a href="https://github.com/ozkriff/zemeroth/issues/63">So <strong>Strength</strong> was added.</a></p>
+<p>This name is stolen from <a href="http://store.steampowered.com/app/237990/The_Banner_Saga">Banner Saga</a>:
+as I'm going to use this property also as a basic attack modifier.
+Right now every successful attack deals a damage of one strength
+but later a much more fine-grained battle math will be implemented.</p>
+<h2 id="dots">Dots</h2>
+<p>To show the most important dynamic information about units on the map
+<a href="https://github.com/ozkriff/zemeroth/issues/95"><strong>&quot;Dots&quot;</strong> were added</a>.</p>
+<p><img src="https://ozkriff.github.io/2017-12-01--devlog/info-dots.png" alt="thee agents with different stats showed by color dots" /></p>
+<p>The current legend is:</p>
+<ul>
+<li>&quot;Strength&quot; - green;</li>
+<li>&quot;Attacks&quot; - red;</li>
+<li>&quot;Moves&quot; - blue;</li>
+<li>&quot;Jokers&quot; - purple.</li>
+</ul>
+<hr />
+<p><a href="https://github.com/LPGhatguy">@LPGhatguy</a> <a href="https://twitter.com/LPGhatguy/status/902800456082001920">pointed me out on twitter</a> to a problem with colors:</p>
+<blockquote>
+<p>With the amount of red/green in the game so far,
+you should try it with a Deuteranopia filter!</p>
+</blockquote>
+<p>I've googled a simulator:
+<a href="https://www.etre.com/tools/colourblindsimulator">etre.com/tools/colourblindsimulator</a>.
+Here's an example of its output:</p>
+<p><img src="https://ozkriff.github.io/2017-12-01--devlog/color-issue.png" alt="Example of output. Dots are hard to read now" /></p>
+<p>And, yeah, that doesn't look readable at all.
+<a href="https://github.com/ozkriff/zemeroth/issues/98">It's clear that I should change the colors and shapes</a>
+in the near future.</p>
+<p><em>Btw, <a href="http://gameaccessibilityguidelines.com">http://gameaccessibilityguidelines.com</a> is a very interesting resource.
+I've never thought about a lot of issues raised and explained there.</em></p>
+<h2 id="info-panel-with-selected-unit-s-stats"><a href="https://github.com/ozkriff/zemeroth/pull/92">Info panel with selected unit's stats</a></h2>
+<p>Dots can show only a small portion of the dynamic information about units.
+Other less important dynamic or static information goes into the side panel.</p>
+<p><img src="https://ozkriff.github.io/2017-12-01--devlog/info-panel.png" alt="info panel showing imp's stats using text" /></p>
+<p>Btw, <a href="https://github.com/ozkriff/zemeroth/pull/100">now you can select enemy units</a> to see their move range and stats
+in the info panel.</p>
+<p><em>NOTE: additionally, a deselection of any unit on the second click was added.</em></p>
+<h2 id="spearman"><a href="https://github.com/ozkriff/zemeroth/issues/65">Spearman</a></h2>
+<p><img src="https://ozkriff.github.io/2017-12-01--devlog/spearman.png" alt="closeup of a spearman" /></p>
+<p>Another important gameplay change is
+an addition of third fighter type: &quot;Spearman&quot;.</p>
+<p>He has an attack radius of two tiles and
+can control with reaction attacks a big area of 18 tiles around him.</p>
+<p><img src="https://ozkriff.github.io/2017-12-01--devlog/spearman-controls-territory.png" alt="spearman can attack distant enemies" /></p>
+<p>On the picture above the spearman has only one Joker point:
+this is not an attack unit, he's almost useless during his own turn.</p>
+<p>But if spearman hasn't used its Joker during his own turn,
+he has <em>four</em> reaction attacks during enemy's turn:</p>
+<p><img src="https://ozkriff.github.io/2017-12-01--devlog/spearman-many-reaction-attacks.png" alt="example of a spearman with 4 reactive attacks" /></p>
+<p>And that's a lot considering that reaction attacks can interrupt enemy's movement.</p>
+<p>Also, this unit has only three Strength points to accent his defence role.</p>
+<h2 id="rancor-a-stupid-component-system"><a href="https://github.com/ozkriff/zemeroth/issues/141">Rancör</a> - a Stupid Component System</h2>
+<p>Previously, Zemeroth's units were represented by a single struct
+holding all the stuff as its fields.
+Not a very adaptable solutions and it was impossible
+to create a non-unit type of objects.</p>
+<p>It's the end of 2017 so the solution to this problem is obviously <em>components</em>.</p>
+<p>With a component system, I should be able to implement:
+<a href="https://github.com/ozkriff/zemeroth/issues/142">Boulders</a>,
+<a href="https://github.com/ozkriff/zemeroth/issues/69">Bombs</a>,
+Fire,
+<a href="https://github.com/ozkriff/zemeroth/issues/154">Poison stuff</a>,
+<a href="https://github.com/ozkriff/zemeroth/issues/108">Corpses</a>,
+etc.</p>
+<p>I don't think Zemeroth needs a full-featured ECS solution
+(like <a href="https://github.com/slide-rs/specs">specs</a>) as the game is turn-based.
+A bunch of <code>HashMap&lt;ObjId, ComponentType&gt;</code> will do the work fine.</p>
+<p>So.. I've reinvented another ~~<a href="https://www.reddit.com/r/rust/comments/6zdvza/my_experience_participating_in_highload_cup_re/dmulhzj">bicycle 🚲</a>~~ square wheel! \o/</p>
+<p><a href="https://github.com/ozkriff/zemeroth/issues/141">Meet <strong>Rancör</strong> - a simple macro-based component system</a>.
+I'm not calling this an ECS because it has no systems, it's just a storage.</p>
+<p>Nothing fancy, you just declare some usual structs for components
+and create a hidden <code>HashMap</code>-based monster-struct using a friendly macro:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">rancor_storage!(Parts&lt;ObjId&gt;: {
+    strength: component::Strength,
+    pos: component::Pos,
+    meta: component::Meta,
+    belongs_to: component::BelongsTo,
+    agent: component::Agent,
+});
+</span></pre>
+<p>And then use individual fields:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">parts.agent.</span><span style="color:#96b5b4;">insert</span><span style="color:#c0c5ce;">(id, agent);
+...
+</span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> agent = </span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">.state.</span><span style="color:#96b5b4;">parts</span><span style="color:#c0c5ce;">().agent.</span><span style="color:#96b5b4;">get</span><span style="color:#c0c5ce;">(id);
+</span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;"> agent.moves == Moves(</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">) &amp;&amp; agent.jokers == Jokers(</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">) { ... }
+...
+parts.agent.</span><span style="color:#96b5b4;">remove</span><span style="color:#c0c5ce;">(id);
+</span></pre>
+<p>Or call <code>parts.remove(id);</code> to completely wipe-out the entity.</p>
+<hr />
+<p>Rancor seems to work fine, but I see two issues:</p>
+<ul>
+<li>Too many braces in RON file with prototypes</li>
+<li><a href="(https://github.com/ozkriff/zemeroth/issues/105#issuecomment-335439037)">Duplication of data between initial values and their base values</a></li>
+</ul>
+<p>As I do not expect anyone to use it, this carte lives in the Zemeroth's repo.</p>
+<p><em>Btw, see <a href="https://gridbugs.org/programming-languages-make-terrible-game-engines">https://gridbugs.org/programming-languages-make-terrible-game-engines</a>
+and <a href="https://gridbugs.org/modifying-entity-component-system-for-turn-based-games">https://gridbugs.org/modifying-entity-component-system-for-turn-based-games</a>
+articles about component systems and turn-based games in Rust.</em></p>
+<h2 id="toml-ron"><a href="https://github.com/ozkriff/zemeroth/pull/67">TOML -&gt; RON</a></h2>
+<p>Rust community kinda loves TOML, but I'm not a fan of this format.
+TOML is not <em>that</em> bad, but I find its tables too strange for anything
+but simple configs.</p>
+<p>And I've decided to try to use <strong><a href="https://github.com/ron-rs/ron">RON</a></strong> format for Zemeroth.</p>
+<p><em>(<a href="https://github.com/ron-rs/ron">RON's readme</a> has a pretty good list of reasons
+of why you may not want to use other formats)</em></p>
+<p>Thanks to <a href="https://github.com/kvark">@kvark</a> for starting this project originally
+and thanks to <a href="https://github.com/torkleyy">@torkleyy</a> for resurrecting the project
+<a href="https://github.com/amethyst/amethyst/pull/269">for Amethyst's needs</a>.</p>
+<h2 id="boulders-and-rocks">Boulders and Rocks</h2>
+<p>To make tactics a little bit more interesting
+and to prototype non-agent objects using Rancör
+I've <a href="https://github.com/ozkriff/zemeroth/issues/142">added some tile-blocking <strong>Boulders</strong></a>.
+This is a first non-agent object type in the game.</p>
+<p>It's a little bit strange that I have different terrain types
+support for a long time, but not actually using them in the game at all.
+<a href="https://github.com/ozkriff/zemeroth/pull/164">Meet randomly-placed tiles of <strong>TileType::Rocks</strong> type</a>.
+You can move through these tiles, but it requires 3 move points and not 1.</p>
+<p><img src="https://ozkriff.github.io/2017-12-01--devlog/rocks.png" alt="a map with some boulders and rock tiles" /></p>
+<p>Rock tiles and boulders work together with blood and grass to make
+the battlefield look a little bit less boring.</p>
+<p><em>(Yes, I know that it'll be better to use a different texture for Rocks tiles,
+not just a darker color)</em></p>
+<h2 id="logging-log-env-logger"><a href="https://github.com/ozkriff/zemeroth/issues/83">Logging: <code>log</code> &amp; <code>env_logger</code></a></h2>
+<p>I'm tired of adding a special-cased <code>println</code>s to debug
+something small and removing them before the commit.</p>
+<p>As I don't have much experience with slog, I decided
+to replace <code>println</code>s with a classic <a href="https://docs.rs/env_logger">env_logger</a>.
+It seems to work, for now,
+the source code is filled with all kinds of <code>info!</code> and <code>debug!</code> calls. :)</p>
+<h2 id="hate-examples">Häte: <a href="https://github.com/ozkriff/zemeroth/pull/131">Examples</a></h2>
+<p>Some news about <a href="https://ozkriff.github.io/2017-08-17--devlog.html#hate2d">my silly game engine</a>.</p>
+<p>It's important to decouple Häte from Zemeroth.
+First, Häte was extracted to a separate crate inside the repo.
+The next step is to separate example/test screens.</p>
+<p>These screens do nothing game-specific so they belong to the engine.</p>
+<p>There was a bunch of tasks needed to be solved before extracting the examples:</p>
+<ul>
+<li>
+<p><a href="https://github.com/ozkriff/zemeroth/issues/129">Baked GLSL shaders into Häte's source</a>.
+They are supposed to be dead-simple &amp; tightly coupled with
+the engine - what's the point of having them in user's assets dir?</p>
+</li>
+<li>
+<p><a href="https://github.com/ozkriff/zemeroth/issues/130">Baked a default font into Häte's source</a>.
+I've used the smallest font from this article:
+<a href="http://oxfordshireweb.com/smallest-file-size-google-web-fonts">http://oxfordshireweb.com/smallest-file-size-google-web-fonts</a>.
+<code>Karla-Regular.ttf</code> is 17kib only.</p>
+</li>
+<li>
+<p><a href="https://github.com/ozkriff/zemeroth/issues/138"><code>Settings::default</code></a>. Simplified the examples.</p>
+</li>
+<li>
+<p><a href="https://github.com/ozkriff/zemeroth/issues/32">Check assets dir from every <code>fs::load</code> call</a>.</p>
+</li>
+</ul>
+<h2 id="hate-cache-text-textures">Häte: <a href="https://github.com/ozkriff/zemeroth/issues/96">Cache Text Textures</a></h2>
+<p><a href="https://github.com/ozkriff/zoc">ZoC</a> was almost unusable in debug builds:
+<a href="https://github.com/ozkriff/zoc/issues/264">it may take more than 10 seconds to start a game on some machines</a>
+and now I'm trying to keep Zemeroth's debug builds fast enough.</p>
+<p>One of the common problems is that <a href="https://github.com/redox-os/rusttype">Rusttype</a> is very slow in debug builds,
+especially on Android.
+As a text in Häte is rendered by creating a separate texture for
+every string the simplest solution was to cache these textures.</p>
+<p>Caching is a little bit sloppy solution, but we have no other choice
+until <a href="https://github.com/rust-lang/cargo/issues/1359">https://github.com/rust-lang/cargo/issues/1359</a> is implemented.</p>
+<p><em><strong>NOTE</strong>: Btw, there's a <a href="https://github.com/rust-lang/cargo/issues/1359#issuecomment-329653216">cool hack</a> from <a href="https://github.com/matklad">@matklad</a>,
+but you have to compile an outdated cargo from his dev-branch.</em></p>
+<h2 id="game-development-in-rust">&quot;Game Development in Rust&quot;</h2>
+<p><img src="https://ozkriff.github.io/2017-12-01--devlog/spb-meetup.jpg" alt="me presenting a talk about zoc and zemeroth on spb meetup" /></p>
+<p>There was <a href="https://meetup.com/Rust-%D0%B2-%D0%9F%D0%B8%D1%82%D0%B5%D1%80%D0%B5/events/242219775">a local meetup</a> in Saint-Petersburg this September where</p>
+<ul>
+<li><a href="https://github.com/not-fl3">@not-fl3</a> talked about his experience as a <a href="https://twitter.com/BringerShar">SHAR</a>'s developer</li>
+<li><a href="https://github.com/vitvakatu">@vitvakatu</a> talked about <a href="https://github.com/three-rs/three">three-rs</a></li>
+<li>and I talked about the history of <a href="https://github.com/ozkriff/zoc">ZoC</a> and <a href="https://github.com/ozkriff/zemeroth">Zemeroth</a>.</li>
+</ul>
+<p>Everything is in Russian, but here are the links anyway, just in case:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=BCsPcsmRhOM">full video</a></li>
+<li><a href="https://docs.google.com/presentation/d/19-Vc2VOpmB2r42u5arMVdKXfOPzozNjY5drjhbyIw3E">my slides</a></li>
+</ul>
+<p><img src="https://ozkriff.github.io/2017-12-01--devlog/slides-overview.png" alt="overview of the slides" /></p>
+<p>Thanks to <a href="https://intellij-rust.github.io">JetBrains</a> for hosting the event!</p>
+<h2 id="short-range-plans">Short-Range Plans</h2>
+<h3 id="restructuredtext-markdown">RestructuredText -&gt; Markdown</h3>
+<p>For a long time, I was trying to avoid the use of MD.</p>
+<p>Mostly <a href="https://eli.thegreenplace.net/2017/restructuredtext-vs-markdown-for-technical-documentation">because MD has no built-in support for extensions and
+is MD is forever tied to HTML</a>.</p>
+<p>I was mostly hoping for RST to become popular enough.
+There was a chance, <a href="https://internals.rust-lang.org/t/rustdoc-restructuredtext-vs-markdown/356">but doc team decided to stay with MD</a>
+and now Rust community doesn't care about RST at all. :(</p>
+<p><a href="http://commonmark.org">CommonMark</a> solves the standardization problem to some degree.
+Though, it's still glued to HTML and is not easily extensible.</p>
+<p>Anyway, I'm not going to use these documents anywhere except in the web browser,
+so... <a href="https://github.com/ozkriff/zemeroth/issues/157">I'm going to migrate this blog to some rust blog generator</a>
+from Pelican. This post is written in MD already.</p>
+<h3 id="abilities-and-lasting-effects">Abilities and Lasting Effects</h3>
+<p>A skirmish game is unimaginable without <a href="https://github.com/ozkriff/zemeroth/issues/110">special abilities</a>
+and some interesting <a href="https://github.com/ozkriff/zemeroth/issues/102">instant</a> and <a href="https://github.com/ozkriff/zemeroth/issues/154">lasting effects</a> of the actions.</p>
+<p>So, here are some previews of what I'm working right now:</p>
+<ul>
+<li><a href="https://youtu.be/Egfyd4VX2YU">https://youtu.be/Egfyd4VX2YU</a> - jump &amp; <a href="https://github.com/ozkriff/zemeroth/issues/102">knockback</a></li>
+<li><a href="https://youtu.be/TilgaGspTJk">https://youtu.be/TilgaGspTJk</a> - <a href="https://github.com/ozkriff/zemeroth/issues/69">self-explode</a></li>
+<li><a href="https://youtu.be/Yg38yeno3sE">https://youtu.be/Yg38yeno3sE</a> - <a href="https://github.com/ozkriff/zemeroth/issues/154">poison</a></li>
+</ul>
+<hr />
+<p><em>Whew! That was the longest piece of text in English that I've ever written O.o.</em></p>
+<p>That's all for today! :)</p>
+<p><strong>Discussions</strong>:
+<a href="https://www.reddit.com/r/rust/comments/7gy3wx/zemeroths_devlog_2_jokers_rancor_blood_and_more/">/r/rust</a>,
+<a href="https://twitter.com/ozkriff/status/936708540168884224">twitter</a>.</p>
+
+</div>
+
+        </div>
+
+    </body>
+
+</html>

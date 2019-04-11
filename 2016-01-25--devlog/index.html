@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>ozkriff&#x27;s devlog</title>
+
+      <!-- CSS -->
+      <link rel="stylesheet" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;print.css" media="print">
+      <link rel="stylesheet" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;poole.css">
+      <link rel="stylesheet" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;hyde.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+      
+        <link rel="shortcut icon" type="image/png" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;favicon.png">
+      
+
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;rss.xml">
+      
+
+      
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-70829739-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-70829739-1');
+        </script>
+      
+
+      
+      
+    </head>
+
+    <body class=" ">
+        
+            <div class="sidebar">
+                <div class="container ">
+                    <div class="sidebar-about">
+                        
+                            <a href="https:&#x2f;&#x2f;ozkriff.github.io"><h1>ozkriff&#x27;s devlog</h1></a>
+                            
+                        
+                    </div>
+
+                    <ul class="sidebar-nav">
+                        
+                        
+                        <li class="sidebar-nav-item"><a href="&#x2f;pages&#x2f;about">about</a></li>
+                        
+                        <li class="sidebar-nav-item"><a href="https:&#x2f;&#x2f;twitter.com&#x2f;ozkriff">twitter</a></li>
+                        
+                        <li class="sidebar-nav-item"><a href="https:&#x2f;&#x2f;github.com&#x2f;ozkriff">github</a></li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div class="content container">
+            
+<div class="post">
+  <h1 class="post-title">Сложности с crates.io и конфиги из открытого космоса</h1>
+  
+  <span class="post-date">2016-01-25</span>
+  
+  <p>Сунулся наконец-то выложить zoc на crates.io.
+А, оказывается, даже если пакеты лежат в одном репозитории, их надо выкладывать на
+crates.io отдельно.</p>
+<p>Посмотрел gfx - они тоже каждый пакет, оказывается, отдельно выкладывают :( .
+Эх, совсем не хочется загаживать crates.io своими бессмысленными
+пакетами, они явно никому не пригодятся.</p>
+<p>Можно бы на модули разбить, а не пакеты, но так инкрементальная сборка
+будет опять занимать минуту и сложности с привязками к OpenGL возникают.</p>
+<p>Нафиг тогда выкладывание на crates.io, пока на glium не перейду. Мне не
+так сильно этот crates.io и нужен, просто немного неприятно, что про
+твой код забывают при проверке всяких поломок при обновлениях библиотек.
+Ну да ничего, пару месяцев уж потерплю.</p>
+<hr />
+<p>Возился в связи с этим с Cargo.toml и Cargo.lock.
+Хоспади, ну все-таки как мне не нравится этот TOML. =(</p>
+<p>Он в некоторых случаях и правда неплохо справляется, но при работе с ним
+все время чувство костылей есть. Как-то у него фокус на частности, а не
+на нормальное обобщенное решение. В целом ничего формат, особенно для
+простых конфигов, но вот синтаксис таблиц меня ужасает.</p>
+
+</div>
+
+        </div>
+
+    </body>
+
+</html>

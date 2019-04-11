@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://ozkriff.github.io/sitemap.xml

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>ozkriff&#x27;s devlog</title>
+
+      <!-- CSS -->
+      <link rel="stylesheet" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;print.css" media="print">
+      <link rel="stylesheet" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;poole.css">
+      <link rel="stylesheet" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;hyde.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+      
+        <link rel="shortcut icon" type="image/png" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;favicon.png">
+      
+
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;rss.xml">
+      
+
+      
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-70829739-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-70829739-1');
+        </script>
+      
+
+      
+      
+    </head>
+
+    <body class=" ">
+        
+            <div class="sidebar">
+                <div class="container ">
+                    <div class="sidebar-about">
+                        
+                            <a href="https:&#x2f;&#x2f;ozkriff.github.io"><h1>ozkriff&#x27;s devlog</h1></a>
+                            
+                        
+                    </div>
+
+                    <ul class="sidebar-nav">
+                        
+                        
+                        <li class="sidebar-nav-item"><a href="&#x2f;pages&#x2f;about">about</a></li>
+                        
+                        <li class="sidebar-nav-item"><a href="https:&#x2f;&#x2f;twitter.com&#x2f;ozkriff">twitter</a></li>
+                        
+                        <li class="sidebar-nav-item"><a href="https:&#x2f;&#x2f;github.com&#x2f;ozkriff">github</a></li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div class="content container">
+            
+<div class="post">
+  <h1 class="post-title">ZoC is dead. Long life Zemeroth.</h1>
+  
+  <span class="post-date">2017-08-17</span>
+  
+  <p>Soo, yeah, <a href="https://github.com/ozkriff/zoc">Zone of Control</a> project is
+officially discontinued. Sorry, friends.</p>
+<p><img src="https://ozkriff.github.io/2017-08-17--devlog/zed.png" alt="scene from Pulp Fiction" /></p>
+<p>^ &quot;ZoC's dead, baby. ZoC's dead.&quot;</p>
+<p>Why have I killed it? The primary reason is classic: I've overestimated
+my resources/skills and got totally overwhelmed by the scope:</p>
+<ul>
+<li>
+<p>I can't see the finish line and have no idea what exactly I can
+feature-cut. Strategic mode? Sane UI? Networking? Skeletal
+animations? Particles? Ships? Aircrafts? Tens of unit types? Oh-oh,
+I don't believe that ZoC could be really cool without any of these
+(and some others) features.</p>
+<p>This situation totally drained all my motivation to continue the project.</p>
+</li>
+<li>
+<p>Slot system (multiple units per tile with fixed positions) is a
+strange beast.</p>
+<ol>
+<li>
+<p>No idea how to make some friendly user interface: two panels (for
+friends and enemies) solution is ugly, context menus are not cool
+either.</p>
+</li>
+<li>
+<p>Slots create problems with visual scale: infantry models are just too
+small, especially on phone’s screen.</p>
+</li>
+</ol>
+</li>
+<li>
+<p><a href="https://ozkriff.github.io/2017-08-17--devlog/first-person.png">Maybe I should make an FPS? No, that's stupid.</a> Ahem,
+just joking.</p>
+</li>
+</ul>
+<p>Another reason is that my views on what's important for strategic games
+have changed in the last several years. Now I prefer
+<a href="http://keithburgun.net/videogames-are-broken-toys">smaller</a>
+<a href="http://keithburgun.net/the-default-number-of-players-is-one">single-player</a>
+games with strong accent on <a href="http://keithburgun.net/minimalism-vs-elegance">emergent
+complexity</a>.</p>
+<hr />
+<p>So, some farewell screenshots:</p>
+<p><a href="https://ozkriff.github.io/2017-08-17--devlog/zoc-screenshot-1.png"><img src="https://ozkriff.github.io/2017-08-17--devlog/zoc-screenshot-1-preview.png" alt="ZoC gameplay screenshot 1" /></a>
+<a href="https://ozkriff.github.io/2017-08-17--devlog/zoc-screenshot-2.png"><img src="https://ozkriff.github.io/2017-08-17--devlog/zoc-screenshot-2-preview.png" alt="ZoC gameplay screenshot 2" /></a>
+<a href="https://ozkriff.github.io/2017-08-17--devlog/zoc-screenshot-3.png"><img src="https://ozkriff.github.io/2017-08-17--devlog/zoc-screenshot-3-preview.png" alt="blob shadows" /></a></p>
+<p>...And that it.</p>
+<p>Goodbye, my old friend Zone of Control.</p>
+<h1 id="zemeroth">Zemeroth</h1>
+<p>There’s one great article:
+<a href="http://makegames.tumblr.com/post/1136623767/finishing-a-game">&quot;Finishing a Game&quot;</a>.
+I have re-read it a dozen times in the last few years. In the context of
+ZoC’s fail the most important part of that article is:</p>
+<blockquote>
+<p>Rule 14: IF YOU DO QUIT, SCALE DOWN, NOT UP</p>
+<p>Okay, sometimes it is time to call it quits. Maybe there’s just no way
+you’ll ever finish, and what you have is too big a mess to cut
+anything out. Maybe the rest of your team has quit already. My hope in
+writing this list is to help people avoid this possibility, but hey,
+maybe you’re just coming off of such a project. And sometimes... shit
+just happens.</p>
+<p>If there’s no salvaging it, at least make sure that you scale down
+your next project. It’s easy to set your sights higher and higher,
+even as your projects become less and less finished. “My SKILLS are
+improving! I’m learning from my failure,” is a common excuse. But I
+think this is why it’s important to treat finishing as a skill, too.</p>
+</blockquote>
+<p>Sounds reasonable to me. So I need a new much less ambitious project
+which still shares some of the ZoC’s core values.</p>
+<p>I’ve spent May and June - in the heavy existential crisis - ahem,
+resting and thinking about what can I make.</p>
+<p>Here’s what I came up with:</p>
+<ul>
+<li>Random-based skirmish-level digital tabletop game;</li>
+<li>Single player only;</li>
+<li>3-6 fighters under player’s control;</li>
+<li>Short game session (under an hour) and small unscrollable maps;</li>
+<li>Simple vector 2d graphics with just 3-5 sprites per unit;</li>
+<li>Reaction attacks and action’s interruption;</li>
+<li>Highly dynamic (lots of small unit moves as a side effect of other
+events);</li>
+<li>Intentionally stupid and predictable AI;</li>
+</ul>
+<p>Something in between of <a href="http://store.steampowered.com/app/237990/The_Banner_Saga">Banner
+Saga</a>,
+<a href="https://play.google.com/store/apps/details?id=com.magmafortress.hoplite">Hoplite</a>,
+<a href="http://store.steampowered.com/app/459680/Auro_A_MonsterBumping_Adventure/">Auro</a>
+and <a href="http://store.steampowered.com/app/230070/The_Age_of_Decadence/">Age of
+Decadence</a>.</p>
+<p>Initial svg mockup (based on
+<a href="https://ozkriff.github.io/2017-08-17--devlog/zoc-2d-experiments.png">my old experiments with 2d ZoC</a>):</p>
+<p><img src="https://ozkriff.github.io/2017-08-17--devlog/zemeroth-inkscape-mockup.png" alt="inscape mockup" /></p>
+<hr />
+<p>Ok, that was just the plan. What's actually done already?</p>
+<p>Here's the code: <a href="https://github.com/ozkriff/zemeroth">https://github.com/ozkriff/zemeroth</a></p>
+<p>Right now Zemeroth looks ~ like this:</p>
+<p><img src="https://ozkriff.github.io/2017-08-17--devlog/zemeroth-old-screenshot.png" alt="old Zemeroth's screenshot" /></p>
+<p>Recent &quot;gameplay&quot; video:</p>
+<div class="youtube"><iframe frameborder="0" allowfullscreen src="https://www.youtube.com/embed/MVt_UOnmdKI?rel=0&showinfo=0"></iframe></div>
+<p>What’s implemented:</p>
+<ul>
+<li>The cornerstone of the game: reaction attacks and movement interruptions;</li>
+<li>Basic infantry unit type;</li>
+<li>Hitpoints;</li>
+<li>Basic AI: move closer and attack;</li>
+<li>Some basic UI with text/image buttons and grouping.</li>
+</ul>
+<p>Android is supported from the beginning of the development (as I’m
+reusing ZoC’s codebase):</p>
+<p><img src="https://ozkriff.github.io/2017-08-17--devlog/zemeroth-android.png" alt="zemeroth on android photo" /></p>
+<p>Zemeroth’s architecture is mostly taken from ZoC (minus the networking
+and multiple game states):</p>
+<p><img src="https://ozkriff.github.io/2017-08-17--devlog/data-loop.jpg" alt="data loop" /></p>
+<p>Scene action system is based on cocos’s one and something I did in dead
+ZoC’s dev branch:</p>
+<p><img src="https://ozkriff.github.io/2017-08-17--devlog/scene-actions.png" alt="example of scene actions" /></p>
+<p>(<a href="https://docs.rs/piston2d-sprite/0.36.0/sprite/enum.Animation.html">btw, piston has something similar</a>)</p>
+<h1 id="hate2d">Häte2d</h1>
+<p>About reusing ZoC’s codebase...</p>
+<p>I’m a fool who don’t learn anything and totally ignored the third rule
+from finishing-a-game article:</p>
+<blockquote>
+<ol start="3">
+<li>DON’T ROLL YOUR OWN TECH IF YOU DON’T HAVE TO</li>
+</ol>
+</blockquote>
+<p>Say hello to yet another Rust 2d engine: <a href="https://docs.rs/hate">Häte2d</a> :-D</p>
+<p>The name is a silly reference to <a href="https://love2d.org">LÖVE2D framework</a> (just in case).</p>
+<p>NOTE: Häte isn’t a general-purpose game engine (at least right now) and
+it’s not my goal. Just a simple 2d engine for Zemeroth’s needs.</p>
+<p>Why haven't I used ggez.rs?</p>
+<p>Quote from reddit:</p>
+<blockquote>
+<p>@pwgen-n1024: have you seen
+<a href="https://www.reddit.com/r/rust/comments/6mg02o/ggez_a_rust_library_to_create_good_games_easily/">this</a>?
+its a löve2d clone in rust, it might allow you to save some work.</p>
+<p>@ozkriff: Granted, I'm well aware of ggez! :-)</p>
+<p>I'm too lazy to read the docs! NIH syndrome!111 :-D</p>
+<p>Ahem... It's a cool engine and I recommend it whenever anybody asks me
+about 2d game engines, but I don't think that ggez's core values match
+my needs in Zemeroth project:</p>
+<ul>
+<li>Ggez tries to mirror Löve as closely as possible but I don't
+believe that what's good for highly dynamic Lua is equally good
+for Rust.</li>
+<li>It seems to me that ggez targets beginners and fast prototype-like
+projects but I'm going to invest a lot of time into this project.</li>
+<li>I want the engine to be much more opinionated about UI, scene,
+etc.</li>
+<li>Right now ggez uses SDL2 (and it's not easy to replace it with
+glutin) but I really want to use cargo-apk.</li>
+</ul>
+</blockquote>
+<p>Maybe I was wrong and using geez would be a good idea,
+<a href="https://www.reddit.com/r/rust/comments/6nri26//dkbqtiu/">see Icefoxen’s answer</a>.
+But so far working on Häte was fun and we’ll see what happens later.</p>
+<hr />
+<p>That’s all for today :)</p>
+<p>In case you're wondering, here's full Imgur-devlog which I'm trying to
+keep updated: <a href="http://imgur.com/a/SMVqO">http://imgur.com/a/SMVqO</a></p>
+<p><strong>Discussions</strong>:
+<a href="https://www.reddit.com/r/rust/comments/6uar27/zoc_is_dead_long_life_zemeroth">/r/rust</a>,
+<a href="https://twitter.com/ozkriff/status/898207059862319104">twitter</a>.</p>
+
+</div>
+
+        </div>
+
+    </body>
+
+</html>

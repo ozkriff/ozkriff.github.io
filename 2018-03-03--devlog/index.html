@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>ozkriff&#x27;s devlog</title>
+
+      <!-- CSS -->
+      <link rel="stylesheet" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;print.css" media="print">
+      <link rel="stylesheet" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;poole.css">
+      <link rel="stylesheet" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;hyde.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+      
+        <link rel="shortcut icon" type="image/png" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;favicon.png">
+      
+
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;rss.xml">
+      
+
+      
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-70829739-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-70829739-1');
+        </script>
+      
+
+      
+      
+    </head>
+
+    <body class=" ">
+        
+            <div class="sidebar">
+                <div class="container ">
+                    <div class="sidebar-about">
+                        
+                            <a href="https:&#x2f;&#x2f;ozkriff.github.io"><h1>ozkriff&#x27;s devlog</h1></a>
+                            
+                        
+                    </div>
+
+                    <ul class="sidebar-nav">
+                        
+                        
+                        <li class="sidebar-nav-item"><a href="&#x2f;pages&#x2f;about">about</a></li>
+                        
+                        <li class="sidebar-nav-item"><a href="https:&#x2f;&#x2f;twitter.com&#x2f;ozkriff">twitter</a></li>
+                        
+                        <li class="sidebar-nav-item"><a href="https:&#x2f;&#x2f;github.com&#x2f;ozkriff">github</a></li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div class="content container">
+            
+<div class="post">
+  <h1 class="post-title">Zemeroth v0.4: Abilities, Lasting Effects and New Unit Types</h1>
+  
+  <span class="post-date">2018-03-03</span>
+  
+  <p>Hi, comrades! I'm happy to announce Zemeroth v0.4.</p>
+<p><a href="https://github.com/ozkriff/zemeroth">Zemeroth</a> is a turn-based hexagonal tactical game written in Rust.</p>
+<p>You can <strong>download precompiled binaries</strong> for Windows, Linux, macOS and android here:
+<a href="https://github.com/ozkriff/zemeroth/releases/tag/v0.4.0">releases/tag/v0.4.0</a></p>
+<p>This release adds <a href="https://github.com/Aaronepower/tokei">~2k lines of code</a> - a lot of new features!
+And it's hard to describe all the stuff only with words and static images
+so this time I'll try to use more GIFs
+(btw, <a href="https://github.com/phw/peek">Peek</a> is a cool app for fast gif recording).
+I hope that they won't cause too much problems for the readers.</p>
+<p><em>NOTE:</em> Most of the GIFs were recorded on a map of 7 tiles wide,
+but the actual map is 11.
+See youtube video in the middle of the article for some real gameplay.</p>
+<h2 id="simple-walking-animation">Simple walking animation</h2>
+<p>The first and simplest change is simple walking animations.
+Compare:</p>
+<p><img src="https://ozkriff.github.io/2018-03-03--devlog/2018-03-03-move-pre.gif" alt="no animation" />
+<img src="https://ozkriff.github.io/2018-03-03--devlog/2018-03-03-move-now.gif" alt="new arc animation" /></p>
+<p>That's just a small visual improvement but it makes the game more lively.</p>
+<h2 id="gameplay-updates">Gameplay Updates</h2>
+<h3 id="wounds-reduce-attacks-by-one">Wounds reduce attacks by one</h3>
+<p>New rule: every successful attack now reduces target's attack by 1.
+It's small but important change because it increases the value of initiative
+and is relied upon by many abilities.</p>
+<h3 id="strong-attacks">Strong Attacks</h3>
+<p>In the previous version all attacks were dealing 1 damage.
+Now, <strong>Swordsman</strong> and <strong>Hammerman</strong> (see below) deal 2 damage points per hit.</p>
+<h3 id="abilities">Abilities</h3>
+<p><img src="https://ozkriff.github.io/2018-03-03--devlog/2018-03-03--abilities-buttons-swordsman.png" alt="buttons: abilities" /></p>
+<p>Abilities is the main feature of this release.
+They come in two flavours: <strong>active</strong> and <strong>passive</strong>:</p>
+<ul>
+<li>
+<p>Each active ability activation requires either <strong>Attack</strong> (red)
+or <strong>Joker</strong> (purple) point and can trigger enemy's reaction attack.</p>
+<p>Most abilities have cooldowns of 2 or 3 turns long.</p>
+</li>
+<li>
+<p>Passive abilities don't require any action points and are activated automatically:
+during attacks or at the begining of the turn, for example.</p>
+</li>
+</ul>
+<p>Particular abilities are explained in unit sections below.</p>
+<h3 id="new-unit-toxic-imp">New Unit: Toxic Imp</h3>
+<p><img src="https://ozkriff.github.io/2018-03-03--devlog/2018-03-03-imp-poison.gif" alt="toxic imp demo" /></p>
+<p>Let's start with something simple.
+This enemy is similar to basic Imp, but does no direct damage
+and has <strong>Poison Attack</strong> passive ability.</p>
+<p>Poisoned unit receives one would at the begining of each turn.
+Note that poison also takes away one attack from the victim,
+weaking it even more.
+Poison reduces attacks of poisoned unit by one.</p>
+<p>Toxic Imp also has no reaction attacks as he's dangerous enough without them.</p>
+<h3 id="new-unit-imp-bomber">New Unit: Imp-Bomber</h3>
+<p>Poison is cool, but it doesn't really changes the game much.
+One obvious problem of v0.3 was <a href="http://keithburgun.net/turtling">turtling</a> -
+no movement, boring.
+Reaction attacks encourage defensive playstyle.</p>
+<p>So a new unit was added: <strong>Imp-Bomber</strong>.</p>
+<p><img src="https://ozkriff.github.io/2018-03-03--devlog/2018-03-03--imp-bomb-attack.gif" alt="imp-bomber in action" /></p>
+<p>^ He has an active ability <strong>Bomb</strong> and a very simple AI
+that tries to use it, if it's available, and then acts as a normal Imp.
+Bombs with delayed detonation is a classic way to help with this.</p>
+<p>Bomb explodes on the next turn and damages everyone around,
+knocking them back for one tile.</p>
+<p>NOTE: As Imps are stupid they can be easily damaged by their bombs. Use it.</p>
+<p>This enemy doesn't allow you to stay in a good position without movement.
+But you still can sometimes move back and forth, so...</p>
+<h3 id="new-unit-imp-summoner">New Unit: Imp-Summoner</h3>
+<p>...Soo, meet <strong>Imp-Summoner</strong>!
+This unit summons so many imps so the only way to stay alive
+is to rush and attack him while summoned imps are still weak.
+Summoners are your main targets.</p>
+<p><img src="https://ozkriff.github.io/2018-03-03--devlog/2018-03-03--ability-summon.gif" alt="'summon' ability" /></p>
+<p>^ <strong>Summon</strong> ability creates three imps of a random type.</p>
+<p><em>NOTE: Actually, the plan is to make each <strong>summon</strong> activation even more powerful:
+call 3-4-5-6 imps, to increase the pressure over time.</em></p>
+<p>Summoner is slow - сan either move one tile or attack/cast during his turn -
+but he has a lot of strength (health) points
+and has <strong>Heavy Impact</strong> and <strong>Regeneration</strong> passive abilities:</p>
+<p><img src="https://ozkriff.github.io/2018-03-03--devlog/2018-03-03--summoner-regeneration-hit.gif" alt="Regeneration + Heavy Impact" /></p>
+<p>^ <strong>Regeneration</strong> restores one strength point in the begining of every turn.
+<strong>Heavy Impact</strong> throws opponents one tile away on every hit (<strong>FlyOff</strong> effect).</p>
+<h3 id="new-unit-alchemist">New Unit: Alchemist</h3>
+<p>Let's move to player's new units: meet the first one - <strong>Alchemist</strong>.
+He's a support unit and has <strong>no direct attacks</strong>,
+but has a bunch of useful abilities.</p>
+<p>Basic <strong>Bomb</strong> ability works the same way as it does for Imp-Bomber.
+<strong>Fire bomb</strong> and <strong>poison bomb</strong> are a little bit more interesting:</p>
+<p><img src="https://ozkriff.github.io/2018-03-03--devlog/2018-03-03-fire-bomb.gif" alt="fire bomb demo" /></p>
+<p>^ <strong>Fire</strong> object just deals one damage point each turn
+to anyone standing in the same tile
+or to anyone walking through it.</p>
+<p><img src="https://ozkriff.github.io/2018-03-03--devlog/2018-03-03-poison-bomb.gif" alt="poison bomb demo" /></p>
+<p>^ <strong>Poison cloud</strong> object acts similar to fire,
+but it casts <strong>Poisoned</strong> effects on agents.
+This effects deals one point of damage each turn and lasts for two turns.</p>
+<p>Both fire and poison cloud objects disappear after two rounds.
+Note that damage from fire and poison also removes attacks from target -
+this can protect your alchemist in tough situations.</p>
+<p>Alchemist has one more useful ability:
+<strong>Heal</strong> can restore two strength points and remove any lasting effects:</p>
+<p><img src="https://ozkriff.github.io/2018-03-03--devlog/2018-03-03-heal.gif" alt="&quot;Heal&quot; ability demo" /></p>
+<h3 id="new-unit-hammerman">New Unit: Hammerman</h3>
+<p>Slow but powerful unit. His attack deals 2 damage points
+and he has <strong>HeavyImpact</strong> passive ability (same as Summoner, see above).</p>
+<p><img src="https://ozkriff.github.io/2018-03-03--devlog/2018-03-03--hammerman-club-hit.gif" alt="&quot;Club&quot; + move + attack combo" /></p>
+<p>^ <strong>Club</strong> ability causes <strong>Stun</strong> lasting effect and <strong>FlyOff</strong>.</p>
+<p><strong>Stun</strong> lasting effect removes all attacks/moves/jokers
+from the target for one round.</p>
+<p><img src="https://ozkriff.github.io/2018-03-03--devlog/2018-03-03-club-knockback.gif" alt="&quot;Knockback&quot; a boulder + &quot;Club&quot; a bomb demo" /></p>
+<p>^ These abilities can be used to move bombs and boulders too.
+You can push enemy into fire, poison or bomb.
+Or you can push some other your figher out of danger if needed.</p>
+<h3 id="updated-swordsman">Updated Swordsman</h3>
+<p><strong>Swordsman</strong> also got a few updates.
+His main attack now also deals two points of damage.</p>
+<p><img src="https://ozkriff.github.io/2018-03-03--devlog/2018-03-03--rage.gif" alt="&quot;Rage&quot; ability demo" /></p>
+<p>^ <strong>Rage</strong> ability gives a lot of attacks but has a long cooldown,
+so you need to choose carefully when to use it.</p>
+<p><img src="https://ozkriff.github.io/2018-03-03--devlog/2018-03-03--swordsman-jump.gif" alt="Jump ability" /></p>
+<p>^ <strong>Jump</strong> ability - think about Diablo's Barbarian
+(future versions of the ability may get stunning effect ;) ).</p>
+<p><img src="https://ozkriff.github.io/2018-03-03--devlog/2018-03-03-dash-away.gif" alt="&quot;Dash&quot; escape demo" /></p>
+<p>^ <strong>Dash</strong> ability allows you to
+move one tile without triggering reaction attacks.
+Allows you to start the attack or to escape from the enemies.</p>
+<p>It may be hard to escape from a bad position witout <strong>Dash</strong> or <strong>Jump</strong> ability:</p>
+<p><img src="https://ozkriff.github.io/2018-03-03--devlog/2018-03-03-no-dash-escape-attempt.gif" alt="Can't escape with simple move demo" /></p>
+<p><strong>Dash</strong> can be combined with <strong>Rage</strong> and <strong>Jump</strong> abilities to perform
+a series of attacks and return back to safety:</p>
+<p><img src="https://ozkriff.github.io/2018-03-03--devlog/2018-03-03--swordsman-combo.gif" alt="Rage, Dash &amp; Jump combo" /></p>
+<h3 id="updated-spearman">Updated Spearman</h3>
+<p>Also got a <strong>Jump</strong> ability, but of a different flavour:
+three tiles distance and three turns cooldown.
+So it's mostly useful for escaping:</p>
+<p><img src="https://ozkriff.github.io/2018-03-03--devlog/2018-03-03--spearman-jump-away.gif" alt="jump away" /></p>
+<h2 id="gameplay-video">Gameplay Video</h2>
+<p>So, putting this all together:</p>
+<p><a href="https://www.youtube.com/watch?v=DpDyVFpoDSQ"><img src="https://ozkriff.github.io/2018-03-03--devlog/gameplay-vide-preview.png" alt="gameplay" /></a></p>
+<p>It starts reminding something like a real game, isn't it? :)
+Though a lot of work is still need to be done.</p>
+<h2 id="implementation-note-ron-v0-2">Implementation note: RON v0.2</h2>
+<p><a href="https://github.com/ron-rs/ron/releases/tag/v0.2">RON v0.2</a>
+added <code>unwrap_newtypes</code> extension that seriously simplified my config files
+by getting rid of a lot of braces:</p>
+<p><img src="https://ozkriff.github.io/2018-03-03--devlog/2018-03-03--ron-diff.gif" alt="RON diff" /></p>
+<p>Thanks, @Torkleyy!</p>
+<hr />
+<p><img src="https://ozkriff.github.io/2018-03-03--devlog/2018-03-03-phone.gif" alt="Zemeroth on android device" /></p>
+<p>That's all for today, I have to go play <a href="http://store.steampowered.com/app/590380/Into_the_Breach">Into the Breach</a>! :)</p>
+<p><strong>Discussions</strong>:
+<a href="https://www.reddit.com/r/rust/comments/81s7va/zemeroth_v04_abilities_lasting_effects_and_new">/r/rust</a>,
+<a href="https://twitter.com/ozkriff/status/970017320637747200">twitter</a>.</p>
+
+</div>
+
+        </div>
+
+    </body>
+
+</html>

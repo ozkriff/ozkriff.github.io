@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>ozkriff&#x27;s devlog</title>
+
+      <!-- CSS -->
+      <link rel="stylesheet" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;print.css" media="print">
+      <link rel="stylesheet" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;poole.css">
+      <link rel="stylesheet" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;hyde.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+      
+        <link rel="shortcut icon" type="image/png" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;favicon.png">
+      
+
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2f;&#x2f;ozkriff.github.io&#x2f;rss.xml">
+      
+
+      
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-70829739-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-70829739-1');
+        </script>
+      
+
+      
+      
+    </head>
+
+    <body class=" ">
+        
+            <div class="sidebar">
+                <div class="container ">
+                    <div class="sidebar-about">
+                        
+                            <a href="https:&#x2f;&#x2f;ozkriff.github.io"><h1>ozkriff&#x27;s devlog</h1></a>
+                            
+                        
+                    </div>
+
+                    <ul class="sidebar-nav">
+                        
+                        
+                        <li class="sidebar-nav-item"><a href="&#x2f;pages&#x2f;about">about</a></li>
+                        
+                        <li class="sidebar-nav-item"><a href="https:&#x2f;&#x2f;twitter.com&#x2f;ozkriff">twitter</a></li>
+                        
+                        <li class="sidebar-nav-item"><a href="https:&#x2f;&#x2f;github.com&#x2f;ozkriff">github</a></li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div class="content container">
+            
+<div class="post">
+  <h1 class="post-title">Разработка Мародера - 2014.03.10</h1>
+  
+  <span class="post-date">2014-03-11</span>
+  
+  <p>Ну, этот понедельник я считаю последним днем недели. Не может у меня
+неделя с выходного начинаться, это неправильно как-то.</p>
+<ul>
+<li>Теперь передаю информацию о изменениях размера окна в камеру, теперь
+изображение не сжимается по высоте или ширине при изменении размеров
+окна.</li>
+<li>С горем пополам доделал и закомитил базовую версию поддержки
+нескольких отрядов в одной клетке. Правда, пока что выделить или
+атаковать можно только первого из них (того, что с индексом 0) и
+выделение вынесено на кнопку <code>S</code>.</li>
+<li>Задумался о системе слотов в клетке визуализатора.</li>
+<li>Еще наткнулся на блог разработки Cogmind -
+<a href="http://www.gridsagegames.com/blog">http://www.gridsagegames.com/blog</a>. Выглядит офигенно, но ссылки на
+альфа версию или чего-то подобное я нигде не нашел, жалко.</li>
+<li>Реализовал простенькую обертку над конфигурационными файлами.</li>
+<li>Изменилась система сборки glfw-rs - вбил костыли в make_deps.sh.</li>
+<li>Cmr сказал, что <code>c_str</code> - плохая штука. Заменил на
+<code>with_c_str(||{...})</code></li>
+<li>анимации движения теперь не зависят от времени отрисовки кадра.</li>
+<li>И добавил поворот отряда в сторону движения.</li>
+<li>Исправил поворот камеры - теперь скорость вращения камеры не
+зависиот от размера экрана: что бы повернуть камеру на 360 градусов
+по горизонтали нужно двигать мышкой от левой границы окна до правой,
+не завсимо от размера окна.</li>
+<li>Добавил класс MoveHelper, отвечающий за передвижение от точки до
+точки со скоростью, не зависящей от количества кадров в секунду, и
+использовал его во всех визуализаторах событий.</li>
+<li>Удалил из визуализаторов событий методы <code>start</code> - пускай все в new
+делается.</li>
+<li>Добавил к анимации события атаки летящий снаряд. Ну как снаряд,
+хрень какую-то :)</li>
+<li>Теперь отряды принадлежат к какому-то из игроков, над отрядами
+теперь висят страшненькие флажки.</li>
+<li>На последок запек ambient occlusion вместо, кхм, &quot;текстуры&quot; &quot;танка&quot;.
+Теперь намного лучше, как по мне.</li>
+</ul>
+<h1 id="byzanz">Byzanz</h1>
+<p>Гуглил про выкладывание видео в бложик, наткнулся на упоминания byzanz.
+Офигенно, теперь загажу все посты анимированными гифками! :)</p>
+<p><a href="https://github.com/GNOME/byzanz">https://github.com/GNOME/byzanz</a></p>
+<h1 id="github-streak">Github streak</h1>
+<p>И да, github streak в 61 день, еее!</p>
+<p><img src="https://ozkriff.github.io/2014-03-11--devlog-marauder-002/2014-03-09--github-streak.png" alt="github-streak-pic" /></p>
+<h1 id="80-simvolov-khvatit-kazhdomu">80 символов хватит каждому!</h1>
+<p>Узнал про <code>wc -L \*.rs</code> для поиска самой длинной строчки в куче файлов,
+прикольно.</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">$ find src/core -name &quot;*.rs&quot; | xargs wc -L | sort -h
+59 src/core/src/game_state.rs
+59 src/core/src/player.rs
+59 src/core/src/unit.rs
+65 src/core/src/geom.rs
+71 src/core/src/map.rs
+72 src/core/src/partial_state.rs
+76 src/core/src/pathfinder.rs
+78 src/core/src/ai.rs
+80 src/core/src/db.rs
+80 src/core/src/fov.rs
+83 src/core/src/dir.rs
+84 src/core/src/fow.rs
+91 src/core/src/internal_state.rs
+93 src/core/src/filter.rs
+121 src/core/src/lib.rs
+121 итого
+</span></pre>
+</div>
+
+        </div>
+
+    </body>
+
+</html>
