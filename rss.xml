@@ -6,7 +6,714 @@
         <generator>Zola</generator>
         <language>en</language>
         <atom:link href="https://ozkriff.github.io/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>Sat, 03 Mar 2018 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 13 May 2019 00:00:00 +0000</lastBuildDate>
+        
+            <item>
+                <title>Zemeroth v0.5: ggez, WASM, itch.io, visuals, AI, campaign, tests</title>
+                <pubDate>Mon, 13 May 2019 00:00:00 +0000</pubDate>
+                <link>https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/</link>
+                <guid>https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/</guid>
+                <description>&lt;!-- markdownlint-disable MD013 --&gt;
+&lt;!-- cspell:ignore Berserker Muton kiegel Yururu ldjam devs itchio PNGs --&gt;
+&lt;p&gt;Hi, folks! I&#x27;m happy to announce &lt;strong&gt;Zemeroth v0.5&lt;&#x2f;strong&gt;.
+Main features of this release are:
+migration to ggez, web version, itch.io page, campaign mode,
+AI improvements, visual updates, and tests.&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2019-04-29--title-demo.gif&quot; alt=&quot;demo fight&quot; &#x2f;&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&quot;&gt;Zemeroth&lt;&#x2f;a&gt; is a turn-based hexagonal tactical game written in Rust.
+You can &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;releases&#x2f;tag&#x2f;v0.5.0&quot;&gt;download precompiled v0.5 binaries&lt;&#x2f;a&gt;
+for Windows, Linux, and macOS.
+Also, now you can &lt;strong&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.itch.io&#x2f;zemeroth&quot;&gt;play an online version&lt;&#x2f;a&gt;&lt;&#x2f;strong&gt;
+(&lt;em&gt;read more about it in the &amp;quot;WebAssembly version&amp;quot; section below&lt;&#x2f;em&gt;).&lt;&#x2f;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2019-04-27--github-commits.png&quot; alt=&quot;GitHub commits graph&quot; &#x2f;&gt;&lt;&#x2f;p&gt;
+&lt;&#x2f;blockquote&gt;
+&lt;p&gt;The last release happened about a year ago.
+Since then the development mostly happened in irregular bursts,
+sometimes it even was completely stalled for weeks.
+But a year is a big period of time anyway, so there&#x27;re still lots of changes.&lt;&#x2f;p&gt;
+&lt;p&gt;Lots of text ahead, feel free to skip sections
+that you&#x27;re not interested in particularly.
+Here&#x27;s a table of contents:&lt;&#x2f;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;#migration-to-the-ggez-game-engine&quot;&gt;Migration to the &lt;code&gt;ggez&lt;&#x2f;code&gt; Game Engine&lt;&#x2f;a&gt;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;#webassembly-version&quot;&gt;WebAssembly Version&lt;&#x2f;a&gt;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;#itchio&quot;&gt;itch.io&lt;&#x2f;a&gt;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;#visual-improvements&quot;&gt;Visual Improvements&lt;&#x2f;a&gt;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;#campaign-mode&quot;&gt;Campaign Mode&lt;&#x2f;a&gt;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;#hit-chances&quot;&gt;Hit Chances&lt;&#x2f;a&gt;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;#armor&quot;&gt;Armor&lt;&#x2f;a&gt;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;#ai-updates&quot;&gt;AI Updates&lt;&#x2f;a&gt;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;#bombs-and-commutative-effects&quot;&gt;Bombs and Commutative Effects&lt;&#x2f;a&gt;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;#other-game-rules-changes&quot;&gt;Other Game Rules Changes&lt;&#x2f;a&gt;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;#gameplay-video&quot;&gt;Gameplay Video&lt;&#x2f;a&gt;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;#svg-atlas&quot;&gt;SVG Atlas&lt;&#x2f;a&gt;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;#assets-hash&quot;&gt;Assets Hash&lt;&#x2f;a&gt;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;#tests&quot;&gt;Tests&lt;&#x2f;a&gt;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;#other-technical-changes&quot;&gt;Other Technical Changes&lt;&#x2f;a&gt;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;#indikator&quot;&gt;Indikator&lt;&#x2f;a&gt;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;#migrated-this-devlog-to-zola&quot;&gt;Migrated This Devlog to Zola&lt;&#x2f;a&gt;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;#roadmap&quot;&gt;Roadmap&lt;&#x2f;a&gt;&lt;&#x2f;li&gt;
+&lt;&#x2f;ul&gt;
+&lt;h2 id=&quot;migration-to-the-ggez-game-engine&quot;&gt;Migration to the &lt;code&gt;ggez&lt;&#x2f;code&gt; Game Engine&lt;&#x2f;h2&gt;
+&lt;p&gt;An experiment with maintaining my own engine
+(even a simple and minimalistic 2D one)
+turned out to be too exhausting in practice:
+you have to fight a constant stream of reports about small corner case issues
+and deal with platform-specific tweaks and hacks
+(stuff &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ggez&#x2f;ggez&#x2f;issues&#x2f;587&quot;&gt;like this&lt;&#x2f;a&gt;, for example).
+It can consume surprisingly large amounts of time.
+But what&#x27;s more important for a hobby project,
+it also sucks too much fun out of the development process.&lt;&#x2f;p&gt;
+&lt;p&gt;And what made it worse in my case is that &lt;a href=&quot;https:&#x2f;&#x2f;docs.rs&#x2f;hate&quot;&gt;Häte2d&lt;&#x2f;a&gt; intentionally wasn&#x27;t
+a general-purpose game engine (to reduce the scope of work),
+so it was sad to know that all this work won&#x27;t be reused by anyone.
+But converting Häte into a real general-purpose engine wasn&#x27;t an option either,
+because it wouldn&#x27;t have left any time for Zemeroth&#x27;s development.&lt;&#x2f;p&gt;
+&lt;p&gt;So I&#x27;ve surrendered and decided to give away some control over
+low-level parts of Zemeroth:
+&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;247&quot;&gt;Häte2d was discontinued&lt;&#x2f;a&gt; and replaced by &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ggez&#x2f;ggez&quot;&gt;ggez&lt;&#x2f;a&gt;, the most mature and
+actively developed Rust 2d game engine at that time.&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;ggez-logo-maroon-full.svg&quot; alt=&quot;ggez&#x27;s logo&quot; &#x2f;&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;code&gt;häte&lt;&#x2f;code&gt; had some built-in basic
+&lt;a href=&quot;https:&#x2f;&#x2f;docs.rs&#x2f;hate&#x2f;0.1.0&#x2f;hate&#x2f;scene&#x2f;&quot;&gt;scene management&lt;&#x2f;a&gt;
+and &lt;a href=&quot;https:&#x2f;&#x2f;docs.rs&#x2f;hate&#x2f;0.1.0&#x2f;hate&#x2f;gui&#x2f;&quot;&gt;GUI&lt;&#x2f;a&gt; systems,
+but ggez is minimalistic by design and has none of this.
+So, two helper crates were extracted from Häte2d and rebuilt on top of ggez:&lt;&#x2f;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;tree&#x2f;721ad06a6&#x2f;ggwp-zscene&quot;&gt;ggwp-zscene&lt;&#x2f;a&gt;
+is a simple scene&#x2f;declarative animation manager that provides:
+&lt;ul&gt;
+&lt;li&gt;Sprites with shared data;&lt;&#x2f;li&gt;
+&lt;li&gt;Scene and Actions to manipulate sprites;&lt;&#x2f;li&gt;
+&lt;li&gt;Simple layers;&lt;&#x2f;li&gt;
+&lt;&#x2f;ul&gt;
+&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;tree&#x2f;721ad06a6&#x2f;ggwp-zgui&quot;&gt;ggwp-zgui&lt;&#x2f;a&gt;
+is a tiny and opinionated UI library:
+&lt;ul&gt;
+&lt;li&gt;Provides only simple labels, buttons and layouts;&lt;&#x2f;li&gt;
+&lt;li&gt;Handles only basic click event;&lt;&#x2f;li&gt;
+&lt;li&gt;No custom styles, only the basic one.&lt;&#x2f;li&gt;
+&lt;&#x2f;ul&gt;
+&lt;&#x2f;li&gt;
+&lt;&#x2f;ul&gt;
+&lt;p&gt;Since Icefoxen &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ggez&#x2f;ggez&#x2f;issues&#x2f;373&quot;&gt;asked not to use &lt;code&gt;ggez-&lt;&#x2f;code&gt; prefix&lt;&#x2f;a&gt;,
+I used &lt;code&gt;ggwp-&lt;&#x2f;code&gt; (&amp;quot;good game, well played!&amp;quot;) to denote that the crate
+belongs to ggez&#x27;s ecosystem, but is not official.&lt;&#x2f;p&gt;
+&lt;p&gt;These helper crates are still tied to Zemeroth,
+not sure how helpful these libraries can be for a project
+that is not Zemeroth-like.
+But maybe someone will manage to extract some benefit from them.&lt;&#x2f;p&gt;
+&lt;p&gt;These crates are still immature and aren&#x27;t published on crates.io yet,
+while the &lt;code&gt;rancor&lt;&#x2f;code&gt; component library was renamed to &lt;code&gt;zcomponents&lt;&#x2f;code&gt; and
+&lt;a href=&quot;https:&#x2f;&#x2f;crates.io&#x2f;crates&#x2f;zcomponents&quot;&gt;is published&lt;&#x2f;a&gt;.&lt;&#x2f;p&gt;
+&lt;hr &#x2f;&gt;
+&lt;p&gt;Initially, I migrated to ggez v0.4 that was SDL2-based.
+But as soon as the first release candidate of &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;rust-windowing&#x2f;winit&quot;&gt;winit&lt;&#x2f;a&gt;-based ggez v0.5
+became available I attempted to migrate to it.
+I&#x27;ve filed &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ggez&#x2f;ggez&#x2f;issues?q=is%3Aissue+author%3Aozkriff+created%3A%3E2019-01-01&quot;&gt;a bunch of mostly text-related issues in the process&lt;&#x2f;a&gt;
+and tried to fix the most critical ones for Zemeroth:
+&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ggez&#x2f;ggez&#x2f;pull&#x2f;559&quot;&gt;&amp;quot;Remove the generic argument from Drawable::draw&amp;quot;&lt;&#x2f;a&gt;,
+&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ggez&#x2f;ggez&#x2f;pull&#x2f;567&quot;&gt;&amp;quot;Drawable::dimensions()&amp;quot;&lt;&#x2f;a&gt; (big one!)
+and &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ggez&#x2f;ggez&#x2f;pull&#x2f;593&quot;&gt;&amp;quot;Fix Text::dimensions height&amp;quot;&lt;&#x2f;a&gt;.
+These PRs took some time, but then I relatively easy
+&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;426&quot;&gt;ported Zemeroth to ggez v0.5.0-rc.0&lt;&#x2f;a&gt;.&lt;&#x2f;p&gt;
+&lt;p&gt;ggez v0.5 isn&#x27;t released yet, so at the moment
+Zemeroth uses ggez &lt;code&gt;0.5.0-rc.1&lt;&#x2f;code&gt;. It&#x27;s stable enough for me.&lt;&#x2f;p&gt;
+&lt;hr &#x2f;&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2019-05-03--na.png&quot; alt=&quot;nalgebra logo&quot; &#x2f;&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;Before the migration,
+I was using &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;rustgd&#x2f;cgmath&quot;&gt;cgmath&lt;&#x2f;a&gt;, because it&#x27;s a simple and straightforward library.
+But ggez&#x27;s &amp;quot;native&amp;quot; math library is nalgebra and
+even though ggez v0.5 uses &lt;code&gt;mint&lt;&#x2f;code&gt; types for all its public API,
+I still migrated to nalgebra, because
+of &lt;a href=&quot;https:&#x2f;&#x2f;users.rust-lang.org&#x2f;t&#x2f;cgmath-looking-for-new-maintainers&#x2f;20406&quot;&gt;this&lt;&#x2f;a&gt;.&lt;&#x2f;p&gt;
+&lt;hr &#x2f;&gt;
+&lt;p&gt;One downside of the migration to ggez is that debug builds are much slower now
+because more code is pure Rust.
+Something like 3-5 FPS on my notebook.
+But it&#x27;s ok, I don&#x27;t need debug builds often,
+I prefer debugging through logs anyway.
+And when I really need a debug build to track down something extremely strange,
+I can use cargo&#x27;s yet unstable feature &lt;a href=&quot;https:&#x2f;&#x2f;doc.rust-lang.org&#x2f;nightly&#x2f;cargo&#x2f;reference&#x2f;unstable.html#profile-overrides&quot;&gt;&amp;quot;profile-overrides&amp;quot;&lt;&#x2f;a&gt;.&lt;&#x2f;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#bf616a;&quot;&gt;cargo-features &lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;= [&amp;quot;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;profile-overrides&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;]
+
+[profile.dev.overrides.&amp;quot;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;*&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;]
+&lt;&#x2f;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;opt-level &lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;= &lt;&#x2f;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2
+&lt;&#x2f;span&gt;&lt;&#x2f;pre&gt;
+&lt;p&gt;Another serious downside of the engine switch,
+&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ggez&#x2f;ggez&#x2f;issues&#x2f;70&quot;&gt;though temporary (?)&lt;&#x2f;a&gt;,
+is that there&#x27;s no native Android version of the game for now.
+But who really needs a native port when you have...&lt;&#x2f;p&gt;
+&lt;h2 id=&quot;webassembly-version&quot;&gt;WebAssembly Version&lt;&#x2f;h2&gt;
+&lt;p&gt;After ggez v0.5-rc.0 was published, Icefoxen has posted
+&lt;a href=&quot;https:&#x2f;&#x2f;wiki.alopex.li&#x2f;TheStateOfGGEZ2019&quot;&gt;&amp;quot;The State Of GGEZ 2019&amp;quot;&lt;&#x2f;a&gt;,
+where among other things he wrote that
+a web port is unlikely to happen soon because
+a lot of issues in dependencies need to be fixed first.
+It could be relatively easy to write a specialized web backend for ggez,
+but ggez&#x27;s philosophy is against having multiple backends.&lt;&#x2f;p&gt;
+&lt;p&gt;And that&#x27;s where &lt;a href=&quot;https:&#x2f;&#x2f;twitter.com&#x2f;notfl3&quot;&gt;Fedor @not-fl3&lt;&#x2f;a&gt; suddenly comes in
+with his &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;not-fl3&#x2f;good-web-game&quot;&gt;good-web-game&lt;&#x2f;a&gt; WASM&#x2f;WebGL game engine.
+He had been experimenting with 2d web prototypes
+(&lt;a href=&quot;https:&#x2f;&#x2f;twitter.com&#x2f;notfl3&#x2f;status&#x2f;1079499336243965952&quot;&gt;like this one&lt;&#x2f;a&gt;)
+for some time and used a custom 2d web engine for this.
+The API of this engine was heavily inspired by ggez
+so he managed to write a partly ggez-compatible wrapper in a weekend.&lt;&#x2f;p&gt;
+&lt;p&gt;Colors are slightly off and text rendering is a little bit different,
+but otherwise, it works nicely and smoothly,
+providing the same experience:&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2019-01-29--web-port-vs-native.jpg&quot;&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2019-01-29--web-port-vs-native.jpg&quot; alt=&quot;web version vs native&quot; &#x2f;&gt;&lt;&#x2f;a&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;Zemeroth uses good-web-game for its web version as a quick-n-dirty
+immediate solution until a proper WASM support arrives to GGEZ
+(there&#x27;re no plans of making good-web-game some kind of official GGEZ backend
+or anything like this).
+The currently implemented subset of ggez&#x27;s API is quite limited
+and while it may be used for other games,
+it will probably require a lot of work to do.&lt;&#x2f;p&gt;
+&lt;hr &#x2f;&gt;
+&lt;p&gt;You can&#x27;t use crate renaming in &lt;code&gt;Cargo.toml&lt;&#x2f;code&gt; to reuse a name on different platforms,&lt;&#x2f;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#65737e;&quot;&gt;# Cargo.toml with these dependencies wouldn&amp;#39;t build:
+
+&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;[target.&amp;#39;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;cfg(not(target_arch = &amp;quot;wasm32&amp;quot;))&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;#39;.dependencies]
+&lt;&#x2f;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ggez &lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;= &amp;quot;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;0.5.0-rc.1&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;
+
+[target.&amp;#39;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;cfg(target_arch = &amp;quot;wasm32&amp;quot;)&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;#39;.dependencies]
+&lt;&#x2f;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ggez &lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;= { &lt;&#x2f;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;git &lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;= &amp;quot;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;https:&#x2f;&#x2f;github.com&#x2f;not-fl3&#x2f;good-web-game&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;, &lt;&#x2f;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;package &lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;= &amp;quot;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;good-web-game&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot; }
+&lt;&#x2f;span&gt;&lt;&#x2f;pre&gt;
+&lt;p&gt;So the crate substitution hack is done in &lt;code&gt;main.rs&lt;&#x2f;code&gt;
+using &lt;code&gt;extern crate&lt;&#x2f;code&gt; items in &lt;code&gt;main.rs&lt;&#x2f;code&gt;:&lt;&#x2f;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#c0c5ce;&quot;&gt;#[&lt;&#x2f;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cfg&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(&lt;&#x2f;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;not&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(target_arch = &amp;quot;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;wasm32&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;))]
+&lt;&#x2f;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;extern crate&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; ggez;
+
+#[&lt;&#x2f;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cfg&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(target_arch = &amp;quot;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;wasm32&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;)]
+&lt;&#x2f;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;extern crate&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; good_web_game as ggez;
+&lt;&#x2f;span&gt;&lt;&#x2f;pre&gt;
+&lt;p&gt;99.9% of code stays the same,
+but I had to use a separate main, because good-web-game
+has a different initialization API:&lt;&#x2f;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#c0c5ce;&quot;&gt;#[&lt;&#x2f;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cfg&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(target_arch = &amp;quot;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;wasm32&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;)]
+&lt;&#x2f;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2f;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;() -&amp;gt; GameResult {
+    ggez::start(
+        conf::Conf {
+            cache: conf::Cache::Index,
+            loading: conf::Loading::Embedded,
+            ..Default::default()
+        },
+        |&lt;&#x2f;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mut &lt;&#x2f;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;context&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;| {
+            &lt;&#x2f;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; state = MainState::new(&amp;amp;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mut&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; context).&lt;&#x2f;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;unwrap&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;();
+            event::run(context, state)
+        },
+    )
+}
+&lt;&#x2f;span&gt;&lt;&#x2f;pre&gt;
+&lt;p&gt;Finally, a short helper script &lt;code&gt;utils&#x2f;wasm&#x2f;build.sh&lt;&#x2f;code&gt; was added:&lt;&#x2f;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#65737e;&quot;&gt;#!&#x2f;bin&#x2f;sh
+&lt;&#x2f;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cp -r&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; assets static
+&lt;&#x2f;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cp&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; utils&#x2f;wasm&#x2f;index.html static
+&lt;&#x2f;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ls&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; static &amp;gt; static&#x2f;index.txt
+&lt;&#x2f;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cargo&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; web build
+&lt;&#x2f;span&gt;&lt;&#x2f;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;koute&#x2f;cargo-web&quot;&gt;cargo-web&lt;&#x2f;a&gt; only packs a &lt;code&gt;static&lt;&#x2f;code&gt; directory (it&#x27;s hardcoded),
+so the script copies the game&#x27;s assets there;&lt;&#x2f;li&gt;
+&lt;li&gt;the &lt;code&gt;index.html&lt;&#x2f;code&gt; template page is also copied there;&lt;&#x2f;li&gt;
+&lt;li&gt;all assets should be listed in &lt;code&gt;index.txt&lt;&#x2f;code&gt; for good-web-game to be able
+to load them, so this file is created;&lt;&#x2f;li&gt;
+&lt;&#x2f;ul&gt;
+&lt;p&gt;You can find a minimal example of good-web-game
+&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;not-fl3&#x2f;good-web-game&#x2f;tree&#x2f;9b362da6d&#x2f;examples&#x2f;simple&quot;&gt;here&lt;&#x2f;a&gt;.&lt;&#x2f;p&gt;
+&lt;h2 id=&quot;itch-io&quot;&gt;itch.io&lt;&#x2f;h2&gt;
+&lt;p&gt;The web version needs to be hosted somewhere.
+&lt;a href=&quot;https:&#x2f;&#x2f;itch.io&#x2f;&quot;&gt;itch.io&lt;&#x2f;a&gt; is a nice place for this:&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.itch.io&#x2f;zemeroth&quot;&gt;ozkriff.itch.io&#x2f;zemeroth&lt;&#x2f;a&gt;&lt;&#x2f;strong&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;it has a nice and simple UI (for both developers and consumers),
+it&#x27;s extremely &lt;a href=&quot;https:&#x2f;&#x2f;itch.io&#x2f;docs&#x2f;creators&#x2f;html5&quot;&gt;easy to upload a web game there&lt;&#x2f;a&gt;
+and it&#x27;s a relatively known store for indie games that can provide
+some exposure by itself.&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.itch.io&quot;&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2019-05-02--itch-ozkriff.png&quot; alt=&quot;screenshot of the itch.io page&quot; &#x2f;&gt;&lt;&#x2f;a&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;(&lt;em&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.itch.io&#x2f;zoc&quot;&gt;Zone of Control also got an itch.io page&lt;&#x2f;a&gt;&lt;&#x2f;em&gt;)&lt;&#x2f;p&gt;
+&lt;hr &#x2f;&gt;
+&lt;p&gt;Note an &amp;quot;Enter fullscreen&amp;quot; button in the bottom right corner
+of the game area:&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2019-04-26-wasm-fullscreen-button.png&quot; alt=&quot;&amp;quot;enter fullscreen&amp;quot; button&quot; &#x2f;&gt;&lt;&#x2f;p&gt;
+&lt;hr &#x2f;&gt;
+&lt;p&gt;As I&#x27;ve said in the ggez section above,
+the web version of the game seems to work fine on most mobile devices:&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2019-05-04--android-wasm.jpg&quot; alt=&quot;web version on android device&quot; &#x2f;&gt;&lt;&#x2f;p&gt;
+&lt;hr &#x2f;&gt;
+&lt;p&gt;With a playable version only a click away
+I received a lot of fresh feedback:
+a lot of people that previously were only following the development
+now actually tried to play the game.&lt;&#x2f;p&gt;
+&lt;p&gt;The most important things people want to see improved are:&lt;&#x2f;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Improve the GUI: Replace text buttons with icons, show some tooltips, etc;&lt;&#x2f;li&gt;
+&lt;li&gt;Add a tutorial or at least a short guide;&lt;&#x2f;li&gt;
+&lt;li&gt;Randomness is too frustrating: missed attacks should result in some
+little positive effect, like pushing enemies back or reducing their stamina;&lt;&#x2f;li&gt;
+&lt;li&gt;The game lacks ranged attack units, like archers or knife throwers.&lt;&#x2f;li&gt;
+&lt;&#x2f;ul&gt;
+&lt;p&gt;@Yururu even wrote
+&lt;a href=&quot;https:&#x2f;&#x2f;itch.io&#x2f;post&#x2f;660275&quot;&gt;a giant comment&lt;&#x2f;a&gt; on the itch page!
+It&#x27;s inspiring when
+a stranger from the internet breaks through the crude primitive interface,
+figures out game mechanics on a quite deep level,
+and writes a detailed review of their experience and thoughts.&lt;&#x2f;p&gt;
+&lt;hr &#x2f;&gt;
+&lt;p&gt;I&#x27;ve created &lt;a href=&quot;https:&#x2f;&#x2f;www.reddit.com&#x2f;r&#x2f;rust&#x2f;comments&#x2f;arm9dr&#x2f;a_list_of_itchio_games_written_in_rust&quot;&gt;an itch.io list of Rust games&lt;&#x2f;a&gt;.
+When I find a Rust game on itch.io I add it there.&lt;&#x2f;p&gt;
+&lt;p&gt;Also, I&#x27;ve sent a request to itch.io folks to add Rust as an instrument,
+so now a more official list is available:
+&lt;a href=&quot;https:&#x2f;&#x2f;itch.io&#x2f;games&#x2f;made-with-rust&quot;&gt;itch.io&#x2f;games&#x2f;made-with-rust&lt;&#x2f;a&gt;
+(you can edit a game&#x27;s instruments here:
+&amp;quot;edit game&amp;quot; -&amp;gt; &amp;quot;metadata&amp;quot; -&amp;gt; &amp;quot;engines &amp;amp; tools&amp;quot;).
+Looks like my original list will be deprecated with time but
+it&#x27;s still useful for now because only authors of the games can add
+an instrument to the metadata.&lt;&#x2f;p&gt;
+&lt;h2 id=&quot;visual-improvements&quot;&gt;Visual Improvements&lt;&#x2f;h2&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;twitter.com&#x2f;ozkriff&#x2f;status&#x2f;975827153056075776&quot;&gt;The initial draft&lt;&#x2f;a&gt;
+of the new sprites looked like this:&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;agents-inkscape-mockup.jpeg&quot; alt=&quot;New style mockup&quot; &#x2f;&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;Tiles are flattened now.
+It&#x27;s less a schematic top-down view as it was before.
+&amp;quot;Camera&amp;quot; is moved to the side so the tiles and agents are shown
+using the same projection.&lt;&#x2f;p&gt;
+&lt;p&gt;There&#x27;re many gradients in the mockup image above.
+Later I decided to get rid of all the gradients and curvy lines
+and stick with &amp;quot;pseudo lowpoly&amp;quot; style.&lt;&#x2f;p&gt;
+&lt;p&gt;Floating Eye and Insecto-snake agent types from the mockup
+haven&#x27;t made it to the master yet.&lt;&#x2f;p&gt;
+&lt;hr &#x2f;&gt;
+&lt;p&gt;All objects now have a shadow.
+It makes the image a little bit more tangible.
+Walk and especially throw animations feel better now.&lt;&#x2f;p&gt;
+&lt;p&gt;Initially, shadow was an ellipse with gradient.
+Later it was replaced by two semi-transparent hexagons
+for style consistency.&lt;&#x2f;p&gt;
+&lt;hr &#x2f;&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;401&quot;&gt;Added blood splatters and weapon flashes&lt;&#x2f;a&gt;
+to make attacks more dramatic:&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2018-12-22--blood-splatters-and-weapon-flashes-demo-2.gif&quot; alt=&quot;blood drops and weapon flashes demo&quot; &#x2f;&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;The number of drops depends on the attack&#x27;s damage.
+Blood slowly disappears into transparency in three turns,
+otherwise, the battlefield would become a complete and unreadable mess.&lt;&#x2f;p&gt;
+&lt;p&gt;Every agent now has &lt;code&gt;WeaponType&lt;&#x2f;code&gt;: &amp;quot;smash&amp;quot;, &amp;quot;slash&amp;quot;, &amp;quot;pierce&amp;quot;, and &amp;quot;claw&amp;quot;.
+For now, they are just visual information.
+They affect only what sprite is used during the attack animation.&lt;&#x2f;p&gt;
+&lt;p&gt;Same as agent sprites, weapon flash sprites are not yet mirrored horizontally.
+That is most noticeable with curvy smash sprite.&lt;&#x2f;p&gt;
+&lt;p&gt;Also, spearman&#x27;s &amp;quot;pierce&amp;quot; weapon sprite is horizontal and it looks weird
+during vertical attacks.
+Either multiple sprites are needed or
+it should be rotated.&lt;&#x2f;p&gt;
+&lt;hr &#x2f;&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;390&quot;&gt;Added a Dust effect&lt;&#x2f;a&gt; (for jumps and throws):&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2019-05-12--dust-clouds.gif&quot; alt=&quot;dust demo&quot; &#x2f;&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;It is created by a simple function
+that just emits a bunch of half-transparent sprites
+and attaches position and color change actions to them.
+Sprites&#x27; size, velocity, and transparency are a little bit randomized.&lt;&#x2f;p&gt;
+&lt;h2 id=&quot;campaign-mode&quot;&gt;Campaign Mode&lt;&#x2f;h2&gt;
+&lt;p&gt;A basic campaign mode was added.
+It&#x27;s just a linear sequence of battles with predefined scenarios.
+After each battle, your survived fighters are carried over to the next battle.
+If you lose a battle - the campaign is over for you.
+If you win a battle, you&#x27;re shown a transition screen with a list
+of your dead fighters, your current squad, and possible recruits:&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2018-11-15--first-iteration-of-a-campaign-mode.png&quot; alt=&quot;Campaign screen example&quot; &#x2f;&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;The campaign is defined by a &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ron-rs&#x2f;ron&quot;&gt;RON&lt;&#x2f;a&gt; config file with this structure:&lt;&#x2f;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#c0c5ce;&quot;&gt;initial_agents: [&amp;quot;swordsman&amp;quot;, &amp;quot;alchemist&amp;quot;],
+nodes: [
+    (
+        scenario: (
+            map_radius: (4),
+            rocky_tiles_count: 8,
+            objects: [
+                (owner: Some((1)), typename: &amp;quot;imp&amp;quot;, line: Front, count: 3),
+                (owner: Some((1)), typename: &amp;quot;imp_bomber&amp;quot;, line: Middle, count: 2),
+            ],
+        ),
+        award: (
+            recruits: [&amp;quot;hammerman&amp;quot;, &amp;quot;alchemist&amp;quot;],
+        ),
+    ),
+    (
+        scenario: (
+            rocky_tiles_count: 10,
+            objects: [
+                (owner: None, typename: &amp;quot;boulder&amp;quot;, line: Any, count: 3),
+                (owner: None, typename: &amp;quot;spike_trap&amp;quot;, line: Any, count: 3),
+                (owner: Some((1)), typename: &amp;quot;imp&amp;quot;, line: Front, count: 4),
+                (owner: Some((1)), typename: &amp;quot;imp_toxic&amp;quot;, line: Middle, count: 2),
+                (owner: Some((1)), typename: &amp;quot;imp_bomber&amp;quot;, line: Back, count: 1),
+                (owner: Some((1)), typename: &amp;quot;imp_summoner&amp;quot;, line: Back, count: 2),
+            ],
+        ),
+        award: (
+            recruits: [&amp;quot;swordsman&amp;quot;, &amp;quot;spearman&amp;quot;, &amp;quot;hammerman&amp;quot;],
+        ),
+    ),
+]
+&lt;&#x2f;span&gt;&lt;&#x2f;pre&gt;
+&lt;p&gt;Here&#x27;s some real campaign scenario:
+&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth_assets&#x2f;blob&#x2f;acd9fe9ef&#x2f;campaign_01.ron&quot;&gt;campaign_01.ron&lt;&#x2f;a&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;There&#x27;s a known bug that you can exit from a battle that is not going well
+at any moment to start again.
+This will be forbidden - permadeath is the only way :) .&lt;&#x2f;p&gt;
+&lt;h2 id=&quot;hit-chances&quot;&gt;Hit Chances&lt;&#x2f;h2&gt;
+&lt;p&gt;In the previous version of Zemeroth the hit chance was always 50%.
+Now, &lt;code&gt;attack_accuracy&lt;&#x2f;code&gt; and &lt;code&gt;dodge&lt;&#x2f;code&gt; stats were added to the &lt;code&gt;Agent&lt;&#x2f;code&gt; component
+to &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;370&quot;&gt;implement a basic hit chances math&lt;&#x2f;a&gt;.&lt;&#x2f;p&gt;
+&lt;p&gt;When you select an agent that can attack
+(has an attack point and enemies in range)
+a hit chance is shown over all available targets:&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2018-05-12--hit-chances-1.png&quot; alt=&quot;Hit chances screenshot&quot; &#x2f;&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;During the attack animation, a hit chance is shown near
+the attacker with a smaller font.&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2019-05-12--attack-hit-chances.gif&quot; alt=&quot;Hit chance during the attack animation&quot; &#x2f;&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;This was added in order for the player to see how dangerous enemy attacks are.&lt;&#x2f;p&gt;
+&lt;hr &#x2f;&gt;
+&lt;p&gt;Also, wounded agents now become less accurate.
+Each lost strength point results in -10% hit chance penalty (up to -30%).&lt;&#x2f;p&gt;
+&lt;p&gt;Missing strength points (wounds) are shown by almost transparent green dots:&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2018-10-04--transparent-dots.png&quot; alt=&quot;demo of transparent strength points&quot; &#x2f;&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;This gameplay change has two game balance consequences:&lt;&#x2f;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Now it&#x27;s more important to wound enemies,
+finishing them off is a lower priority most of the time.
+Sometimes wounded enemies even can be helpful to the player,
+because they are not a real threat to player&#x27;s fighters,
+but can block the path for other enemies;&lt;&#x2f;li&gt;
+&lt;li&gt;Alchemist&#x27;s &amp;quot;heal&amp;quot; ability became important
+because your agents are less useful when wounded too.&lt;&#x2f;li&gt;
+&lt;&#x2f;ul&gt;
+&lt;p&gt;Also, attacks with strength &amp;gt; 1 have additional hit chances - with reduced damage
+(each attack strength point gives 10% hit chance improvement).
+This emulates the situation when an attacker barely touches their target
+but still manages to make some damage to it.&lt;&#x2f;p&gt;
+&lt;h2 id=&quot;armor&quot;&gt;Armor&lt;&#x2f;h2&gt;
+&lt;p&gt;A basic armor system was implemented.
+Armor points are shown above the agent in one line with strength points
+using the yellow dots.
+Each armor point deflects one damage point on each attack.
+Some weapons can break armor (the &lt;code&gt;attack_break&lt;&#x2f;code&gt; parameter).
+Fire and poison ignore armor.&lt;&#x2f;p&gt;
+&lt;p&gt;Here&#x27;s a little demo:&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2018-09-16--old-armor-demo.gif&quot; alt=&quot;old armor demo&quot; &#x2f;&gt;&lt;&#x2f;p&gt;
+&lt;ul&gt;
+&lt;li&gt;an imp can&#x27;t break armor so he can&#x27;t deal any damage to the heavy swordsman;&lt;&#x2f;li&gt;
+&lt;li&gt;toxic imp can&#x27;t deal any direct damage but he poisons the swordsman
+ignoring the armor;&lt;&#x2f;li&gt;
+&lt;li&gt;insecto-snake destroys the armor with a powerful attack.&lt;&#x2f;li&gt;
+&lt;&#x2f;ul&gt;
+&lt;p&gt;In the current version of the game only imp summoners have armor,
+so be careful with them.&lt;&#x2f;p&gt;
+&lt;h2 id=&quot;ai-updates&quot;&gt;AI Updates&lt;&#x2f;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Now, &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;306&quot;&gt;enemies always act in order of remoteness from a player&#x27;s fighters&lt;&#x2f;a&gt;.
+This way melee imps don&#x27;t trip over each other too much.&lt;&#x2f;p&gt;
+&lt;&#x2f;li&gt;
+&lt;li&gt;
+&lt;p&gt;AI learned to avoid walking into spikes, fire and poison clouds.&lt;&#x2f;p&gt;
+&lt;&#x2f;li&gt;
+&lt;li&gt;
+&lt;p&gt;AI now moves closer to its targets even if there&#x27;s no direct path to them
+(&lt;a href=&quot;https:&#x2f;&#x2f;youtu.be&#x2f;09ODLL_Nu8w&quot;&gt;full demo video&lt;&#x2f;a&gt;):&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;youtu.be&#x2f;09ODLL_Nu8w&quot;&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2018-06-04--ai-pathfinding-demo.gif&quot; alt=&quot;new pathfinding demo&quot; &#x2f;&gt;&lt;&#x2f;a&gt;&lt;&#x2f;p&gt;
+&lt;&#x2f;li&gt;
+&lt;li&gt;
+&lt;p&gt;Non-melee imps (bombers and summoners) are now
+&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;298&quot;&gt;trying to keep distance from the player&#x27;s fighters in range&lt;&#x2f;a&gt;.
+They need to avoid melee fights but still be able to throw bombs
+at a player&#x27;s fighters or summon new imps near the frontline.&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2018-07-02--ai-distance.gif&quot; alt=&quot;ai distance demo&quot; &#x2f;&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;Summoner has a slightly greater min&#x2f;max range than bomber.&lt;&#x2f;p&gt;
+&lt;&#x2f;li&gt;
+&lt;&#x2f;ul&gt;
+&lt;p&gt;During the debugging of the above-mentioned features,
+I also wrote &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;blob&#x2f;721ad06a6&#x2f;src&#x2f;core&#x2f;map.rs#L152-L169&quot;&gt;a simple helper function &lt;code&gt;dump_map&lt;&#x2f;code&gt;&lt;&#x2f;a&gt;
+that takes a closure and dumps required map data as a &lt;code&gt;char&lt;&#x2f;code&gt;
+in the above GIF, pic 1 shows objects (&lt;code&gt;A&lt;&#x2f;code&gt; - an agent, &lt;code&gt;O&lt;&#x2f;code&gt; - a non-agent object)
+and pic 2 shows available positions (&lt;code&gt;X&lt;&#x2f;code&gt;).&lt;&#x2f;p&gt;
+&lt;h2 id=&quot;bombs-and-commutative-effects&quot;&gt;Bombs and Commutative Effects&lt;&#x2f;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2018-06-04--bombs-issue.png&quot; alt=&quot;Illustration with multiple bombs&quot; &#x2f;&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;^ In the previous version of Zemeroth,
+each of these bombs would have exploded at the beginning of the next turn
+in order of their creation.
+But this order is hard to remember and it&#x27;s not clear from the picture at all.&lt;&#x2f;p&gt;
+&lt;p&gt;The order is very important as the explosions push back objects - if the first
+explosion is on the left, an agent will be damaged by the right bomb too.&lt;&#x2f;p&gt;
+&lt;p&gt;Pushback is not the only possible effect suffering from this.
+Other possible examples of &lt;a href=&quot;https:&#x2f;&#x2f;en.wikipedia.org&#x2f;wiki&#x2f;Commutative_property&quot;&gt;non-commutative effects&lt;&#x2f;a&gt;:
+teleportation, armor-breaking acid, immunity to damage, etc.
+Anything where changing the order of application can change the final state.&lt;&#x2f;p&gt;
+&lt;p&gt;I see two possible ways to solve this:&lt;&#x2f;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;store.steampowered.com&#x2f;app&#x2f;590380&#x2f;Into_the_Breach&quot;&gt;&amp;quot;Into the Breach&amp;quot;&lt;&#x2f;a&gt;-like approach with explicit numbers;&lt;&#x2f;li&gt;
+&lt;li&gt;Forbid non-commutative delayed effects.&lt;&#x2f;li&gt;
+&lt;&#x2f;ol&gt;
+&lt;p&gt;ItB&#x27;s approach means just adding this order information
+explicit in the game&#x27;s interface.
+It looks like this:&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2018-06-22-into-the-breach.png&quot;&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2018-06-22-into-the-breach-mini.png&quot; alt=&quot;Into the breach screenshot&quot; &#x2f;&gt;&lt;&#x2f;a&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;Technically it&#x27;s possible, but I don&#x27;t think that it fits for Zemeroth
+because it&#x27;s an extremely noisy interface feature,
+but it&#x27;s not really a core mechanic.&lt;&#x2f;p&gt;
+&lt;p&gt;So, &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;296&quot;&gt;I&#x27;ve taken the latter way&lt;&#x2f;a&gt;:
+the &amp;quot;Bomb&amp;quot; ability was split into two abilities: instant &amp;quot;BombPush&amp;quot;
+and delayed &amp;quot;BombDamage&amp;quot;.&lt;&#x2f;p&gt;
+&lt;p&gt;The plan is to have three groups of objects with effects:&lt;&#x2f;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Objects with immediate effects - can have non-commutative effects;&lt;&#x2f;li&gt;
+&lt;li&gt;General objects with timed effects - only commutative effects allowed;&lt;&#x2f;li&gt;
+&lt;li&gt;Special rare timed objects - can do whatever they want,
+but only allowed as unique boss abilities, work in their own special phase.&lt;&#x2f;li&gt;
+&lt;&#x2f;ul&gt;
+&lt;h2 id=&quot;other-game-rules-changes&quot;&gt;Other Game Rules Changes&lt;&#x2f;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Spike traps were added. They&#x27;re almost like fire tiles, but permanent.&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2019-05-12--spikes.png&quot; alt=&quot;spike trap&quot; &#x2f;&gt;&lt;&#x2f;p&gt;
+&lt;&#x2f;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;351&quot;&gt;Updated&lt;&#x2f;a&gt; &amp;quot;Poison&amp;quot; passive ability:
+it can’t, by itself, kill an agent anymore.
+“Poisoned” status is removed when a target’s strength is reduced to 1.
+This should make battles a little bit less frustrating and more dramatic.&lt;&#x2f;p&gt;
+&lt;&#x2f;li&gt;
+&lt;li&gt;
+&lt;p&gt;Updated the &amp;quot;Summon&amp;quot; ability:&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;413&quot;&gt;Each agent is now treated individually&lt;&#x2f;a&gt;.
+The new code treats each summoned agent individually
+thus preventing summoning weird packs of same imp types.&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;349&quot;&gt;Each use of the &amp;quot;Summon&amp;quot; ability now creates one more imp&lt;&#x2f;a&gt;.
+It forces the player to play more aggressively.&lt;&#x2f;p&gt;
+&lt;p&gt;Changed the summoning algorithm to
+&lt;a href=&quot;https:&#x2f;&#x2f;twitter.com&#x2f;ozkriff&#x2f;status&#x2f;1040321852495863808&quot;&gt;prefer imp types that are under-presented on the map&lt;&#x2f;a&gt;,
+not just random ones.
+Seems to work fine now - even with increased summon rate imp types
+are balanced in count: &lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2018-09-14--fixed-summoning.png&quot;&gt;&lt;em&gt;pic&lt;&#x2f;em&gt;&lt;&#x2f;a&gt;.&lt;&#x2f;p&gt;
+&lt;&#x2f;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;360&quot;&gt;Randomly-placed agents are not created point-blank to their enemies anymore&lt;&#x2f;a&gt;.&lt;&#x2f;p&gt;
+&lt;&#x2f;li&gt;
+&lt;li&gt;
+&lt;p&gt;Also, &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;369&quot;&gt;randomly-placed objects are now created on different &lt;code&gt;Line&lt;&#x2f;code&gt;s&lt;&#x2f;a&gt;.
+This prevents Imp Summoners from being created only a tile away from enemies
+and thus not having any chances to survive.
+Or Imp Bombers being instantly tied with a melee fight.&lt;&#x2f;p&gt;
+&lt;p&gt;A line is defined in the scenario files:&lt;&#x2f;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(owner: Some((1)), typename: &amp;quot;imp&amp;quot;, line: Front, count: 4),
+&lt;&#x2f;span&gt;&lt;&#x2f;pre&gt;
+&lt;p&gt;There&#x27;re four possible values:&lt;&#x2f;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#b48ead;&quot;&gt;pub enum &lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;Line { Any, Front, Middle, Back }
+&lt;&#x2f;span&gt;&lt;&#x2f;pre&gt;&lt;&#x2f;li&gt;
+&lt;&#x2f;ul&gt;
+&lt;h2 id=&quot;gameplay-video&quot;&gt;Gameplay Video&lt;&#x2f;h2&gt;
+&lt;p&gt;So, putting these gameplay changes together:&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;youtu.be&#x2f;zUVwAFSrh3c&quot;&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2019-05-12--playtest-youtube-preview.png&quot; alt=&quot;youtube video&quot; &#x2f;&gt;&lt;&#x2f;a&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;This is a piece of a campaign mode playtest: battles 3, 4, and 5.&lt;&#x2f;p&gt;
+&lt;h2 id=&quot;svg-atlas&quot;&gt;SVG Atlas&lt;&#x2f;h2&gt;
+&lt;p&gt;Back to more technical updates.&lt;&#x2f;p&gt;
+&lt;p&gt;As git is bad at storing non-text files and
+it&#x27;s practically impossible to use &lt;a href=&quot;https:&#x2f;&#x2f;git-lfs.github.com&quot;&gt;Git LFS&lt;&#x2f;a&gt; with a free GitHub plan
+(because of &lt;a href=&quot;https:&#x2f;&#x2f;help.github.com&#x2f;en&#x2f;articles&#x2f;about-storage-and-bandwidth-usage&quot;&gt;the bandwidth limitations&lt;&#x2f;a&gt;),
+it looks like a good idea to keep text source files, assets source files,
+and built assets in separate repositories
+to make &amp;quot;optimization history editing&amp;quot; (removing old commits) easier.&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&quot;&gt;The main repo&lt;&#x2f;a&gt;
+and &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth_assets&quot;&gt;the assets repo&lt;&#x2f;a&gt;
+already existed,
+but I wasn&#x27;t storing assets source files in any VCS.&lt;&#x2f;p&gt;
+&lt;p&gt;So, during v0.5 development, I&#x27;ve created another repo for assets sources:
+&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth_assets_src&quot;&gt;ozkriff&#x2f;zemeroth_assets_src&lt;&#x2f;a&gt;.
+The two key files of this repo are: &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth_assets_src&#x2f;blob&#x2f;1f1813eff&#x2f;atlas.svg&quot;&gt;atlas.svg&lt;&#x2f;a&gt; and &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth_assets_src&#x2f;blob&#x2f;1f1813eff&#x2f;export.py&quot;&gt;export.py&lt;&#x2f;a&gt;.&lt;&#x2f;p&gt;
+&lt;p&gt;The atlas contains all sprites in one file.
+Each sprite is stored as a named group.
+As the game isn&#x27;t that much art heavy, using one file for all visual assets
+looks fitting, because of it:&lt;&#x2f;p&gt;
+&lt;ul&gt;
+&lt;li&gt;simplifies sharing parts of sprites and mockups creation;&lt;&#x2f;li&gt;
+&lt;li&gt;avoids complications of linking&#x2f;embedding multiple SVG files together
+(you need to manually edit XML do to this properly as far as I know).&lt;&#x2f;li&gt;
+&lt;&#x2f;ul&gt;
+&lt;p&gt;The export script is quite simple, it just calls Inkscape using its CLI
+interface and tells what named group needs to be exported to PNGs.
+It boils down to:&lt;&#x2f;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#b48ead;&quot;&gt;for &lt;&#x2f;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;id &lt;&#x2f;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;in &lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;[&amp;#39;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;imp&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;#39;, &amp;#39;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;imp_toxic&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;#39;, &amp;#39;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;grass&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;#39;, &lt;&#x2f;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;...&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;]:
+    subprocess.&lt;&#x2f;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;run&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;([
+        &amp;#39;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;inkscape&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;#39;,
+        input_file_name,
+        &lt;&#x2f;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;f&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;#39;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;--export-id=&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;{&lt;&#x2f;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;id&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;}&amp;#39;,
+        &lt;&#x2f;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;f&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;#39;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;--export-png=&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;{out_dir_name}&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&#x2f;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;{&lt;&#x2f;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;id&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;}&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;.png&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;#39;,
+    ], &lt;&#x2f;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;check&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;=&lt;&#x2f;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;True&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;)
+&lt;&#x2f;span&gt;&lt;&#x2f;pre&gt;
+&lt;p&gt;There&#x27;s also a hack to avoid specifying exact sprite PNG sizes
+as raw numbers in the export script:
+each named group contains an invisible square (a rectangle for terrain tiles).
+It can be temporary made slightly visible for debugging purposes:&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2018-07-16--svg-atlas-test.png&quot;&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2018-07-16--svg-atlas-test.png&quot; alt=&quot;sprites in the debug mode&quot; &#x2f;&gt;&lt;&#x2f;a&gt;&lt;&#x2f;p&gt;
+&lt;h2 id=&quot;assets-hash&quot;&gt;Assets Hash&lt;&#x2f;h2&gt;
+&lt;p&gt;Another technical assets-related update is that a md5 hash check was added.
+This should help to detect when someone who is building from source
+forgets to update the assets.&lt;&#x2f;p&gt;
+&lt;p&gt;A small &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth_assets&#x2f;blob&#x2f;acd9fe9ef&#x2f;checksum.py&quot;&gt;checksum.py&lt;&#x2f;a&gt; python script is used to calculate the hash
+of all non-hidden files in the repo.
+&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth_assets&#x2f;blob&#x2f;acd9fe9ef&#x2f;travis.yml&quot;&gt;CI uses it to check&lt;&#x2f;a&gt;
+that the committed hashsum really corresponds to the committed assets.&lt;&#x2f;p&gt;
+&lt;p&gt;The expected hash is &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;blob&#x2f;721ad06a6src&#x2f;main.rs#L92&quot;&gt;hardcoded directly into main.rs&lt;&#x2f;a&gt;.
+If the game is run with a wrong version of assets,
+now you get a clear error message about that:&lt;&#x2f;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#c0c5ce;&quot;&gt;Bad assets checksum abcdeabcdeabcdeabcdeabcdeabcdeab (expected 18e7de361e74471aeaec3f209ef63c3e)
+&lt;&#x2f;span&gt;&lt;&#x2f;pre&gt;&lt;h2 id=&quot;tests&quot;&gt;Tests&lt;&#x2f;h2&gt;
+&lt;p&gt;One of the benefits of making a turn-based game is that you can relatively easy
+separate the logic from the visuals and cover the former with tests.&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;439&quot;&gt;A few test scenarios were added&lt;&#x2f;a&gt;.&lt;&#x2f;p&gt;
+&lt;p&gt;They are completely deterministic.
+Randomness is mitigated with special agent types with unrealistic stats
+(for example, &lt;code&gt;accuracy = 999&lt;&#x2f;code&gt; or &lt;code&gt;strength = 1&lt;&#x2f;code&gt;),
+that allows them to always pass required tests
+(for example, always hits or always dies on the first hit),
+and an additional &lt;code&gt;no_random&lt;&#x2f;code&gt; flag in the game state, that causes a panic
+if agent&#x27;s stats during the &amp;quot;dice roll&amp;quot; may result in non-determined results
+(basically, it checks that the coefficients are large or low enough
+to shut off any dice value fluctuations).&lt;&#x2f;p&gt;
+&lt;p&gt;&amp;quot;Exact objects&amp;quot; were added to the scenarios.
+Test scenarios mustn&#x27;t contain any randomly-placed objects,
+otherwise the &lt;code&gt;no_random&lt;&#x2f;code&gt; debug flag will cause a panic.&lt;&#x2f;p&gt;
+&lt;p&gt;Basic test looks like this:&lt;&#x2f;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#c0c5ce;&quot;&gt;#[&lt;&#x2f;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;test&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;]
+&lt;&#x2f;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2f;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;basic_move&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;() {
+    &lt;&#x2f;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; prototypes = &lt;&#x2f;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;prototypes&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(&amp;amp;[
+        (&amp;quot;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;mover&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;, [&lt;&#x2f;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;component_agent_move_basic&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;()].&lt;&#x2f;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;to_vec&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;()),
+        (&amp;quot;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;dull&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;, [&lt;&#x2f;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;component_agent_dull&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;()].&lt;&#x2f;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;to_vec&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;()),
+    ]);
+    &lt;&#x2f;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; scenario = scenario::default()
+        .&lt;&#x2f;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;object&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(&lt;&#x2f;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;P0&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;, &amp;quot;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;mover&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;, PosHex { q: &lt;&#x2f;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;, r: &lt;&#x2f;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0 &lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;})
+        .&lt;&#x2f;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;object&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(&lt;&#x2f;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;P1&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;, &amp;quot;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;dull&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;, PosHex { q: &lt;&#x2f;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;, r: &lt;&#x2f;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2 &lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;});
+    &lt;&#x2f;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; state = &lt;&#x2f;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;debug_state&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(prototypes, scenario);
+    &lt;&#x2f;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; path = Path::new(vec![
+        PosHex { q: &lt;&#x2f;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;, r: &lt;&#x2f;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0 &lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;},
+        PosHex { q: &lt;&#x2f;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;, r: &lt;&#x2f;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1 &lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;},
+    ]);
+    &lt;&#x2f;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;exec_and_check&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(
+        &amp;amp;&lt;&#x2f;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mut&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; state,
+        command::MoveTo {
+            id: ObjId(&lt;&#x2f;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;),
+            path: path.&lt;&#x2f;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;clone&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(),
+        },
+        &amp;amp;[Event {
+            active_event: event::MoveTo {
+                id: ObjId(&lt;&#x2f;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;),
+                path,
+                cost: Moves(&lt;&#x2f;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;),
+            }
+            .&lt;&#x2f;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;into&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(), &lt;&#x2f;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2f;&#x2f; small formatting issue, see a note below
+&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;            actor_ids: vec![ObjId(&lt;&#x2f;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2f;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;)],
+            instant_effects: Vec::new(),
+            timed_effects: Vec::new(),
+            scheduled_abilities: Vec::new(),
+        }],
+    );
+}
+&lt;&#x2f;span&gt;&lt;&#x2f;pre&gt;
+&lt;p&gt;(&lt;em&gt;I didn&#x27;t use the builder pattern for event construction,
+even though most of the time two or three its fields are empty vectors,
+because I&#x27;ve faced some &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;rust-lang&#x2f;rustfmt&#x2f;issues&#x2f;3157#issuecomment-472718887&quot;&gt;method chains formatting issues&lt;&#x2f;a&gt;&lt;&#x2f;em&gt;)&lt;&#x2f;p&gt;
+&lt;p&gt;Test scenario consists of a list of commands and a list of expected events.
+Occasionally, it can check some parts of the state.&lt;&#x2f;p&gt;
+&lt;p&gt;A prototypes list and a scenario are created from scratch
+(though, with some helper functions) for each test.
+It takes more lines of code than reusing a small set of multi-cases scenarios,
+but the idea is that this way the amount of objects and components
+in each test is minimized.
+This way it&#x27;s easier to diagnose the bug
+and makes tests less likely to break on unrelated game logic change.&lt;&#x2f;p&gt;
+&lt;p&gt;A &amp;quot;dull&amp;quot; enemy agent is required only for the scenario not to end instantly.
+Because the win condition is when no enemy agents are alive.&lt;&#x2f;p&gt;
+&lt;hr &#x2f;&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;colin-kiegel&#x2f;rust-pretty-assertions&quot;&gt;colin-kiegel&#x2f;rust-pretty-assertions&lt;&#x2f;a&gt;
+is a super-useful crate when you need to debug
+failing assert comparisons of big hierarchical objects
+(some of which may be many screens long in my case).&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2019-03-20--color-assert.png&quot; alt=&quot;a colored assert error&quot; &#x2f;&gt;&lt;&#x2f;p&gt;
+&lt;p&gt;One peculiarity is that I had to replace all &lt;code&gt;HashMap&amp;lt;ObjId, Vec&amp;lt;Foo&amp;gt;&amp;gt;&lt;&#x2f;code&gt;
+in events with &lt;code&gt;Vec&amp;lt;(ObjId, Vec&amp;lt;Foo&amp;gt;)&amp;gt;&lt;&#x2f;code&gt; to preserve the order.
+Otherwise pretty-assertion has been exploding.&lt;&#x2f;p&gt;
+&lt;h2 id=&quot;other-technical-changes&quot;&gt;Other Technical Changes&lt;&#x2f;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;394&quot;&gt;Moved all crates to Rust 2018&lt;&#x2f;a&gt;;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;226&quot;&gt;Added a note about &#x27;help-wanted&#x27; issues&lt;&#x2f;a&gt;;&lt;&#x2f;li&gt;
+&lt;li&gt;Used &lt;code&gt;derive_more::From&lt;&#x2f;code&gt; for enums and errors;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;229&quot;&gt;Migrated to &lt;code&gt;std::time::Duration&lt;&#x2f;code&gt;&lt;&#x2f;a&gt;
+and added &lt;code&gt;time_s&lt;&#x2f;code&gt; shortcut&#x2f;helper function;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;365&quot;&gt;Removed&lt;&#x2f;a&gt; some data duplication
+from &lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth_assets&#x2f;blob&#x2f;69e6fb34c&#x2f;objects.ron&quot;&gt;the &lt;code&gt;.ron&lt;&#x2f;code&gt; config with objects descriptions&lt;&#x2f;a&gt;
+using serde`s default annotations and helper init functions;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;220&quot;&gt;Added a &lt;code&gt;windows_subsystem&lt;&#x2f;code&gt; attribute&lt;&#x2f;a&gt;
+to hide cmd window on Windows;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;233&quot;&gt;Fixed panic when a boulder is pushed into fire&#x2f;spikes&lt;&#x2f;a&gt;;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;431&quot;&gt;Mergeed all &#x27;line_height&#x27; consts and functions&lt;&#x2f;a&gt;;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;pull&#x2f;365&quot;&gt;Removed data duplication from &lt;code&gt;objects.ron&lt;&#x2f;code&gt;&lt;&#x2f;a&gt;.&lt;&#x2f;li&gt;
+&lt;&#x2f;ul&gt;
+&lt;h2 id=&quot;indikator&quot;&gt;Indikator&lt;&#x2f;h2&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;twitter.com&#x2f;ozkriff&#x2f;status&#x2f;1058359693503070208&quot;&gt;Gave a presentation about Zemeroth&lt;&#x2f;a&gt; at 8th Indie-StandUp
+at &lt;a href=&quot;http:&#x2f;&#x2f;indierocket.ru&quot;&gt;Indikator&lt;&#x2f;a&gt;.
+It went pretty good, local indie devs seemed to like the project,
+especially considering that it&#x27;s opensource and uses an interesting tech.
+At least one of the devs has visited
+&lt;a href=&quot;https:&#x2f;&#x2f;www.meetup.com&#x2f;spbrust&quot;&gt;our local rustlang meetup&lt;&#x2f;a&gt; afterward. 🦀&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2019-05-13--devlog-zemeroth-v0-5&#x2f;2018-11-03--indikator.jpg&quot; alt=&quot;me presenting Zemeroth at Indikator&quot; &#x2f;&gt;&lt;&#x2f;p&gt;
+&lt;hr &#x2f;&gt;
+&lt;p&gt;It&#x27;s unrelated, but &lt;a href=&quot;https:&#x2f;&#x2f;www.redblobgames.com&#x2f;grids&#x2f;hexagons&#x2f;implementation.html&quot;&gt;Zemeroth was mentioned on Amit&#x27;s page about hex math&lt;&#x2f;a&gt;.&lt;&#x2f;p&gt;
+&lt;h2 id=&quot;migrated-this-devlog-to-zola&quot;&gt;Migrated This Devlog to Zola&lt;&#x2f;h2&gt;
+&lt;p&gt;During the preparation for this Zemeroth release, I&#x27;ve &lt;a href=&quot;https:&#x2f;&#x2f;ozkriff.github.io&#x2f;2017-12-01--devlog&#x2f;index.html#restructuredtext-markdown&quot;&gt;finally&lt;&#x2f;a&gt;
+switched the static site generator behind this devlog
+from Python-based &lt;a href=&quot;https:&#x2f;&#x2f;getpelican.com&quot;&gt;Pelican&lt;&#x2f;a&gt; to Rustlang-based &lt;a href=&quot;http:&#x2f;&#x2f;getzola.org&quot;&gt;Zola&lt;&#x2f;a&gt;.&lt;&#x2f;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2f;&#x2f;twitter.com&#x2f;ozkriff&#x2f;status&#x2f;1119212330246656002&quot;&gt;Here&#x27;s a twitter thread&lt;&#x2f;a&gt;
+with some migration notes.&lt;&#x2f;p&gt;
+&lt;p&gt;TLDR is that
+I&#x27;ve mostly automatically converted all RestructuredText post sources into Markdown,
+replaced &lt;a href=&quot;http:&#x2f;&#x2f;disqus.com&quot;&gt;Disqus comments&lt;&#x2f;a&gt; with direct links to reddit&#x2f;twitter&#x2f;etc,
+set up redirects from old URLs.&lt;&#x2f;p&gt;
+&lt;h2 id=&quot;roadmap&quot;&gt;Roadmap&lt;&#x2f;h2&gt;
+&lt;p&gt;What&#x27;s next? Some things I &lt;em&gt;hope&lt;&#x2f;em&gt; to implement for v0.6 release are:&lt;&#x2f;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;issues&#x2f;276&quot;&gt;Replace the text buttons with icons&lt;&#x2f;a&gt;;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;issues&#x2f;214&quot;&gt;Reduce text overlapping&lt;&#x2f;a&gt;;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;issues&#x2f;221&quot;&gt;Add sound effects and music&lt;&#x2f;a&gt;;&lt;&#x2f;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth&#x2f;issues&#x2f;399&quot;&gt;Add fighters upgrade trees&lt;&#x2f;a&gt;;&lt;&#x2f;li&gt;
+&lt;&#x2f;ul&gt;
+&lt;p&gt;You can find a slightly more detailed roadmap
+&lt;a href=&quot;https:&#x2f;&#x2f;github.com&#x2f;ozkriff&#x2f;zemeroth#roadmap&quot;&gt;in the project&#x27;s README&lt;&#x2f;a&gt;.&lt;&#x2f;p&gt;
+&lt;hr &#x2f;&gt;
+&lt;p&gt;That&#x27;s all for today, thanks for reading!&lt;&#x2f;p&gt;
+&lt;p&gt;If you&#x27;re interested in this project you can follow
+&lt;a href=&quot;https:&#x2f;&#x2f;twitter.com&#x2f;ozkriff&quot;&gt;@ozkriff on Twitter&lt;&#x2f;a&gt; for more news.&lt;&#x2f;p&gt;
+&lt;p&gt;Also, if you&#x27;re interested in Rust game development in general,
+you may want to check &lt;a href=&quot;http:&#x2f;&#x2f;twitter.com&#x2f;rust_gamedev&quot;&gt;@rust_gamedev&lt;&#x2f;a&gt;
+twitter account that I&#x27;ve started recently.&lt;&#x2f;p&gt;
+&lt;!--
+**Discussions of this post**:
+[&#x2f;r&#x2f;rust](__TODO__),
+[twitter](__TODO__).
+--&gt;
+</description>
+            </item>
         
             <item>
                 <title>Zemeroth v0.4: Abilities, Lasting Effects and New Unit Types</title>
