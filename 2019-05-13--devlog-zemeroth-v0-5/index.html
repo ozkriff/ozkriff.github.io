@@ -10,17 +10,17 @@
       <title>ozkriff&#x27;s devlog</title>
 
       <!-- CSS -->
-      <link rel="stylesheet" href="https:&#x2F;&#x2F;ozkriff.github.io&#x2F;print.css" media="print">
-      <link rel="stylesheet" href="https:&#x2F;&#x2F;ozkriff.github.io&#x2F;poole.css">
-      <link rel="stylesheet" href="https:&#x2F;&#x2F;ozkriff.github.io&#x2F;hyde.css">
+      <link rel="stylesheet" href="https:&#x2F;&#x2F;ozkriff.games&#x2F;print.css" media="print">
+      <link rel="stylesheet" href="https:&#x2F;&#x2F;ozkriff.games&#x2F;poole.css">
+      <link rel="stylesheet" href="https:&#x2F;&#x2F;ozkriff.games&#x2F;hyde.css">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
 
       
-        <link rel="shortcut icon" type="image/png" href="https:&#x2F;&#x2F;ozkriff.github.io&#x2F;favicon.png">
+        <link rel="shortcut icon" type="image/png" href="https:&#x2F;&#x2F;ozkriff.games&#x2F;favicon.png">
       
 
       
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;ozkriff.github.io&#x2F;rss.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;ozkriff.games&#x2F;rss.xml">
       
 
       
@@ -44,7 +44,7 @@
                 <div class="container ">
                     <div class="sidebar-about">
                         
-                            <a href="https:&#x2F;&#x2F;ozkriff.github.io"><h1>ozkriff&#x27;s devlog</h1></a>
+                            <a href="https:&#x2F;&#x2F;ozkriff.games"><h1>ozkriff&#x27;s devlog</h1></a>
                             
                         
                     </div>
@@ -77,14 +77,14 @@
 Main features of this release are:
 migration to ggez, web version, itch.io page, campaign mode,
 AI improvements, visual updates, and tests.</p>
-<p><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2019-04-29--title-demo.gif" alt="demo fight" /></p>
+<p><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2019-04-29--title-demo.gif" alt="demo fight" /></p>
 <p><a href="https://github.com/ozkriff/zemeroth">Zemeroth</a> is a turn-based hexagonal tactical game written in Rust.
 You can <a href="https://github.com/ozkriff/zemeroth/releases/tag/v0.5.0">download precompiled v0.5 binaries</a>
 for Windows, Linux, and macOS.
 Also, now you can <strong><a href="https://ozkriff.itch.io/zemeroth">play an online version</a></strong>
 (<em>read more about it in the &quot;WebAssembly version&quot; section below</em>).</p>
 <blockquote>
-<p><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2019-04-27--github-commits.png" alt="GitHub commits graph" /></p>
+<p><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2019-04-27--github-commits.png" alt="GitHub commits graph" /></p>
 </blockquote>
 <p>The last release happened about a year ago.
 Since then the development mostly happened in irregular bursts,
@@ -94,24 +94,24 @@ But a year is a big period of time anyway, so there're still lots of changes.</p
 that you're not interested in particularly.
 Here's a table of contents:</p>
 <ul>
-<li><a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/#migration-to-the-ggez-game-engine">Migration to the <code>ggez</code> Game Engine</a></li>
-<li><a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/#webassembly-version">WebAssembly Version</a></li>
-<li><a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/#itchio">itch.io</a></li>
-<li><a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/#visual-improvements">Visual Improvements</a></li>
-<li><a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/#campaign-mode">Campaign Mode</a></li>
-<li><a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/#hit-chances">Hit Chances</a></li>
-<li><a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/#armor">Armor</a></li>
-<li><a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/#ai-updates">AI Updates</a></li>
-<li><a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/#bombs-and-commutative-effects">Bombs and Commutative Effects</a></li>
-<li><a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/#other-game-rules-changes">Other Game Rules Changes</a></li>
-<li><a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/#gameplay-video">Gameplay Video</a></li>
-<li><a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/#svg-atlas">SVG Atlas</a></li>
-<li><a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/#assets-hash">Assets Hash</a></li>
-<li><a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/#tests">Tests</a></li>
-<li><a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/#other-technical-changes">Other Technical Changes</a></li>
-<li><a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/#indikator">Indikator</a></li>
-<li><a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/#migrated-this-devlog-to-zola">Migrated This Devlog to Zola</a></li>
-<li><a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/#roadmap">Roadmap</a></li>
+<li><a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/#migration-to-the-ggez-game-engine">Migration to the <code>ggez</code> Game Engine</a></li>
+<li><a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/#webassembly-version">WebAssembly Version</a></li>
+<li><a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/#itchio">itch.io</a></li>
+<li><a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/#visual-improvements">Visual Improvements</a></li>
+<li><a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/#campaign-mode">Campaign Mode</a></li>
+<li><a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/#hit-chances">Hit Chances</a></li>
+<li><a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/#armor">Armor</a></li>
+<li><a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/#ai-updates">AI Updates</a></li>
+<li><a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/#bombs-and-commutative-effects">Bombs and Commutative Effects</a></li>
+<li><a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/#other-game-rules-changes">Other Game Rules Changes</a></li>
+<li><a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/#gameplay-video">Gameplay Video</a></li>
+<li><a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/#svg-atlas">SVG Atlas</a></li>
+<li><a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/#assets-hash">Assets Hash</a></li>
+<li><a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/#tests">Tests</a></li>
+<li><a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/#other-technical-changes">Other Technical Changes</a></li>
+<li><a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/#indikator">Indikator</a></li>
+<li><a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/#migrated-this-devlog-to-zola">Migrated This Devlog to Zola</a></li>
+<li><a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/#roadmap">Roadmap</a></li>
 </ul>
 <h2 id="migration-to-the-ggez-game-engine">Migration to the <code>ggez</code> Game Engine</h2>
 <p>An experiment with maintaining my own engine
@@ -132,7 +132,7 @@ because it wouldn't have left any time for Zemeroth's development.</p>
 low-level parts of Zemeroth:
 <a href="https://github.com/ozkriff/zemeroth/pull/247">Häte2d was discontinued</a> and replaced by <a href="https://github.com/ggez/ggez">ggez</a>, the most mature and
 actively developed Rust 2d game engine at that time.</p>
-<p><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/ggez-logo-maroon-full.svg" alt="ggez's logo" /></p>
+<p><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/ggez-logo-maroon-full.svg" alt="ggez's logo" /></p>
 <p><code>häte</code> had some built-in basic
 <a href="https://docs.rs/hate/0.1.0/hate/scene/">scene management</a>
 and <a href="https://docs.rs/hate/0.1.0/hate/gui/">GUI</a> systems,
@@ -180,7 +180,7 @@ These PRs took some time, but then I relatively easy
 <p>ggez v0.5 isn't released yet, so at the moment
 Zemeroth uses ggez <code>0.5.0-rc.1</code>. It's stable enough for me.</p>
 <hr />
-<p><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2019-05-03--na.png" alt="nalgebra logo" /></p>
+<p><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2019-05-03--na.png" alt="nalgebra logo" /></p>
 <p>Before the migration,
 I was using <a href="https://github.com/rustgd/cgmath">cgmath</a>, because it's a simple and straightforward library.
 But ggez's &quot;native&quot; math library is nalgebra and
@@ -223,7 +223,7 @@ so he managed to write a partly ggez-compatible wrapper in a weekend.</p>
 <p>Colors are slightly off and text rendering is a little bit different,
 but otherwise, it works nicely and smoothly,
 providing the same experience:</p>
-<p><a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2019-01-29--web-port-vs-native.jpg"><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2019-01-29--web-port-vs-native.jpg" alt="web version vs native" /></a></p>
+<p><a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2019-01-29--web-port-vs-native.jpg"><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2019-01-29--web-port-vs-native.jpg" alt="web version vs native" /></a></p>
 <p>Zemeroth uses good-web-game for its web version as a quick-n-dirty
 immediate solution until a proper WASM support arrives to GGEZ
 (there're no plans of making good-web-game some kind of official GGEZ backend
@@ -295,16 +295,16 @@ to load them, so this file is created;</li>
 it's extremely <a href="https://itch.io/docs/creators/html5">easy to upload a web game there</a>
 and it's a relatively known store for indie games that can provide
 some exposure by itself.</p>
-<p><a href="https://ozkriff.itch.io"><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2019-05-02--itch-ozkriff.png" alt="screenshot of the itch.io page" /></a></p>
+<p><a href="https://ozkriff.itch.io"><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2019-05-02--itch-ozkriff.png" alt="screenshot of the itch.io page" /></a></p>
 <p>(<em><a href="https://ozkriff.itch.io/zoc">Zone of Control also got an itch.io page</a></em>)</p>
 <hr />
 <p>Note an &quot;Enter fullscreen&quot; button in the bottom right corner
 of the game area:</p>
-<p><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2019-04-26-wasm-fullscreen-button.png" alt="&quot;enter fullscreen&quot; button" /></p>
+<p><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2019-04-26-wasm-fullscreen-button.png" alt="&quot;enter fullscreen&quot; button" /></p>
 <hr />
 <p>As I've said in the ggez section above,
 the web version of the game seems to work fine on most mobile devices:</p>
-<p><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2019-05-04--android-wasm.jpg" alt="web version on android device" /></p>
+<p><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2019-05-04--android-wasm.jpg" alt="web version on android device" /></p>
 <hr />
 <p>With a playable version only a click away
 I received a lot of fresh feedback:
@@ -338,7 +338,7 @@ an instrument to the metadata.</p>
 <h2 id="visual-improvements">Visual Improvements</h2>
 <p><a href="https://twitter.com/ozkriff/status/975827153056075776">The initial draft</a>
 of the new sprites looked like this:</p>
-<p><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/agents-inkscape-mockup.jpeg" alt="New style mockup" /></p>
+<p><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/agents-inkscape-mockup.jpeg" alt="New style mockup" /></p>
 <p>Tiles are flattened now.
 It's less a schematic top-down view as it was before.
 &quot;Camera&quot; is moved to the side so the tiles and agents are shown
@@ -358,7 +358,7 @@ for style consistency.</p>
 <hr />
 <p><a href="https://github.com/ozkriff/zemeroth/pull/401">Added blood splatters and weapon flashes</a>
 to make attacks more dramatic:</p>
-<p><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2018-12-22--blood-splatters-and-weapon-flashes-demo-2.gif" alt="blood drops and weapon flashes demo" /></p>
+<p><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2018-12-22--blood-splatters-and-weapon-flashes-demo-2.gif" alt="blood drops and weapon flashes demo" /></p>
 <p>The number of drops depends on the attack's damage.
 Blood slowly disappears into transparency in three turns,
 otherwise, the battlefield would become a complete and unreadable mess.</p>
@@ -373,7 +373,7 @@ Either multiple sprites are needed or
 it should be rotated.</p>
 <hr />
 <p><a href="https://github.com/ozkriff/zemeroth/pull/390">Added a Dust effect</a> (for jumps and throws):</p>
-<p><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2019-05-12--dust-clouds.gif" alt="dust demo" /></p>
+<p><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2019-05-12--dust-clouds.gif" alt="dust demo" /></p>
 <p>It is created by a simple function
 that just emits a bunch of half-transparent sprites
 and attaches position and color change actions to them.
@@ -385,7 +385,7 @@ After each battle, your survived fighters are carried over to the next battle.
 If you lose a battle - the campaign is over for you.
 If you win a battle, you're shown a transition screen with a list
 of your dead fighters, your current squad, and possible recruits:</p>
-<p><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2018-11-15--first-iteration-of-a-campaign-mode.png" alt="Campaign screen example" /></p>
+<p><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2018-11-15--first-iteration-of-a-campaign-mode.png" alt="Campaign screen example" /></p>
 <p>The campaign is defined by a <a href="https://github.com/ron-rs/ron">RON</a> config file with this structure:</p>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">initial_agents: [&quot;swordsman&quot;, &quot;alchemist&quot;],
@@ -433,16 +433,16 @@ to <a href="https://github.com/ozkriff/zemeroth/pull/370">implement a basic hit 
 <p>When you select an agent that can attack
 (has an attack point and enemies in range)
 a hit chance is shown over all available targets:</p>
-<p><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2018-05-12--hit-chances-1.png" alt="Hit chances screenshot" /></p>
+<p><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2018-05-12--hit-chances-1.png" alt="Hit chances screenshot" /></p>
 <p>During the attack animation, a hit chance is shown near
 the attacker with a smaller font.</p>
-<p><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2019-05-12--attack-hit-chances.gif" alt="Hit chance during the attack animation" /></p>
+<p><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2019-05-12--attack-hit-chances.gif" alt="Hit chance during the attack animation" /></p>
 <p>This was added in order for the player to see how dangerous enemy attacks are.</p>
 <hr />
 <p>Also, wounded agents now become less accurate.
 Each lost strength point results in -10% hit chance penalty (up to -30%).</p>
 <p>Missing strength points (wounds) are shown by almost transparent green dots:</p>
-<p><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2018-10-04--transparent-dots.png" alt="demo of transparent strength points" /></p>
+<p><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2018-10-04--transparent-dots.png" alt="demo of transparent strength points" /></p>
 <p>This gameplay change has two game balance consequences:</p>
 <ul>
 <li>Now it's more important to wound enemies,
@@ -465,7 +465,7 @@ Each armor point deflects one damage point on each attack.
 Some weapons can break armor (the <code>attack_break</code> parameter).
 Fire and poison ignore armor.</p>
 <p>Here's a little demo:</p>
-<p><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2018-09-16--old-armor-demo.gif" alt="old armor demo" /></p>
+<p><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2018-09-16--old-armor-demo.gif" alt="old armor demo" /></p>
 <ul>
 <li>an imp can't break armor so he can't deal any damage to the heavy swordsman;</li>
 <li>toxic imp can't deal any direct damage but he poisons the swordsman
@@ -486,14 +486,14 @@ This way melee imps don't trip over each other too much.</p>
 <li>
 <p>AI now moves closer to its targets even if there's no direct path to them
 (<a href="https://youtu.be/09ODLL_Nu8w">full demo video</a>):</p>
-<p><a href="https://youtu.be/09ODLL_Nu8w"><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2018-06-04--ai-pathfinding-demo.gif" alt="new pathfinding demo" /></a></p>
+<p><a href="https://youtu.be/09ODLL_Nu8w"><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2018-06-04--ai-pathfinding-demo.gif" alt="new pathfinding demo" /></a></p>
 </li>
 <li>
 <p>Non-melee imps (bombers and summoners) are now
 <a href="https://github.com/ozkriff/zemeroth/pull/298">trying to keep distance from the player's fighters in range</a>.
 They need to avoid melee fights but still be able to throw bombs
 at a player's fighters or summon new imps near the frontline.</p>
-<p><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2018-07-02--ai-distance.gif" alt="ai distance demo" /></p>
+<p><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2018-07-02--ai-distance.gif" alt="ai distance demo" /></p>
 <p>Summoner has a slightly greater min/max range than bomber.</p>
 </li>
 </ul>
@@ -503,7 +503,7 @@ that takes a closure and dumps required map data as a <code>char</code>
 in the above GIF, pic 1 shows objects (<code>A</code> - an agent, <code>O</code> - a non-agent object)
 and pic 2 shows available positions (<code>X</code>).</p>
 <h2 id="bombs-and-commutative-effects">Bombs and Commutative Effects</h2>
-<p><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2018-06-04--bombs-issue.png" alt="Illustration with multiple bombs" /></p>
+<p><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2018-06-04--bombs-issue.png" alt="Illustration with multiple bombs" /></p>
 <p>^ In the previous version of Zemeroth,
 each of these bombs would have exploded at the beginning of the next turn
 in order of their creation.
@@ -522,7 +522,7 @@ Anything where changing the order of application can change the final state.</p>
 <p>ItB's approach means just adding this order information
 explicit in the game's interface.
 It looks like this:</p>
-<p><a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2018-06-22-into-the-breach.png"><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2018-06-22-into-the-breach-mini.png" alt="Into the breach screenshot" /></a></p>
+<p><a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2018-06-22-into-the-breach.png"><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2018-06-22-into-the-breach-mini.png" alt="Into the breach screenshot" /></a></p>
 <p>Technically it's possible, but I don't think that it fits for Zemeroth
 because it's an extremely noisy interface feature,
 but it's not really a core mechanic.</p>
@@ -540,7 +540,7 @@ but only allowed as unique boss abilities, work in their own special phase.</li>
 <ul>
 <li>
 <p>Spike traps were added. They're almost like fire tiles, but permanent.</p>
-<p><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2019-05-12--spikes.png" alt="spike trap" /></p>
+<p><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2019-05-12--spikes.png" alt="spike trap" /></p>
 </li>
 <li>
 <p><a href="https://github.com/ozkriff/zemeroth/pull/351">Updated</a> &quot;Poison&quot; passive ability:
@@ -559,7 +559,7 @@ It forces the player to play more aggressively.</p>
 <a href="https://twitter.com/ozkriff/status/1040321852495863808">prefer imp types that are under-presented on the map</a>,
 not just random ones.
 Seems to work fine now - even with increased summon rate imp types
-are balanced in count: <a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2018-09-14--fixed-summoning.png"><em>pic</em></a>.</p>
+are balanced in count: <a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2018-09-14--fixed-summoning.png"><em>pic</em></a>.</p>
 </li>
 <li>
 <p><a href="https://github.com/ozkriff/zemeroth/pull/360">Randomly-placed agents are not created point-blank to their enemies anymore</a>.</p>
@@ -580,7 +580,7 @@ Or Imp Bombers being instantly tied with a melee fight.</p>
 </ul>
 <h2 id="gameplay-video">Gameplay Video</h2>
 <p>So, putting these gameplay changes together:</p>
-<p><a href="https://youtu.be/zUVwAFSrh3c"><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2019-05-12--playtest-youtube-preview.png" alt="youtube video" /></a></p>
+<p><a href="https://youtu.be/zUVwAFSrh3c"><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2019-05-12--playtest-youtube-preview.png" alt="youtube video" /></a></p>
 <p>This is a piece of a campaign mode playtest: battles 3, 4, and 5.</p>
 <h2 id="svg-atlas">SVG Atlas</h2>
 <p>Back to more technical updates.</p>
@@ -622,7 +622,7 @@ It boils down to:</p>
 as raw numbers in the export script:
 each named group contains an invisible square (a rectangle for terrain tiles).
 It can be temporary made slightly visible for debugging purposes:</p>
-<p><a href="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2018-07-16--svg-atlas-test.png"><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2018-07-16--svg-atlas-test.png" alt="sprites in the debug mode" /></a></p>
+<p><a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2018-07-16--svg-atlas-test.png"><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2018-07-16--svg-atlas-test.png" alt="sprites in the debug mode" /></a></p>
 <h2 id="assets-hash">Assets Hash</h2>
 <p>Another technical assets-related update is that a md5 hash check was added.
 This should help to detect when someone who is building from source
@@ -708,7 +708,7 @@ Because the win condition is when no enemy agents are alive.</p>
 is a super-useful crate when you need to debug
 failing assert comparisons of big hierarchical objects
 (some of which may be many screens long in my case).</p>
-<p><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2019-03-20--color-assert.png" alt="a colored assert error" /></p>
+<p><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2019-03-20--color-assert.png" alt="a colored assert error" /></p>
 <p>One peculiarity is that I had to replace all <code>HashMap&lt;ObjId, Vec&lt;Foo&gt;&gt;</code>
 in events with <code>Vec&lt;(ObjId, Vec&lt;Foo&gt;)&gt;</code> to preserve the order.
 Otherwise pretty-assertion has been exploding.</p>
@@ -735,7 +735,7 @@ It went pretty good, local indie devs seemed to like the project,
 especially considering that it's opensource and uses an interesting tech.
 At least one of the devs has visited
 <a href="https://www.meetup.com/spbrust">our local rustlang meetup</a> afterward. 🦀</p>
-<p><img src="https://ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/2018-11-03--indikator.jpg" alt="me presenting Zemeroth at Indikator" /></p>
+<p><img src="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/2018-11-03--indikator.jpg" alt="me presenting Zemeroth at Indikator" /></p>
 <hr />
 <p>It's unrelated, but <a href="https://www.redblobgames.com/grids/hexagons/implementation.html">Zemeroth was mentioned on Amit's page about hex math</a>.</p>
 <h2 id="migrated-this-devlog-to-zola">Migrated This Devlog to Zola</h2>

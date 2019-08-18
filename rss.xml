@@ -2,32 +2,32 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>ozkriff&#x27;s devlog</title>
-        <link>https%3A//ozkriff.github.io</link>
+        <link>https%3A//ozkriff.games</link>
         <description></description>
         <generator>Zola</generator>
         <language>en</language>
-        <atom:link href="https%3A//ozkriff.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+        <atom:link href="https%3A//ozkriff.games/rss.xml" rel="self" type="application/rss+xml"/>
         <lastBuildDate>Mon, 13 May 2019 00:00:00 +0000</lastBuildDate>
         
             <item>
                 <title>Zemeroth v0.5: ggez, WASM, itch.io, visuals, AI, campaign, tests</title>
                 <pubDate>Mon, 13 May 2019 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/</link>
-                <guid>https%3A//ozkriff.github.io/2019-05-13--devlog-zemeroth-v0-5/</guid>
+                <link>https%3A//ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/</link>
+                <guid>https%3A//ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/</guid>
                 <description>&lt;!-- markdownlint-disable MD013 --&gt;
 &lt;!-- cspell:ignore Berserker Muton kiegel Yururu ldjam devs itchio PNGs --&gt;
 &lt;p&gt;Hi, folks! I&#x27;m happy to announce &lt;strong&gt;Zemeroth v0.5&lt;&#x2F;strong&gt;.
 Main features of this release are:
 migration to ggez, web version, itch.io page, campaign mode,
 AI improvements, visual updates, and tests.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-04-29--title-demo.gif&quot; alt=&quot;demo fight&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-04-29--title-demo.gif&quot; alt=&quot;demo fight&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&quot;&gt;Zemeroth&lt;&#x2F;a&gt; is a turn-based hexagonal tactical game written in Rust.
 You can &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&#x2F;releases&#x2F;tag&#x2F;v0.5.0&quot;&gt;download precompiled v0.5 binaries&lt;&#x2F;a&gt;
 for Windows, Linux, and macOS.
 Also, now you can &lt;strong&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.itch.io&#x2F;zemeroth&quot;&gt;play an online version&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;
 (&lt;em&gt;read more about it in the &amp;quot;WebAssembly version&amp;quot; section below&lt;&#x2F;em&gt;).&lt;&#x2F;p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-04-27--github-commits.png&quot; alt=&quot;GitHub commits graph&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-04-27--github-commits.png&quot; alt=&quot;GitHub commits graph&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;&#x2F;blockquote&gt;
 &lt;p&gt;The last release happened about a year ago.
 Since then the development mostly happened in irregular bursts,
@@ -37,24 +37,24 @@ But a year is a big period of time anyway, so there&#x27;re still lots of change
 that you&#x27;re not interested in particularly.
 Here&#x27;s a table of contents:&lt;&#x2F;p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#migration-to-the-ggez-game-engine&quot;&gt;Migration to the &lt;code&gt;ggez&lt;&#x2F;code&gt; Game Engine&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#webassembly-version&quot;&gt;WebAssembly Version&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#itchio&quot;&gt;itch.io&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#visual-improvements&quot;&gt;Visual Improvements&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#campaign-mode&quot;&gt;Campaign Mode&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#hit-chances&quot;&gt;Hit Chances&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#armor&quot;&gt;Armor&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#ai-updates&quot;&gt;AI Updates&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#bombs-and-commutative-effects&quot;&gt;Bombs and Commutative Effects&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#other-game-rules-changes&quot;&gt;Other Game Rules Changes&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#gameplay-video&quot;&gt;Gameplay Video&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#svg-atlas&quot;&gt;SVG Atlas&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#assets-hash&quot;&gt;Assets Hash&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#tests&quot;&gt;Tests&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#other-technical-changes&quot;&gt;Other Technical Changes&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#indikator&quot;&gt;Indikator&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#migrated-this-devlog-to-zola&quot;&gt;Migrated This Devlog to Zola&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#roadmap&quot;&gt;Roadmap&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#migration-to-the-ggez-game-engine&quot;&gt;Migration to the &lt;code&gt;ggez&lt;&#x2F;code&gt; Game Engine&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#webassembly-version&quot;&gt;WebAssembly Version&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#itchio&quot;&gt;itch.io&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#visual-improvements&quot;&gt;Visual Improvements&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#campaign-mode&quot;&gt;Campaign Mode&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#hit-chances&quot;&gt;Hit Chances&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#armor&quot;&gt;Armor&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#ai-updates&quot;&gt;AI Updates&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#bombs-and-commutative-effects&quot;&gt;Bombs and Commutative Effects&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#other-game-rules-changes&quot;&gt;Other Game Rules Changes&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#gameplay-video&quot;&gt;Gameplay Video&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#svg-atlas&quot;&gt;SVG Atlas&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#assets-hash&quot;&gt;Assets Hash&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#tests&quot;&gt;Tests&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#other-technical-changes&quot;&gt;Other Technical Changes&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#indikator&quot;&gt;Indikator&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#migrated-this-devlog-to-zola&quot;&gt;Migrated This Devlog to Zola&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;#roadmap&quot;&gt;Roadmap&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;h2 id=&quot;migration-to-the-ggez-game-engine&quot;&gt;Migration to the &lt;code&gt;ggez&lt;&#x2F;code&gt; Game Engine&lt;&#x2F;h2&gt;
 &lt;p&gt;An experiment with maintaining my own engine
@@ -75,7 +75,7 @@ because it wouldn&#x27;t have left any time for Zemeroth&#x27;s development.&lt;
 low-level parts of Zemeroth:
 &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&#x2F;pull&#x2F;247&quot;&gt;Häte2d was discontinued&lt;&#x2F;a&gt; and replaced by &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ggez&#x2F;ggez&quot;&gt;ggez&lt;&#x2F;a&gt;, the most mature and
 actively developed Rust 2d game engine at that time.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;ggez-logo-maroon-full.svg&quot; alt=&quot;ggez&#x27;s logo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;ggez-logo-maroon-full.svg&quot; alt=&quot;ggez&#x27;s logo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;code&gt;häte&lt;&#x2F;code&gt; had some built-in basic
 &lt;a href=&quot;https:&#x2F;&#x2F;docs.rs&#x2F;hate&#x2F;0.1.0&#x2F;hate&#x2F;scene&#x2F;&quot;&gt;scene management&lt;&#x2F;a&gt;
 and &lt;a href=&quot;https:&#x2F;&#x2F;docs.rs&#x2F;hate&#x2F;0.1.0&#x2F;hate&#x2F;gui&#x2F;&quot;&gt;GUI&lt;&#x2F;a&gt; systems,
@@ -123,7 +123,7 @@ These PRs took some time, but then I relatively easy
 &lt;p&gt;ggez v0.5 isn&#x27;t released yet, so at the moment
 Zemeroth uses ggez &lt;code&gt;0.5.0-rc.1&lt;&#x2F;code&gt;. It&#x27;s stable enough for me.&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-05-03--na.png&quot; alt=&quot;nalgebra logo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-05-03--na.png&quot; alt=&quot;nalgebra logo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Before the migration,
 I was using &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rustgd&#x2F;cgmath&quot;&gt;cgmath&lt;&#x2F;a&gt;, because it&#x27;s a simple and straightforward library.
 But ggez&#x27;s &amp;quot;native&amp;quot; math library is nalgebra and
@@ -166,7 +166,7 @@ so he managed to write a partly ggez-compatible wrapper in a weekend.&lt;&#x2F;p
 &lt;p&gt;Colors are slightly off and text rendering is a little bit different,
 but otherwise, it works nicely and smoothly,
 providing the same experience:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-01-29--web-port-vs-native.jpg&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-01-29--web-port-vs-native.jpg&quot; alt=&quot;web version vs native&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-01-29--web-port-vs-native.jpg&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-01-29--web-port-vs-native.jpg&quot; alt=&quot;web version vs native&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Zemeroth uses good-web-game for its web version as a quick-n-dirty
 immediate solution until a proper WASM support arrives to GGEZ
 (there&#x27;re no plans of making good-web-game some kind of official GGEZ backend
@@ -238,16 +238,16 @@ to load them, so this file is created;&lt;&#x2F;li&gt;
 it&#x27;s extremely &lt;a href=&quot;https:&#x2F;&#x2F;itch.io&#x2F;docs&#x2F;creators&#x2F;html5&quot;&gt;easy to upload a web game there&lt;&#x2F;a&gt;
 and it&#x27;s a relatively known store for indie games that can provide
 some exposure by itself.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.itch.io&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-05-02--itch-ozkriff.png&quot; alt=&quot;screenshot of the itch.io page&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.itch.io&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-05-02--itch-ozkriff.png&quot; alt=&quot;screenshot of the itch.io page&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;(&lt;em&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.itch.io&#x2F;zoc&quot;&gt;Zone of Control also got an itch.io page&lt;&#x2F;a&gt;&lt;&#x2F;em&gt;)&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;Note an &amp;quot;Enter fullscreen&amp;quot; button in the bottom right corner
 of the game area:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-04-26-wasm-fullscreen-button.png&quot; alt=&quot;&amp;quot;enter fullscreen&amp;quot; button&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-04-26-wasm-fullscreen-button.png&quot; alt=&quot;&amp;quot;enter fullscreen&amp;quot; button&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;As I&#x27;ve said in the ggez section above,
 the web version of the game seems to work fine on most mobile devices:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-05-04--android-wasm.jpg&quot; alt=&quot;web version on android device&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-05-04--android-wasm.jpg&quot; alt=&quot;web version on android device&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;With a playable version only a click away
 I received a lot of fresh feedback:
@@ -281,7 +281,7 @@ an instrument to the metadata.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;visual-improvements&quot;&gt;Visual Improvements&lt;&#x2F;h2&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;ozkriff&#x2F;status&#x2F;975827153056075776&quot;&gt;The initial draft&lt;&#x2F;a&gt;
 of the new sprites looked like this:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;agents-inkscape-mockup.jpeg&quot; alt=&quot;New style mockup&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;agents-inkscape-mockup.jpeg&quot; alt=&quot;New style mockup&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Tiles are flattened now.
 It&#x27;s less a schematic top-down view as it was before.
 &amp;quot;Camera&amp;quot; is moved to the side so the tiles and agents are shown
@@ -301,7 +301,7 @@ for style consistency.&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&#x2F;pull&#x2F;401&quot;&gt;Added blood splatters and weapon flashes&lt;&#x2F;a&gt;
 to make attacks more dramatic:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-12-22--blood-splatters-and-weapon-flashes-demo-2.gif&quot; alt=&quot;blood drops and weapon flashes demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-12-22--blood-splatters-and-weapon-flashes-demo-2.gif&quot; alt=&quot;blood drops and weapon flashes demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;The number of drops depends on the attack&#x27;s damage.
 Blood slowly disappears into transparency in three turns,
 otherwise, the battlefield would become a complete and unreadable mess.&lt;&#x2F;p&gt;
@@ -316,7 +316,7 @@ Either multiple sprites are needed or
 it should be rotated.&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&#x2F;pull&#x2F;390&quot;&gt;Added a Dust effect&lt;&#x2F;a&gt; (for jumps and throws):&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-05-12--dust-clouds.gif&quot; alt=&quot;dust demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-05-12--dust-clouds.gif&quot; alt=&quot;dust demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;It is created by a simple function
 that just emits a bunch of half-transparent sprites
 and attaches position and color change actions to them.
@@ -328,7 +328,7 @@ After each battle, your survived fighters are carried over to the next battle.
 If you lose a battle - the campaign is over for you.
 If you win a battle, you&#x27;re shown a transition screen with a list
 of your dead fighters, your current squad, and possible recruits:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-11-15--first-iteration-of-a-campaign-mode.png&quot; alt=&quot;Campaign screen example&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-11-15--first-iteration-of-a-campaign-mode.png&quot; alt=&quot;Campaign screen example&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;The campaign is defined by a &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ron-rs&#x2F;ron&quot;&gt;RON&lt;&#x2F;a&gt; config file with this structure:&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
 &lt;span style=&quot;color:#c0c5ce;&quot;&gt;initial_agents: [&amp;quot;swordsman&amp;quot;, &amp;quot;alchemist&amp;quot;],
@@ -376,16 +376,16 @@ to &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&#x2F
 &lt;p&gt;When you select an agent that can attack
 (has an attack point and enemies in range)
 a hit chance is shown over all available targets:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-05-12--hit-chances-1.png&quot; alt=&quot;Hit chances screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-05-12--hit-chances-1.png&quot; alt=&quot;Hit chances screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;During the attack animation, a hit chance is shown near
 the attacker with a smaller font.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-05-12--attack-hit-chances.gif&quot; alt=&quot;Hit chance during the attack animation&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-05-12--attack-hit-chances.gif&quot; alt=&quot;Hit chance during the attack animation&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;This was added in order for the player to see how dangerous enemy attacks are.&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;Also, wounded agents now become less accurate.
 Each lost strength point results in -10% hit chance penalty (up to -30%).&lt;&#x2F;p&gt;
 &lt;p&gt;Missing strength points (wounds) are shown by almost transparent green dots:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-10-04--transparent-dots.png&quot; alt=&quot;demo of transparent strength points&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-10-04--transparent-dots.png&quot; alt=&quot;demo of transparent strength points&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;This gameplay change has two game balance consequences:&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;Now it&#x27;s more important to wound enemies,
@@ -408,7 +408,7 @@ Each armor point deflects one damage point on each attack.
 Some weapons can break armor (the &lt;code&gt;attack_break&lt;&#x2F;code&gt; parameter).
 Fire and poison ignore armor.&lt;&#x2F;p&gt;
 &lt;p&gt;Here&#x27;s a little demo:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-09-16--old-armor-demo.gif&quot; alt=&quot;old armor demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-09-16--old-armor-demo.gif&quot; alt=&quot;old armor demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;an imp can&#x27;t break armor so he can&#x27;t deal any damage to the heavy swordsman;&lt;&#x2F;li&gt;
 &lt;li&gt;toxic imp can&#x27;t deal any direct damage but he poisons the swordsman
@@ -429,14 +429,14 @@ This way melee imps don&#x27;t trip over each other too much.&lt;&#x2F;p&gt;
 &lt;li&gt;
 &lt;p&gt;AI now moves closer to its targets even if there&#x27;s no direct path to them
 (&lt;a href=&quot;https:&#x2F;&#x2F;youtu.be&#x2F;09ODLL_Nu8w&quot;&gt;full demo video&lt;&#x2F;a&gt;):&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;youtu.be&#x2F;09ODLL_Nu8w&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-06-04--ai-pathfinding-demo.gif&quot; alt=&quot;new pathfinding demo&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;youtu.be&#x2F;09ODLL_Nu8w&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-06-04--ai-pathfinding-demo.gif&quot; alt=&quot;new pathfinding demo&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;&#x2F;li&gt;
 &lt;li&gt;
 &lt;p&gt;Non-melee imps (bombers and summoners) are now
 &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&#x2F;pull&#x2F;298&quot;&gt;trying to keep distance from the player&#x27;s fighters in range&lt;&#x2F;a&gt;.
 They need to avoid melee fights but still be able to throw bombs
 at a player&#x27;s fighters or summon new imps near the frontline.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-07-02--ai-distance.gif&quot; alt=&quot;ai distance demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-07-02--ai-distance.gif&quot; alt=&quot;ai distance demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Summoner has a slightly greater min&#x2F;max range than bomber.&lt;&#x2F;p&gt;
 &lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
@@ -446,7 +446,7 @@ that takes a closure and dumps required map data as a &lt;code&gt;char&lt;&#x2F;
 in the above GIF, pic 1 shows objects (&lt;code&gt;A&lt;&#x2F;code&gt; - an agent, &lt;code&gt;O&lt;&#x2F;code&gt; - a non-agent object)
 and pic 2 shows available positions (&lt;code&gt;X&lt;&#x2F;code&gt;).&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;bombs-and-commutative-effects&quot;&gt;Bombs and Commutative Effects&lt;&#x2F;h2&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-06-04--bombs-issue.png&quot; alt=&quot;Illustration with multiple bombs&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-06-04--bombs-issue.png&quot; alt=&quot;Illustration with multiple bombs&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;^ In the previous version of Zemeroth,
 each of these bombs would have exploded at the beginning of the next turn
 in order of their creation.
@@ -465,7 +465,7 @@ Anything where changing the order of application can change the final state.&lt;
 &lt;p&gt;ItB&#x27;s approach means just adding this order information
 explicit in the game&#x27;s interface.
 It looks like this:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-06-22-into-the-breach.png&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-06-22-into-the-breach-mini.png&quot; alt=&quot;Into the breach screenshot&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-06-22-into-the-breach.png&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-06-22-into-the-breach-mini.png&quot; alt=&quot;Into the breach screenshot&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Technically it&#x27;s possible, but I don&#x27;t think that it fits for Zemeroth
 because it&#x27;s an extremely noisy interface feature,
 but it&#x27;s not really a core mechanic.&lt;&#x2F;p&gt;
@@ -483,7 +483,7 @@ but only allowed as unique boss abilities, work in their own special phase.&lt;&
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Spike traps were added. They&#x27;re almost like fire tiles, but permanent.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-05-12--spikes.png&quot; alt=&quot;spike trap&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-05-12--spikes.png&quot; alt=&quot;spike trap&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;&#x2F;li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&#x2F;pull&#x2F;351&quot;&gt;Updated&lt;&#x2F;a&gt; &amp;quot;Poison&amp;quot; passive ability:
@@ -502,7 +502,7 @@ It forces the player to play more aggressively.&lt;&#x2F;p&gt;
 &lt;a href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;ozkriff&#x2F;status&#x2F;1040321852495863808&quot;&gt;prefer imp types that are under-presented on the map&lt;&#x2F;a&gt;,
 not just random ones.
 Seems to work fine now - even with increased summon rate imp types
-are balanced in count: &lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-09-14--fixed-summoning.png&quot;&gt;&lt;em&gt;pic&lt;&#x2F;em&gt;&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+are balanced in count: &lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-09-14--fixed-summoning.png&quot;&gt;&lt;em&gt;pic&lt;&#x2F;em&gt;&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;&#x2F;li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&#x2F;pull&#x2F;360&quot;&gt;Randomly-placed agents are not created point-blank to their enemies anymore&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
@@ -523,7 +523,7 @@ Or Imp Bombers being instantly tied with a melee fight.&lt;&#x2F;p&gt;
 &lt;&#x2F;ul&gt;
 &lt;h2 id=&quot;gameplay-video&quot;&gt;Gameplay Video&lt;&#x2F;h2&gt;
 &lt;p&gt;So, putting these gameplay changes together:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;youtu.be&#x2F;zUVwAFSrh3c&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-05-12--playtest-youtube-preview.png&quot; alt=&quot;youtube video&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;youtu.be&#x2F;zUVwAFSrh3c&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-05-12--playtest-youtube-preview.png&quot; alt=&quot;youtube video&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;This is a piece of a campaign mode playtest: battles 3, 4, and 5.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;svg-atlas&quot;&gt;SVG Atlas&lt;&#x2F;h2&gt;
 &lt;p&gt;Back to more technical updates.&lt;&#x2F;p&gt;
@@ -565,7 +565,7 @@ It boils down to:&lt;&#x2F;p&gt;
 as raw numbers in the export script:
 each named group contains an invisible square (a rectangle for terrain tiles).
 It can be temporary made slightly visible for debugging purposes:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-07-16--svg-atlas-test.png&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-07-16--svg-atlas-test.png&quot; alt=&quot;sprites in the debug mode&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-07-16--svg-atlas-test.png&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-07-16--svg-atlas-test.png&quot; alt=&quot;sprites in the debug mode&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;assets-hash&quot;&gt;Assets Hash&lt;&#x2F;h2&gt;
 &lt;p&gt;Another technical assets-related update is that a md5 hash check was added.
 This should help to detect when someone who is building from source
@@ -651,7 +651,7 @@ Because the win condition is when no enemy agents are alive.&lt;&#x2F;p&gt;
 is a super-useful crate when you need to debug
 failing assert comparisons of big hierarchical objects
 (some of which may be many screens long in my case).&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-03-20--color-assert.png&quot; alt=&quot;a colored assert error&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2019-03-20--color-assert.png&quot; alt=&quot;a colored assert error&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;One peculiarity is that I had to replace all &lt;code&gt;HashMap&amp;lt;ObjId, Vec&amp;lt;Foo&amp;gt;&amp;gt;&lt;&#x2F;code&gt;
 in events with &lt;code&gt;Vec&amp;lt;(ObjId, Vec&amp;lt;Foo&amp;gt;)&amp;gt;&lt;&#x2F;code&gt; to preserve the order.
 Otherwise pretty-assertion has been exploding.&lt;&#x2F;p&gt;
@@ -678,7 +678,7 @@ It went pretty good, local indie devs seemed to like the project,
 especially considering that it&#x27;s opensource and uses an interesting tech.
 At least one of the devs has visited
 &lt;a href=&quot;https:&#x2F;&#x2F;www.meetup.com&#x2F;spbrust&quot;&gt;our local rustlang meetup&lt;&#x2F;a&gt; afterward. 🦀&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-11-03--indikator.jpg&quot; alt=&quot;me presenting Zemeroth at Indikator&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2019-05-13--devlog-zemeroth-v0-5&#x2F;2018-11-03--indikator.jpg&quot; alt=&quot;me presenting Zemeroth at Indikator&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;It&#x27;s unrelated, but &lt;a href=&quot;https:&#x2F;&#x2F;www.redblobgames.com&#x2F;grids&#x2F;hexagons&#x2F;implementation.html&quot;&gt;Zemeroth was mentioned on Amit&#x27;s page about hex math&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;migrated-this-devlog-to-zola&quot;&gt;Migrated This Devlog to Zola&lt;&#x2F;h2&gt;
@@ -717,8 +717,8 @@ twitter account that I&#x27;ve started recently.&lt;&#x2F;p&gt;
             <item>
                 <title>Zemeroth v0.4: Abilities, Lasting Effects and New Unit Types</title>
                 <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2018-03-03--devlog/</link>
-                <guid>https%3A//ozkriff.github.io/2018-03-03--devlog/</guid>
+                <link>https%3A//ozkriff.games/2018-03-03--devlog/</link>
+                <guid>https%3A//ozkriff.games/2018-03-03--devlog/</guid>
                 <description>&lt;p&gt;Hi, comrades! I&#x27;m happy to announce Zemeroth v0.4.&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&quot;&gt;Zemeroth&lt;&#x2F;a&gt; is a turn-based hexagonal tactical game written in Rust.&lt;&#x2F;p&gt;
 &lt;p&gt;You can &lt;strong&gt;download precompiled binaries&lt;&#x2F;strong&gt; for Windows, Linux, macOS and android here:
@@ -734,8 +734,8 @@ See youtube video in the middle of the article for some real gameplay.&lt;&#x2F;
 &lt;h2 id=&quot;simple-walking-animation&quot;&gt;Simple walking animation&lt;&#x2F;h2&gt;
 &lt;p&gt;The first and simplest change is simple walking animations.
 Compare:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2018-03-03--devlog&#x2F;2018-03-03-move-pre.gif&quot; alt=&quot;no animation&quot; &#x2F;&gt;
-&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2018-03-03--devlog&#x2F;2018-03-03-move-now.gif&quot; alt=&quot;new arc animation&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2018-03-03--devlog&#x2F;2018-03-03-move-pre.gif&quot; alt=&quot;no animation&quot; &#x2F;&gt;
+&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2018-03-03--devlog&#x2F;2018-03-03-move-now.gif&quot; alt=&quot;new arc animation&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;That&#x27;s just a small visual improvement but it makes the game more lively.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;gameplay-updates&quot;&gt;Gameplay Updates&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;wounds-reduce-attacks-by-one&quot;&gt;Wounds reduce attacks by one&lt;&#x2F;h3&gt;
@@ -746,7 +746,7 @@ and is relied upon by many abilities.&lt;&#x2F;p&gt;
 &lt;p&gt;In the previous version all attacks were dealing 1 damage.
 Now, &lt;strong&gt;Swordsman&lt;&#x2F;strong&gt; and &lt;strong&gt;Hammerman&lt;&#x2F;strong&gt; (see below) deal 2 damage points per hit.&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;abilities&quot;&gt;Abilities&lt;&#x2F;h3&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2018-03-03--devlog&#x2F;2018-03-03--abilities-buttons-swordsman.png&quot; alt=&quot;buttons: abilities&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2018-03-03--devlog&#x2F;2018-03-03--abilities-buttons-swordsman.png&quot; alt=&quot;buttons: abilities&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Abilities is the main feature of this release.
 They come in two flavours: &lt;strong&gt;active&lt;&#x2F;strong&gt; and &lt;strong&gt;passive&lt;&#x2F;strong&gt;:&lt;&#x2F;p&gt;
 &lt;ul&gt;
@@ -762,7 +762,7 @@ during attacks or at the begining of the turn, for example.&lt;&#x2F;p&gt;
 &lt;&#x2F;ul&gt;
 &lt;p&gt;Particular abilities are explained in unit sections below.&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;new-unit-toxic-imp&quot;&gt;New Unit: Toxic Imp&lt;&#x2F;h3&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2018-03-03--devlog&#x2F;2018-03-03-imp-poison.gif&quot; alt=&quot;toxic imp demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2018-03-03--devlog&#x2F;2018-03-03-imp-poison.gif&quot; alt=&quot;toxic imp demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Let&#x27;s start with something simple.
 This enemy is similar to basic Imp, but does no direct damage
 and has &lt;strong&gt;Poison Attack&lt;&#x2F;strong&gt; passive ability.&lt;&#x2F;p&gt;
@@ -777,7 +777,7 @@ One obvious problem of v0.3 was &lt;a href=&quot;http:&#x2F;&#x2F;keithburgun.ne
 no movement, boring.
 Reaction attacks encourage defensive playstyle.&lt;&#x2F;p&gt;
 &lt;p&gt;So a new unit was added: &lt;strong&gt;Imp-Bomber&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2018-03-03--devlog&#x2F;2018-03-03--imp-bomb-attack.gif&quot; alt=&quot;imp-bomber in action&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2018-03-03--devlog&#x2F;2018-03-03--imp-bomb-attack.gif&quot; alt=&quot;imp-bomber in action&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;^ He has an active ability &lt;strong&gt;Bomb&lt;&#x2F;strong&gt; and a very simple AI
 that tries to use it, if it&#x27;s available, and then acts as a normal Imp.
 Bombs with delayed detonation is a classic way to help with this.&lt;&#x2F;p&gt;
@@ -791,14 +791,14 @@ But you still can sometimes move back and forth, so...&lt;&#x2F;p&gt;
 This unit summons so many imps so the only way to stay alive
 is to rush and attack him while summoned imps are still weak.
 Summoners are your main targets.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2018-03-03--devlog&#x2F;2018-03-03--ability-summon.gif&quot; alt=&quot;&#x27;summon&#x27; ability&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2018-03-03--devlog&#x2F;2018-03-03--ability-summon.gif&quot; alt=&quot;&#x27;summon&#x27; ability&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;^ &lt;strong&gt;Summon&lt;&#x2F;strong&gt; ability creates three imps of a random type.&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;em&gt;NOTE: Actually, the plan is to make each &lt;strong&gt;summon&lt;&#x2F;strong&gt; activation even more powerful:
 call 3-4-5-6 imps, to increase the pressure over time.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Summoner is slow - сan either move one tile or attack&#x2F;cast during his turn -
 but he has a lot of strength (health) points
 and has &lt;strong&gt;Heavy Impact&lt;&#x2F;strong&gt; and &lt;strong&gt;Regeneration&lt;&#x2F;strong&gt; passive abilities:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2018-03-03--devlog&#x2F;2018-03-03--summoner-regeneration-hit.gif&quot; alt=&quot;Regeneration + Heavy Impact&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2018-03-03--devlog&#x2F;2018-03-03--summoner-regeneration-hit.gif&quot; alt=&quot;Regeneration + Heavy Impact&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;^ &lt;strong&gt;Regeneration&lt;&#x2F;strong&gt; restores one strength point in the begining of every turn.
 &lt;strong&gt;Heavy Impact&lt;&#x2F;strong&gt; throws opponents one tile away on every hit (&lt;strong&gt;FlyOff&lt;&#x2F;strong&gt; effect).&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;new-unit-alchemist&quot;&gt;New Unit: Alchemist&lt;&#x2F;h3&gt;
@@ -807,11 +807,11 @@ He&#x27;s a support unit and has &lt;strong&gt;no direct attacks&lt;&#x2F;strong
 but has a bunch of useful abilities.&lt;&#x2F;p&gt;
 &lt;p&gt;Basic &lt;strong&gt;Bomb&lt;&#x2F;strong&gt; ability works the same way as it does for Imp-Bomber.
 &lt;strong&gt;Fire bomb&lt;&#x2F;strong&gt; and &lt;strong&gt;poison bomb&lt;&#x2F;strong&gt; are a little bit more interesting:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2018-03-03--devlog&#x2F;2018-03-03-fire-bomb.gif&quot; alt=&quot;fire bomb demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2018-03-03--devlog&#x2F;2018-03-03-fire-bomb.gif&quot; alt=&quot;fire bomb demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;^ &lt;strong&gt;Fire&lt;&#x2F;strong&gt; object just deals one damage point each turn
 to anyone standing in the same tile
 or to anyone walking through it.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2018-03-03--devlog&#x2F;2018-03-03-poison-bomb.gif&quot; alt=&quot;poison bomb demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2018-03-03--devlog&#x2F;2018-03-03-poison-bomb.gif&quot; alt=&quot;poison bomb demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;^ &lt;strong&gt;Poison cloud&lt;&#x2F;strong&gt; object acts similar to fire,
 but it casts &lt;strong&gt;Poisoned&lt;&#x2F;strong&gt; effects on agents.
 This effects deals one point of damage each turn and lasts for two turns.&lt;&#x2F;p&gt;
@@ -820,54 +820,54 @@ Note that damage from fire and poison also removes attacks from target -
 this can protect your alchemist in tough situations.&lt;&#x2F;p&gt;
 &lt;p&gt;Alchemist has one more useful ability:
 &lt;strong&gt;Heal&lt;&#x2F;strong&gt; can restore two strength points and remove any lasting effects:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2018-03-03--devlog&#x2F;2018-03-03-heal.gif&quot; alt=&quot;&amp;quot;Heal&amp;quot; ability demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2018-03-03--devlog&#x2F;2018-03-03-heal.gif&quot; alt=&quot;&amp;quot;Heal&amp;quot; ability demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;new-unit-hammerman&quot;&gt;New Unit: Hammerman&lt;&#x2F;h3&gt;
 &lt;p&gt;Slow but powerful unit. His attack deals 2 damage points
 and he has &lt;strong&gt;HeavyImpact&lt;&#x2F;strong&gt; passive ability (same as Summoner, see above).&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2018-03-03--devlog&#x2F;2018-03-03--hammerman-club-hit.gif&quot; alt=&quot;&amp;quot;Club&amp;quot; + move + attack combo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2018-03-03--devlog&#x2F;2018-03-03--hammerman-club-hit.gif&quot; alt=&quot;&amp;quot;Club&amp;quot; + move + attack combo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;^ &lt;strong&gt;Club&lt;&#x2F;strong&gt; ability causes &lt;strong&gt;Stun&lt;&#x2F;strong&gt; lasting effect and &lt;strong&gt;FlyOff&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;strong&gt;Stun&lt;&#x2F;strong&gt; lasting effect removes all attacks&#x2F;moves&#x2F;jokers
 from the target for one round.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2018-03-03--devlog&#x2F;2018-03-03-club-knockback.gif&quot; alt=&quot;&amp;quot;Knockback&amp;quot; a boulder + &amp;quot;Club&amp;quot; a bomb demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2018-03-03--devlog&#x2F;2018-03-03-club-knockback.gif&quot; alt=&quot;&amp;quot;Knockback&amp;quot; a boulder + &amp;quot;Club&amp;quot; a bomb demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;^ These abilities can be used to move bombs and boulders too.
 You can push enemy into fire, poison or bomb.
 Or you can push some other your figher out of danger if needed.&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;updated-swordsman&quot;&gt;Updated Swordsman&lt;&#x2F;h3&gt;
 &lt;p&gt;&lt;strong&gt;Swordsman&lt;&#x2F;strong&gt; also got a few updates.
 His main attack now also deals two points of damage.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2018-03-03--devlog&#x2F;2018-03-03--rage.gif&quot; alt=&quot;&amp;quot;Rage&amp;quot; ability demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2018-03-03--devlog&#x2F;2018-03-03--rage.gif&quot; alt=&quot;&amp;quot;Rage&amp;quot; ability demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;^ &lt;strong&gt;Rage&lt;&#x2F;strong&gt; ability gives a lot of attacks but has a long cooldown,
 so you need to choose carefully when to use it.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2018-03-03--devlog&#x2F;2018-03-03--swordsman-jump.gif&quot; alt=&quot;Jump ability&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2018-03-03--devlog&#x2F;2018-03-03--swordsman-jump.gif&quot; alt=&quot;Jump ability&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;^ &lt;strong&gt;Jump&lt;&#x2F;strong&gt; ability - think about Diablo&#x27;s Barbarian
 (future versions of the ability may get stunning effect ;) ).&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2018-03-03--devlog&#x2F;2018-03-03-dash-away.gif&quot; alt=&quot;&amp;quot;Dash&amp;quot; escape demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2018-03-03--devlog&#x2F;2018-03-03-dash-away.gif&quot; alt=&quot;&amp;quot;Dash&amp;quot; escape demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;^ &lt;strong&gt;Dash&lt;&#x2F;strong&gt; ability allows you to
 move one tile without triggering reaction attacks.
 Allows you to start the attack or to escape from the enemies.&lt;&#x2F;p&gt;
 &lt;p&gt;It may be hard to escape from a bad position witout &lt;strong&gt;Dash&lt;&#x2F;strong&gt; or &lt;strong&gt;Jump&lt;&#x2F;strong&gt; ability:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2018-03-03--devlog&#x2F;2018-03-03-no-dash-escape-attempt.gif&quot; alt=&quot;Can&#x27;t escape with simple move demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2018-03-03--devlog&#x2F;2018-03-03-no-dash-escape-attempt.gif&quot; alt=&quot;Can&#x27;t escape with simple move demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;strong&gt;Dash&lt;&#x2F;strong&gt; can be combined with &lt;strong&gt;Rage&lt;&#x2F;strong&gt; and &lt;strong&gt;Jump&lt;&#x2F;strong&gt; abilities to perform
 a series of attacks and return back to safety:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2018-03-03--devlog&#x2F;2018-03-03--swordsman-combo.gif&quot; alt=&quot;Rage, Dash &amp;amp; Jump combo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2018-03-03--devlog&#x2F;2018-03-03--swordsman-combo.gif&quot; alt=&quot;Rage, Dash &amp;amp; Jump combo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;updated-spearman&quot;&gt;Updated Spearman&lt;&#x2F;h3&gt;
 &lt;p&gt;Also got a &lt;strong&gt;Jump&lt;&#x2F;strong&gt; ability, but of a different flavour:
 three tiles distance and three turns cooldown.
 So it&#x27;s mostly useful for escaping:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2018-03-03--devlog&#x2F;2018-03-03--spearman-jump-away.gif&quot; alt=&quot;jump away&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2018-03-03--devlog&#x2F;2018-03-03--spearman-jump-away.gif&quot; alt=&quot;jump away&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;gameplay-video&quot;&gt;Gameplay Video&lt;&#x2F;h2&gt;
 &lt;p&gt;So, putting this all together:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=DpDyVFpoDSQ&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2018-03-03--devlog&#x2F;gameplay-vide-preview.png&quot; alt=&quot;gameplay&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=DpDyVFpoDSQ&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2018-03-03--devlog&#x2F;gameplay-vide-preview.png&quot; alt=&quot;gameplay&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;It starts reminding something like a real game, isn&#x27;t it? :)
 Though a lot of work is still need to be done.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;implementation-note-ron-v0-2&quot;&gt;Implementation note: RON v0.2&lt;&#x2F;h2&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ron-rs&#x2F;ron&#x2F;releases&#x2F;tag&#x2F;v0.2&quot;&gt;RON v0.2&lt;&#x2F;a&gt;
 added &lt;code&gt;unwrap_newtypes&lt;&#x2F;code&gt; extension that seriously simplified my config files
 by getting rid of a lot of braces:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2018-03-03--devlog&#x2F;2018-03-03--ron-diff.gif&quot; alt=&quot;RON diff&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2018-03-03--devlog&#x2F;2018-03-03--ron-diff.gif&quot; alt=&quot;RON diff&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Thanks, @Torkleyy!&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2018-03-03--devlog&#x2F;2018-03-03-phone.gif&quot; alt=&quot;Zemeroth on android device&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2018-03-03--devlog&#x2F;2018-03-03-phone.gif&quot; alt=&quot;Zemeroth on android device&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;That&#x27;s all for today, I have to go play &lt;a href=&quot;http:&#x2F;&#x2F;store.steampowered.com&#x2F;app&#x2F;590380&#x2F;Into_the_Breach&quot;&gt;Into the Breach&lt;&#x2F;a&gt;! :)&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;strong&gt;Discussions&lt;&#x2F;strong&gt;:
 &lt;a href=&quot;https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;rust&#x2F;comments&#x2F;81s7va&#x2F;zemeroth_v04_abilities_lasting_effects_and_new&quot;&gt;&#x2F;r&#x2F;rust&lt;&#x2F;a&gt;,
@@ -878,8 +878,8 @@ by getting rid of a lot of braces:&lt;&#x2F;p&gt;
             <item>
                 <title>Zemeroth v0.0.3: Jokers, Rancor, Blood and more</title>
                 <pubDate>Fri, 01 Dec 2017 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2017-12-01--devlog/</link>
-                <guid>https%3A//ozkriff.github.io/2017-12-01--devlog/</guid>
+                <link>https%3A//ozkriff.games/2017-12-01--devlog/</link>
+                <guid>https%3A//ozkriff.games/2017-12-01--devlog/</guid>
                 <description>&lt;p&gt;Hi, comrades! Welcome to the second issue of Zemeroth&#x27;s devlog.&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&quot;&gt;Zemeroth&lt;&#x2F;a&gt; is a turn-based hexagonal tactical game written in Rust.&lt;&#x2F;p&gt;
 &lt;p&gt;It slowly grows into a middle-sized project:
@@ -900,7 +900,7 @@ is auto-deployed pre-built binaries.&lt;&#x2F;p&gt;
 &lt;p&gt;They are compiled and deployed to Github&#x27;s releases
 by CI servers (Travis, Appveyor and CircleCI) on every tag.&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&#x2F;releases&#x2F;tag&#x2F;v0.0.3&quot;&gt;The latest release at the time of writing is &lt;code&gt;v0.0.3&lt;&#x2F;code&gt;&lt;&#x2F;a&gt;:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&#x2F;releases&#x2F;tag&#x2F;v0.0.3&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-12-01--devlog&#x2F;v-0-0-3-release-page.png&quot; alt=&quot;v.0.0.3 release page&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&#x2F;releases&#x2F;tag&#x2F;v0.0.3&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-12-01--devlog&#x2F;v-0-0-3-release-page.png&quot; alt=&quot;v.0.0.3 release page&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Linux&#x2F;Windows and OSX versions are not that interesting - they are
 built exactly like &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&#x2F;issues&#x2F;242&quot;&gt;it was done for ZoC&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;p&gt;Deploying Android &lt;code&gt;apk&lt;&#x2F;code&gt;s is a more interesting story.&lt;&#x2F;p&gt;
@@ -917,7 +917,7 @@ if you don&#x27;t want to run both &lt;code&gt;build&lt;&#x2F;code&gt; and &lt;c
 on &lt;em&gt;every&lt;&#x2F;em&gt; commit.&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;Btw, old badges were not that clear of what do they mean:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-12-01--devlog&#x2F;old-badges.png&quot; alt=&quot;build: passing, build: passing, passed - wtf?&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-12-01--devlog&#x2F;old-badges.png&quot; alt=&quot;build: passing, build: passing, passed - wtf?&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Most programmers know that travis&#x27;s badge usually means
 Linux&#x2F;OSX builds and appveyor is for Windows builds.
 But what does the third one?&lt;&#x2F;p&gt;
@@ -929,7 +929,7 @@ https:&#x2F;&#x2F;img.shields.io&#x2F;appveyor&#x2F;ci&#x2F;ozkriff&#x2F;zemerot
 https:&#x2F;&#x2F;img.shields.io&#x2F;circleci&#x2F;project&#x2F;github&#x2F;ozkriff&#x2F;zemeroth&#x2F;master.svg?label=Android
 &lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;Looks a little bit better now:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-12-01--devlog&#x2F;new-badges.png&quot; alt=&quot;uniform new badges&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-12-01--devlog&#x2F;new-badges.png&quot; alt=&quot;uniform new badges&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;&lt;em&gt;And there&#x27;re two yet-to-be-solved issues:&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
 &lt;ul&gt;
@@ -940,8 +940,8 @@ https:&#x2F;&#x2F;img.shields.io&#x2F;circleci&#x2F;project&#x2F;github&#x2F;ozk
 &lt;p&gt;The &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&#x2F;issues&#x2F;73&quot;&gt;&lt;strong&gt;Grass&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt; is just a randomly-placed decoration,
 but &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&#x2F;issues&#x2F;42&quot;&gt;&lt;strong&gt;Blood Pools&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt; are also an additional indicator
 of a successful attack:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-12-01--devlog&#x2F;grass.png&quot; alt=&quot;two tiles of grass&quot; &#x2F;&gt;
-&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-12-01--devlog&#x2F;bool-of-blood.png&quot; alt=&quot;pool of blood&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-12-01--devlog&#x2F;grass.png&quot; alt=&quot;two tiles of grass&quot; &#x2F;&gt;
+&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-12-01--devlog&#x2F;bool-of-blood.png&quot; alt=&quot;pool of blood&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;jokers-and-strength&quot;&gt;Jokers and Strength&lt;&#x2F;h2&gt;
 &lt;p&gt;Now, some actual gameplay changes!&lt;&#x2F;p&gt;
 &lt;p&gt;To make Zemeroth a little bit more tactical
@@ -957,7 +957,7 @@ but later a much more fine-grained battle math will be implemented.&lt;&#x2F;p&g
 &lt;h2 id=&quot;dots&quot;&gt;Dots&lt;&#x2F;h2&gt;
 &lt;p&gt;To show the most important dynamic information about units on the map
 &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&#x2F;issues&#x2F;95&quot;&gt;&lt;strong&gt;&amp;quot;Dots&amp;quot;&lt;&#x2F;strong&gt; were added&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-12-01--devlog&#x2F;info-dots.png&quot; alt=&quot;thee agents with different stats showed by color dots&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-12-01--devlog&#x2F;info-dots.png&quot; alt=&quot;thee agents with different stats showed by color dots&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;The current legend is:&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;&amp;quot;Strength&amp;quot; - green;&lt;&#x2F;li&gt;
@@ -974,7 +974,7 @@ you should try it with a Deuteranopia filter!&lt;&#x2F;p&gt;
 &lt;p&gt;I&#x27;ve googled a simulator:
 &lt;a href=&quot;https:&#x2F;&#x2F;www.etre.com&#x2F;tools&#x2F;colourblindsimulator&quot;&gt;etre.com&#x2F;tools&#x2F;colourblindsimulator&lt;&#x2F;a&gt;.
 Here&#x27;s an example of its output:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-12-01--devlog&#x2F;color-issue.png&quot; alt=&quot;Example of output. Dots are hard to read now&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-12-01--devlog&#x2F;color-issue.png&quot; alt=&quot;Example of output. Dots are hard to read now&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;And, yeah, that doesn&#x27;t look readable at all.
 &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&#x2F;issues&#x2F;98&quot;&gt;It&#x27;s clear that I should change the colors and shapes&lt;&#x2F;a&gt;
 in the near future.&lt;&#x2F;p&gt;
@@ -983,22 +983,22 @@ I&#x27;ve never thought about a lot of issues raised and explained there.&lt;&#x
 &lt;h2 id=&quot;info-panel-with-selected-unit-s-stats&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&#x2F;pull&#x2F;92&quot;&gt;Info panel with selected unit&#x27;s stats&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
 &lt;p&gt;Dots can show only a small portion of the dynamic information about units.
 Other less important dynamic or static information goes into the side panel.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-12-01--devlog&#x2F;info-panel.png&quot; alt=&quot;info panel showing imp&#x27;s stats using text&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-12-01--devlog&#x2F;info-panel.png&quot; alt=&quot;info panel showing imp&#x27;s stats using text&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Btw, &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&#x2F;pull&#x2F;100&quot;&gt;now you can select enemy units&lt;&#x2F;a&gt; to see their move range and stats
 in the info panel.&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;em&gt;NOTE: additionally, a deselection of any unit on the second click was added.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;spearman&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&#x2F;issues&#x2F;65&quot;&gt;Spearman&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-12-01--devlog&#x2F;spearman.png&quot; alt=&quot;closeup of a spearman&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-12-01--devlog&#x2F;spearman.png&quot; alt=&quot;closeup of a spearman&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Another important gameplay change is
 an addition of third fighter type: &amp;quot;Spearman&amp;quot;.&lt;&#x2F;p&gt;
 &lt;p&gt;He has an attack radius of two tiles and
 can control with reaction attacks a big area of 18 tiles around him.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-12-01--devlog&#x2F;spearman-controls-territory.png&quot; alt=&quot;spearman can attack distant enemies&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-12-01--devlog&#x2F;spearman-controls-territory.png&quot; alt=&quot;spearman can attack distant enemies&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;On the picture above the spearman has only one Joker point:
 this is not an attack unit, he&#x27;s almost useless during his own turn.&lt;&#x2F;p&gt;
 &lt;p&gt;But if spearman hasn&#x27;t used its Joker during his own turn,
 he has &lt;em&gt;four&lt;&#x2F;em&gt; reaction attacks during enemy&#x27;s turn:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-12-01--devlog&#x2F;spearman-many-reaction-attacks.png&quot; alt=&quot;example of a spearman with 4 reactive attacks&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-12-01--devlog&#x2F;spearman-many-reaction-attacks.png&quot; alt=&quot;example of a spearman with 4 reactive attacks&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;And that&#x27;s a lot considering that reaction attacks can interrupt enemy&#x27;s movement.&lt;&#x2F;p&gt;
 &lt;p&gt;Also, this unit has only three Strength points to accent his defence role.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;rancor-a-stupid-component-system&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&#x2F;issues&#x2F;141&quot;&gt;Rancör&lt;&#x2F;a&gt; - a Stupid Component System&lt;&#x2F;h2&gt;
@@ -1070,7 +1070,7 @@ This is a first non-agent object type in the game.&lt;&#x2F;p&gt;
 support for a long time, but not actually using them in the game at all.
 &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&#x2F;pull&#x2F;164&quot;&gt;Meet randomly-placed tiles of &lt;strong&gt;TileType::Rocks&lt;&#x2F;strong&gt; type&lt;&#x2F;a&gt;.
 You can move through these tiles, but it requires 3 move points and not 1.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-12-01--devlog&#x2F;rocks.png&quot; alt=&quot;a map with some boulders and rock tiles&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-12-01--devlog&#x2F;rocks.png&quot; alt=&quot;a map with some boulders and rock tiles&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Rock tiles and boulders work together with blood and grass to make
 the battlefield look a little bit less boring.&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;em&gt;(Yes, I know that it&#x27;ll be better to use a different texture for Rocks tiles,
@@ -1121,7 +1121,7 @@ until &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rust-lang&#x2F;cargo&#x
 &lt;p&gt;&lt;em&gt;&lt;strong&gt;NOTE&lt;&#x2F;strong&gt;: Btw, there&#x27;s a &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rust-lang&#x2F;cargo&#x2F;issues&#x2F;1359#issuecomment-329653216&quot;&gt;cool hack&lt;&#x2F;a&gt; from &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;matklad&quot;&gt;@matklad&lt;&#x2F;a&gt;,
 but you have to compile an outdated cargo from his dev-branch.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;game-development-in-rust&quot;&gt;&amp;quot;Game Development in Rust&amp;quot;&lt;&#x2F;h2&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-12-01--devlog&#x2F;spb-meetup.jpg&quot; alt=&quot;me presenting a talk about zoc and zemeroth on spb meetup&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-12-01--devlog&#x2F;spb-meetup.jpg&quot; alt=&quot;me presenting a talk about zoc and zemeroth on spb meetup&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;There was &lt;a href=&quot;https:&#x2F;&#x2F;meetup.com&#x2F;Rust-%D0%B2-%D0%9F%D0%B8%D1%82%D0%B5%D1%80%D0%B5&#x2F;events&#x2F;242219775&quot;&gt;a local meetup&lt;&#x2F;a&gt; in Saint-Petersburg this September where&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;not-fl3&quot;&gt;@not-fl3&lt;&#x2F;a&gt; talked about his experience as a &lt;a href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;BringerShar&quot;&gt;SHAR&lt;&#x2F;a&gt;&#x27;s developer&lt;&#x2F;li&gt;
@@ -1133,7 +1133,7 @@ but you have to compile an outdated cargo from his dev-branch.&lt;&#x2F;em&gt;&l
 &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=BCsPcsmRhOM&quot;&gt;full video&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;docs.google.com&#x2F;presentation&#x2F;d&#x2F;19-Vc2VOpmB2r42u5arMVdKXfOPzozNjY5drjhbyIw3E&quot;&gt;my slides&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-12-01--devlog&#x2F;slides-overview.png&quot; alt=&quot;overview of the slides&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-12-01--devlog&#x2F;slides-overview.png&quot; alt=&quot;overview of the slides&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Thanks to &lt;a href=&quot;https:&#x2F;&#x2F;intellij-rust.github.io&quot;&gt;JetBrains&lt;&#x2F;a&gt; for hosting the event!&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;short-range-plans&quot;&gt;Short-Range Plans&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;restructuredtext-markdown&quot;&gt;RestructuredText -&amp;gt; Markdown&lt;&#x2F;h3&gt;
@@ -1169,11 +1169,11 @@ and some interesting &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&
             <item>
                 <title>ZoC is dead. Long life Zemeroth.</title>
                 <pubDate>Thu, 17 Aug 2017 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2017-08-17--devlog/</link>
-                <guid>https%3A//ozkriff.github.io/2017-08-17--devlog/</guid>
+                <link>https%3A//ozkriff.games/2017-08-17--devlog/</link>
+                <guid>https%3A//ozkriff.games/2017-08-17--devlog/</guid>
                 <description>&lt;p&gt;Soo, yeah, &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&quot;&gt;Zone of Control&lt;&#x2F;a&gt; project is
 officially discontinued. Sorry, friends.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-08-17--devlog&#x2F;zed.png&quot; alt=&quot;scene from Pulp Fiction&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-08-17--devlog&#x2F;zed.png&quot; alt=&quot;scene from Pulp Fiction&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;^ &amp;quot;ZoC&#x27;s dead, baby. ZoC&#x27;s dead.&amp;quot;&lt;&#x2F;p&gt;
 &lt;p&gt;Why have I killed it? The primary reason is classic: I&#x27;ve overestimated
 my resources&#x2F;skills and got totally overwhelmed by the scope:&lt;&#x2F;p&gt;
@@ -1202,7 +1202,7 @@ small, especially on phone’s screen.&lt;&#x2F;p&gt;
 &lt;&#x2F;ol&gt;
 &lt;&#x2F;li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-08-17--devlog&#x2F;first-person.png&quot;&gt;Maybe I should make an FPS? No, that&#x27;s stupid.&lt;&#x2F;a&gt; Ahem,
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-08-17--devlog&#x2F;first-person.png&quot;&gt;Maybe I should make an FPS? No, that&#x27;s stupid.&lt;&#x2F;a&gt; Ahem,
 just joking.&lt;&#x2F;p&gt;
 &lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
@@ -1214,9 +1214,9 @@ games with strong accent on &lt;a href=&quot;http:&#x2F;&#x2F;keithburgun.net&#x
 complexity&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;So, some farewell screenshots:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-08-17--devlog&#x2F;zoc-screenshot-1.png&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-08-17--devlog&#x2F;zoc-screenshot-1-preview.png&quot; alt=&quot;ZoC gameplay screenshot 1&quot; &#x2F;&gt;&lt;&#x2F;a&gt;
-&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-08-17--devlog&#x2F;zoc-screenshot-2.png&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-08-17--devlog&#x2F;zoc-screenshot-2-preview.png&quot; alt=&quot;ZoC gameplay screenshot 2&quot; &#x2F;&gt;&lt;&#x2F;a&gt;
-&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-08-17--devlog&#x2F;zoc-screenshot-3.png&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-08-17--devlog&#x2F;zoc-screenshot-3-preview.png&quot; alt=&quot;blob shadows&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-08-17--devlog&#x2F;zoc-screenshot-1.png&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-08-17--devlog&#x2F;zoc-screenshot-1-preview.png&quot; alt=&quot;ZoC gameplay screenshot 1&quot; &#x2F;&gt;&lt;&#x2F;a&gt;
+&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-08-17--devlog&#x2F;zoc-screenshot-2.png&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-08-17--devlog&#x2F;zoc-screenshot-2-preview.png&quot; alt=&quot;ZoC gameplay screenshot 2&quot; &#x2F;&gt;&lt;&#x2F;a&gt;
+&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-08-17--devlog&#x2F;zoc-screenshot-3.png&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-08-17--devlog&#x2F;zoc-screenshot-3-preview.png&quot; alt=&quot;blob shadows&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;...And that it.&lt;&#x2F;p&gt;
 &lt;p&gt;Goodbye, my old friend Zone of Control.&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;zemeroth&quot;&gt;Zemeroth&lt;&#x2F;h1&gt;
@@ -1261,13 +1261,13 @@ Saga&lt;&#x2F;a&gt;,
 and &lt;a href=&quot;http:&#x2F;&#x2F;store.steampowered.com&#x2F;app&#x2F;230070&#x2F;The_Age_of_Decadence&#x2F;&quot;&gt;Age of
 Decadence&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;p&gt;Initial svg mockup (based on
-&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-08-17--devlog&#x2F;zoc-2d-experiments.png&quot;&gt;my old experiments with 2d ZoC&lt;&#x2F;a&gt;):&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-08-17--devlog&#x2F;zemeroth-inkscape-mockup.png&quot; alt=&quot;inscape mockup&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-08-17--devlog&#x2F;zoc-2d-experiments.png&quot;&gt;my old experiments with 2d ZoC&lt;&#x2F;a&gt;):&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-08-17--devlog&#x2F;zemeroth-inkscape-mockup.png&quot; alt=&quot;inscape mockup&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;Ok, that was just the plan. What&#x27;s actually done already?&lt;&#x2F;p&gt;
 &lt;p&gt;Here&#x27;s the code: &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zemeroth&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Right now Zemeroth looks ~ like this:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-08-17--devlog&#x2F;zemeroth-old-screenshot.png&quot; alt=&quot;old Zemeroth&#x27;s screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-08-17--devlog&#x2F;zemeroth-old-screenshot.png&quot; alt=&quot;old Zemeroth&#x27;s screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Recent &amp;quot;gameplay&amp;quot; video:&lt;&#x2F;p&gt;
 &lt;div class=&quot;youtube&quot;&gt;&lt;iframe frameborder=&quot;0&quot; allowfullscreen src=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;embed&#x2F;MVt_UOnmdKI?rel=0&amp;showinfo=0&quot;&gt;&lt;&#x2F;iframe&gt;&lt;&#x2F;div&gt;
 &lt;p&gt;What’s implemented:&lt;&#x2F;p&gt;
@@ -1280,13 +1280,13 @@ Decadence&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;&#x2F;ul&gt;
 &lt;p&gt;Android is supported from the beginning of the development (as I’m
 reusing ZoC’s codebase):&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-08-17--devlog&#x2F;zemeroth-android.png&quot; alt=&quot;zemeroth on android photo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-08-17--devlog&#x2F;zemeroth-android.png&quot; alt=&quot;zemeroth on android photo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Zemeroth’s architecture is mostly taken from ZoC (minus the networking
 and multiple game states):&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-08-17--devlog&#x2F;data-loop.jpg&quot; alt=&quot;data loop&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-08-17--devlog&#x2F;data-loop.jpg&quot; alt=&quot;data loop&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Scene action system is based on cocos’s one and something I did in dead
 ZoC’s dev branch:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-08-17--devlog&#x2F;scene-actions.png&quot; alt=&quot;example of scene actions&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-08-17--devlog&#x2F;scene-actions.png&quot; alt=&quot;example of scene actions&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;(&lt;a href=&quot;https:&#x2F;&#x2F;docs.rs&#x2F;piston2d-sprite&#x2F;0.36.0&#x2F;sprite&#x2F;enum.Animation.html&quot;&gt;btw, piston has something similar&lt;&#x2F;a&gt;)&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;hate2d&quot;&gt;Häte2d&lt;&#x2F;h1&gt;
 &lt;p&gt;About reusing ZoC’s codebase...&lt;&#x2F;p&gt;
@@ -1338,8 +1338,8 @@ keep updated: &lt;a href=&quot;http:&#x2F;&#x2F;imgur.com&#x2F;a&#x2F;SMVqO&quot
             <item>
                 <title>This Month in ZoC - 2017.01.24</title>
                 <pubDate>Tue, 24 Jan 2017 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2017-01-24--devlog/</link>
-                <guid>https%3A//ozkriff.github.io/2017-01-24--devlog/</guid>
+                <link>https%3A//ozkriff.games/2017-01-24--devlog/</link>
+                <guid>https%3A//ozkriff.games/2017-01-24--devlog/</guid>
                 <description>&lt;p&gt;(Repost from &lt;a href=&quot;https:&#x2F;&#x2F;users.rust-lang.org&#x2F;t&#x2F;this-month-in-zone-of-control&#x2F;6993&quot;&gt;https:&#x2F;&#x2F;users.rust-lang.org&#x2F;t&#x2F;this-month-in-zone-of-control&#x2F;6993&lt;&#x2F;a&gt;)&lt;&#x2F;p&gt;
 &lt;p&gt;Hi, everyone! :)&lt;&#x2F;p&gt;
 &lt;p&gt;It has been four months since the first post, sorry. I&#x27;m struggling to
@@ -1348,7 +1348,7 @@ winit&lt;&#x2F;a&gt; for about a month
 around October.&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;helicopters&quot;&gt;Helicopters&lt;&#x2F;h1&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&#x2F;issues&#x2F;111&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&#x2F;issues&#x2F;111&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-01-24--devlog&#x2F;helicopters.png&quot; alt=&quot;helicopters&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-01-24--devlog&#x2F;helicopters.png&quot; alt=&quot;helicopters&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Helicopters can fly above any terrain or ground units, but can&#x27;t
@@ -1364,7 +1364,7 @@ capture sectors&lt;&#x2F;p&gt;
 &lt;li&gt;
 &lt;p&gt;Helicopters have a different field of view rules - their FoV have no
 &#x27;obstacle shadows&#x27;:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-01-24--devlog&#x2F;air-vs-ground-fov.png&quot; alt=&quot;comparison of land and air field of views&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-01-24--devlog&#x2F;air-vs-ground-fov.png&quot; alt=&quot;comparison of land and air field of views&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;p&gt;IDLE animation:&lt;&#x2F;p&gt;
@@ -1389,14 +1389,14 @@ AA-defence for now is just jeep&#x27;s machinegun.&lt;&#x2F;p&gt;
 reinforcement sectors for reinforcement points.&lt;&#x2F;p&gt;
 &lt;p&gt;The upper-left corner displays the amount of reinforcement points that
 current player has and their per-turn increment:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-01-24--devlog&#x2F;reinforcements.png&quot; alt=&quot;Reinforcements&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-01-24--devlog&#x2F;reinforcements.png&quot; alt=&quot;Reinforcements&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Reinforcement sectors are marked by two circles in player&#x27;s color:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-01-24--devlog&#x2F;circle-marks.png&quot; alt=&quot;Circle marks&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-01-24--devlog&#x2F;circle-marks.png&quot; alt=&quot;Circle marks&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;There&#x27;s an additional &amp;quot;reinforcements&amp;quot; item in the context menu: when
 clicked it opens a list of available units:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-01-24--devlog&#x2F;main-context-menu.png&quot; alt=&quot;Main context menu&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-01-24--devlog&#x2F;main-context-menu.png&quot; alt=&quot;Main context menu&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;This opens a list of available units:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-01-24--devlog&#x2F;context-sum-menu.png&quot; alt=&quot;Context sub-menu&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-01-24--devlog&#x2F;context-sum-menu.png&quot; alt=&quot;Context sub-menu&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;There must be enough reinforcement points and enough room for the unit.
 Units have no move or attack points at their first turn.&lt;&#x2F;p&gt;
 &lt;p&gt;And, by the way, AI has been taught to buy units too.&lt;&#x2F;p&gt;
@@ -1406,10 +1406,10 @@ Units have no move or attack points at their first turn.&lt;&#x2F;p&gt;
 selection.&lt;&#x2F;p&gt;
 &lt;p&gt;You can change map by clicking on the current map&#x27;s name in the main
 menu screen:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-01-24--devlog&#x2F;main-menu.png&quot; alt=&quot;Main menu&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-01-24--devlog&#x2F;main-menu.png&quot; alt=&quot;Main menu&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;It was mostly needed for testing&#x2F;debugging purposes so most of the maps
 look like this for now:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-01-24--devlog&#x2F;debug-map.png&quot; alt=&quot;Debugging map&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-01-24--devlog&#x2F;debug-map.png&quot; alt=&quot;Debugging map&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Tests however are in early prototype phase and are not in the repo yet.
 Right now they use special maps but I intend to implement some ASCII-DSL
 like the following:&lt;&#x2F;p&gt;
@@ -1441,7 +1441,7 @@ built and uploaded manually.&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;wreckages&quot;&gt;Wreckages&lt;&#x2F;h1&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&#x2F;issues&#x2F;247&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&#x2F;issues&#x2F;247&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Now destroyed vehicles leave wreckages.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-01-24--devlog&#x2F;wreckages.png&quot; alt=&quot;Wreckages&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-01-24--devlog&#x2F;wreckages.png&quot; alt=&quot;Wreckages&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;They only obstruct movement for now. Later they&#x27;ll be used by infantry
 as protective covering.&lt;&#x2F;p&gt;
 &lt;p&gt;When particle system will be implemented wreckages will emit smoke and
@@ -1506,13 +1506,13 @@ real strategic points which can be controlled or blocked easily.&lt;&#x2F;p&gt;
 &lt;&#x2F;li&gt;
 &lt;li&gt;
 &lt;p&gt;Added &amp;quot;zoom in&#x2F;out&amp;quot; buttons:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-01-24--devlog&#x2F;zoom-buttons.png&quot; alt=&quot;zoom in-out buttons&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-01-24--devlog&#x2F;zoom-buttons.png&quot; alt=&quot;zoom in-out buttons&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;because it&#x27;s simpler than handling multi-touch gestures on android :)&lt;&#x2F;p&gt;
 &lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;h1 id=&quot;gameplay-screenshots&quot;&gt;Gameplay screenshots&lt;&#x2F;h1&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-01-24--devlog&#x2F;gameplay-screenshot-1.png&quot; alt=&quot;gameplay screenshot 1&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2017-01-24--devlog&#x2F;gameplay-screenshot-2.png&quot; alt=&quot;gameplay screenshot 2&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-01-24--devlog&#x2F;gameplay-screenshot-1.png&quot; alt=&quot;gameplay screenshot 1&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2017-01-24--devlog&#x2F;gameplay-screenshot-2.png&quot; alt=&quot;gameplay screenshot 2&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;ozkriff&quot;&gt;@ozkriff on Twitter&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 </description>
             </item>
@@ -1520,8 +1520,8 @@ real strategic points which can be controlled or blocked easily.&lt;&#x2F;p&gt;
             <item>
                 <title>This Month in ZoC - 2016.08.22</title>
                 <pubDate>Mon, 22 Aug 2016 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2016-08-22--devlog/</link>
-                <guid>https%3A//ozkriff.github.io/2016-08-22--devlog/</guid>
+                <link>https%3A//ozkriff.games/2016-08-22--devlog/</link>
+                <guid>https%3A//ozkriff.games/2016-08-22--devlog/</guid>
                 <description>&lt;p&gt;(Repost from &lt;a href=&quot;https:&#x2F;&#x2F;users.rust-lang.org&#x2F;t&#x2F;this-month-in-zone-of-control&#x2F;6993&quot;&gt;https:&#x2F;&#x2F;users.rust-lang.org&#x2F;t&#x2F;this-month-in-zone-of-control&#x2F;6993&lt;&#x2F;a&gt;)&lt;&#x2F;p&gt;
 &lt;p&gt;Hi, comrades! Welcome to the first issue of ZoC&#x27;s monthly report!&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
@@ -1546,34 +1546,34 @@ were finally replaced with &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;gf
 &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&#x2F;issues&#x2F;197&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&#x2F;issues&#x2F;197&lt;&#x2F;a&gt; :(&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;roads&quot;&gt;Roads&lt;&#x2F;h1&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&#x2F;issues&#x2F;152&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&#x2F;issues&#x2F;152&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-08-22--devlog&#x2F;simple-road.png&quot; alt=&quot;Simple road&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-08-22--devlog&#x2F;simple-road.png&quot; alt=&quot;Simple road&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;sectors-victory-points-and-game-results-screen&quot;&gt;Sectors, victory points and game results screen&lt;&#x2F;h1&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&#x2F;issues&#x2F;124&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&#x2F;issues&#x2F;124&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;div class=&quot;youtube&quot;&gt;&lt;iframe
     frameborder=&quot;0&quot;
     src=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;embed&#x2F;hI6YmZeuZ3s&quot;
 &gt;&lt;&#x2F;iframe&gt;&lt;&#x2F;div&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-08-22--devlog&#x2F;sectors.png&quot; alt=&quot;Sectors&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-08-22--devlog&#x2F;sectors.png&quot; alt=&quot;Sectors&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;basic-smoke-screens&quot;&gt;Basic smoke screens&lt;&#x2F;h1&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&#x2F;issues&#x2F;160&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&#x2F;issues&#x2F;160&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-08-22--devlog&#x2F;smoke.png&quot; alt=&quot;Smoke&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-08-22--devlog&#x2F;somke-on-water.png&quot; alt=&quot;Smoke screen in action&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-08-22--devlog&#x2F;smoke.png&quot; alt=&quot;Smoke&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-08-22--devlog&#x2F;somke-on-water.png&quot; alt=&quot;Smoke screen in action&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;div class=&quot;youtube&quot;&gt;&lt;iframe frameborder=&quot;0&quot; allowfullscreen src=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;embed&#x2F;WJHkuWwAb7A?color=white&amp;rel=0&amp;showinfo=0&quot;&gt;&lt;&#x2F;iframe&gt;&lt;&#x2F;div&gt;
 &lt;h1 id=&quot;water-tiles&quot;&gt;Water tiles&lt;&#x2F;h1&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&#x2F;issues&#x2F;204&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&#x2F;issues&#x2F;204&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-08-22--devlog&#x2F;water-tiles.png&quot; alt=&quot;Water&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-08-22--devlog&#x2F;water-tiles.png&quot; alt=&quot;Water&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;gui-updates&quot;&gt;GUI updates&lt;&#x2F;h1&gt;
 &lt;ul&gt;
 &lt;li&gt;Replaced unit ids with unit type names&lt;&#x2F;li&gt;
 &lt;li&gt;Added hit chances&lt;&#x2F;li&gt;
 &lt;li&gt;Added basic unit info to the upper-left corner of the screen&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-08-22--devlog&#x2F;unit-types.png&quot; alt=&quot;unit types&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-08-22--devlog&#x2F;hit-chances.png&quot; alt=&quot;hit chances&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-08-22--devlog&#x2F;basic-unit-info.png&quot; alt=&quot;basic unit info&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-08-22--devlog&#x2F;unit-types.png&quot; alt=&quot;unit types&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-08-22--devlog&#x2F;hit-chances.png&quot; alt=&quot;hit chances&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-08-22--devlog&#x2F;basic-unit-info.png&quot; alt=&quot;basic unit info&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;fixed-switching-between-normal-and-wireframe-mode-for-buildings&quot;&gt;Fixed switching between normal and wireframe mode for buildings&lt;&#x2F;h1&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&#x2F;issues&#x2F;182&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&#x2F;issues&#x2F;182&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-08-22--devlog&#x2F;combined-wireframe-and-normal-buildings.png&quot; alt=&quot;combined wireframe and normal buildings&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-08-22--devlog&#x2F;combined-wireframe-and-normal-buildings.png&quot; alt=&quot;combined wireframe and normal buildings&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;other-notable-changes&quot;&gt;Other notable changes&lt;&#x2F;h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&#x2F;issues&#x2F;191&quot;&gt;Fixed armored units reaction to light reactive fire&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
@@ -1584,9 +1584,9 @@ were finally replaced with &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;gf
 &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&#x2F;issues&#x2F;196&quot;&gt;Fixed AI hangup&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;h1 id=&quot;bonus-1-zoc-on-android&quot;&gt;Bonus 1: ZoC on android&lt;&#x2F;h1&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-08-22--devlog&#x2F;zoc-on-andoid.jpg&quot; alt=&quot;photo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-08-22--devlog&#x2F;zoc-on-andoid.jpg&quot; alt=&quot;photo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;bonus-2-memoir44-mockup-of-smoke-demo-map&quot;&gt;Bonus 2: memoir44-mockup of smoke demo map&lt;&#x2F;h1&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-08-22--devlog&#x2F;memoir44.jpg&quot; alt=&quot;photo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-08-22--devlog&#x2F;memoir44.jpg&quot; alt=&quot;photo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;Weekly links:
 &lt;a href=&quot;https:&#x2F;&#x2F;users.rust-lang.org&#x2F;t&#x2F;whats-everyone-working-on-this-week-31-2016&#x2F;6747&#x2F;2&quot;&gt;1&lt;&#x2F;a&gt;,
@@ -1600,8 +1600,8 @@ were finally replaced with &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;gf
             <item>
                 <title>Градообразующие объекты</title>
                 <pubDate>Tue, 23 Feb 2016 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2016-02-23--devlog/</link>
-                <guid>https%3A//ozkriff.github.io/2016-02-23--devlog/</guid>
+                <link>https%3A//ozkriff.games/2016-02-23--devlog/</link>
+                <guid>https%3A//ozkriff.games/2016-02-23--devlog/</guid>
                 <description>&lt;p&gt;Показал нескольким знакомым макет, послушал комментарии. Один из
 повторяющихся - города не выглядят городами, слишком абстрактные, больше
 похожи на хаотично раскиданные детские кубики.&lt;&#x2F;p&gt;
@@ -1626,7 +1626,7 @@ were finally replaced with &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;gf
 .&lt;&#x2F;p&gt;
 &lt;p&gt;Если посмотреть на тот же атлас дорог страны, то там от столицы тянутся
 федеральные трассы, пронизывающие города насквозь:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-23--devlog&#x2F;viborg-map.png&quot; alt=&quot;карта Выборга с отмеченными главными дорогами&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-23--devlog&#x2F;viborg-map.png&quot; alt=&quot;карта Выборга с отмеченными главными дорогами&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Вот желтое тут - &amp;quot;дороги&amp;quot;, а белое&#x2F;серое - &amp;quot;улицы&amp;quot; и дома. Наверное,
 надо разрешить особую дорогу по городу прокладывать. На этих клетках
 нельзя дома строить будет, но через нее будут проходить обычные улицы и
@@ -1643,18 +1643,18 @@ were finally replaced with &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;gf
 &lt;p&gt;Добавил улицы и декоративные заборчики с садами у пары зданий.&lt;&#x2F;p&gt;
 &lt;p&gt;Здания к улицам повернул &amp;quot;фасадами&amp;quot;.&lt;&#x2F;p&gt;
 &lt;p&gt;Заводу трубу прилепил, так чуть понятнее что это завод :) .&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-23--devlog&#x2F;draft-streets-1.png&quot; alt=&quot;Макет улиц&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-23--devlog&#x2F;draft-streets-2.png&quot; alt=&quot;Макет улиц с другого ракурса&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-23--devlog&#x2F;draft-streets-1.png&quot; alt=&quot;Макет улиц&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-23--devlog&#x2F;draft-streets-2.png&quot; alt=&quot;Макет улиц с другого ракурса&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;В таком виде улицы слишком бросаются в глаза для &amp;quot;чисто декоративного&amp;quot;
 элемента. Возможно, потому что макет довольно беден на детали? В игре
 можно будет их &amp;quot;запылить&amp;quot; землей по краям, думаю.&lt;&#x2F;p&gt;
 &lt;p&gt;Еще вопрос, как такое автоматически генерировать можно? Тут-то сетка
 вручную сделана и довольно хитрожопая:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-23--devlog&#x2F;wireframe.png&quot; alt=&quot;Сетка макета городских улиц&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-23--devlog&#x2F;wireframe.png&quot; alt=&quot;Сетка макета городских улиц&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Сделал болванку трехклеточного корабля, у этого придется немного
 поколдавать с путенажодением, что бы он плавно поворачивал и только по
 широким рекам мог проплывать.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-23--devlog&#x2F;updated-draft.png&quot; alt=&quot;Рендер макета с вышеописанными изменениями&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-23--devlog&#x2F;updated-draft.png&quot; alt=&quot;Рендер макета с вышеописанными изменениями&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;Чуууточку удалось поковырять код между рисовашками и размышлениями.&lt;&#x2F;p&gt;
 &lt;p&gt;В рамках подготовки к введению системы слотов удалил костыль с
@@ -1691,24 +1691,24 @@ of the Bulge в стиме. Я просто в ужасе от того, ско�
             <item>
                 <title>Чертов макет!</title>
                 <pubDate>Sun, 14 Feb 2016 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2016-02-14--devlog/</link>
-                <guid>https%3A//ozkriff.github.io/2016-02-14--devlog/</guid>
+                <link>https%3A//ozkriff.games/2016-02-14--devlog/</link>
+                <guid>https%3A//ozkriff.games/2016-02-14--devlog/</guid>
                 <description>&lt;p&gt;Ладно, X-Com меня начал потихоньку отпускать и большую часть хотелок по
 макету получилось набросать.&lt;&#x2F;p&gt;
 &lt;p&gt;Автоматчик:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-14--devlog&#x2F;submachine-gunner.png&quot; alt=&quot;автоматчик&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-14--devlog&#x2F;submachine-gunner.png&quot; alt=&quot;автоматчик&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Довольно легко визуально отличить от обычных стрелков должно быть, но на
 всякий еще сгорбленными их поставил.&lt;&#x2F;p&gt;
 &lt;p&gt;Закинул в джип еще одного пассажира и подкрутил позы старых:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-14--devlog&#x2F;draft-jeep-1.png&quot; alt=&quot;пассажиры в джипе&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-14--devlog&#x2F;draft-jeep-1.png&quot; alt=&quot;пассажиры в джипе&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;На средний танк прилепил еще одного танкодесантника сбоку:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-14--devlog&#x2F;tankodesant.png&quot; alt=&quot;вальяжно-боковой танкодесантник&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-14--devlog&#x2F;tankodesant.png&quot; alt=&quot;вальяжно-боковой танкодесантник&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;С виду, трех еще можно на танк посадить - как раз отряд и будет.&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;Так, что тут еще на общем снимке виднеется? Огнеметчик, снайпер,
 пулеметный рассчет, простенькая средняя закрытая САУ на основе среднего
 танка. Обновил полевую пушку и ее прицепление к грузовику.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-14--devlog&#x2F;big-draft.png&quot; alt=&quot;более свежий общий снимок&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-14--devlog&#x2F;big-draft.png&quot; alt=&quot;более свежий общий снимок&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;На планшете смотрится прилично, солдат всех различить можно.&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;Все, считаю &amp;quot;неделю блендера&amp;quot; законченной - толку от дальнейшей
@@ -1721,11 +1721,11 @@ of the Bulge в стиме. Я просто в ужасе от того, ско�
             <item>
                 <title>Пришельцы воруют мое время</title>
                 <pubDate>Wed, 10 Feb 2016 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2016-02-10--devlog/</link>
-                <guid>https%3A//ozkriff.github.io/2016-02-10--devlog/</guid>
+                <link>https%3A//ozkriff.games/2016-02-10--devlog/</link>
+                <guid>https%3A//ozkriff.games/2016-02-10--devlog/</guid>
                 <description>&lt;p&gt;Мой план &amp;quot;усилием воли закончить макет за выходные&amp;quot; с грохотом
 провалился.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-10--devlog&#x2F;xcom-sectoid.jpg&quot; alt=&quot;Сектоид контроллирует землянина&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-10--devlog&#x2F;xcom-sectoid.jpg&quot; alt=&quot;Сектоид контроллирует землянина&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;(Да, картинка из xcom1, но мне лень искать с новым сектоидом)&lt;&#x2F;p&gt;
 &lt;p&gt;Внезапно для меня объявился X-COM 2. И внезапно же запустился на моей
 железяке, хотя все на оптимизации ругаются. Fps, правда, не на высоте
@@ -1800,27 +1800,27 @@ of the Bulge в стиме. Я просто в ужасе от того, ско�
 игрой.&lt;&#x2F;p&gt;
 &lt;p&gt;И да, как всегда считаю, что проходить надо в режиме &amp;quot;железный человек&amp;quot;,
 без всяких сохранений&#x2F;загрузок))&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-10--devlog&#x2F;xcom2-failed-misson-1.jpg&quot; alt=&quot;xcom2: неудачная миссия&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-10--devlog&#x2F;xcom2-failed-misson-2.jpg&quot; alt=&quot;xcom2: еще более неудачная миссия&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-10--devlog&#x2F;xcom2-failed-misson-1.jpg&quot; alt=&quot;xcom2: неудачная миссия&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-10--devlog&#x2F;xcom2-failed-misson-2.jpg&quot; alt=&quot;xcom2: еще более неудачная миссия&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;Так, ладно, кое-что я все-таки смог заставить себя наклепать.&lt;&#x2F;p&gt;
 &lt;p&gt;Немного подпиленный легкий танк, самоходка на его основе и болванка
 джипа:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-10--devlog&#x2F;draft-jeep-tank-spg.png&quot; alt=&quot;Джип, танк и самоходка&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-10--devlog&#x2F;draft-jeep-tank-spg.png&quot; alt=&quot;Джип, танк и самоходка&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Новая сетка для солдата, даже кое-какой скелет в него вставил:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-10--devlog&#x2F;draft-human-skeleton.png&quot; alt=&quot;Болванка человечка&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-10--devlog&#x2F;draft-human-skeleton.png&quot; alt=&quot;Болванка человечка&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Долго пытался ему размер подобрать, что бы он в технику влезал, но и
 виден был. Пока вот на этом остановился.&lt;&#x2F;p&gt;
 &lt;p&gt;Выдал ему винтовку:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-10--devlog&#x2F;rifleman.png&quot; alt=&quot;Человечек с винтовкой&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-10--devlog&#x2F;rifleman.png&quot; alt=&quot;Человечек с винтовкой&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Не удержался и немного деталей джипу добавил (теперь он смотрится
 слишком детальным, когда рядом с грузовиком стоит) и пассажиров в нем
 рассадил пейзажно:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-10--devlog&#x2F;jeep-with-passengers.png&quot; alt=&quot;Джип с пассажирами&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-10--devlog&#x2F;jeep-with-passengers.png&quot; alt=&quot;Джип с пассажирами&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Любой пулеметчик смотрится круче, если может ножку закинуть на что
 угодно :) .&lt;&#x2F;p&gt;
 &lt;p&gt;Средний танк с танкодесантником:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-10--devlog&#x2F;tankodesant.png&quot; alt=&quot;Средний танк с танкодесантником&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-10--devlog&#x2F;tankodesant.png&quot; alt=&quot;Средний танк с танкодесантником&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Бронетранспортеров на всех не хватит, кому-то придется так к полю боя
 добираться. Заодно танк целей будет.&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
@@ -1843,8 +1843,8 @@ of the Bulge в стиме. Я просто в ужасе от того, ско�
             <item>
                 <title>Первая половина Недели Блендера</title>
                 <pubDate>Fri, 05 Feb 2016 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2016-02-05--devlog/</link>
-                <guid>https%3A//ozkriff.github.io/2016-02-05--devlog/</guid>
+                <link>https%3A//ozkriff.games/2016-02-05--devlog/</link>
+                <guid>https%3A//ozkriff.games/2016-02-05--devlog/</guid>
                 <description>&lt;p&gt;После пары просьб, решил таки
 &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;ozkriff.github.io-src&#x2F;commit&#x2F;aec640&quot;&gt;добавить&lt;&#x2F;a&gt;
 записям желтушные заголовки. Так их и правда немного проще отличать.&lt;&#x2F;p&gt;
@@ -1862,10 +1862,10 @@ of the Bulge в стиме. Я просто в ужасе от того, ско�
 ворованные, но под cc-by-sa, а мне хочется прям свободные-свободные
 модели в составе игры иметь
 (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&#x2F;issues&#x2F;24&quot;&gt;#24&lt;&#x2F;a&gt;).&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-05--devlog&#x2F;new-scene.png&quot; alt=&quot;снимок экрана с новой сценой&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-05--devlog&#x2F;new-scene.png&quot; alt=&quot;снимок экрана с новой сценой&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Пробую накидать джип, с ним уже явно становятся видны нестыковки в
 текущих размерах людей и техники. Что-то надо менять.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-05--devlog&#x2F;relative-sizes.png&quot; alt=&quot;сравнительные размеры человеков и техники&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-05--devlog&#x2F;relative-sizes.png&quot; alt=&quot;сравнительные размеры человеков и техники&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Изначально я хотел, что бы в один слот влезало нечто масштаба Т-35 или
 маус (последние два снизу, ~10 метров).&lt;&#x2F;p&gt;
 &lt;p&gt;Все-таки предполагалось, что целую клетку будут занимать только огромные
@@ -1876,11 +1876,11 @@ of the Bulge в стиме. Я просто в ужасе от того, ско�
 прямо в землю не утыкать.&lt;&#x2F;p&gt;
 &lt;p&gt;А я такое уже видел в Кодексе Войны и играть в такое очень и очень
 сложно:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-05--devlog&#x2F;fantasy-wars-sizes.jpg&quot; alt=&quot;мелкие человечки из Кодекса Войны&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-05--devlog&#x2F;fantasy-wars-sizes.jpg&quot; alt=&quot;мелкие человечки из Кодекса Войны&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Но просто так взять и увеличить людей я не могу, потому что в игре
 должны быть джипы, полевые пушки и т.п., где тоже используются модели
 человечков и, например, джип с увеличенными людьми смотрится как-то так:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-05--devlog&#x2F;big-man-small-car.jpg&quot; alt=&quot;мужик в детской машинке&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-05--devlog&#x2F;big-man-small-car.jpg&quot; alt=&quot;мужик в детской машинке&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Хмм, вот я, после некоторого размышления, думаю что делать по этому
 поводу:&lt;&#x2F;p&gt;
 &lt;p&gt;Придется убирать требование &amp;quot;в слот влезает техника размера т-35&#x2F;мауса
@@ -1896,7 +1896,7 @@ of the Bulge в стиме. Я просто в ужасе от того, ско�
 &lt;hr &#x2F;&gt;
 &lt;p&gt;Я там в прошлой записи упоминал, что здания с людьми внутри должны будут
 отображаться разрезанными&#x2F;сеткой. Пока себе представляю как-то так:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-02-05--devlog&#x2F;wireframe-buildings.png&quot; alt=&quot;снимок экрана с сеточными зданиями&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-02-05--devlog&#x2F;wireframe-buildings.png&quot; alt=&quot;снимок экрана с сеточными зданиями&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Вопрос, конечно, как это в OpenGL все отображать =. .obj, который пока
 у меня используется, не умеет хранить просто ребра, ему нужны грани.
 Менять формат пока не сильно хочется, надо сосредоточиться на прототипе.
@@ -1947,8 +1947,8 @@ github pages сами могут из .md исходников .html выпле�
             <item>
                 <title>Выходные, размеры, Тарантино и ненависть к людишкам</title>
                 <pubDate>Sun, 31 Jan 2016 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2016-01-31--devlog/</link>
-                <guid>https%3A//ozkriff.github.io/2016-01-31--devlog/</guid>
+                <link>https%3A//ozkriff.games/2016-01-31--devlog/</link>
+                <guid>https%3A//ozkriff.games/2016-01-31--devlog/</guid>
                 <description>&lt;p&gt;Итак, выходные прошли. Толком ничего не сделал, но надо хоть чего-то
 сюда написать, раз уж опять взялся журнал вести. Так что вот, на :) :&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
@@ -1983,7 +1983,7 @@ js-хак с перенаправлением с http на https (хотя пр�
 что, все-таки у меня тут пока что довольно набросочные модельки, я даже
 не пытаюсь какие-то детали изобразить.&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-01-31--devlog&#x2F;proportions.jpg&quot; alt=&quot;схема пропорций&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-01-31--devlog&#x2F;proportions.jpg&quot; alt=&quot;схема пропорций&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Одновременно с прикидыванием геометрии людей медитирую над
 сравнительными размерами техники (человеки же в нее влезать как-то
 должны). Отталкиваться все-таки буду от техники второй мировой и около
@@ -1999,7 +1999,7 @@ js-хак с перенаправлением с http на https (хотя пр�
 &lt;p&gt;Вот тут, с блицкриговскими модельками, даже нагляднее размеры
 чувствуются (хотя не факт, что они тут такие же точные, все-таки
 Блицкриг не симулятор):&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-01-31--devlog&#x2F;blitzjrieg.png&quot; alt=&quot;картинка из блицкрига с кучей техники&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-01-31--devlog&#x2F;blitzjrieg.png&quot; alt=&quot;картинка из блицкрига с кучей техники&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;StopGame выложили &lt;a href=&quot;http:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=EqwhkOXtrEA&quot;&gt;вторую часть Истории
 Fallout&lt;&#x2F;a&gt; - очень даже
@@ -2040,32 +2040,32 @@ Fallout&lt;&#x2F;a&gt; - очень даже
             <item>
                 <title>Несколько моделек и вечная смерть</title>
                 <pubDate>Fri, 29 Jan 2016 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2016-01-29--devlog/</link>
-                <guid>https%3A//ozkriff.github.io/2016-01-29--devlog/</guid>
+                <link>https%3A//ozkriff.games/2016-01-29--devlog/</link>
+                <guid>https%3A//ozkriff.games/2016-01-29--devlog/</guid>
                 <description>&lt;p&gt;Defuz предложил, пока я веду журнал в гисте, пинговать о записях в
 &lt;a href=&quot;https:&#x2F;&#x2F;gitter.im&#x2F;ozkriff&#x2F;zoc&quot;&gt;https:&#x2F;&#x2F;gitter.im&#x2F;ozkriff&#x2F;zoc&lt;&#x2F;a&gt;, что был способ оставлять коменты и
 узнавать об обновлениях.&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;Немного поправил геометрию
 &lt;a href=&quot;https:&#x2F;&#x2F;www.google.ru&#x2F;search?q=mammoth+tank&amp;amp;tbm=isch&quot;&gt;мамонт танка&lt;&#x2F;a&gt;:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-01-29--devlog&#x2F;draft-mammoth-tank.png&quot; alt=&quot;Набросок мамонт-танка&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-01-29--devlog&#x2F;draft-mammoth-tank.png&quot; alt=&quot;Набросок мамонт-танка&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Но сильно возиться с ним не хочется - мне просто нужен какой-то огромный
 юнит на всю клетку, чтобы не забыть про них совсем)&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;С вертолетом тоже пока заканчиваю вот на такой стадии:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-01-29--devlog&#x2F;draft-helicopter.png&quot; alt=&quot;Болванка вертолета&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-01-29--devlog&#x2F;draft-helicopter.png&quot; alt=&quot;Болванка вертолета&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Кстати, на заднем плане, за вертолетом, обрезанные здания виднеются.
 Примерно так, если что, подумываю рисовать здания в которых кто-то есть.&lt;&#x2F;p&gt;
 &lt;p&gt;В режиме рендера каркас не рисуется, вообще палки сверху еще должны
 быть:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-01-29--devlog&#x2F;draft-building.png&quot; alt=&quot;Каркасные здания&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-01-29--devlog&#x2F;draft-building.png&quot; alt=&quot;Каркасные здания&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;(на вписаную и описаную окружности внимание обращать не надо,
 это просто вспомогательные конструкции для размещения зданий в макете :) )&lt;&#x2F;p&gt;
 &lt;p&gt;Может еще контуры окон-дверей потом добавлю.&lt;&#x2F;p&gt;
 &lt;p&gt;В Battle Academy здания с людьми внутри рисуются полупрозрачными, но на
 деле (для меня, конечно) это очень криво выглядит и ничего не понятно
 =\ :&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-01-29--devlog&#x2F;ba2-buildings.png&quot; alt=&quot;Здания в BA2&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-01-29--devlog&#x2F;ba2-buildings.png&quot; alt=&quot;Здания в BA2&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;О, внезапное (эти тоже все обещают &amp;quot;начать вести бложик более
 постоянно&amp;quot;, хех) обновление в тихом и уютном бложике разработчиков моей
@@ -2112,8 +2112,8 @@ X-COM, например. У тебя просто нет возможности 
             <item>
                 <title>Очередной перезапуск</title>
                 <pubDate>Thu, 28 Jan 2016 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2016-01-28--devlog/</link>
-                <guid>https%3A//ozkriff.github.io/2016-01-28--devlog/</guid>
+                <link>https%3A//ozkriff.games/2016-01-28--devlog/</link>
+                <guid>https%3A//ozkriff.games/2016-01-28--devlog/</guid>
                 <description>&lt;p&gt;Моя последняя попытка вести нормальный журнал
 &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;ozkriff.github.io-src&#x2F;blob&#x2F;master&#x2F;content&#x2F;2015-11-30--devlog-live-again.rst&quot;&gt;провалилась&lt;&#x2F;a&gt;
 :) .&lt;&#x2F;p&gt;
@@ -2134,7 +2134,7 @@ X-COM, например. У тебя просто нет возможности 
 файлик. Лениво с полноценным блогом для такого заморачиваться.&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;Заготовка вертолета, гм:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-01-28--devlog&#x2F;draft_helicoper.png&quot; alt=&quot;Заготовка вертолета&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-01-28--devlog&#x2F;draft_helicoper.png&quot; alt=&quot;Заготовка вертолета&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;В фоне потихоньку вожусь с удалением констант с индексами из кода сцены
 (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ozkriff&#x2F;zoc&#x2F;issues&#x2F;154&quot;&gt;#154&lt;&#x2F;a&gt;). Сами константы
@@ -2146,8 +2146,8 @@ X-COM, например. У тебя просто нет возможности 
             <item>
                 <title>Мастерплан и мотивация</title>
                 <pubDate>Wed, 27 Jan 2016 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2016-01-27--devlog/</link>
-                <guid>https%3A//ozkriff.github.io/2016-01-27--devlog/</guid>
+                <link>https%3A//ozkriff.games/2016-01-27--devlog/</link>
+                <guid>https%3A//ozkriff.games/2016-01-27--devlog/</guid>
                 <description>&lt;p&gt;Знакомый скинул ссылку на вполне себе интересную
 &lt;a href=&quot;https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;gamedev&#x2F;comments&#x2F;426148&quot;&gt;серию статей в реддите&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;p&gt;Хм, ну базовый цикл у меня близок к цивилизации - &amp;quot;Select unit, move
@@ -2172,7 +2172,7 @@ unit, combat&#x2F;gather, repeat.&amp;quot; у меня тоже ты &amp;quot;
 запариваться сильно, потому что тактический должен быть цельной игрой
 сам по себе.&lt;&#x2F;p&gt;
 &lt;p&gt;Стратегический в итоге должен как-то так выглядеть:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-01-27--devlog&#x2F;wargame-strategic-mode-example.jpg&quot; alt=&quot;Образец для стратегического режима&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-01-27--devlog&#x2F;wargame-strategic-mode-example.jpg&quot; alt=&quot;Образец для стратегического режима&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;и определять контекст для тактических сражений.&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;p&gt;перехожу ко второй статье)&lt;&#x2F;p&gt;
@@ -2220,11 +2220,11 @@ time?&amp;quot; -гм, 100% буду время от времени забрас
 мысли вроде &amp;quot;черт, сюда бы такую-то возможность добавить, вот было бы
 круто&amp;quot;)&lt;&#x2F;p&gt;
 &lt;p&gt;И еще схемки - или нарисованные на бумаге&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-01-27--devlog&#x2F;2d-zoc-abstract-cities.jpg&quot; alt=&quot;Набросок 2д варианта с абстрактными городами&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-01-27--devlog&#x2F;2d-zoc-draft-one-tile-buildings.png&quot; alt=&quot;Набросок 2д варианта с конкретными одноклеточными зданиями&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-01-27--devlog&#x2F;2d-zoc-abstract-cities.jpg&quot; alt=&quot;Набросок 2д варианта с абстрактными городами&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-01-27--devlog&#x2F;2d-zoc-draft-one-tile-buildings.png&quot; alt=&quot;Набросок 2д варианта с конкретными одноклеточными зданиями&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;в таком духе, я их мноооого рисую когда думаю)&lt;&#x2F;p&gt;
 &lt;p&gt;или макеты в блендере, как вот который сейчас делаю потихоньку&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2016-01-27--devlog&#x2F;blender_mockup.png&quot; alt=&quot;Блендерный макет&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2016-01-27--devlog&#x2F;blender_mockup.png&quot; alt=&quot;Блендерный макет&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Смотришь на это дело и сразу представляешь, как было бы клево, если бы
 оно могло &amp;quot;ожить&amp;quot;. Что бы вон та артиллерия могла дать залп дымовыми
 перед вражеским городом, эта пехота забраться в броневики и ломануться
@@ -2236,8 +2236,8 @@ time?&amp;quot; -гм, 100% буду время от времени забрас
             <item>
                 <title>Форы</title>
                 <pubDate>Tue, 26 Jan 2016 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2016-01-26--devlog/</link>
-                <guid>https%3A//ozkriff.github.io/2016-01-26--devlog/</guid>
+                <link>https%3A//ozkriff.games/2016-01-26--devlog/</link>
+                <guid>https%3A//ozkriff.games/2016-01-26--devlog/</guid>
                 <description>&lt;p&gt;Недавно тут наткнулся на
 &lt;a href=&quot;http:&#x2F;&#x2F;www.progamer.ru&#x2F;dev&#x2F;handicaps.htm&quot;&gt;статью про гандикапы&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;p&gt;Может для сетевого режима ЗК замена обычных рейтингов на уменьшающиеся
@@ -2272,8 +2272,8 @@ time?&amp;quot; -гм, 100% буду время от времени забрас
             <item>
                 <title>Сложности с crates.io и конфиги из открытого космоса</title>
                 <pubDate>Mon, 25 Jan 2016 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2016-01-25--devlog/</link>
-                <guid>https%3A//ozkriff.github.io/2016-01-25--devlog/</guid>
+                <link>https%3A//ozkriff.games/2016-01-25--devlog/</link>
+                <guid>https%3A//ozkriff.games/2016-01-25--devlog/</guid>
                 <description>&lt;p&gt;Сунулся наконец-то выложить zoc на crates.io.
 А, оказывается, даже если пакеты лежат в одном репозитории, их надо выкладывать на
 crates.io отдельно.&lt;&#x2F;p&gt;
@@ -2299,8 +2299,8 @@ crates.io отдельно.&lt;&#x2F;p&gt;
             <item>
                 <title>Перезапуск журнала</title>
                 <pubDate>Mon, 30 Nov 2015 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2015-11-30--devlog-live-again/</link>
-                <guid>https%3A//ozkriff.github.io/2015-11-30--devlog-live-again/</guid>
+                <link>https%3A//ozkriff.games/2015-11-30--devlog-live-again/</link>
+                <guid>https%3A//ozkriff.games/2015-11-30--devlog-live-again/</guid>
                 <description>&lt;p&gt;Насмотрелся я тут на журналы &lt;a href=&quot;http:&#x2F;&#x2F;reangdblog.blogspot.com&quot;&gt;reangd&lt;&#x2F;a&gt;,
 &lt;a href=&quot;http:&#x2F;&#x2F;www.gridsagegames.com&#x2F;blog&quot;&gt;cogmind&lt;&#x2F;a&gt;,
 &lt;a href=&quot;https:&#x2F;&#x2F;eao197.blogspot.ru&quot;&gt;eao197&lt;&#x2F;a&gt; и всякие другие, решил что тоже
@@ -2316,7 +2316,7 @@ Whales&lt;&#x2F;a&gt;, оттуда тоже уйти и осесть в
 на ужасы фритуплея)&lt;&#x2F;p&gt;
 &lt;p&gt;Я больше не студент, совсем - наконец-то закончил заочку в политехе,
 ура-ура! :-D Темой диплома как раз и был этот проект, даже
-&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2015-11-30--devlog-live-again&#x2F;lesnikov_a_a_slides_2015.pdf&quot;&gt;презентация&lt;&#x2F;a&gt; вот завалялась. Хотя
+&lt;a href=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2015-11-30--devlog-live-again&#x2F;lesnikov_a_a_slides_2015.pdf&quot;&gt;презентация&lt;&#x2F;a&gt; вот завалялась. Хотя
 ничего особо крутого, как мне изначально хотелось, на деле не вышло.
 Ключевым моментом диплома являлся ИИ. Я там подробно расписал какие они
 бывают и какие виды подходят для каких игр. А вот реализовать
@@ -2374,7 +2374,7 @@ Command&lt;&#x2F;a&gt; повлияла на мое
 &lt;p&gt;Много думал про пошаговые игры без клеток, все-таки у клеток много
 недостатков&#x2F;особенностей. Даже немного экспериментировал - сделал
 простенькое путенахождение по вручную размеченной навигационной сетке:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2015-11-30--devlog-live-again&#x2F;2015-07-30--manual-navmesh-simple-pathfinding.png&quot; alt=&quot;Пример простого путенахождения на вручную размеченной сетке&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2015-11-30--devlog-live-again&#x2F;2015-07-30--manual-navmesh-simple-pathfinding.png&quot; alt=&quot;Пример простого путенахождения на вручную размеченной сетке&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Путь проложен по центрам треугольников, для оптимизации потом хотел
 прикрутить &lt;a href=&quot;http:&#x2F;&#x2F;digestingduck.blogspot.ru&#x2F;2010&#x2F;03&#x2F;simple-stupid-funnel-algorithm.html&quot;&gt;funnel
 algorithm&lt;&#x2F;a&gt;,
@@ -2383,13 +2383,13 @@ algorithm&lt;&#x2F;a&gt;,
 Затем, написал простенький &amp;quot;наращиватель&amp;quot; препятствий, который в
 зависимости от величины угла добавлял разное количество вспомогательных
 отрезков:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2015-11-30--devlog-live-again&#x2F;2015-08-02--obstacle-grow.png&quot; alt=&quot;Пример нарощенного препятствия&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2015-11-30--devlog-live-again&#x2F;2015-08-02--obstacle-grow.png&quot; alt=&quot;Пример нарощенного препятствия&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Предполагалось, что все юниты будут поделены на несколько групп по
 размерам и для каждой группы будет поддерживаться своя сетка.
 Непосредственно преобразованием массива таких &amp;quot;жирных&amp;quot; препятствий в
 сетку должен был заниматься триангулятор. Мне большего всего приглянулся
 плюсовый &lt;a href=&quot;https:&#x2F;&#x2F;code.google.com&#x2F;p&#x2F;poly2tri&quot;&gt;poly2tri&lt;&#x2F;a&gt;:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2015-11-30--devlog-live-again&#x2F;2015-08-11--triangulation-cpp-demo.png&quot; alt=&quot;Всякие стандартные примеры из poly2tri&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2015-11-30--devlog-live-again&#x2F;2015-08-11--triangulation-cpp-demo.png&quot; alt=&quot;Всякие стандартные примеры из poly2tri&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Даже пытался портировать его на ржавчину, но там очень стремная работа с
 памятью, очень хреново укладывается в модель ржавчины. Пробовал
 переделать плюсовую версию на работу с массивами и индексами, но потом
@@ -2496,8 +2496,8 @@ x-com) + неиспользованные в свой ход активные о
             <item>
                 <title>Разработка Мародера - 2014.05.18</title>
                 <pubDate>Sun, 18 May 2014 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2014-05-18--devlog-marauder-012/</link>
-                <guid>https%3A//ozkriff.github.io/2014-05-18--devlog-marauder-012/</guid>
+                <link>https%3A//ozkriff.games/2014-05-18--devlog-marauder-012/</link>
+                <guid>https%3A//ozkriff.games/2014-05-18--devlog-marauder-012/</guid>
                 <description>&lt;p&gt;Почти дорисовал базового человечка, так лениво :) .&lt;&#x2F;p&gt;
 &lt;p&gt;Разработчики Ржавчины мутят чего-то страшное. Хотят убрать &lt;code&gt;mut&lt;&#x2F;code&gt;,
 иммутабельность. Бррр!&lt;&#x2F;p&gt;
@@ -2507,8 +2507,8 @@ x-com) + неиспользованные в свой ход активные о
             <item>
                 <title>Разработка Мародера - 2014.05.11</title>
                 <pubDate>Mon, 12 May 2014 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2014-05-12--devlog-marauder-011/</link>
-                <guid>https%3A//ozkriff.github.io/2014-05-12--devlog-marauder-011/</guid>
+                <link>https%3A//ozkriff.games/2014-05-12--devlog-marauder-011/</link>
+                <guid>https%3A//ozkriff.games/2014-05-12--devlog-marauder-011/</guid>
                 <description>&lt;p&gt;Тревис все так и сломан.&lt;&#x2F;p&gt;
 &lt;p&gt;Потратил кучу времени, пока искал &lt;code&gt;![macro_export]&lt;&#x2F;code&gt; и тупил вокруг))&lt;&#x2F;p&gt;
 &lt;p&gt;Запил &lt;code&gt;MeshId&lt;&#x2F;code&gt; структурку, наконец-то.&lt;&#x2F;p&gt;
@@ -2524,8 +2524,8 @@ x-com) + неиспользованные в свой ход активные о
             <item>
                 <title>Разработка Мародера - 2014.05.04</title>
                 <pubDate>Mon, 05 May 2014 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2014-05-05--devlog-marauder-010/</link>
-                <guid>https%3A//ozkriff.github.io/2014-05-05--devlog-marauder-010/</guid>
+                <link>https%3A//ozkriff.games/2014-05-05--devlog-marauder-010/</link>
+                <guid>https%3A//ozkriff.games/2014-05-05--devlog-marauder-010/</guid>
                 <description>&lt;p&gt;Трэвис сломался и все никак не чинится. Все протухло :( .&lt;&#x2F;p&gt;
 &lt;p&gt;Почти добил &lt;code&gt;ErrorContext&lt;&#x2F;code&gt;. Перенес на &lt;code&gt;local_data&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
 &lt;p&gt;Заменил все &lt;code&gt;type = ...&lt;&#x2F;code&gt;, которые можно, на структуры.&lt;&#x2F;p&gt;
@@ -2535,8 +2535,8 @@ x-com) + неиспользованные в свой ход активные о
             <item>
                 <title>Разработка Мародера - 2014.04.27</title>
                 <pubDate>Mon, 28 Apr 2014 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2014-04-28--devlog-marauder-009/</link>
-                <guid>https%3A//ozkriff.github.io/2014-04-28--devlog-marauder-009/</guid>
+                <link>https%3A//ozkriff.games/2014-04-28--devlog-marauder-009/</link>
+                <guid>https%3A//ozkriff.games/2014-04-28--devlog-marauder-009/</guid>
                 <description>&lt;p&gt;Меня поплющило пару дней на тему перехода с 3д моделей на 2д маркеры.&lt;&#x2F;p&gt;
 &lt;p&gt;Заменил везде &lt;code&gt;&amp;amp;str&lt;&#x2F;code&gt; на &lt;code&gt;Path&lt;&#x2F;code&gt;, так правильней (ссылка на битсквидблог).&lt;&#x2F;p&gt;
 &lt;p&gt;Заменил структурки &lt;code&gt;struct(MInt)&lt;&#x2F;code&gt; на &lt;code&gt;struct(id: MInt}&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
@@ -2555,8 +2555,8 @@ x-com) + неиспользованные в свой ход активные о
             <item>
                 <title>Разработка Мародера - 2014.04.20</title>
                 <pubDate>Mon, 21 Apr 2014 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2014-04-21--devlog-marauder-008/</link>
-                <guid>https%3A//ozkriff.github.io/2014-04-21--devlog-marauder-008/</guid>
+                <link>https%3A//ozkriff.games/2014-04-21--devlog-marauder-008/</link>
+                <guid>https%3A//ozkriff.games/2014-04-21--devlog-marauder-008/</guid>
                 <description>&lt;p&gt;Отпуск кончился. Хочется умереть :) .&lt;&#x2F;p&gt;
 &lt;p&gt;Забыл написать. На прошлой неделе появился первый отчет об ошибке, ура
 ура! Правда я хз что с ним делать :( .&lt;&#x2F;p&gt;
@@ -2582,8 +2582,8 @@ x-com) + неиспользованные в свой ход активные о
             <item>
                 <title>Разработка Мародера - 2014.04.13</title>
                 <pubDate>Mon, 14 Apr 2014 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2014-04-14--devlog-marauder-007/</link>
-                <guid>https%3A//ozkriff.github.io/2014-04-14--devlog-marauder-007/</guid>
+                <link>https%3A//ozkriff.games/2014-04-14--devlog-marauder-007/</link>
+                <guid>https%3A//ozkriff.games/2014-04-14--devlog-marauder-007/</guid>
                 <description>&lt;p&gt;На этой неделе у меня был отпуск, о даа.&lt;&#x2F;p&gt;
 &lt;p&gt;Наконец-то немного разобрался с pelican и начал приводить в порядок и
 выкладывать эти недельные отчеты на ozkriff.github.io, а то до этого они
@@ -2597,8 +2597,8 @@ x-com) + неиспользованные в свой ход активные о
             <item>
                 <title>Разработка Мародера - 2014.04.07</title>
                 <pubDate>Tue, 08 Apr 2014 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2014-04-08--devlog-marauder-006/</link>
-                <guid>https%3A//ozkriff.github.io/2014-04-08--devlog-marauder-006/</guid>
+                <link>https%3A//ozkriff.games/2014-04-08--devlog-marauder-006/</link>
+                <guid>https%3A//ozkriff.games/2014-04-08--devlog-marauder-006/</guid>
                 <description>&lt;p&gt;Аналогично с прошлой - ничего, только смотрю, что б Мародер собирался.&lt;&#x2F;p&gt;
 &lt;p&gt;Ну и вышел Rust 0.10, ура-ура! Хотя для меня это мало что меняет, все
 равно использую ночные сборки :) .&lt;&#x2F;p&gt;
@@ -2608,8 +2608,8 @@ x-com) + неиспользованные в свой ход активные о
             <item>
                 <title>Разработка Мародера - 2014.03.30</title>
                 <pubDate>Mon, 31 Mar 2014 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2014-03-31--devlog-marauder-005/</link>
-                <guid>https%3A//ozkriff.github.io/2014-03-31--devlog-marauder-005/</guid>
+                <link>https%3A//ozkriff.games/2014-03-31--devlog-marauder-005/</link>
+                <guid>https%3A//ozkriff.games/2014-03-31--devlog-marauder-005/</guid>
                 <description>&lt;p&gt;За эту неделю ничего не сделал, только слежу, что бы мародер собирался
 ночными сборками компилятора Ржавчины.&lt;&#x2F;p&gt;
 </description>
@@ -2618,8 +2618,8 @@ x-com) + неиспользованные в свой ход активные о
             <item>
                 <title>Разработка Мародера - 2014.03.23</title>
                 <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2014-03-24--devlog-marauder-004/</link>
-                <guid>https%3A//ozkriff.github.io/2014-03-24--devlog-marauder-004/</guid>
+                <link>https%3A//ozkriff.games/2014-03-24--devlog-marauder-004/</link>
+                <guid>https%3A//ozkriff.games/2014-03-24--devlog-marauder-004/</guid>
                 <description>&lt;p&gt;Сходил на Manowar, о да, нужно больше пафоса. Только теперь вообще
 ничего не слышу :) .&lt;&#x2F;p&gt;
 &lt;p&gt;Мучал glfw-rs, cgmath-rs и самого мародера, что бы они собирались с
@@ -2627,27 +2627,27 @@ x-com) + неиспользованные в свой ход активные о
 &lt;p&gt;Брендан хочет, что бы cgmath-rs был исправлен не таким грубым хаком. Там
 могут быть косяки с NaN и +&#x2F;-Inf. Но я туплю как сделать правильно. :(&lt;&#x2F;p&gt;
 &lt;p&gt;Мой грандиозный страйк помер :(, черт:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2014-03-24--devlog-marauder-004&#x2F;2014-03-20--github-streak-fail.png&quot; alt=&quot;github-streak-fail&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2014-03-24--devlog-marauder-004&#x2F;2014-03-20--github-streak-fail.png&quot; alt=&quot;github-streak-fail&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Капельку поковырял текст. Решил, что не буду использовать cmr&#x2F;hgl-rs,
 страшно мне. Лучше все-таки чего-то свое сделаю.&lt;&#x2F;p&gt;
 &lt;p&gt;Шрифты, шрифты:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2014-03-24--devlog-marauder-004&#x2F;2014-03-20--font-cli.png&quot; alt=&quot;font-cli&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2014-03-24--devlog-marauder-004&#x2F;2014-03-20--font-cli.png&quot; alt=&quot;font-cli&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Сделал выделение отдельных отрядов в клетке:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2014-03-24--devlog-marauder-004&#x2F;2014-03-20--color-picking-1.gif&quot; alt=&quot;color-picking-01&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2014-03-24--devlog-marauder-004&#x2F;2014-03-20--color-picking-2.png&quot; alt=&quot;color-picking-02&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2014-03-24--devlog-marauder-004&#x2F;2014-03-20--color-picking-3.gif&quot; alt=&quot;color-picking-03&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2014-03-24--devlog-marauder-004&#x2F;2014-03-20--color-picking-1.gif&quot; alt=&quot;color-picking-01&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2014-03-24--devlog-marauder-004&#x2F;2014-03-20--color-picking-2.png&quot; alt=&quot;color-picking-02&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2014-03-24--devlog-marauder-004&#x2F;2014-03-20--color-picking-3.gif&quot; alt=&quot;color-picking-03&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 </description>
             </item>
         
             <item>
                 <title>Разработка Мародера - 2014.03.16</title>
                 <pubDate>Mon, 17 Mar 2014 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2014-03-17--devlog-marauder-003/</link>
-                <guid>https%3A//ozkriff.github.io/2014-03-17--devlog-marauder-003/</guid>
+                <link>https%3A//ozkriff.games/2014-03-17--devlog-marauder-003/</link>
+                <guid>https%3A//ozkriff.games/2014-03-17--devlog-marauder-003/</guid>
                 <description>&lt;p&gt;Ну что ж. За эту неделю я почти ничего не сделал, времени на Мародера
 было не так уж много.&lt;&#x2F;p&gt;
 &lt;p&gt;Зато сходил на концерт Апокалиптики :) .&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2014-03-17--devlog-marauder-003&#x2F;2015-11-23--apocalyptica.jpg&quot; alt=&quot;apocalyptica-pic&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2014-03-17--devlog-marauder-003&#x2F;2015-11-23--apocalyptica.jpg&quot; alt=&quot;apocalyptica-pic&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Сделал простенькое и кривенькое перетаскивание карты средней кнопкой
 мыши. Надо будет еще допиливать.&lt;&#x2F;p&gt;
 &lt;p&gt;Вернулся к ковырянию шрифтов из kiss3d. Решил переписать font-stash на
@@ -2659,15 +2659,15 @@ cgmath-rs под ночную сборку Ржавчины: изменения 
 разобрался.&lt;&#x2F;p&gt;
 &lt;p&gt;Еще потыкал qapitrace и узнал, что &lt;code&gt;gl::GetError&lt;&#x2F;code&gt; надо вызывать после
 каждого gl-вызова.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2014-03-17--devlog-marauder-003&#x2F;2015-11-23--qapitrace.jpg&quot; alt=&quot;qapitrace-pic&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2014-03-17--devlog-marauder-003&#x2F;2015-11-23--qapitrace.jpg&quot; alt=&quot;qapitrace-pic&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 </description>
             </item>
         
             <item>
                 <title>Разработка Мародера - 2014.03.10</title>
                 <pubDate>Tue, 11 Mar 2014 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2014-03-11--devlog-marauder-002/</link>
-                <guid>https%3A//ozkriff.github.io/2014-03-11--devlog-marauder-002/</guid>
+                <link>https%3A//ozkriff.games/2014-03-11--devlog-marauder-002/</link>
+                <guid>https%3A//ozkriff.games/2014-03-11--devlog-marauder-002/</guid>
                 <description>&lt;p&gt;Ну, этот понедельник я считаю последним днем недели. Не может у меня
 неделя с выходного начинаться, это неправильно как-то.&lt;&#x2F;p&gt;
 &lt;ul&gt;
@@ -2710,7 +2710,7 @@ cgmath-rs под ночную сборку Ржавчины: изменения 
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;GNOME&#x2F;byzanz&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;GNOME&#x2F;byzanz&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;github-streak&quot;&gt;Github streak&lt;&#x2F;h1&gt;
 &lt;p&gt;И да, github streak в 61 день, еее!&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2014-03-11--devlog-marauder-002&#x2F;2014-03-09--github-streak.png&quot; alt=&quot;github-streak-pic&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2014-03-11--devlog-marauder-002&#x2F;2014-03-09--github-streak.png&quot; alt=&quot;github-streak-pic&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;80-simvolov-khvatit-kazhdomu&quot;&gt;80 символов хватит каждому!&lt;&#x2F;h1&gt;
 &lt;p&gt;Узнал про &lt;code&gt;wc -L \*.rs&lt;&#x2F;code&gt; для поиска самой длинной строчки в куче файлов,
 прикольно.&lt;&#x2F;p&gt;
@@ -2738,8 +2738,8 @@ cgmath-rs под ночную сборку Ржавчины: изменения 
             <item>
                 <title>Разработка Мародера - 2014.03.02</title>
                 <pubDate>Mon, 03 Mar 2014 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2014-03-03--devlog-marauder-001/</link>
-                <guid>https%3A//ozkriff.github.io/2014-03-03--devlog-marauder-001/</guid>
+                <link>https%3A//ozkriff.games/2014-03-03--devlog-marauder-001/</link>
+                <guid>https%3A//ozkriff.games/2014-03-03--devlog-marauder-001/</guid>
                 <description>&lt;p&gt;Так, что я сделал за эту неделю? Вообще, намного меньше, чем собирался
 :( .&lt;&#x2F;p&gt;
 &lt;ul&gt;
@@ -2753,9 +2753,9 @@ cgmath-rs под ночную сборку Ржавчины: изменения 
 путь через его клетку все равно будет проложен, а уже при симуляции
 команды на сервере случится сюрприз в виде засады.&lt;&#x2F;p&gt;
 &lt;p&gt;Раньше:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2014-03-03--devlog-marauder-001&#x2F;2014-03-10--no-pathfinding.gif&quot; alt=&quot;pathfinding-pic-1&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2014-03-03--devlog-marauder-001&#x2F;2014-03-10--no-pathfinding.gif&quot; alt=&quot;pathfinding-pic-1&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Теперь:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2014-03-03--devlog-marauder-001&#x2F;2014-03-10--basic-pathfinding.gif&quot; alt=&quot;pathfinding-pic-2&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2014-03-03--devlog-marauder-001&#x2F;2014-03-10--basic-pathfinding.gif&quot; alt=&quot;pathfinding-pic-2&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Да, пока отряд никак не поворачивается при движении :( .&lt;&#x2F;p&gt;
 &lt;&#x2F;li&gt;
 &lt;li&gt;
@@ -2786,8 +2786,8 @@ cgmath-rs под ночную сборку Ржавчины: изменения 
             <item>
                 <title>Разработка Мародера - 2014.02.23</title>
                 <pubDate>Fri, 28 Feb 2014 00:00:00 +0000</pubDate>
-                <link>https%3A//ozkriff.github.io/2014-02-28--devlog-marauder-000/</link>
-                <guid>https%3A//ozkriff.github.io/2014-02-28--devlog-marauder-000/</guid>
+                <link>https%3A//ozkriff.games/2014-02-28--devlog-marauder-000/</link>
+                <guid>https%3A//ozkriff.games/2014-02-28--devlog-marauder-000/</guid>
                 <description>&lt;p&gt;Тому, что есть на данный момент до игры еще очень далеко. Пока что, по
 шкале от &amp;quot;демо OpenGL приложение с вращающимся полигоном&amp;quot; до &amp;quot;X-COM,
 HoMM, Кодекс Войны и др. большие пошаговые игры, которые пришли сходу
@@ -2798,7 +2798,7 @@ HoMM, Кодекс Войны и др. большие пошаговые игр�
 &lt;p&gt;Есть стремная тестовая модель (вроде как танка), слепленная в блендере
 за пару минут и покрашенная там же, что бы проверить, как натягиваются
 текстуры:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.github.io&#x2F;2014-02-28--devlog-marauder-000&#x2F;2014-02-23--ugly-tank.png&quot; alt=&quot;ugly-tank-pic&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ozkriff.games&#x2F;2014-02-28--devlog-marauder-000&#x2F;2014-02-23--ugly-tank.png&quot; alt=&quot;ugly-tank-pic&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Других видов отрядов нет.&lt;&#x2F;p&gt;
 &lt;p&gt;Текстурки - png. Модельки - .obj (самый простой формат, что я знаю).&lt;&#x2F;p&gt;
 &lt;p&gt;Есть карта из одинаковых шестиугольников серого цвета. В каждой клетке

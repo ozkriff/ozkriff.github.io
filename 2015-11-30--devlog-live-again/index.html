@@ -10,17 +10,17 @@
       <title>ozkriff&#x27;s devlog</title>
 
       <!-- CSS -->
-      <link rel="stylesheet" href="https:&#x2F;&#x2F;ozkriff.github.io&#x2F;print.css" media="print">
-      <link rel="stylesheet" href="https:&#x2F;&#x2F;ozkriff.github.io&#x2F;poole.css">
-      <link rel="stylesheet" href="https:&#x2F;&#x2F;ozkriff.github.io&#x2F;hyde.css">
+      <link rel="stylesheet" href="https:&#x2F;&#x2F;ozkriff.games&#x2F;print.css" media="print">
+      <link rel="stylesheet" href="https:&#x2F;&#x2F;ozkriff.games&#x2F;poole.css">
+      <link rel="stylesheet" href="https:&#x2F;&#x2F;ozkriff.games&#x2F;hyde.css">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
 
       
-        <link rel="shortcut icon" type="image/png" href="https:&#x2F;&#x2F;ozkriff.github.io&#x2F;favicon.png">
+        <link rel="shortcut icon" type="image/png" href="https:&#x2F;&#x2F;ozkriff.games&#x2F;favicon.png">
       
 
       
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;ozkriff.github.io&#x2F;rss.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;ozkriff.games&#x2F;rss.xml">
       
 
       
@@ -44,7 +44,7 @@
                 <div class="container ">
                     <div class="sidebar-about">
                         
-                            <a href="https:&#x2F;&#x2F;ozkriff.github.io"><h1>ozkriff&#x27;s devlog</h1></a>
+                            <a href="https:&#x2F;&#x2F;ozkriff.games"><h1>ozkriff&#x27;s devlog</h1></a>
                             
                         
                     </div>
@@ -86,7 +86,7 @@ Whales</a>, оттуда тоже уйти и осесть в
 на ужасы фритуплея)</p>
 <p>Я больше не студент, совсем - наконец-то закончил заочку в политехе,
 ура-ура! :-D Темой диплома как раз и был этот проект, даже
-<a href="https://ozkriff.github.io/2015-11-30--devlog-live-again/lesnikov_a_a_slides_2015.pdf">презентация</a> вот завалялась. Хотя
+<a href="https://ozkriff.games/2015-11-30--devlog-live-again/lesnikov_a_a_slides_2015.pdf">презентация</a> вот завалялась. Хотя
 ничего особо крутого, как мне изначально хотелось, на деле не вышло.
 Ключевым моментом диплома являлся ИИ. Я там подробно расписал какие они
 бывают и какие виды подходят для каких игр. А вот реализовать
@@ -144,7 +144,7 @@ Command</a> повлияла на мое
 <p>Много думал про пошаговые игры без клеток, все-таки у клеток много
 недостатков/особенностей. Даже немного экспериментировал - сделал
 простенькое путенахождение по вручную размеченной навигационной сетке:</p>
-<p><img src="https://ozkriff.github.io/2015-11-30--devlog-live-again/2015-07-30--manual-navmesh-simple-pathfinding.png" alt="Пример простого путенахождения на вручную размеченной сетке" /></p>
+<p><img src="https://ozkriff.games/2015-11-30--devlog-live-again/2015-07-30--manual-navmesh-simple-pathfinding.png" alt="Пример простого путенахождения на вручную размеченной сетке" /></p>
 <p>Путь проложен по центрам треугольников, для оптимизации потом хотел
 прикрутить <a href="http://digestingduck.blogspot.ru/2010/03/simple-stupid-funnel-algorithm.html">funnel
 algorithm</a>,
@@ -153,13 +153,13 @@ algorithm</a>,
 Затем, написал простенький &quot;наращиватель&quot; препятствий, который в
 зависимости от величины угла добавлял разное количество вспомогательных
 отрезков:</p>
-<p><img src="https://ozkriff.github.io/2015-11-30--devlog-live-again/2015-08-02--obstacle-grow.png" alt="Пример нарощенного препятствия" /></p>
+<p><img src="https://ozkriff.games/2015-11-30--devlog-live-again/2015-08-02--obstacle-grow.png" alt="Пример нарощенного препятствия" /></p>
 <p>Предполагалось, что все юниты будут поделены на несколько групп по
 размерам и для каждой группы будет поддерживаться своя сетка.
 Непосредственно преобразованием массива таких &quot;жирных&quot; препятствий в
 сетку должен был заниматься триангулятор. Мне большего всего приглянулся
 плюсовый <a href="https://code.google.com/p/poly2tri">poly2tri</a>:</p>
-<p><img src="https://ozkriff.github.io/2015-11-30--devlog-live-again/2015-08-11--triangulation-cpp-demo.png" alt="Всякие стандартные примеры из poly2tri" /></p>
+<p><img src="https://ozkriff.games/2015-11-30--devlog-live-again/2015-08-11--triangulation-cpp-demo.png" alt="Всякие стандартные примеры из poly2tri" /></p>
 <p>Даже пытался портировать его на ржавчину, но там очень стремная работа с
 памятью, очень хреново укладывается в модель ржавчины. Пробовал
 переделать плюсовую версию на работу с массивами и индексами, но потом
