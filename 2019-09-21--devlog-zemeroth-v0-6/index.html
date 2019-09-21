@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>ozkriff&#x27;s devlog</title>
+
+      <!-- CSS -->
+      <link rel="stylesheet" href="https:&#x2F;&#x2F;ozkriff.games&#x2F;print.css" media="print">
+      <link rel="stylesheet" href="https:&#x2F;&#x2F;ozkriff.games&#x2F;poole.css">
+      <link rel="stylesheet" href="https:&#x2F;&#x2F;ozkriff.games&#x2F;hyde.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+      
+        <link rel="shortcut icon" type="image/png" href="https:&#x2F;&#x2F;ozkriff.games&#x2F;favicon.png">
+      
+
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;ozkriff.games&#x2F;rss.xml">
+      
+
+      
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-70829739-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-70829739-1');
+        </script>
+      
+
+      
+      
+    </head>
+
+    <body class=" ">
+        
+            <div class="sidebar">
+                <div class="container ">
+                    <div class="sidebar-about">
+                        
+                            <a href="https:&#x2F;&#x2F;ozkriff.games"><h1>ozkriff&#x27;s devlog</h1></a>
+                            
+                        
+                    </div>
+
+                    <ul class="sidebar-nav">
+                        
+                        
+                        <li class="sidebar-nav-item"><a href="&#x2F;pages&#x2F;about">about</a></li>
+                        
+                        <li class="sidebar-nav-item"><a href="https:&#x2F;&#x2F;twitter.com&#x2F;ozkriff">twitter</a></li>
+                        
+                        <li class="sidebar-nav-item"><a href="https:&#x2F;&#x2F;github.com&#x2F;ozkriff">github</a></li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div class="content container">
+            
+<div class="post">
+  <h1 class="post-title">Zemeroth v0.6: Renown, Upgrades, Sprite Frames &amp; Flips, Effect Icons, and Videos</h1>
+  
+  <span class="post-date">2019-09-21</span>
+  
+  <!-- markdownlint-disable MD013 -->
+<!-- cspell:ignore reddit playtests indiedb tigsource nerfed Grammarly youtube -->
+<!-- cspell:ignore indistinctly zscene KDEnlive ezgif Kubuntu Knockback -->
+<p>Hi, folks! I'm happy to announce <strong>Zemeroth v0.6</strong>.
+Main features of this release are:
+renown and fighter upgrades, possessions, sprite frames and flips,
+and status effect icons.</p>
+<p><img src="https://ozkriff.games/2019-09-21--devlog-zemeroth-v0-6/title-screenshot.png" alt="Title image showing new fighter types, icons, explosions, etc" /></p>
+<p><a href="https://github.com/ozkriff/zemeroth">Zemeroth</a> is my hobby turn-based hexagonal tactics game written in <a href="https://rust-lang.org">Rust</a>.
+You can <a href="https://github.com/ozkriff/zemeroth/releases/tag/v0.6.0">download precompiled v0.6 binaries</a>
+for Windows, Linux, and macOS
+or <strong><a href="https://ozkriff.itch.io/zemeroth">play the online version on itch.io</a></strong>
+(should work on mobile browsers too).</p>
+<hr />
+<p>After 0.5 release, I've experimented a little bit with
+<a href="https://users.rust-lang.org/t/zemeroth-a-2d-turn-based-strategy-game/28311/5">smaller forum updates</a>
+and <a href="https://youtu.be/EDoxb7vbqgg">short complimentary videos</a>,
+but I've expectedly failed to make them regularly.
+Actually, I only managed to publish one such update:
+drafts for second and third updates were never finished.
+So, I decided to cancel my attempts at making weeklies and
+squashed all the &quot;weekly&quot; text drafts together
+into this larger announcement post.</p>
+<p>Video drafts were also squashed into
+<strong><a href="https://www.youtube.com/watch?v=6tZByt4LBlU">a video version of this post</a></strong>,
+check it out:</p>
+<p><a href="https://www.youtube.com/watch?v=6tZByt4LBlU"><img src="https://ozkriff.games/2019-09-21--devlog-zemeroth-v0-6/youtube-devlog-screenshot.png" alt="YouTube vide preview" /></a></p>
+<p>So, what does this release add to the game?</p>
+<h2 id="renown-and-fighter-upgrades">Renown and Fighter Upgrades</h2>
+<p>The biggest additions of this release are
+the renown system and fighter upgrades.</p>
+<p>&quot;Renown&quot; is the currency of the campaign mode
+that the player receives by winning battles
+and spends on recruiting and upgrading their fighters between battles.
+The term is obviously borrowed from <a href="https://bannersaga.gamepedia.com/Renown">Banner Saga</a>.</p>
+<p>Updated campaign menu looks like this:</p>
+<p><img src="https://ozkriff.games/2019-09-21--devlog-zemeroth-v0-6/campaign-menu.png" alt="a screenshot of campaign menu" /></p>
+<p>Now it shows not only the last battle casualties and their current fighters
+but also their current renown and a list of possible actions
+with their costs (in renown).</p>
+<p>The player is now free to choose more then one action
+if they have enough renown.</p>
+<p>One upgrade option is chosen randomly for up to two upgradable fighters
+in the player's group.</p>
+<p>If the player doesn't like provided upgrade options,
+they can skip straight to the next battle
+(that will be a little bit harder)
+and use their renown later.</p>
+<p>Recruit candidates (and the amount of received renown after a battle)
+are still encoded in the <code>award</code> section of campaign's nodes
+(this is likely to become a little bit more random too in future versions).
+A sample from <a href="https://github.com/ozkriff/zemeroth_assets/blob/e3886c064/campaign_01.ron">assets/campaign_0.ron</a>:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">initial_agents: [&quot;swordsman&quot;, &quot;spearman&quot;],
+nodes: [
+    // . . .
+    (
+        scenario: (
+            objects: [
+                (owner: None, typename: &quot;boulder&quot;, line: None, count: 1),
+                (owner: Some((1)), typename: &quot;imp&quot;, line: Some(Front), count: 3),
+                (owner: Some((1)), typename: &quot;imp_bomber&quot;, line: Some(Middle), count: 2),
+            ],
+        ),
+        award: (
+            recruits: [&quot;spearman&quot;, &quot;alchemist&quot;],
+            renown: 18,
+        ),
+    ),
+    // . . .
+</span></pre>
+<p>(<em>Note to myself: Employ an &quot;<a href="https://github.com/ron-rs/ron/blob/master/docs/extensions.md#implicit_some">implicit_some</a>&quot; RON extension.</em>)</p>
+<p>Fighter costs and upgrade options are described
+in a <a href="https://github.com/ozkriff/zemeroth_assets/blob/e3886c064/agent_campaign_info.ron">assets/agent_campaign_info.ron</a> config,
+that looks like this:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">{
+    &quot;swordsman&quot;: (
+        cost: 10,
+        upgrades: [&quot;heavy_swordsman&quot;, &quot;elite_swordsman&quot;],
+    ),
+    &quot;elite_swordsman&quot;: (cost: 15),
+    &quot;heavy_swordsman&quot;: (cost: 14),
+    &quot;spearman&quot;: (
+        cost: 11,
+        upgrades: [&quot;heavy_spearman&quot;, &quot;elite_spearman&quot;],
+    ),
+    &quot;elite_spearman&quot;: (cost: 15),
+    // . . .
+</span></pre>
+<p>Recruitment cost consists of a basic type cost
+plus a group size penalty (the player's fighters count).
+The penalty is added because the intended size of the group
+is four to six fighters.</p>
+<p>The upgrade cost is just a difference between original
+and upgraded type costs.</p>
+<p>Now the campaign has some level of strategy:
+the player should think if it's better to recruit a new fighter
+or upgrade the existing ones.
+The player should never have enough renown to buy everything they want.</p>
+<hr />
+<p>As for the new fighter types,
+most of the current upgrades can be split into two &quot;kinds&quot;:</p>
+<ul>
+<li>
+<p>&quot;Elite&quot; fighters are generally faster, have more abilities and
+can use them more often.
+They feel overpowered at this iteration and most likely will be
+nerfed in next releases.</p>
+</li>
+<li>
+<p>&quot;Heavy&quot; fighters are the opposite:
+they move slower (two move points instead of three),
+have fewer attack points,
+but deal more damage and have more health points.</p>
+<p>Later I will convert some of their extended health points into armor points,
+but this doesn't work atm, because there're no enemies, except for Imp Summoners,
+that can do anything with an armored fighter.</p>
+</li>
+</ul>
+<p>Basic fighter types were nerfed:
+fewer strength points, accuracy, abilities, etc,
+but are still useful.</p>
+<p>The idea is that the player should have fighters
+from all three kinds in their group:
+slow heavies are supposed to be used as devastating &quot;iron fist&quot;,
+quick and agile elites are used for vanguard and flanks,
+and basic fighters are used to fight weak enemies or finish off wounded ones.</p>
+<p>Here are current &quot;upgrade trees&quot;
+(they have only one level for now, but I'm planning to
+add more nodes in future versions):</p>
+<p><img src="https://ozkriff.games/2019-09-21--devlog-zemeroth-v0-6/upgrade-trees.png" alt="upgrade trees" /></p>
+<ul>
+<li><strong>spearman</strong> - still has 3 health points, &quot;Jump&quot; ability,
+and two-tile attack range,
+but lost one reaction attack, one accuracy, and one dodge point.
+Only useful for defense.
+<ul>
+<li><strong>elite spearman</strong> - has 4 health, one more accuracy and dodge points,
+and, most importantly, has an additional attack.
+The latter allows using him as the first fighter in a series of attacks,
+because he can move closer to enemies
+and instantly attack one of them from a safe distance,
+giving the initiative to the player.</li>
+<li><strong>heavy spearman</strong> - moves slowly, can't jump at all
+but has 5 health and deals 2 damage
+(that's a lot, considering his two-tile attack range).
+Still only useful for defense, but is very effective.</li>
+</ul>
+</li>
+<li><strong>swordsman</strong> - has 3 health points (lost one), lost one accuracy
+and doesn't have &quot;Dash&quot; and &quot;Rage&quot; abilities anymore (only &quot;Jump&quot;).
+<ul>
+<li><strong>elite swordsman</strong> - has the stats of an old swordsman:
+4 health, more accurate and all three abilities:
+&quot;Jump&quot;, &quot;Dash&quot;, and &quot;Rage&quot;.</li>
+<li><strong>heavy swordsman</strong> - slow and has no abilities at all
+but has 6 health, increased accuracy and greater attack damage (3).</li>
+</ul>
+</li>
+<li><strong>hammerman</strong> - has 4 health points and low accuracy.
+Lost &quot;Heavy Strike&quot; passive ability,
+but still have &quot;Club&quot; and &quot;Knockback&quot; abilities.
+<ul>
+<li><strong>heavy hammerman</strong> - slow, lost one attack point,
+but deals up to 5 damage, breaks up to 3 armor,
+has 6 health, a &quot;Heavy Strike&quot; passive ability
+and both &quot;Club&quot; and &quot;Knockback&quot; abilities.
+Can slay even a fully fresh imp summoner in a few strikes.</li>
+</ul>
+</li>
+<li><strong>alchemist</strong> - is a special type, because he can't attack directly.
+He lost all bombs except for the Push Bomb.
+Also, the cooldown of the &quot;Heal&quot; ability was increased.
+<ul>
+<li><strong>healer</strong> - heals more points with a 2 turns cooldown
+and can throw only Poison Bomb.
+Also, can do double moves in one turn for cases
+when the wounded fighter is on the other side of the map.</li>
+<li><strong>firer</strong> - can't heal anyone,
+but can do mass destruction by throwing exploding and fire bombs.</li>
+</ul>
+</li>
+</ul>
+<p>(<em>See <a href="https://github.com/ozkriff/zemeroth_assets/blob/master/objects.ron">objects.ron</a> for exact details.</em>)</p>
+<p>As you can see, sometimes the upgraded versions
+lose some of their abilities.
+These upgrades are more like a specialization, not just an improvement:
+the fighter focuses on a smaller set of skills.</p>
+<p>I also try to make fighter's stats match their visuals
+so the situation described in this <a href="https://itch.io/post/660275">itch.io review</a> won't repeat:</p>
+<blockquote>
+<p>... the most mobile unit in the game is the only one wearing heavy armor.
+Perhaps it'd be more fitting for the Hammerman to be in plate.</p>
+</blockquote>
+<h2 id="agent-s-info-screen">Agent's Info Screen</h2>
+<p>A basic fighter info screen was added:</p>
+<p><img src="https://ozkriff.games/2019-09-21--devlog-zemeroth-v0-6/agent-info-screen.png" alt="agent info screen" /></p>
+<p>It's opened by clicking on a small <code>[i]</code> button
+on the right from a fighter's type in the campaign menu:</p>
+<p><img src="https://ozkriff.games/2019-09-21--devlog-zemeroth-v0-6/agent-info-button.png" alt="&quot;i&quot; button in the campaign menu" /></p>
+<p>This screen allows the player to look up stats and abilities
+before recruiting or upgrading a fighter.</p>
+<h2 id="possession">Possession</h2>
+<p>Another gameplay change is possessions:
+imp summoners can now possess imps to give them more action points
+for a few turns.</p>
+<p>The &quot;Possessed&quot; status is visualized with a yellow lightning status icon
+(read more about the status icons in the &quot;Status Effect Icons&quot; section below).</p>
+<p><img src="https://ozkriff.games/2019-09-21--devlog-zemeroth-v0-6/possession-demo-1.gif" alt="Possession demo 1: spearman is killed by a possessed imp" /></p>
+<p>On the beginning of their turn,
+possessed imp gets three additional Joker points
+(reminder: Jokers can be used as attack or move points
+and aren't removed when the agent receives damage).</p>
+<p>Possessed imps can run through the whole map, make a lot of attacks,
+and they won't stop on your reaction attacks until they're dead.
+So the player must look closely for potentially possessed imps and
+be ready to reposition fighters to form a lethal defense line:</p>
+<p><img src="https://ozkriff.games/2019-09-21--devlog-zemeroth-v0-6/possession-demo-2.gif" alt="Possession demo 1: possessed imp is killed with reaction attacks" /></p>
+<p>The idea is that the player should never be in a situation like when
+two possessed imps run towards a lonely and badly positioned fighter.</p>
+<p><em>Note</em>: &quot;Possession&quot; looks like to be a bad name
+for one demon forcing a lesser demon to be more performing,
+so this ability and effect will likely be renamed in future versions.</p>
+<h2 id="visual-improvements">Visual Improvements</h2>
+<p>There're many small visual improvements in this release.</p>
+<h3 id="current-tile-highlighting">Current Tile Highlighting</h3>
+<p>First, a tile under the cursor is highlighted now
+when using a mouse (it was requested by many playtesters).
+It makes no sense do this with touch inputs because
+the user will just constantly see the latest tile they touched,
+so the feature only works when input event's delta movement isn't zero.</p>
+<p><img src="https://ozkriff.games/2019-09-21--devlog-zemeroth-v0-6/tile-highlighting.gif" alt="demo of the tile highlighting" /></p>
+<p>^ <em>Switching between mouse input and touch emulation in the web version</em></p>
+<h3 id="sprites-flipping">Sprites Flipping</h3>
+<p>Next, agent sprites
+<a href="https://github.com/ozkriff/zemeroth/pull/473">are now flipped horizontally</a>
+to match their action's direction.
+Weapon flashes are also now flipped when needed.</p>
+<p><img src="https://ozkriff.games/2019-09-21--devlog-zemeroth-v0-6/scene-with-flipped-agents.png" alt="scene with flipped agents" /></p>
+<p>^ <em>A screenshot with both imps and humans faced left and right</em></p>
+<p>I've wanted to add this for a long time because previously
+humans were facing strictly to the right (imps - to the left)
+and sometimes they were attacking each other backward.</p>
+<p>To implement this <code>enum Facing { Left, Right }</code>,
+a <code>Sprite::set_facing</code> method,
+and a corresponding <code>action::SetFacing</code> scene action
+<a href="https://github.com/ozkriff/zemeroth/pull/473">were added</a> to the <code>zscene</code> library.</p>
+<p>The implementation of <code>Sprite:set_facing</code> is a little hacky atm.
+I was hoping to implement this method
+using only ggez's <a href="https://docs.rs/ggez/0.5.1/ggez/graphics/struct.DrawParam.html">ggez::DrawParams</a>' <code>scale</code> and <code>offset</code> fields,
+but because of <a href="https://github.com/ggez/ggez/issues/439">this bug</a>,
+it doesn't really work with custom screen coordinates that I'm using.
+So the method was implemented on <code>zscene::Sprite</code>'s abstraction level using external offset.</p>
+<h3 id="dodge-animations">Dodge Animations</h3>
+<p>It's hard to actually miss while attacking
+a static target with a melee weapon in real life.
+Most of the misses are caused by the targets dodging moves.
+So, simple target dodge animations when an attack misses
+<a href="https://github.com/ozkriff/zemeroth/pull/471">were added to the game</a> to display this.</p>
+<p><img src="https://ozkriff.games/2019-09-21--devlog-zemeroth-v0-6/dodge-demo.gif" alt="Dodge animation demo" /></p>
+<p>^ <em>Dodge animations demo</em></p>
+<h3 id="move-interruption-message">Move Interruption Message</h3>
+<p>If any tile of a movement path is inside the attack range
+of an enemy agent with attack points, a reaction attack is triggered.
+If this attack succeeds the movement is interrupted.</p>
+<p>A move point (or a joker) is spent even if the agent hasn't actually moved anywhere:
+the starting tile is also considered a part of the path.
+This prevents agents from exiting a melee too easily
+(&quot;Jump&quot; and &quot;Dash&quot; abilities exist to counter this).</p>
+<p>I like this mechanic, but sometimes it wasn't clear to playtesters what just happened:
+they clicked on a tile, but were attacked and can't move anymore.</p>
+<p>A helper message is <a href="https://github.com/ozkriff/zemeroth/pull/472">now shown</a> when an agent's move is interrupted.</p>
+<p><img src="https://ozkriff.games/2019-09-21--devlog-zemeroth-v0-6/move-interrupted-msg-demo.gif" alt="Demo of the movement interruption message" /></p>
+<p>^ <em>A demo of a heavy swordsman's failed attempt to move away from an imp</em></p>
+<h3 id="frames">Frames</h3>
+<p>From the beginning of the project I decided that I don't want
+to implement real smooth animations for agents:
+I don't like how 2D skeletal animations look in general
+and per frame animations are too hard to make.
+Quoting from <a href="https://ozkriff.github.io/2017-08-17--devlog/index.html#zemeroth">the initial vision</a>:</p>
+<blockquote>
+<p>* Simple vector 2d graphics with just 3-5 sprites per unit;</p>
+</blockquote>
+<p>So the plan was to have a few situational sprites
+(&quot;attacking&quot;, &quot;taking damage&quot;, etc) per unit
+and use simple procedural animation to make the image more alive.
+It's a compromise between having real animations and only having totally static pieces.</p>
+<p>Some procedural animations
+(like <a href="https://ozkriff.games/2018-03-03--devlog/index.html#simple-walking-animation">&quot;bumpy&quot; walk</a>
+or <a href="https://ozkriff.games/2019-05-13--devlog-zemeroth-v0-5/index.html#visual-improvements">blood splatters and dust</a>)
+were implemented in previous versions of the game,
+but all agents still used only one sprite.</p>
+<p>With this release, agents finally
+<a href="https://github.com/ozkriff/zemeroth/pull/476">get special sprite frames for (some) abilities</a>!</p>
+<p><img src="https://ozkriff.games/2019-09-21--devlog-zemeroth-v0-6/frames-demo.gif" alt="frames demo" /></p>
+<p>^ <em>A demo of special ability frames (&quot;Rage&quot;, &quot;Heal&quot;, and &quot;Summon&quot;)</em></p>
+<p>For now, special frames are used only for the visualization of abilities.
+I've tried adding &quot;attack frames&quot;, but they conflicted too much with weapon flashes
+and I decided that the game looks better without these frames.</p>
+<p>Though, it's likely that spearman will get special directional attack frames
+<a href="https://github.com/ozkriff/zemeroth/issues/477">in the next versions</a>
+because he can attack enemies two tiles away from him
+and it looks weird with a completely static sprite sometimes
+because the spear is too far away from its target.</p>
+<hr />
+<p>Sprite sets are configured now with a <a href="https://github.com/ozkriff/zemeroth_assets/blob/56b620664/sprites.ron">sprites.ron</a> config that looks like this:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">{
+    // ...
+    &quot;alchemist&quot;: (
+        paths: {
+            &quot;&quot;: &quot;/alchemist.png&quot;,
+            &quot;throw&quot;: &quot;/alchemist_throw.png&quot;,
+            &quot;heal&quot;: &quot;/alchemist_heal.png&quot;,
+        },
+        offset_x: 0.05,
+        offset_y: 0.1,
+        shadow_size_coefficient: 1.0,
+    ),
+    &quot;imp_summoner&quot;: (
+        paths: {
+            &quot;&quot;: &quot;/imp_summoner.png&quot;,
+            &quot;summon&quot;: &quot;/imp_summoner_summon.png&quot;,
+        },
+        offset_x: 0.0,
+        offset_y: 0.15,
+        shadow_size_coefficient: 1.3,
+    ),
+    // ...
+}
+</span></pre>
+<p>The <code>&quot;&quot;</code> (empty string) frame is considered the default frame.</p>
+<p>As the event visualizers don't know anything about specific agent types,
+the code usually checks if the sprite has some event-specific frame and only then
+adds an action node that will switch the sprite to that frame during its execution:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> frame = &quot;</span><span style="color:#a3be8c;">jump</span><span style="color:#c0c5ce;">&quot;;
+</span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;"> sprite_object.</span><span style="color:#96b5b4;">has_frame</span><span style="color:#c0c5ce;">(frame) {
+    actions.</span><span style="color:#96b5b4;">push</span><span style="color:#c0c5ce;">(action::SetFrame::new(&amp;sprite_object, frame).</span><span style="color:#96b5b4;">boxed</span><span style="color:#c0c5ce;">());
+}
+</span></pre>
+<p>Frames are stored inside the <code>zscene::Sprite</code> struct like this:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">drawable: Option&lt;Box&lt;dyn Drawable&gt;&gt;,
+drawables: HashMap&lt;String, Option&lt;Box&lt;dyn Drawable&gt;&gt;&gt;,
+current_frame_name: String,
+</span></pre>
+<p>I didn't want to index a HashMap with a string for every sprite
+on every frame, so the current frame lives in a special field <code>drawable</code>
+and everything is stored as options to simplify frame swapping.</p>
+<h3 id="explosion-ground-marks">Explosion Ground Marks</h3>
+<p>To make the battlefield look more interesting
+decorative explosion ground marks were added:</p>
+<p><img src="https://ozkriff.games/2019-09-21--devlog-zemeroth-v0-6/explosion-ground-mark-demo.gif" alt="explosion ground marks demo" /></p>
+<p>Same as blood, they're slowly disappearing into transparency in three turns
+to avoid making the battlefield too noisy and unreadable.</p>
+<p>It looks boring when there're many similar big explosion mark sprites
+on the battlefield, so in future versions there should be
+something like 3-5 randomly chosen versions of this sprite (<a href="https://github.com/ozkriff/zemeroth/issues/531">#531</a>).</p>
+<h3 id="status-effect-icons">Status Effect Icons</h3>
+<p>Icons for lasting effects were <a href="https://github.com/ozkriff/zemeroth/pull/511">added</a>
+so the player can quickly see a more detailed game state info:</p>
+<p><img src="https://ozkriff.games/2019-09-21--devlog-zemeroth-v0-6/status-effect-icons.png" alt="status effect icons demo" /></p>
+<p>There're three lasting effects atm:</p>
+<p><img src="https://ozkriff.games/2019-09-21--devlog-zemeroth-v0-6/status-effect-icons-images.png" alt="image files" /></p>
+<p>If there's more than one lasting effect applied to one agent,
+icons are stacked vertically:</p>
+<p><img src="https://ozkriff.games/2019-09-21--devlog-zemeroth-v0-6/status-effect-icons-stacked.png" alt="stacked icons demo" /></p>
+<p>The icons are twice the size of brief info dots
+because they're more detailed.</p>
+<h2 id="external-contributions">External Contributions</h2>
+<p>There were a few PRs from external contributors:</p>
+<ul>
+<li>by <a href="github.com/debris">@debris</a>:
+<ul>
+<li><a href="https://github.com/ozkriff/zemeroth/pull/485">&quot;Bump ggez to version 0.5.0-rc.2&quot;</a>;</li>
+<li><a href="https://github.com/ozkriff/zemeroth/pull/490">&quot;Highlight buttons on mouse over&quot;</a>;</li>
+<li><a href="https://github.com/ozkriff/zemeroth/pull/486">&quot;Load sprites from sprites.ron file&quot;</a>;</li>
+</ul>
+</li>
+<li>by <a href="github.com/ltfschoen">@ltfschoen</a>:
+<ul>
+<li><a href="https://github.com/ozkriff/zemeroth/pull/491">&quot;docs: Fix logic of insert within zcomponents&quot;</a>;</li>
+<li><a href="https://github.com/ozkriff/zemeroth/pull/488">&quot;Update readme with instructions to add missing dependencies&quot;</a>.</li>
+</ul>
+</li>
+</ul>
+<p>Thanks, folks!</p>
+<h2 id="other-changes">Other Changes</h2>
+<ul>
+<li>AIs of the Summoner and Bomber imps <a href="https://github.com/ozkriff/zemeroth/pull/508">were tweaked</a>
+to keep shorter distances
+because chasing summoners through the whole map
+with slow heavy fighters is just boring.</li>
+<li>The &quot;Explosion Bomb&quot; ability was balanced:
+explosions <a href="https://github.com/ozkriff/zemeroth/pull/505">now destroy armor</a>.
+This was done to balance this ability with a &quot;Fire Bomb&quot;.</li>
+<li>The &quot;Club&quot; ability <a href="https://github.com/ozkriff/zemeroth/pull/514">was balanced</a>:
+its duration was educed and the &quot;Fly Off&quot; effect was removed.
+This was done to better differentiate it with the &quot;Knockback&quot; ability.</li>
+<li>A mostly empty rustfmt.toml file <a href="https://github.com/ozkriff/zemeroth/pull/495">was added</a> to the repo
+(<a href="https://github.com/ozkriff/zemeroth/issues/492">to explicitly document the desired formatting</a>).</li>
+<li>I added <a href="https://github.com/ozkriff/zemeroth/blob/8586ef2ac/README.md#inspiration">a new &quot;Inspiration&quot; section</a>
+to the README with a list of games that inspire(d) Zemeroth.</li>
+</ul>
+<h2 id="text-logo">Text Logo</h2>
+<p>The game now has a (temporary?) text logo:</p>
+<p><img src="https://ozkriff.games/2019-09-21--devlog-zemeroth-v0-6/text-logo.png" alt="Text logo" /></p>
+<p>The image was manually re-drawn
+(in a low-poly style similar to game's angular sprites)
+from a text written in the <a href="https://www.dafont.com/old-london.font">&quot;Old London&quot;</a> font.</p>
+<p>Not sure if it really fits the game - surprisingly many people say
+that it looks like something related to Death Metal
+and not just a generic medieval font - but it'll do for now.</p>
+<h2 id="spreading-the-word">Spreading the Word</h2>
+<p>I've got the <a href="https://ozkriff.games">ozkriff.games</a> domain
+and <a href="https://help.github.com/en/articles/using-a-custom-domain-with-github-pages">moved my devlog to it</a>.
+This is my first domain and the buying process turned out to be
+not nearly as scary as I was expecting.</p>
+<p>I revived my Patreon page: <a href="https://patreon.com/ozkriff">patreon.com/ozkriff</a>.</p>
+<p>I also created new social pages
+(in addition to <a href="https://twitter.com/ozkriff">twitter</a>):</p>
+<ul>
+<li><a href="https://fb.com/ozkriff.games">fb.com/ozkriff.games</a></li>
+<li><a href="https://vk.com/ozkriff.games">vk.com/ozkriff.games</a> (ru)</li>
+</ul>
+<p>... and a bunch forum threads and database pages
+(in addition to <a href="https://ozkriff.itch.io/zemeroth">itch.io</a>):</p>
+<ul>
+<li><a href="https://forums.tigsource.com/index.php?topic=67464.0">tigsource</a></li>
+<li><a href="https://indiedb.com/games/zemeroth">indiedb</a></li>
+<li><a href="https://users.rust-lang.org/t/zemeroth-a-2d-turn-based-strategy-game/28311">users.rust-lang.org</a></li>
+<li><a href="https://gamejolt.com/games/zemeroth/414937">gamejolt</a></li>
+<li><a href="https://gamedev.ru/projects/forum/?id=244345">gamedev.ru</a> (ru)</li>
+</ul>
+<p>The initial plan was to post weekly updates to Patreon, forums,
+and catalog pages but as that experiment was canceled (see the preface)
+I most likely will just post links to new version announces there.
+Let's hope that this will motivate me to make smaller releases more often. :)</p>
+<h2 id="about-devlog-videos">About Devlog Videos</h2>
+<p>As written in the preface, new devlog posts will be complimented
+with their video versions for folks who prefer consuming information
+in a more dynamic audio-visual form.
+I don't have any experience with making of such videos
+(I've been only making GIFs and short gameplay videos)
+so I'm learning this stuff as I go along.
+I see it as a part of game development,
+so it makes sense to add a few notes about my current routine to the devlog.</p>
+<p>Ideally, I'd like to do record a live demo without a strict script,
+but speaking to the camera when you're not used to it is quite stressful
+and additionally I'm not quite comfortable with English.
+I've tried a few times to record the whole video &quot;live&quot; in one piece
+and it totally failed for me.</p>
+<p>So, I prepare a script (by adapting a text post a little bit)
+and read it out (usually, one section at a time).
+I don't have any external mic and just use a simple headset
+for now (as clearly can be seen from the video).
+I use <strong><a href="https://audacityteam.org">Audacity</a></strong> to do the recording
+and to <a href="https://manual.audacityteam.org/man/noise_reduction.html">filter out most noticeable background noises</a>.</p>
+<p>Then, I record short intro and outro clips using my phone's
+(its camera isn't perfect, but still much better than my laptop's webcam)
+to personalize the voiceover a little bit.</p>
+<p>GIFs from the post can't be reused for the visualization
+because they're too small, so I go through the script
+and use <strong><a href="https://en.wikipedia.org/wiki/SimpleScreenRecorder">SimpleScreenRecorder</a></strong> to record a lot of screen clips.</p>
+<p>I'm using Kubuntu as my main OS,
+so the natural choice for a video editor is <strong><a href="https://kdenlive.org">Kdenlive</a></strong>.
+Its UI feels a little bit clunky, but docs are fine
+and it seems to do all the basic stuff that I need:
+cut/match the video clips to the voiceover
+and add some background music.</p>
+<p><img src="https://ozkriff.games/2019-09-21--devlog-zemeroth-v0-6/kdenlive.png" alt="Kdenlive screenshot" /></p>
+<p>Finally, I prepare and add subtitles.
+There're at least three reasons to do this:
+accessibility, my terrible English pronunciation, and translation (to Russian).
+Again, KDE software seems to do the job fine:
+I just add the script to <strong><a href="https://store.kde.org/p/1126783">KDE Subtitle Composer</a></strong> line by line
+and tweak the timings a little bit.</p>
+<p>And that's it, the video is done and can be uploaded to <a href="https://youtube.com/user/ozkriff619/videos">YouTube</a>.</p>
+<p>I'm not completely happy with the quality of the 0.6 announcement video,
+but I guess it's only a question of practice.</p>
+<hr />
+<p><img src="https://ozkriff.games/2019-09-21--devlog-zemeroth-v0-6/final-sequence.gif" alt="just silly final gif" /></p>
+<p>That's all for today, thanks for reading!</p>
+<p><a href="https://github.com/ozkriff/zemeroth/blob/master/README.md#roadmap">Here's Zemeroth's roadmap</a>,
+if you want to know on what I'm going to work next.</p>
+<p>If you're interested in Zemeroth project you can follow
+<strong><a href="https://twitter.com/ozkriff">@ozkriff on Twitter</a></strong> for fresh news
+or subscribe to my <strong><a href="https://youtube.com/user/ozkriff619/videos">YouTube channel</a></strong>.
+Also, if you're interested in Rust game development in general,
+you may want to check <strong><a href="https://twitter.com/rust_gamedev">@rust_gamedev on Twitter</a></strong>.</p>
+<!--
+TODO: uncomment when the post is published
+**Discussions of this post**:
+[/r/rust](TODO),
+[twitter](TODO).
+-->
+
+</div>
+
+        </div>
+
+    </body>
+
+</html>
